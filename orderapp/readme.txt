@@ -1,1 +1,0 @@
-Please Refer to Appendix A on how to build the source code.
