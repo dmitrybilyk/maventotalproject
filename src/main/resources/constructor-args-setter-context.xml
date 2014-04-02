@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="adidas" class="com.learn.spring.springinjection.constructor.Clothes">
+        <constructor-arg value="kedy"/>
+        <constructor-arg value="skirtt"/>
+        <constructor-arg value="teebest"/>
+        <constructor-arg value="100"/>
+    </bean>
+
+    <bean id="footballPlayer" class="com.learn.spring.springinjection.constructor.FootballPlayer">
+        <constructor-arg value="Maradonna"/>
+        <constructor-arg value="35"/>
+        <constructor-arg ref="adidas"/>
+        <property name="award" ref="award"/>
+        <!--<property name="clothes" ref="adidas"/>-->
+    </bean>
+
+    <bean id="award" class="com.learn.spring.springinjection.constructor.Award">
+        <property name="name" value="Cup champions ligue"/>
+    </bean>
+
+</beans>

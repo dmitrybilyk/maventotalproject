@@ -1,0 +1,5 @@
+One interface - many implementations. In java polimorthism includes
+overriding, overloading. You should always use type of parent class in parameters
+of method, return type of method, in object creation.
+Also we may see polimorthism in generics. We may pass any subclass of generic type.
+

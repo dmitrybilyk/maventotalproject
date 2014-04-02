@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <!--<script>-->
+        <!--document.ready(function(){-->
+            <!--$('button').click(function(){-->
+<!--//             $(this).text("Changed");-->
+                <!--alert('test');-->
+            <!--})-->
+        <!--})-->
+    <!--</script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <title></title>
+    <link rel="stylesheet" href="day.css">
+</head>
+<h1>My Web site</h1>
+
+<body>
+    <button data-file = 'day'>day</button>
+    <button data-file = 'night'>night</button>
+
+    <script>
+        (function(){
+            var link = $('link');
+         $('button').click(function(){
+             var button = $(this)
+//             button.removeAttr('disabled');
+             var buttonVar = $(this).data('file');
+             link.attr('href', buttonVar + '.css');
+             $(this).attr("disabled', 'disabled");
+         })
+        })();
+    </script>
+</body>
+</html>

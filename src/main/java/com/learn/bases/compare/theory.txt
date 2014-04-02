@@ -1,0 +1,18 @@
+What is difference between Comparable and Comparator interface?
+
+Comparable and Comparator interfaces are used to sort collection or array of objects.Comparable interface is
+used to provide the natural sorting of objects and we can use it to provide sorting based on single logic.
+Comparator interface is used to provide different algorithms for sorting and we can chose the comparator we
+want to use to sort the given collection of objects.
+
+
+While passing a Collection as argument to a function, how can we make sure the function will not be able to modify it?
+
+We can create a read-only collection using Collections.unmodifiableCollection(Collection c) method before passing it
+as argument, this will make sure that any operation to change the collection will throw UnsupportedOperationException.
+
+
+How can we create a synchronized collection from given collection?
+
+We can use Collections.synchronizedCollection(Collection c) to get a synchronized (thread-safe) collection backed by
+the specified collection.

@@ -1,0 +1,34 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:lang="http://www.springframework.org/schema/lang"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="supportService" class="com.learn.patterns.behavioral.chainofresponsobility.SupportService">
+        <property name="handler" ref="frontDeskSupport"></property>
+    </bean>
+
+    <bean id="frontDeskSupport" class="com.learn.patterns.behavioral.chainofresponsobility.FrontDeskSupport">
+        <property name="next" ref="supervisorSupport"></property>
+    </bean>
+    <bean id="supervisorSupport" class="com.learn.patterns.behavioral.chainofresponsobility.SupervisorSupport">
+        <property name="next" ref="managerSupport"></property>
+    </bean>
+    <bean id="managerSupport" class="com.learn.patterns.behavioral.chainofresponsobility.ManagerSupport">
+        <property name="next" ref="directorSupport"></property>
+    </bean>
+    <bean id="directorSupport" class="com.learn.patterns.behavioral.chainofresponsobility.DirectorSupport"></bean>
+
+</beans>

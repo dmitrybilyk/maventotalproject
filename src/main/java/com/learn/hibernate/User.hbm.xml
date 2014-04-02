@@ -1,0 +1,21 @@
+<!--<?xml version="1.0"?>-->
+        <!--<!DOCTYPE hibernate-mapping PUBLIC-->
+        <!--"-//Hibernate/Hibernate Mapping DTD 3.0//EN"-->
+        <!--"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">-->
+<!--<hibernate-mapping>-->
+    <!--<class name="com.learn.hibernate.User">-->
+        <!--<meta attribute="class-description">This class contains user details.</meta>-->
+        <!--<employee_Id name="employee_Id" type="long" column="USER_ID">-->
+            <!--<generator class="increment" />-->
+        <!--</employee_Id>-->
+        <!--<property name="name" type="string" not-null="true" length="100" column="USER_NAME" />-->
+        <!--&lt;!&ndash;<many-to-one name="userAddress" class="com.com.learn.hibernatenate.Address" column="USER_ADDRESS" not-null="true" cascade="all" unique="true" />&ndash;&gt;-->
+        <!--<set name="userAddress" table="ADDRESS"-->
+             <!--inverse="true" lazy="true" fetch="select">-->
+            <!--<key>-->
+                <!--<column name="USER_ID" not-null="true" />-->
+            <!--</key>-->
+            <!--<one-to-many class="com.learn.hibernate.Address" />-->
+        <!--</set>-->
+    <!--</class>-->
+<!--</hibernate-mapping>-->

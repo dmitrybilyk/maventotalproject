@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+   <bean name="group" class="com.learn.spring.springcollections.complexobjectwithdeepcollections.GroupOfPersons">
+       <property name="personSet">
+           <set>
+               <ref bean="personDima" />
+               <ref bean="personRuslan" />
+           </set>
+       </property>
+       <property name = "map">
+           <map key-type="java.lang.String" value-type="com.learn.spring.springcollections.complexobjectwithdeepcollections.Person">
+              <entry key="personDima" value-ref="personDima" />
+              <entry key="personRuslan" value-ref="personRuslan" />
+           </map>
+       </property>
+   </bean>
+
+
+    <bean name="personDima" class="com.learn.spring.springcollections.complexobjectwithdeepcollections.Person">
+        <property name="age" value="22"/>
+        <property name="firstName" value="Dima"/>
+        <property name="lastName" value="Bilyk"/>
+        <property name="skills">
+            <list>
+                <value>Java EE</value>
+                <value>Java Core</value>
+                <value>Java Script</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean name="personRuslan" class="com.learn.spring.springcollections.complexobjectwithdeepcollections.Person">
+        <property name="age" value="22"/>
+        <property name="firstName" value="Dima"/>
+        <property name="lastName" value="Bilyk"/>
+        <property name="skills">
+            <list>
+                <value>Java EE</value>
+                <value>Java Core</value>
+                <value>Java Script</value>
+            </list>
+        </property>
+
+    </bean>
+
+</beans>

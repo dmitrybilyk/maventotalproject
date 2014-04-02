@@ -1,0 +1,15 @@
+We should use decorator pattern when we can say we have number of combination for an object
+Secondly when we want to add functionality to individual object not to all object at run-time
+
+
+1.      Component Interface: In our example Currency interface is component which used on
+its own or we need decorator for that.
+2.      Concrete Component: it implements Component and we add new behavior to this object
+at dynamically. Dollar and Rupee are the concrete implementation of currency.
+3.      Decorator: Decorator contains a HAS a Relationship in simple word we can say it has
+a instance variable that holds reference for component they implement same component which they are going to decorate. Here a Decorator is an abstract class which extends the currency.
+4.      Concrete Decorator: it’s an implementation of Decorator So USD Dollar and SGD Dollar
+are the implementation of Decorator contains instance variable for component interface or the thing which they are going to decorate.
+
+
+Read more: http://javarevisited.blogspot.com/2011/11/decorator-design-pattern-java-example.html#ixzz2QMmlEPaE

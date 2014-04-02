@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="dateCalculationService" class="com.learn.patterns.behavioral.strategypattern.fromWork.DateCalculationServicePojo">
+        <!--<property name="warehousingStrategies">-->
+            <!--<list value-type="com.learn.patterns.behavioral.strategypattern.fromWork.WarehousingStrategy">-->
+                <!--<ref bean="warehousingOffStrategy"/>-->
+                <!--<ref bean="warehousingOnStrategy"/>-->
+                <!--<ref bean="warehousingOnReceiptStrategy"/>-->
+            <!--</list>-->
+        <!--</property>-->
+
+        <property name="strategiesMap">
+            <map>
+                <entry key="OFF" value-ref="warehousingOffStrategy"/>
+                <entry key="ON" value-ref="warehousingOnStrategy"/>
+                <entry key="SEND_ON_FILE_RECEIPT" value="warehousingOnReceiptStrategy"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean name="warehousingOnStrategy" class="com.learn.patterns.behavioral.strategypattern.fromWork.WarehousingOnStrategy"/>
+    <bean name="warehousingOffStrategy" class="com.learn.patterns.behavioral.strategypattern.fromWork.WarehousingOffStrategy"/>
+    <bean name="warehousingOnReceiptStrategy" class="com.learn.patterns.behavioral.strategypattern.fromWork.WarehousingOnReceiptStrategy"/>
+
+</beans>

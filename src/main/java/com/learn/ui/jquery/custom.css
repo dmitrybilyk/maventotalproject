@@ -1,0 +1,21 @@
+body{
+    width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.green{
+    color: green;
+    font-size: 23px;
+}
+
+dt{
+    font-size: 25px;
+    font: bold;
+    cursor: pointer;
+    border-bottom: 1px solid #0044cc;
+}
+
+.hide{
+    display: none;
+}

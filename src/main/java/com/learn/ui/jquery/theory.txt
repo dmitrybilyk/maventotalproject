@@ -1,0 +1,39 @@
+Global variables - they a available to window object.
+If we want that function execute while page loads we have to
+wrap it in '( )' (pars).
+You may use custom attribute in html. it should start with
+'data-'. Then we may use this value. In jquery - with .data( method.
+We may ignore 'data-' in parantheties.
+siblings('button') - we get all the buttons that are on the same level.
+
+.end() - we use this method if we want to go back on 1 level in the chang of
+objects.
+
+
+The better way - to use on method with ('click') param (for example). Because
+eventually 'on' method is called by jQuery. The same for bind method.
+
+When we use click we add eventHandler to all objects of the dom. The best way -
+to use live method if we want to clone element (appendTo). It only checks that
+'h2' element is clicked (if live('h2')) and then copies this element to dom.
+In this way eventHandler - the part of the document (not h2).
+
+If you work with element you use after - to append after. If you create the element-
+use insertAfter() method.
+
+
+if we use function name with '()' then function will be called emmidietly.
+Otherwise, it will not.
+
+EveryThing in javascript is an object - even functions. They have fields and
+methods.
+
+We may use ~~true to return 1... ~~false - to return 0
+
+
+all methods - load, getJSON, get, post - eventually call JQUERY.ajax().
+
+serialize method helps us to form name-value pairs from form inputs!!!
+
+
+

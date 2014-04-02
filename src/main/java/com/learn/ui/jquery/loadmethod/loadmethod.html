@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+
+<a href="#" class="form1" id="call" name="formcall">Call form</a>
+<a href="#" class="form2" id="call2" name="formcall2">Call form2</a>
+<script src="../jquery-1.7.1.js"></script>
+<script>
+    (function(){
+        var link = $('a.form1');
+        var link2 = $('a.form2');
+        console.log(link);
+        link.on('click', function(){
+            link.load("myform.html .myform1");
+        })
+
+        link2.on('click', function(){
+            link.load("myform.html .myform2");
+        })
+
+    })();
+
+</script>
+
+</body>
+</html>

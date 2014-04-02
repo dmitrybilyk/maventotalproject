@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+
+<script src="../jquery-1.7.1.js"></script>
+<script>
+    var ar;
+    (function(){
+       var arr = [1,2,3,4,5,6,7,8,9,10];
+
+       arr =  $.grep( arr, function(val1, index){
+             return val1 > 5;
+        });
+       console.log(arr);
+
+
+       var arrObj = [
+           {
+               first: 'Dima',
+               last: 'Bilyk'
+           },
+           {
+               first: 'Dima2',
+               last: 'Bilyk2'
+           },
+           {
+               first: 'Dima3',
+               last: 'Bilyk3'
+           },
+           {
+               first: 'Dima4',
+               last: 'Bilyk4'
+           }
+               ]
+
+               arrObj = $.grep(arrObj, function(obj, index){
+                 return obj.last === 'Bilyk4';
+               });
+
+            console.log(arrObj);
+
+    })();
+
+</script>
+
+</body>
+</html>

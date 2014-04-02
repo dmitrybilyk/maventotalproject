@@ -1,0 +1,25 @@
+http  - it's a protocol to communicate between client (browser) and server (container of servlets - tomcat...)
+It is used for dynamic requests. Http transactions are either request or a response.
+Transaction consists of 3 parts:
+- a single request or response line.
+request line consists of http method (usually GET or POST) followed by document address and the
+HTTP version number being used. GET /contents.html HTTP/1.1 uses HTTP GET method to request the
+document contents.html using HTTP version 1.1.. The response line contains HTTP status code that
+indicates whether the request was successful (understood and satisfied) or if not, why not.
+-  the HTTP headers - this is a set of fields used to exchange information between the client and the server.
+For example, the following tells the server that the client will accept the ISO8859.5 and unicode 1.1
+character sets:
+Accept-Charset: iso-8859-5, unicode-1-1
+
+The client uses the headers to tell the server about it's configuration and the document type
+will accept. The server, in turn, uses the header to return information about the requested
+document, such as it's age and location.
+
+- the HTTP body. It is optionally used by the client to sent any additional information (see POST method).
+The server uses the body to return the requested document.
+
+HTTP URL - universal resource locator URL (also known as URI) - are used on the WEB to identify
+documents, images, downloadable files, services, electronic mailboxes and other resources.
+It contains of protocol name (http://), host (ip address or domain name to access to), port -
+(socket or service number) - to connect on the host. Default is 80 (the TCP/IP port), path -
+is the path to the document  on the host.

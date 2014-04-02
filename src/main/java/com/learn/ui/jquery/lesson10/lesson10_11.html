@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+
+<h1>Show</h1>
+<div class="content" style="margin-top: 10px">
+    <p>Some text</p>
+    <p>Some text2</p>
+</div>
+
+
+<script src="jquery-1.7.1.js"></script>
+
+
+
+<script>
+
+    $(function(){
+        var content = $('div.content').hide();
+        // We may create our custom function
+        jQuery.fn.myfunc = function(speed) {
+//        return this.animate( props, speed, easing, callback );
+            console.log(this);
+            var $this = $(this);
+            $this.slideDown(function(){
+                $this.delay(2000).slideUp();
+                //if we want to ensure, that something is complete before executing, then we have to use anonymous function as parameter and
+                //call the second thing there
+                console.log("I'm here");
+            });
+        };
+
+        //We may override the values of jquery lib
+        $.fx.speeds.slowslow = 3000;
+
+        $('h1').on('click', function(){
+//    console.log(this);
+//  $(this).next().slideDown('slowslow');
+            content.myfunc('slowslow');
+        })
+    })
+
+
+</script>
+
+
+
+</body>
+</html>

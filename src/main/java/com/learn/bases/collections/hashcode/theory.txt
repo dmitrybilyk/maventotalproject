@@ -1,0 +1,10 @@
+    If o1.equals(o2), then o1.hashCode() == o2.hashCode()should always be true.
+    If o1.hashCode() == o2.hashCode is true, it doesn’t mean that o1.equals(o2) will be true.
+
+    If the class overrides equals() method, it should also override hashCode() method.
+    The class should follow the rules associated with equals() and hashCode() for all instances. Please refer earlier
+    question for these rules.
+    If a class field is not used in equals(), you should not use it in hashCode() method.
+    Best practice for user defined key class is to make it immutable, so that hashCode() value can be cached for fast
+    performance. Also immutable classes make sure that hashCode() and equals() will not change in future that will
+    solve any issue with mutability.

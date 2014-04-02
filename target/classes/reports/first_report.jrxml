@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ThreeColumnHorizontalFill" language="groovy" columnCount="3" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="185" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<queryString>
+		<![CDATA[SELECT 
+	* 
+FROM 
+	"public" . "CustomerInvoices"
+Order By 
+	"CustomerName", "ProductName"]]>
+	</queryString>
+	<field name="InvoiceID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CustomerName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ProductName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="InvoicePeriod" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="InvoiceValue" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="ColumnSum" class="java.lang.Integer" resetType="Group" resetGroup="Customer" calculation="Sum">
+		<variableExpression><![CDATA[$F{InvoiceValue}]]></variableExpression>
+	</variable>
+	<group name="Customer" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[$F{CustomerName}]]></groupExpression>
+		<groupHeader>
+			<band height="31">
+				<rectangle radius="10">
+					<reportElement mode="Opaque" x="9" y="5" width="537" height="24" backcolor="#006699"/>
+				</rectangle>
+				<textField pattern="" isBlankWhenNull="false">
+					<reportElement mode="Transparent" x="104" y="7" width="157" height="22" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
+						<font fontName="Book Antiqua" size="14" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{CustomerName}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="17" y="25" width="245" height="1" forecolor="#FFFFFF"/>
+					<graphicElement>
+						<pen lineWidth="1.25"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement mode="Transparent" x="18" y="10" width="86" height="16" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					</textElement>
+					<text><![CDATA[Customer Name:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="32">
+				<rectangle radius="10">
+					<reportElement mode="Opaque" x="9" y="6" width="535" height="20" forecolor="#000000" backcolor="#006699"/>
+					<graphicElement fill="Solid"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="379" y="9" width="65" height="16" forecolor="#FFFFFF"/>
+					<textElement>
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Invoice Total:]]></text>
+				</staticText>
+				<textField evaluationTime="Column" pattern="#,##0.00">
+					<reportElement mode="Transparent" x="444" y="9" width="94" height="17" printWhenGroupChanges="Customer" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" lineSpacing="Single" markup="none">
+						<font fontName="Book Antiqua" size="10" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Integer"><![CDATA[$V{ColumnSum}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Product" isReprintHeaderOnEachPage="true" minHeightToStartNewPage="100">
+		<groupExpression><![CDATA[$F{ProductName}]]></groupExpression>
+		<groupHeader>
+			<band height="25">
+				<textField>
+					<reportElement x="13" y="2" width="100" height="20"/>
+					<textElement>
+						<font fontName="Impact" size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{ProductName}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="115" y="9" width="325" height="37"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="24" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Monthly Customer Invoices]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement x="11" y="0" width="357" height="27"/>
+				<textElement>
+					<font fontName="Trebuchet MS" size="20" isBold="false" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Three-Column Horizontal Fill Report]]></text>
+			</staticText>
+			<line>
+				<reportElement x="11" y="27" width="535" height="2"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="80" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement mode="Transparent" x="9" y="6" width="170" height="68"/>
+			</rectangle>
+			<textField>
+				<reportElement x="82" y="10" width="72" height="16"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{InvoiceID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="14" y="26" width="70" height="16"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Product Name:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="26" width="94" height="16"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ProductName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="42" width="70" height="16"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Invoice Month:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="58" width="70" height="16"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Invoice Value:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="82" y="42" width="72" height="16"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{InvoicePeriod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="82" y="58" width="72" height="16"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Float"><![CDATA[$F{InvoiceValue}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="14" y="10" width="70" height="16"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Invoice Number:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="15" y="-4" width="166" height="1" printWhenGroupChanges="Customer">
+					<printWhenExpression><![CDATA[$V{Product_COUNT} == 1]]></printWhenExpression>
+				</reportElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="35" splitType="Stretch">
+			<line>
+				<reportElement x="11" y="10" width="535" height="1"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="428" y="13" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="508" y="13" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="28" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <util:list id="listOfNums" value-type="java.lang.Integer">
+        <value>1</value>
+        <value>5</value>
+        <value>7</value>
+        <value>1</value>
+        <value>1</value>
+    </util:list>
+
+    <util:map id="map" key-type="java.lang.String" value-type="com.learn.spring.springcollections.PersonBean">
+        <entry key="first" value-ref="PersonBean" />
+        <entry key="second" value-ref="PersonBean2" />
+        <entry key="third" value-ref="PersonBean3" />
+        <entry key="fourth" value-ref="PersonBean4" />
+    </util:map>
+
+    <bean id="CustomerBean" class="com.learn.spring.springcollections.Customer">
+
+        <!-- java.util.List -->
+        <property name="lists">
+            <list>
+                <value>1</value>
+                <ref bean="PersonBean" />
+                <bean class="com.learn.spring.springcollections.PersonBean">
+                    <property name="name" value="mkyongList" />
+                    <property name="address" value="address" />
+                    <property name="age" value="28" />
+                </bean>
+            </list>
+        </property>
+
+        <!-- java.util.Set -->
+        <property name="sets">
+            <set>
+                <value>1</value>
+                <ref bean="PersonBean" />
+                <bean class="com.learn.spring.springcollections.PersonBean">
+                    <property name="name" value="mkyongSet" />
+                    <property name="address" value="address" />
+                    <property name="age" value="28" />
+                </bean>
+            </set>
+        </property>
+
+        <!-- java.util.Map -->
+        <property name="maps">
+            <map>
+                <entry key="Key 1" value="1" />
+                <entry key="Key 2" value-ref="PersonBean" />
+                <entry key="Key 3">
+                    <bean class="com.learn.spring.springcollections.PersonBean">
+                        <property name="name" value="mkyongMap" />
+                        <property name="address" value="address" />
+                        <property name="age" value="28" />
+                    </bean>
+                </entry>
+            </map>
+        </property>
+
+        <!-- java.util.Properties -->
+        <property name="pros">
+            <props>
+                <prop key="admin">admin@nospam.com</prop>
+                <prop key="support">support@nospam.com</prop>
+            </props>
+        </property>
+
+    </bean>
+
+    <bean id="PersonBean" class="com.learn.spring.springcollections.PersonBean">
+        <property name="name" value="mkyong1" />
+        <property name="address" value="address 1" />
+        <property name="age" value="28" />
+    </bean>
+
+    <bean id="PersonBean2" class="com.learn.spring.springcollections.PersonBean">
+        <property name="name" value="mkyong1" />
+        <property name="address" value="address 1" />
+        <property name="age" value="28" />
+    </bean>
+
+    <bean id="PersonBean3" class="com.learn.spring.springcollections.PersonBean">
+        <property name="name" value="mkyong1" />
+        <property name="address" value="address 1" />
+        <property name="age" value="28" />
+    </bean>
+
+    <bean id="PersonBean4" class="com.learn.spring.springcollections.PersonBean">
+        <property name="name" value="mkyong1" />
+        <property name="address" value="address 1" />
+        <property name="age" value="28" />
+    </bean>
+
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>constants.properties</value>
+        </property>
+    </bean>
+
+    <bean id="propertyTest"
+          class="com.learn.spring.springcollections.propertyPlaceholderConfigurer.PropertyTest">
+        <property name="prefixProp" value="${prefix}" />
+        <property name="suffixProp" value="${suffix}" />
+    </bean>
+
+
+    <context:property-placeholder location='database.properties'/>
+
+    <bean id='dataSource' destroy-method='close'
+          class='org.apache.commons.dbcp.BasicDataSource'>
+        <property name='driverClassName' value='${jdbc.driverClassName}'/>
+        <property name='url' value='${jdbc.url}'/>
+        <property name='username' value='${jdbc.username}'/>
+        <property name='password' value='${jdbc.password}'/>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<h1>To Save</h1>
+<form action="#">
+     <textarea name="content" class="content" id="content" cols=30 rows="10"></textarea>
+    <p><button type="submit">Save</button></p>
+</form>
+
+<script src="../jquery-1.7.1.js"></script>
+
+<script>
+
+    $('form').on('submit', function(e){
+        $.post('save.php', $(this).serialize(), function(){
+            console.log('save.php yes');
+        })
+        console.log($(this).find('#content').val());
+        e.preventDefault();
+        console.log("submitted");
+    });
+    //listen for click
+    //disable default action
+    //grab textarea content
+    //post content to script, and save
+</script>
+
+</body>
+</html>

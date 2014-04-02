@@ -1,0 +1,38 @@
+== means equals on all types. In Java there's a wierd part of the syntax where == means
+equality for primitive types and == means identity for objects.
+Since we're using autoboxing this would be very confusing for Java developers
+(since x == 5 would be mostly false if x was 5  . So for simplicity == means equals()
+in Groovy. If you really need the identity, you can use the method "is" like foo.is(bar).
+This does not work on null, but you can still use == here: foo==null.
+
+declaring array
+int[] a = [1,2,3]
+
+You may use usual for.
+for (int i=0; i < len; i++) {...}
+But you can use
+for (i in 0..len-1) {...}
+or
+for (i in 0..<len) {...}
+or
+len.times {...}
+
+Semicolons are optional.
+Use them if you like (though you must use them to put several statements on one line).
+
+The return keyword is optional.
+
+You can use the this keyword inside static methods (which refers to this class).
+
+Methods and classes are public by default.
+
+Inner (non-static nested) classes are not supported.
+In most cases you can use closures instead, e.g. to implement interfaces.
+Static nested classes are supported.
+
+The throws clause in a method signature is not checked by the Groovy compiler,
+because there is no difference between checked and unchecked exceptions.
+
+You will not get compile errors like you would in Java for using undefined members
+or passing arguments of the wrong type.
+

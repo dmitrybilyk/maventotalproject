@@ -1,0 +1,22 @@
+Generics work only with objects
+
+
+How Generics work in Java
+This is a popular Java Generics interview question which comes in my mind little late,
+It didn't come when I first know about generics in Java but a while later, nevertheless
+I find it quite useful to know about how generics work in java behind the scene.
+The buzzing keyword is "Type Erasure", you guessed it right it’s the same thing we used
+to in our schools for erasing our mistakes in writing or drawing :). Same thing is done
+by Java compiler, when it sees code  written using Generics it completely erases that
+code and convert it into raw type i.e. code without Generics. All type related information
+is removed during erasing. So your ArrayList<Gold> becomes plain old ArrayList  prior
+to JDK 1.5, formal type parameters e.g. <K, V> or <E> gets replaced by either Object
+or Super Class of the Type. Also when the translated code is not type correct compiler
+inserts a type casting operator. This all done behind the scene so you don't need to worry
+about what important to us is that Java compiler guarantees type-safety and flag any
+type-safety relate error during compilation. In short Generics in Java is syntactic
+sugar and doesn’t store any type related information at runtime. All type related
+information is erased by Type Erasure, this was the main requirement while developing
+Generics feature in order to reuse all Java code written without Generics.
+
+

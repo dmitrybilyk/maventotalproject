@@ -1,0 +1,22 @@
+Single table:
+
+- Data not normalized;
+- Constraints not null could not be applied;
+- We use simple select using discriminator;
+- To insert or update we use single insert or update;
+
+Table per subclass class (joined strategy):
+
+- Normalized;
+- Not null could be applied;
+- Joins among table. For example fetching FourWheeler will require a join on FourWheeler and Vehicle table.
+If all user needs to be fetched than it will put a join for all three tables
+
+Table per each concrete class:
+- One table for each concrete class.
+- Not maintainable.
+- Change in base class leads to changes in all tables of derived class.
+- to retreive data we use Separate Select or Union Select.
+- One insert or update for each subclass.
+
+

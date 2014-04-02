@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <title></title>
+</head>
+<body>
+
+<div class='container'>
+    <h2>Click me, please</h2>
+    <h2>Click me, please</h2>
+    <h2>Click me, please</h2>
+</div>
+
+
+
+<script>
+    (function(){
+        $('h2').on('click', function(){
+            console.log('test');
+            $(this).clone(false).appendTo('body');
+        })
+    })()
+</script>
+
+</body>
+</html>

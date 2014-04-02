@@ -1,0 +1,35 @@
+load will return a proxy object.
+
+get will return a actual object, and returns null if it wont find any object.
+
+
+The one difference between get() and load() is how they indicate that the
+instance could not be found. If no row with the given identifier value
+exists in the database, get() returns null. The load() method throws an
+ObjectNotFoundException. It’s your choice what error-handling you prefer.
+
+More important, the load() method may return a proxy, a placeholder,
+without hitting the database. A consequence of this is that you may get
+an ObjectNotFoundException later, as soon as you try to access the
+returned placeholder and force its initialization (this is also called
+lazy loading; we discuss load optimization in later chapters.) The load()
+ method always tries to return a proxy, and only returns an initialized
+ object instance if it’s already managed by the current persistence
+ context. In the example shown earlier, no database hit occurs at all!
+ The get() method on the other hand never returns a proxy, it always
+ hits the database.
+
+You may ask why this option is useful—after all, you retrieve an object
+to access it. It’s common to obtain a persistent instance to assign it as
+a reference to another instance. For example, imagine that you need the
+item only for a single purpose: to set an association with a Comment:
+aComment.setForAuction(item). If this is all you plan to do with the
+item, a proxy will do fine; there is no need to hit the database. In
+other words, when the Comment is saved, you need the foreign key value
+of an item inserted into the COMMENT table. The proxy of an Item provides
+just that: an identifier value wrapped in a placeholder that looks like
+the real thing.
+
+use load only if you are sure that record does exist in DB. In that case
+it is harmless to work with the proxy and will be helpful delaying DB
+query till the mapped property is actually needed.

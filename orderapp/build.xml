@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Chapter 2 Order application" default="build" basedir=".">
+	<import file="common_build.xml"/>        
+    <target name="client" description="run client" depends="build">
+        <property name="param" value=""/>
+        <cxfrun classname="demo.order.client.Client" />
+    </target> 
+    <property name="cxf.war.file.name" value="orderapp"/>
+      <target name="war" depends="build">
+	  <cxfwar filename="${cxf.war.file.name}.war" webxml="webapp/WEB-INF/web.xml" />
+    </target>
+</project>

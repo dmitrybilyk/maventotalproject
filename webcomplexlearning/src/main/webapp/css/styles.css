@@ -1,0 +1,18 @@
+.bodyStyle{
+    height: 600px;
+}
+
+.mainDiv{
+    background-color: #83c5ff;
+    height: 100%;
+    text-align: center;
+    padding-top: 70px;
+}
+
+table.userstable{
+    margin: auto;
+}
+
+.useraddform input{
+    width: 70px;
+}

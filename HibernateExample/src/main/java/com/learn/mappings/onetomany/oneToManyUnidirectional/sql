@@ -1,0 +1,44 @@
+select * from account;
+select * from user;
+select * from user_address;
+select * from bank;
+
+delete from user;
+
+-- implicit inner join
+select distinct u.name from User u, Account a where a.user_id = u.user_id;
+
+-- explicit inner join
+select distinct u.name from User u inner join Account a on a.user_id = u.user_id;
+
+-- left outer join. And we can see even Anonimous user (without account)
+select u.name as usName_us_tbl, a.account_type  as actype_acct_tbl from User u left outer join Account a on a.user_id = u.user_id;
+
+-- right outer join. And we can see even Anonimous account (without user)
+select u.name as usName_us_tbl, a.account_type as actype_acct_tbl from User u right outer join Account a on a.user_id = u.user_id;
+
+-- full outer join. All records from all tables we select from
+select u.name as usName_us_tbl, a.account_type as actype_acct_tbl from User u, Account a full outer join Account a on a.user_id = u.user_id;
+
+-- group by. We take max user id values for every account
+select max(a.user_id) from Account a where a.user_id is not null group by a.user_id ;
+-- Here we can show the user and his address
+select u.name, adr.street  from User u join user_address adr on a.user_id = u.user_id;
+
+-- Here we fetch user's name and total sum on all their accounts
+select a.bank_bank_id, sum(a.amount) from account a inner join user u on a.user_id = u.user_id group by a.BANK_BANK_ID;
+
+select a.amount from account a;
+
+select u.name, a.account_type, a.amount from account a left outer join user u on a.user_id = a.user_id;
+
+select u.name as client_name, concat(adr.street, adr.house_number) as address, a.amount as balance from user u
+  inner join Account a on a.user_id = u.user_id inner join user_address adr on u.user_id = adr.user_id;
+
+
+
+
+
+
+
+

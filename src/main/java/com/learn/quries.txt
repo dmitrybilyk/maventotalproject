@@ -1,0 +1,1 @@
+select cust.customerName as CustomerName, max(oc.count) as Count from Customers cust, (select cust.customerId, count(o.orderId) as count from Customers cust inner join Orders o on cust.customerId = o.customerId group by o.customerId) oc;

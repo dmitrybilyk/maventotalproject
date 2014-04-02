@@ -1,0 +1,17 @@
+<!--<target name="generate-jaxb-code">-->
+    <!--<java classname="com.sun.tools.internal.xjc.XJCFacade">-->
+        <!--<arg value="-p" />-->
+        <!--<arg value="com.com.learn.bases.xml.xmldomtest.jaxbTest.helloworld2"/>-->
+        <!--<arg value="hello.xsd" />-->
+    <!--</java>-->
+<!--</target>-->
+
+<target name="xjc-generator" description="Generate classes from xml">
+    <exec executable="${jdk.dir}/bin/xjc.exe">
+        <arg value="-d"/>
+        <arg value="com.com.learn.bases.xml.xmldomtest.jaxbTest.helloworld2"/>
+        <arg value="-p"/>
+        <!--<arg value="com.com.learn.bases.xml.xmldomtest.jaxbTest"/>-->
+        <arg value="hello.xsd"/>
+    </exec>
+</target>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+   <h1>HI</h1>
+
+
+<script src="../jquery-1.7.1.js"></script>
+<script>
+    (function(){
+//        $('body').on('myOwnClick', function(){
+//            console.log('clicked');
+//        })
+//
+//        $('body').trigger('myOwnClick');
+
+var date;
+
+//        $.getJSON('http://localhost:8080/SpringMVC/kfc/brands/dima?callback=?', function(getShopInJSON){  // загрузку JSON данных из файла example.json
+//           console.log(getShopInJSON);
+//        });
+
+   $.getJSON('http://localhost:8080/SpringMVC/kfc/brands/dima?callback=?', function(results){  // загрузку JSON данных из файла example.json
+//   $.getJSON('http://feeds.delicious.com/v2/json/urlinfo/data?url=xxx.com&amp;callback=?', function(results){  // загрузку JSON данных из файла example.json
+       console.log(results);
+       $(document).trigger('testEvent', results);
+        });
+        $(document).on('testEvent', function(e, results){
+            console.log(results);
+        })
+
+    })();
+</script>
+</body>
+</html>

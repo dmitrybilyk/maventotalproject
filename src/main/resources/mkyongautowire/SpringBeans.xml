@@ -1,0 +1,24 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+	
+	<bean id="customer" class="com.learn.spring.springinjection.autowire.mkyongtutorial.common.Customer" >
+		<property name="action" value="buy" />
+		<property name="type" value="1" />
+	</bean>
+		
+	<bean id="personA" class="com.learn.spring.springinjection.autowire.mkyongtutorial.common.Person" >
+		<property name="name" value="mkyongA" />
+	</bean>
+
+    <bean id="personB" class="com.learn.spring.springinjection.autowire.mkyongtutorial.common.Person" >
+        <property name="name" value="mkyongB" />
+    </bean>
+
+    <context:component-scan base-package="com.learn.spring.springinjection.autowire.mkyongtutorial"/>
+	
+</beans>

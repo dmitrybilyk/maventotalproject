@@ -1,0 +1,44 @@
+Asynchronous JavaScript and XML (AJAX) is the art of exchanging data with a server,
+and updating parts of a web page – without reloading the whole webpage.
+JavaScript and the XMLHttpRequest object provide a method for exchanging data
+asynchronously between browser and server to avoid full page reloads.
+The core of AJAX is the XMLHttpRequest object (available in client side scripting
+languages like javascript). The XMLHttpRequest object is used to exchange data with
+a server behind the scenes.
+Requests will only succeed if they are made to the same server that served the
+original web page
+
+To send request and set request attributes, XMLHttpRequest object has some methods:
+- a) open(method, url, isAsync, userName, password)
+- b) setRequestHeader(name, value)
+Upon successful initialization of a request, the setRequestHeader method of the
+XMLHttpRequest object can be invoked to send HTTP headers with the request.
+- c) send(payload)
+  To send an HTTP request, the send method of the XMLHttpRequest must be invoked.
+  This method accepts a single parameter containing the content to be sent with
+  the request.
+  The content is necessary in POST requests. For GET methods, imply pass null
+  as parameter.
+
+- 4) abort(). The abort method ensures that the callback method does not get
+invoked in an asynchronous request.
+
+onreadystatechange is a event listener registered with XMLHttpRequest request.
+onreadystatechange stores a function that will process the response returned
+from the server. It will be called for all important events in request’s life cycle.
+Every time an step is completed in request processing, the value of readyState will
+be changed and set to some other value. Lets have a look at possible values:
+
+0 : request not initialized
+1 : server connection established
+2 : request received
+3 : processing request
+4 : request finished and response is ready to be handled
+
+
+To get the response from a server, responseText or responseXML property of
+the XMLHttpRequest object is used
+
+responseText : Get the response from server as a string
+responseXML : Get the response from server as XML
+

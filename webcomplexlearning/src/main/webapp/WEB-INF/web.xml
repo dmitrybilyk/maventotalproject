@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>SimpleJspServletDB</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+    <servlet>
+        <servlet-name>spring</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>*.jsp</url-pattern>
+    </servlet-mapping>
+
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+
+
+    <servlet>
+        <description></description>
+        <display-name>RepeatVisitor</display-name>
+        <servlet-name>RepeatVisitor</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.cookies.RepeatVisitor</servlet-class>
+    </servlet>
+
+    <servlet>
+        <description></description>
+        <display-name>RegistrationForm</display-name>
+        <servlet-name>RegistrationForm</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.cookies.RegistrationForm</servlet-class>
+    </servlet>
+
+    <servlet>
+        <description></description>
+        <display-name>RegistrationServlet</display-name>
+        <servlet-name>RegistrationServlet</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.cookies.RegistrationServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <description></description>
+        <display-name>ClientAccessCounts</display-name>
+        <servlet-name>ClientAccessCounts</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.cookies.ClientAccessCounts</servlet-class>
+    </servlet>
+
+    <servlet>
+        <description></description>
+        <display-name>RepeatVisitor2</display-name>
+        <servlet-name>RepeatVisitor2</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.cookies.RepeatVisitor2</servlet-class>
+    </servlet>
+
+    <servlet>
+        <description></description>
+        <display-name>CookieTest</display-name>
+        <servlet-name>CookieTest</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.cookies.CookieTest</servlet-class>
+    </servlet>
+
+
+    <servlet>
+    <description></description>
+    <display-name>UserController</display-name>
+    <servlet-name>UserController</servlet-name>
+    <servlet-class>com.flash.controller.UserController</servlet-class>
+</servlet>
+
+    <servlet>
+        <description></description>
+        <display-name>LongServlet</display-name>
+        <servlet-name>LongServlet</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.requestheaders.LongServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <description></description>
+        <display-name>ShowRequestHeaders</display-name>
+        <servlet-name>ShowRequestHeaders</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.requestheaders.ShowRequestHeaders</servlet-class>
+    </servlet>
+
+    <servlet>
+        <description></description>
+        <display-name>CustomizeImage</display-name>
+        <servlet-name>CustomizeImage</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.requestheaders.CustomizeImage</servlet-class>
+    </servlet>
+
+    <servlet>
+        <description></description>
+        <display-name>BrowserInsult</display-name>
+        <servlet-name>BrowserInsult</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.requestheaders.BrowserInsult</servlet-class>
+    </servlet>
+
+    <servlet>
+        <description></description>
+        <display-name>ThreeParams</display-name>
+        <servlet-name>ThreeParams</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.ThreeParams</servlet-class>
+    </servlet>
+
+    <servlet>
+        <description></description>
+        <display-name>ShowParameters</display-name>
+        <servlet-name>ShowParameters</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.ShowParameters</servlet-class>
+    </servlet>
+
+     <servlet>
+        <description></description>
+        <display-name>SubmitInsuranceInfo</display-name>
+        <servlet-name>SubmitInsuranceInfo</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.SubmitInsuranceInfo</servlet-class>
+    </servlet>
+
+    <servlet>
+        <description></description>
+        <display-name>SubmitResume</display-name>
+        <servlet-name>SubmitResume</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.SubmitResume</servlet-class>
+    </servlet>
+
+
+    <servlet>
+        <description></description>
+        <display-name>FormController</display-name>
+        <servlet-name>FormController</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.FormController</servlet-class>
+        <init-param>
+            <param-name>testInitParam</param-name>
+            <param-value>testInitParamValue</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <description></description>
+        <display-name>ServletTemplate</display-name>
+        <servlet-name>ServletTemplate</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.ServletTemplate</servlet-class>
+    </servlet>
+    <servlet>
+        <description></description>
+        <display-name>HelloServlet</display-name>
+        <servlet-name>HelloServlet</servlet-name>
+        <servlet-class>com.flash.controller.servletsjsp.HelloServlet</servlet-class>
+    </servlet>
+  <servlet-mapping>
+    <servlet-name>UserController</servlet-name>
+    <url-pattern>/UserController</url-pattern>
+  </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ServletTemplate</servlet-name>
+        <url-pattern>/ServletTemplate</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <url-pattern>/HelloServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>FormController</servlet-name>
+        <url-pattern>/FormController</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ThreeParams</servlet-name>
+        <url-pattern>/ThreeParams</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ShowParameters</servlet-name>
+        <url-pattern>/ShowParameters</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SubmitResume</servlet-name>
+        <url-pattern>/SubmitResume</url-pattern>
+    </servlet-mapping>
+
+   <servlet-mapping>
+        <servlet-name>SubmitInsuranceInfo</servlet-name>
+        <url-pattern>/SubmitInsuranceInfo</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>LongServlet</servlet-name>
+        <url-pattern>/LongServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ShowRequestHeaders</servlet-name>
+        <url-pattern>/ShowRequestHeaders</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CustomizeImage</servlet-name>
+        <url-pattern>/CustomizeImage</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>BrowserInsult</servlet-name>
+        <url-pattern>/BrowserInsult</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RepeatVisitor</servlet-name>
+        <url-pattern>/RepeatVisitor</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RepeatVisitor2</servlet-name>
+        <url-pattern>/RepeatVisitor2</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>CookieTest</servlet-name>
+        <url-pattern>/CookieTest</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ClientAccessCounts</servlet-name>
+        <url-pattern>/ClientAccessCounts</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RegistrationForm</servlet-name>
+        <url-pattern>/RegistrationForm</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RegistrationServlet</servlet-name>
+        <url-pattern>/RegistrationServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>

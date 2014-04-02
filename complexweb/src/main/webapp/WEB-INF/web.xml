@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>Complex web application</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+
+
+    <!-- Spring MVC -->
+    <servlet>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>mvc-dispatcher</servlet-name>
+        <url-pattern>/mvc/*</url-pattern>
+    </servlet-mapping>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            WEB-INF/mvc-dispatcher-servlet.xml,
+            <!--WEB-INF/cxf-soap-beans.xml-->
+            <!--WEB-INF/cxf-rest-beans.xml-->
+        </param-value>
+    </context-param>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/pages/404.jsp</location>
+    </error-page>
+
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/WEB-INF/pages/404.jsp</location>
+    </error-page>
+
+
+    <servlet>
+        <display-name>CXF Servlet</display-name>
+        <servlet-name>CXFServlet</servlet-name>
+        <servlet-class>
+            org.apache.cxf.transport.servlet.CXFServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CXFServlet</servlet-name>
+        <url-pattern>/cxf/*</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>ShowStudentsServlet</servlet-name>
+        <servlet-class>com.learn.controller.regularservlets.ShowStudentsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShowStudentsServlet</servlet-name>
+        <url-pattern>/ShowStudentsServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SaveStudentServlet</servlet-name>
+        <servlet-class>com.learn.controller.regularservlets.SaveStudentServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SaveStudentServlet</servlet-name>
+        <url-pattern>/SaveStudentServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetCurrentTimeServlet</servlet-name>
+        <servlet-class>com.learn.controller.regularservlets.GetTimeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetCurrentTimeServlet</servlet-name>
+        <url-pattern>/get-current-time</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>

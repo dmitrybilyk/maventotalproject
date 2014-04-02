@@ -1,0 +1,27 @@
+.divTable{
+    display:table;
+    width:auto;
+    background-color: #ee4642;
+    border:1px solid  #666666;
+    border-spacing:5px;/*cellspacing:poor IE support for  this*/
+}
+.divRow{
+    display:table-row;
+    width:auto;
+    clear:both;
+}
+.divCol{
+    float:left;/*fix for  buggy browsers*/
+    display:table-column;
+    width:200px;
+    background-color:#ccc;
+}
+
+p.ageStyle{
+    color: #ff0000;
+}
+
+h1{
+    color: #5a86ff;
+}
+

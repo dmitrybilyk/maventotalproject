@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<a href="http://football.ua" class="myClass">Click me</a>
+
+<!--We create template here-->
+<script id='blogtemplate' type=tuts/template>
+    <h2>{{title}}</h2>
+    <img src="{{thumbnail}}" alt={{title}}>
+</script>
+
+<script src="../jquery-1.7.1.js"></script>
+<script>
+    (function(){
+        var content = [
+            {
+                title: 'My awesome blog pose',
+                thumbnail: 'http://frame11.loadup.ru/5b/d4/8154290.83.2.jpg'
+            },
+        {
+            title: 'My awesome blog pose',
+            thumbnail: "http://frame10.loadup.ru/c7/0e/8184707.38.2.jpg"
+        }],
+
+        template = $.trim($('#blogtemplate').html());
+        console.log(template);
+
+        $.each(content, function(index, obj){
+            var temp = template.replace('/{{tiitle}}/ig', obj.title )
+                    .replace('/{{thumbnail}}/ig', obj.thumbnail );
+            console.log(temp);
+            $(document.body).append(temp);
+        })
+
+    })();
+</script>
+
+</body>
+</html>

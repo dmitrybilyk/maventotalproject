@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="event5.css">
+    <title></title>
+    <style type="text/css">
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<di>
+    <dt>
+        What are your hours
+    </dt>
+    <dl>
+        We are 6 o'clock
+    </dl>
+    <dt>
+        What are your hours
+    </dt>
+    <dl>
+        We are 6 o'clock
+    </dl>
+    <dt>
+        What are your hours
+    </dt>
+    <dl>
+        We are 6 o'clock
+    </dl>
+</di>
+
+<script>
+    ($('di').on('mouseover', 'dt', function(){
+        var thisVar = $(this);
+//        console.log(thisVar);
+//        console.log(thisVar.next());
+//        console.log(thisVar.next().siblings());
+//       $(this).next().show().siblings('dl').hide();
+        console.log('this'+thisVar);
+       $(this).next().show().slideDown(200).siblings('dl').slideUp(200);
+//       $(this).next().show().siblings('dl').hide();
+    }));
+//    (function(){
+//        var dl = $('dl');
+//        dl.addClass('hide')
+//    })
+
+</script>
+
+</body>
+</html>

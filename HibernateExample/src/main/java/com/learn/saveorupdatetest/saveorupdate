@@ -1,0 +1,11 @@
+
+
+    saveOrUpdate() does the following:
+
+        if the object is already persistent in this session, do nothing
+        if another object associated with the session has the same identifier, throw an exception
+        if the object has no identifier property, save() it
+        if the object's identifier has the value assigned to a newly instantiated object, save() it
+        if the object is versioned by a <version> or <timestamp>, and the version property value is the same value assigned to a newly instantiated object, save() it
+        otherwise update() the object
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+
+<div class="box">
+
+    <p>Test text Test text Test text Test text Test text Test text</p>
+    <p>Test text Test text Test text Test text</p>
+
+
+</div>
+<a href="#" class="clickMe">Click Me</a>
+
+<script src="../jquery-1.7.1.js"></script>
+<script>
+//    $(function(){
+//        var content = $('div.box');
+//        var fontsize = parseInt(content.css('font-size'));
+//        console.log(typeof(fontsize));
+//        $("a.clickMe").on('click', function(){
+//              console.log(content);
+//            content.css('font-size', '+=4');
+            // we may use object instead. In this way we will call css method once but could pass many params there
+//            $('a.clickMe').on('click', function(){
+//                content.animate({
+//                  'fontSize': '+=4',
+//                    'width': '+=300'
+//                }, function(){
+//                    console.log("animated");
+//                })
+//            })
+
+            //we also may pass object as parameters with setting there properties
+//            content.animate({
+//                'fontSize': '+=5'},
+//                {duration: 500})
+//                .animate({ 'fontSize': '+=10'}, 500);
+//            })
+//        })();
+
+    //custom function to toogle size
+    $(function(){
+
+        var box = $('div.box');
+        $.fn.ToggleSize = function(speed, func){
+            //in you custom functions always return jquery object
+           return box.animate({
+                   height: 'toggle',
+                    opacity: 'toggle'
+           }, speed || 400, function(){
+               $.isFunction(func) && func.call(this);
+        })
+        }
+
+        $('a').on('click', function(){
+            $('div.box').ToggleSize(500, function(){
+                console.log("complete");
+            }).addClass("testing");
+        })
+
+
+    })
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+Best practices you must consider and follow
+
+Never swallow the exception in catch block
+Declare the specific checked exceptions that your method can throw
+Do not catch the Exception class rather catch specific sub classes
+Never catch Throwable class
+Always correctly wrap the exceptions in custom exceptions so that stack trace is not lost
+Either log the exception or throw it but never do the both
+Never throw any exception from finally block
+Always catch only those exceptions that you can actually handle
+Don't use printStackTrace() statement or similar methods
+Use finally blocks instead of catch blocks if you are not going to handle exception
+Remember "Throw early catch late" principle
+Always clean up after handling the exception
+Throw only relevant exception from a method
+Never use exceptions for flow control in your program
+Validate user input to catch adverse conditions very early in request processing
+Always include all information about an exception in single log message
+Pass all relevant information to exceptions to make them informative as much as possible
+Always terminate the thread which it is interrupted
+Use template methods for repeated try-catch
+Document all exceptions in your application in javadoc

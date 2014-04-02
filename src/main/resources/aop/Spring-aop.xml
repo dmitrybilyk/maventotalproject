@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+
+    <aop:aspectj-autoproxy/>
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.learn.spring.aop" />
+
+    <!--<bean name="triangle" class="com.learn.spring.aop.model.Triangle">-->
+    <!--<property name="name" value="Triangle name"/>-->
+    <!--</bean>-->
+
+    <!--<bean name="circle" class="com.learn.spring.aop.model.Circle">-->
+    <!--<property name="name" value="Circle name"/>-->
+    <!--</bean>-->
+
+    <bean name="shapeService" class="com.learn.spring.aop.service.ShapeService" autowire="byName"/>
+
+    <!--<bean name="loginAspect" class="com.learn.spring.aop.aspect.LoggingAspect"/>-->
+
+
+
+      <!--____________________For example -->
+
+     <!--Definition for student bean -->
+    <!--<bean id="student" class="com.learn.spring.aop.example.Student">-->
+        <!--<property name="name"  value="Zara" />-->
+        <!--<property name="age"  value="11"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; Definition for logging aspect &ndash;&gt;-->
+    <!--<bean id="logging" class="com.learn.spring.aop.example.Logging"/>-->
+      <!--____________________For example -->
+
+
+
+
+    <!--<bean employee_Id="txManager" class="org.springframework.transaction.jta.JtaTransactionManager"/>-->
+
+    <!--<tx:annotation-driven transaction-manager="txManager"/>-->
+
+    <!--<bean employee_Id="triangle" class="com.learn.spring.springtest.Triangle">-->
+        <!--<property name="pointA" ref="center"/>-->
+        <!--<property name="pointB" ref="pointB"/>-->
+        <!--<property name="pointC" ref="pointC"/>-->
+    <!--</bean>-->
+    <!--<bean employee_Id="center" class="com.learn.spring.springtest.Point">-->
+        <!--<qualifier value="circleRelated"/>-->
+        <!--<property name="x" value="${pointA.pointX}"/>-->
+        <!--<property name="y" value="${pointA.pointY}"/>-->
+    <!--</bean>-->
+    <!--<bean employee_Id="pointB" class="com.learn.spring.springtest.Point">-->
+        <!--<property name="x" value="-20"/>-->
+        <!--<property name="y" value="0"/>-->
+    <!--</bean>-->
+    <!--<bean employee_Id="pointC" class="com.learn.spring.springtest.Point">-->
+        <!--<property name="x" value="20"/>-->
+        <!--<property name="y" value="0"/>-->
+    <!--</bean>-->
+
+    <!--<bean class="com.learn.spring.springtest.MyBeanFactoryPP"/>-->
+    <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
+        <!--<property name="locations" value="classpath:com/flash/learn/springtest/pointsconfig.properties"/>-->
+            <!--</bean>-->
+    <!--<context:component-scan base-package="com.learn.spring.springtest"></context:component-scan>-->
+    <!--<bean employee_Id = "messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">-->
+        <!--<property name="basename">-->
+            <!--&lt;!&ndash;<list>&ndash;&gt;-->
+                <!--<value>mymessages</value>-->
+            <!--&lt;!&ndash;</list>&ndash;&gt;-->
+        <!--</property>-->
+    <!--</bean>-->
+
+</beans>

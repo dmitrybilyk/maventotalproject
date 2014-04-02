@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The this keyword</title>
+    <script src="jquery-1.7.1.js"></script>
+</head>
+<body>
+
+    <a href="httl://football.ua">Click Me</a>
+
+<script>
+//    $('a').on('click', doSomething)
+    function doSomething(e){
+        e.preventDefault()
+        console.log(e);
+        console.log(this);
+    }
+
+    var obj={
+        doIt: function(e){
+            e.preventDefault();
+           console.log(this);
+        }
+    }
+//    $('a').on('click', obj.doIt)
+
+    // if we want to refer not a but obj then we have to use function:
+     $('a').on('click', function(e){
+//         obj.doIt();
+         obj.doIt.call(this);
+         e.preventDefault();
+     })
+
+    $('a').on('click', $.proxy(obj.doIt(), obj))
+
+
+</script>
+
+</body>
+</html>

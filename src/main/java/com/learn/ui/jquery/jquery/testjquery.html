@@ -1,0 +1,91 @@
+<html xmlns:html="http://www.w3.org/1999/html">
+<head>
+    <style>
+        /*li {color: red}*/
+        .greyclass{color: grey;}
+        .blackclass{color: #000000;}
+        .yellowColor {color: yellow}
+        .container {color: #adff2f}
+        .container li {color: #adff2f}
+    </style>
+    <script src="jquery-1.7.1.js"></script>
+    <script>
+        $(function(){
+            jQuery('ul li').addClass('greyclass');
+        })
+        $(function(){
+            jQuery('li:first-child').addClass('blackclass');
+        })
+//        $(function(){
+//           $('.redcolor').css('color', 'red')
+//        })
+//        $(function(){
+//            $('ul.redcolor').children('li:second').addClass('redcolor')
+//        })
+    </script>
+    <title>
+    </title>
+
+</head>
+<body>
+<form action="servlet/Register" method="post">
+
+Name:<input type="text" name="userName"/><br/><br/>
+Password:<input type="password" name="userPass"/><br/><br/>
+Email Id:<input type="text" name="userEmail"/><br/><br/>
+Country:
+<select name="userCountry">
+<option>India</option>
+<option>Pakistan</option>
+<option>other</option>
+</select>
+
+<br/><br/>
+<input type="submit" value="register user"/>
+
+</form>
+
+<br/><br/>
+<ul class="yellowColor">
+    <li>hello</li>
+    <li>hello 23</li>
+    <li>
+        <ul>
+            <li class="tId">
+                first inside
+            </li>
+            <li>
+                second inside
+            </li>
+        </ul>
+        </li>
+</ul>
+
+<div class='container'>
+    <li>
+        <ul>
+            ul1
+        </ul>
+        <ul>
+            ul2
+        </ul>
+    </li>
+    <li>
+        <ul>
+            ul3
+        </ul>
+    </li>
+</div>
+
+
+ <script>
+//     $('ul.yellowColor').find('li:nth-child(1)').text('added with JQUERY')
+//     $('ul.yellowColor').children().eq(1).prev().next().text('added with JQUERY')
+//     $('ul.yellowColor li:nth-child(2)').text('added with JQUERY')
+//     $('div.container').removeClass('container')
+     $('li').parent('div.container').removeClass('container')
+     console.log($('ul').closest('.container'));
+     console.log($('ul').parents('.container'));
+ </script>
+</body>
+</html>

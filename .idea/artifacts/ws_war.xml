@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ws:war">
+    <output-path>$PROJECT_DIR$/wslearn/target</output-path>
+    <root id="archive" name="ws-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ws:war exploded" />
+    </root>
+  </artifact>
+</component>

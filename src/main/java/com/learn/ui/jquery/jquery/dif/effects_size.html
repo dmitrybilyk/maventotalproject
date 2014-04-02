@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>Animals</title>
+    <style>
+        .box{
+            width: 400px;
+            background: red;
+            padding: 2em;
+            position: relative;
+        }
+    </style>
+    <title></title>
+</head>
+<body>
+
+<div class="box">
+    <h2>Some content here</h2>
+    <p>
+        dfsfjdkfjdkfjjjjdkfjkldkddddddddddddd
+        dfsfjdkfjdkfjjjjdkfjkldkddddddddddddd
+        dfsfjdkfjdkfjjjjdkfjkldkddddddddddddd
+        dfsfjdkfjdkfjjjjdkfjkldkddddddddddddd
+        dfsfjdkfjdkfjjjjdkfjkldkddddddddddddd
+        dfsfjdkfjdkfjjjjdkfjkldkddddddddddddd
+    </p>
+</div>
+<p>
+    <button>Increase</button>
+</p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+//    (function(){
+//        var box = $('div.box');
+//        var fontSize = parseInt(box.css('font-size'), 10);
+//        console.log(fontSize);
+//        $('button').on('click', function(){
+//            box.css('font-size', fontSize+=1);
+//        })
+//    })();
+
+//    (function(){
+//        var box = $('div.box');
+//        var fontSize = parseInt(box.css('font-size'), 10);
+//        console.log(fontSize);
+//        $('button').on('click', function(){
+//            box.animate({
+//                'font-size': '+=5',
+//                'width':'+=300'
+//            }, 500, 'swing', function(){
+//                console.log('completed');
+//            })
+//        });
+//    })();
+
+(function(){
+    var box = $('div.box'),
+    h = $(window).width()/2 - box.outerHeight/ 2,
+    w = $(window).height()/2 - box.outerWidth/ 2
+    $('button').on('click', function(){
+        box.animate({
+            'left': w,
+            'top': h,
+            'position': 'absolute'
+        })
+    })
+})()
+
+</script>
+
+</body>
+</html>
