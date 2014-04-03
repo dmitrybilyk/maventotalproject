@@ -252,7 +252,29 @@ that can’t fit in the worker queue.
 Callable interface.
 java.util.concurrent.Callable interface in concurrency package that is similar
 to Runnable interface but it can return any Object and able to throw Exception.
+Callable interface use Generic to define the return type of Object.
+Executors class provide useful methods to execute Callable in a thread pool.
+Since callable tasks run in parallel, we have to wait for the returned Object.
+Callable tasks return java.util.concurrent.Future object. Using Future we can
+find out the status of the Callable task and get the returned Object.
+It provides get() method that can wait for the Callable to finish and then
+return the result.
 
+Future provides cancel() method to cancel the associated Callable task.
+There is an overloaded version of get() method where we can specify the
+time to wait for the result, it’s useful to avoid current thread getting
+blocked for longer time. There are isDone() and isCancelled() methods to
+find out the current status of associated Callable task.
+
+What if we want to override some of the methods of Future interface, for example
+overriding get() method to timeout after some default time rather than waiting
+indefinitely, in this case FutureTask class comes handy that is the base
+implementation of Future interface.
+FutureTask is base concrete implementation of Future interface and provides
+asynchronous processing. It contains the methods to start and cancel a
+task and also methods that can return the state of the FutureTask as whether
+it’s completed or cancelled. We need a callable object to create a future
+task and then we can use Java Thread Pool Executor to process these asynchronously.
 
 
 

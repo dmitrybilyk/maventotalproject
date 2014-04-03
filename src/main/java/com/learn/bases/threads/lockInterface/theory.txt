@@ -1,0 +1,8 @@
+Some important interfaces and classes in Java Concurrency Lock API are:
+-Lock
+-Condition
+-ReadWriteLock
+-ReentrantLock: This is the most widely used implementation class of Lock interface.
+This class implements the Lock interface in similar way as synchronized keyword.
+Apart from Lock interface implementation, ReentrantLock contains some utility
+methods to get the thread holding the lock, threads waiting to acquire the lock etc.
