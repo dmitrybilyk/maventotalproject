@@ -183,3 +183,44 @@ on that object.
 synchronized block or method or to reenter a synchronized block or method after
 calling Object.wait().
 
+
+Java provides three methods that threads can use to communicate with each other:
+wait, notify, and notifyAll. These methods are defined for all Objects (not just Threads).
+The idea is that a method called by a thread may need to wait for some condition to be
+satisfied by another thread; in that case, it can call the wait method, which causes its
+thread to wait until another thread calls notify or notifyAll.
+
+
+
+
+Thread Methods:
+
+- static sleep(long millis)
+
+Causes the currently executing thread to sleep (temporarily cease
+execution) for the specified number of milliseconds.
+The thread does not lose ownership of any monitors.
+
+- static yield()
+
+A hint to the scheduler that the current thread is willing to yield
+its current use of a processor. The scheduler is free to ignore this
+hint.
+
+- join(long millis)
+
+/**
+     * Waits at most {@code millis} milliseconds for this thread to
+     * die. A timeout of {@code 0} means to wait forever.
+     *
+     * <p> This implementation uses a loop of {@code this.wait} calls
+     * conditioned on {@code this.isAlive}.
+
+     @throws  InterruptedException
+          *          if any thread has interrupted the current thread. The
+          *          <i>interrupted status</i> of the current thread is
+          *          cleared when this exception is thrown.
+
+
+
+

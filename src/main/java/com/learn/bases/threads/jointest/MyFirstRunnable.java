@@ -1,4 +1,4 @@
-package com.learn.bases.threads.wicht;
+package com.learn.bases.threads.jointest;
 
 public class MyFirstRunnable implements Runnable{
     @Override
