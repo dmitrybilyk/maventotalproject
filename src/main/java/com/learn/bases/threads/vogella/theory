@@ -147,3 +147,39 @@ So, do not rely on thread priorities, just use them to improve efficiency of you
  But in practise you don't have to rely on priorities. They really unpredictable.
 
 
+
+ Thread lifecycle:
+
+- !New! is the thread state for a thread which was created but has not yet started.
+- !Ready!. Thread scheduling decides when the thread could actually start
+- A thread in the !runnable! state is executing from the JVM point of view but in
+fact it may be waiting for some resources from the operating system.
+- !Timed waiting! is a thread state for a thread waiting with a specified waiting time.
+A thread is in the timed waiting state due to calling one of the following methods with
+a specified positive waiting time:
+
+
+    Thread.sleep(sleeptime)
+    Object.wait(timeout)
+    Thread.join(timeout)
+    LockSupport.parkNanos(timeout)
+    LockSupport.parkUntil(timeout)
+
+- A thread is in the !waiting! state due to the calling one of the following
+methods without timeout:
+
+
+    Object.wait()
+    Thread.join()
+    LockSupport.park()
+
+
+Note, that thread in the waiting state is waiting for another thread to perform
+a particular action. For example, a thread that has called Object.wait() on
+an object is waiting for another thread to call Object.notify() or Object.notifyAll()
+on that object.
+
+- Thread is in the !blocked! state while waiting for the monitor lock to enter a
+synchronized block or method or to reenter a synchronized block or method after
+calling Object.wait().
+
