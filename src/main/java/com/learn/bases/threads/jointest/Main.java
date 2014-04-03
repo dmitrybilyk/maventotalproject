@@ -9,9 +9,16 @@ public class Main {
             Thread thread = new Thread(target);
 
             thread.start();
+
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             if(i == 10){
-                System.out.println(thread.getName());
                 thread.interrupt();
+                System.out.println(thread.getName());
             }
         }
         System.out.println("in Main thread "+ Thread.currentThread().getName());

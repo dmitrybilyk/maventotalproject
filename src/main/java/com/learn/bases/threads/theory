@@ -222,5 +222,39 @@ hint.
           *          cleared when this exception is thrown.
 
 
+- interrupt()
+* Interrupts this thread.
+
+
+From Object:
+
+- wait()
+
+tells the calling thread to give up the monitor and go to sleep until some
+other thread enters the same monitor and calls notify( ).
+
+- notify()
+
+wakes up the first thread that called wait() on the same object.
+
+
+
+A thread pool manages the pool of worker threads, it contains a queue that
+keeps tasks waiting to get executed.
+We can specify the number of threads that will be alive when we create
+ThreadPoolExecutor instance and we can limit the size of thread pool and
+create our own RejectedExecutionHandler implementation to handle the jobs
+that can’t fit in the worker queue.
+
+
+
+
+Callable interface.
+java.util.concurrent.Callable interface in concurrency package that is similar
+to Runnable interface but it can return any Object and able to throw Exception.
+
+
+
+
 
 
