@@ -1,8 +1,9 @@
 The base means for concurrency are is the java.lang.Thread class.
 A Thread executes an object of type java.lang.Runnable
 
-Runnable is an interface with defines the run() method. This method is called by the Thread object and contains the
-work which should be done. Therefore the "Runnable" is the task to perform. The Thread is the worker who is doing
+Runnable is an interface which defines the run() method. This method is called
+by the Thread object and contains the work which should be done. Therefore the
+"Runnable" is the task to perform. The Thread is the worker who is doing
 this task.
 
 Process is a separate unit of work. It cant interact directly with other processes. It shares date only
