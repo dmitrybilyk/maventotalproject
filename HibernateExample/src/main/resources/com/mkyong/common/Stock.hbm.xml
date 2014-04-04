@@ -4,10 +4,10 @@
 
 <hibernate-mapping>
     <class name="com.mkyong.common.Stock" table="stock" catalog="mkyong">
-        <id name="stockId" type="java.lang.Integer">
+        <pid name="stockId" type="java.lang.Integer">
             <column name="STOCK_ID" />
             <generator class="identity" />
-        </id>
+        </pid>
         <property name="stockCode" type="string">
             <column name="STOCK_CODE" length="10" not-null="true" unique="true" />
         </property>

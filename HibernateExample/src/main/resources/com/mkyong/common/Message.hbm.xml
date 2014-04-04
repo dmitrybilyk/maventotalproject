@@ -9,11 +9,11 @@
         name="com.mkyong.common.Message"
         table="MESSAGES">
 
-        <id
-            name="id"
+        <pid
+            name="pid"
             column="MESSAGE_ID">
             <generator class="native"/>
-        </id>
+        </pid>
 
         <property
             name="text"

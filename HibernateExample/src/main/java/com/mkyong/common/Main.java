@@ -45,7 +45,7 @@ public class Main {
         Session thirdSession = HibernateUtil.getSessionFactory().openSession();
         Transaction thirdTransaction = thirdSession.beginTransaction();
 
-        // message.getId() holds the identifier value of the first message
+        // message.getPid() holds the identifier value of the first message
         Message loadedMessage = (Message) thirdSession.get( Message.class, message.getId());
         loadedMessage.setText( "Greetings Earthling" );
         loadedMessage.setNextMessage(

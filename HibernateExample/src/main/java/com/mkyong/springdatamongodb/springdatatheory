@@ -1,0 +1,10 @@
+http://krams915.blogspot.com/2011/02/spring-data-mongodb-tutorial.html
+
+
+What is MongoTemplate?
+
+    The template offers convenience methods and automatic mapping
+    between MongoDB JSON documents and your domain classes. Out of
+    the box, MongoTemplate uses a Java-based default converter but
+    you can also write your own converter classes to be used for
+    reading and storing domain objects.

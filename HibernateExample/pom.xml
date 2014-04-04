@@ -115,16 +115,52 @@
        </dependency>
 
        <!-- Spring data mongodb -->
+       <!-- Spring framework -->
+       <dependency>
+           <groupId>org.springframework</groupId>
+           <artifactId>spring-core</artifactId>
+           <version>3.2.2.RELEASE</version>
+       </dependency>
+
+       <dependency>
+           <groupId>org.springframework</groupId>
+           <artifactId>spring-context</artifactId>
+           <version>3.2.2.RELEASE</version>
+       </dependency>
+
+       <!-- mongodb java driver -->
+       <dependency>
+           <groupId>org.mongodb</groupId>
+           <artifactId>mongo-java-driver</artifactId>
+           <version>2.11.0</version>
+       </dependency>
+
+
+       <!--for tutorial -->
+       <!--&lt;!&ndash; Spring data mongodb &ndash;&gt;-->
+       <!--<dependency>-->
+           <!--<groupId>org.springframework.data</groupId>-->
+           <!--<artifactId>spring-data-mongodb</artifactId>-->
+           <!--<version>1.2.0.RELEASE</version>-->
+       <!--</dependency>-->
+
        <dependency>
            <groupId>org.springframework.data</groupId>
            <artifactId>spring-data-mongodb</artifactId>
-           <version>1.2.0.RELEASE</version>
+           <version>1.0.0.M2</version>
        </dependency>
 
        <dependency>
            <groupId>cglib</groupId>
            <artifactId>cglib</artifactId>
            <version>2.2.2</version>
+       </dependency>
+
+
+       <dependency>
+           <groupId>log4j</groupId>
+           <artifactId>log4j</artifactId>
+           <version>1.2.16</version>
        </dependency>
 	
   </dependencies>
