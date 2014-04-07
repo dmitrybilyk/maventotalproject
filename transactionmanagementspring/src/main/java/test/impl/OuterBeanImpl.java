@@ -25,8 +25,8 @@ public class OuterBeanImpl implements OuterBean {
 		try{
 			innerBean.testRequired();
 		} catch(RuntimeException e){
-			// handle exception
-		}
+            System.out.println("Something wrong in outer bean - required strategy");
+        }
 	}
 	
 	@Override

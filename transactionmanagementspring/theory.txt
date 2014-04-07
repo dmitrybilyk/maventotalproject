@@ -1,1 +1,90 @@
 http://www.byteslounge.com/tutorials/spring-transaction-propagation-tutorial
+
+Spring transaction propagation strategies:
+
+1. Required.
+If there is already existed transaction, it will be used, otherwise - new will be created.
+If we have several methods all marked with Required - we will have a single physical
+transaction. So, if something wrong in inner bean - the outer bean will always rollback.
+
+Note: The only exceptions that set a transaction to rollback state by default are the
+unchecked exceptions (like RuntimeException). If you want checked exceptions to also set
+transactions to rollback you must configure them to do so
+
+2. REQUIRES_NEW behavior means that a new physical transaction will always be created
+by the container. In other words the inner transaction may commit or rollback independently
+of the outer transaction, i.e. the outer transaction will not be affected by the inner
+transaction result: they will run in distinct physical transactions.
+
+3. NESTED behavior. With savepoints. Used in jdbc.
+
+4. MANDATORY behavior
+ The MANDATORY behavior states that an existing opened transaction must already exist.
+ If not an exception will be thrown by the container.
+
+5. NOT_SUPPORTED behavior
+The NOT_SUPPORTED behavior will execute outside of the scope of any transaction.
+If an opened transaction already exists it will be paused.
+
+6. SUPPORTS behavior
+The SUPPORTS behavior will execute in the scope of a transaction if an opened transaction
+already exists. If there isn't an already opened transaction the method will execute
+anyway but in a non-transactional way.
+
+
+
+
+ACID
+
+Isolation level defines how the changes made to some data repository by one
+transaction affect other simultaneous concurrent transactions, and also how
+and when that changed data becomes available to other transactions.
+
+
+Isolatoin levels:
+
+READ_UNCOMMITTED isolation level states that a transaction may read data that
+is still uncommitted by other transactions.
+READ_COMMITTED isolation level states that a transaction can't read data that
+is not yet committed by other transactions. This means that the dirty read is
+no longer an issue. But we can have non-repeatable read - it when transaction A
+begins to read, then transaction B changes and commits. And then transaction A
+tries to commit it's changes. But it has not actual data.
+REPEATABLE_READ
+DEFAULT - default isolation level of the database we work with at the moment.
+
+
+  	              dirty reads 	non-repeatable reads 	phantom reads
+READ_UNCOMMITTED 	yes 	        yes 	                yes
+READ_COMMITTED 	    no 	            yes 	                yes
+REPEATABLE_READ 	no 	            no 	                    yes
+SERIALIZABLE 	    no 	            no 	                    no
+
+
+
+
+
+ACID is the acronym for the four properties guaranteed by transactions: atomicity,
+consistency, isolation, and durability.
+
+Atomicity – means a transaction must execute completely or not at all. This means
+atomicity guaranteed that operations with in a transaction undergo an all-or-nothing
+paradigm – either all the database updates are performed , or nothing happens is a n
+error occurs at any time
+
+Consistency – is a transactional characteristic that must be enforced by both the
+transactional system and the application developer. Consistency guarantees that a
+transaction leaves the system’s state to be consistent after a transaction completes.
+Consistency refers to the integrity of the underlying data store. Atomicity helps
+enforce the system always appears to be consistent.
+
+Isolated – makes a transaction to execute without interference from another process
+or transactions. Isolation protects concurrently executing transactions from seeing
+each others incomplete results. Isolation allows multiple transactions to read or
+write to a database without knowing about each other because each transaction is
+isolated from each others.
+
+Durability – means that all the data changes made during the course of a transaction
+must be written to some type of physical storage before the transaction is
+successfully completed.
+

@@ -11,7 +11,7 @@ public class Main
     	OuterBean testBean = (OuterBean) ctx.getBean("outerBeanImpl");
     	
     	User user = new User();
-    	user.setUsername("johndoe");
+    	user.setUsername("johndoe" + Math.random() * 100);
     	user.setName("John Doe");
     	
     	try{
@@ -20,7 +20,7 @@ public class Main
     		// catch exception raised from transaction rollback
     	}
     	
-    	testBean.testRequiresNew(user);
+//    	testBean.testRequiresNew(user);
     	
     }
 }
