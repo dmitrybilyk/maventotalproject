@@ -88,3 +88,9 @@ Durability – means that all the data changes made during the course of a trans
 must be written to some type of physical storage before the transaction is
 successfully completed.
 
+
+
+//todo
+spring jpa transactions
+http://www.byteslounge.com/tutorials/spring-change-transaction-isolation-level-example
+
