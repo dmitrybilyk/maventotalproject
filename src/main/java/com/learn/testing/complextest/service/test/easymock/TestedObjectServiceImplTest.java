@@ -1,4 +1,4 @@
-package com.learn.testing.complextest.service.test;
+package com.learn.testing.complextest.service.test.easymock;
 
 import com.learn.testing.complextest.dao.api.TestedObjectDao;
 import com.learn.testing.complextest.exceptions.InvalidateException;

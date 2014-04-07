@@ -1,0 +1,23 @@
+there are only 3 things you really need to worry about; stubbing, setting expectations and verifying.
+Some unit test scenarios don’t involve any of these, others involve only stubbing and others
+involve setting expectations and verifying.
+
+Stubbing.
+Stubbing is the process of telling your fake how to behave when it is interacted with.
+You can generally stub public properties (those with getters and/or setters) and public
+functions.
+
+Setting expectations
+One of the key features of a fake is the ability to tell the fake what you expect
+when your test runs. For example, you may expect that a specific function be
+invoked exactly 3 times.
+
+Verifying
+Setting expectations and verification go hand in hand. Setting expectations is done
+prior to invoking the function(s) on the class under test. Verification is done after.
+
+Mockito attempts to eliminate the expect-run-verify pattern[6] by removing the
+specification of expectations, the coupling is reduced or minimized
+
+in MockitoTrainings class you can see examples...
+
