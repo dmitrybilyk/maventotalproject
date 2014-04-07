@@ -1,3 +1,7 @@
+50 questions:
+http://www.journaldev.com/1162/java-multi-threading-concurrency-interview-questions-with-answers#thread-safety
+
+
 The base means for concurrency are is the java.lang.Thread class.
 A Thread executes an object of type java.lang.Runnable
 
