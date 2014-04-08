@@ -1,3 +1,4 @@
+import exceptons.MyCheckedException;
 import model.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,12 +14,17 @@ public class Main
     	User user = new User();
     	user.setUsername("johndoe" + Math.random() * 100);
     	user.setName("John Doe");
-    	
-    	try{
-    		testBean.testRequired(user);
-    	} catch(Exception e){
-    		// catch exception raised from transaction rollback
-    	}
+
+
+//        1. Test flow with/without default transactional annotation
+        user.setName(user.getUsername().concat(" test mandatory withwithout222"));
+        testBean.testMandatory(user);
+
+//    	try{
+//    		testBean.testRequired(user);
+//    	} catch(Exception e){
+//    		// catch exception raised from transaction rollback
+//    	}
     	
 //    	testBean.testRequiresNew(user);
     	
