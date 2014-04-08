@@ -42,3 +42,7 @@ interface Translator {
 
 thenAnswer method, a twin of doAnswer, for stubbing a non-void method
 
+
+When you use the spy then the real methods are called
+
+

@@ -12,4 +12,5 @@ public interface StudentService {
     public boolean addStudent(Student student);
     public List<Student> getAll();
     public List<Student> getByName(String pattern);
+    public void publicStudentName(String name);
 }

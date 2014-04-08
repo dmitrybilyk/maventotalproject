@@ -11,4 +11,6 @@ public interface StudentDao {
     public boolean addStudent(Student student);
     public List<Student> getAll();
     List<Student> getByName(String pattern);
+
+    void publishDoubleName(String name);
 }

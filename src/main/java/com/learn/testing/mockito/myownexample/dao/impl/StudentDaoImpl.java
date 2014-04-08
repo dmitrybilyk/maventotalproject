@@ -58,4 +58,10 @@ public class StudentDaoImpl implements StudentDao {
         }
         return listToReturn;
     }
+
+    @Override
+    public void publishDoubleName(String name) {
+        String doubleName = name+name;
+        System.out.println(doubleName);
+    }
 }

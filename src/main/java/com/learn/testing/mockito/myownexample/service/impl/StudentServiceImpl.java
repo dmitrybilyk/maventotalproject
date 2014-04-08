@@ -36,6 +36,11 @@ public class StudentServiceImpl implements StudentService {
         return studentDao.getByName(pattern);
     }
 
+    @Override
+    public void publicStudentName(String name) {
+        studentDao.publishDoubleName(name);
+    }
+
     public void setStudentDao(StudentDao studentDao) {
         this.studentDao = studentDao;
     }
