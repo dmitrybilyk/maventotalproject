@@ -48,8 +48,8 @@ public class TestArrays {
     }
     void printSortedArray(){
          int[] arrayToSort = {2, 5, 7, 3, 12, 1};
-         BulbeSortTest bulbeSortTest = new BulbeSortTest();
-        bulbeSortTest.printSortedArray(arrayToSort);
+         SortingAlgorithms sortingAlgorithms = new SortingAlgorithms();
+        sortingAlgorithms.printSortedArray(arrayToSort);
 
     }
 }

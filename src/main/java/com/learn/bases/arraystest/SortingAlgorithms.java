@@ -7,10 +7,17 @@ package com.learn.bases.arraystest;
  * Time: 19:41
  * To change this template use File | Settings | File Templates.
  */
-public class BulbeSortTest {
+public class SortingAlgorithms {
+
+    public static void main(String[] args) {
+        SortingAlgorithms sortingAlgorithms = new SortingAlgorithms();
+        int a[] = {0,4,22,7,9,1};
+        sortingAlgorithms.printSortedArray(a);
+    }
+
 
     void printSortedArray(int a[]){  
-    for (int i = a.length - 1; i > 1; i--) {
+    for (int i = a.length - 1; i > 0; i--) {
         
 
             /* В переменной sorted мы будем хранить признак того,
