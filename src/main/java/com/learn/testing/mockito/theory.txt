@@ -21,3 +21,24 @@ specification of expectations, the coupling is reduced or minimized
 
 in MockitoTrainings class you can see examples...
 
+
+
+A common usage of Answer is to stub asynchronous methods that have callbacks.
+For example, we have mocked the interface below:
+
+interface Service {
+  void get(Callback callback);
+}
+
+
+Answer can also be used to make smarter stubs for synchronous methods.
+Smarter here means the stub can return a value depending on the input, rather
+than canned data.
+
+interface Translator {
+  String translate(String msg);
+}
+
+
+thenAnswer method, a twin of doAnswer, for stubbing a non-void method
+
