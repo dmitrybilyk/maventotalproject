@@ -16,7 +16,7 @@
                 password-parameter="password" />
         <logout logout-success-url="/mvc/login?logout" />
         <!-- enable csrf protection -->
-        <csrf/>
+            <csrf/>
     </http>
 
     <authentication-manager>
