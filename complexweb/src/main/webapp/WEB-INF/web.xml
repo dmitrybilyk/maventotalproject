@@ -26,6 +26,7 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
             WEB-INF/mvc-dispatcher-servlet.xml,
+            WEB-INF/spring-security.xml
             <!--WEB-INF/cxf-soap-beans.xml-->
             <!--WEB-INF/cxf-rest-beans.xml-->
         </param-value>
@@ -87,6 +88,19 @@
         <servlet-name>GetCurrentTimeServlet</servlet-name>
         <url-pattern>/get-current-time</url-pattern>
     </servlet-mapping>
+
+
+    <!-- Spring Security -->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy
+        </filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/mvc/*</url-pattern>
+    </filter-mapping>
 
 
 </web-app>

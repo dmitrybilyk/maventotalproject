@@ -16,7 +16,7 @@
         <project.build.sourceVersion>1.6</project.build.sourceVersion>
 
         <!--<spring.version>3.1.4.RELEASE</spring.version>-->
-        <spring.version>3.0.5.RELEASE</spring.version>
+        <spring.version>3.2.2.RELEASE</spring.version>
         <spring-data.version>1.4.1.RELEASE</spring-data.version>
         <spring.osgi.version>1.2.1</spring.osgi.version>
         <org.osgi.core.version>1.0.0</org.osgi.core.version>
@@ -59,16 +59,22 @@
         <jsr311-api.version>1.1.1</jsr311-api.version>
         <javax.ws.rs-api.version>2.0-m10</javax.ws.rs-api.version>
         <jackson.version>1.9.13</jackson.version>
+        <spring.security.version>3.2.3.RELEASE</spring.security.version>
     </properties>
 
-
+    <repositories>
+        <repository>
+            <id>opencast-public</id>
+            <url>http://repository.opencastproject.org/nexus/content/repositories/public/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>org.springframework.web.servlet</artifactId>
-            <version>3.0.5.RELEASE</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>org.springframework.web.servlet</artifactId>-->
+            <!--<version>3.2.2.RELEASE</version>-->
+        <!--</dependency>-->
 
         <!-- Spring 3 dependencies -->
         <dependency>
@@ -87,6 +93,19 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
         </dependency>
 
         <!-- Apache Commons Upload -->
