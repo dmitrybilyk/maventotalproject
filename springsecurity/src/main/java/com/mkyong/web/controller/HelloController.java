@@ -2,6 +2,8 @@ package com.mkyong.web.controller;
 
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,7 +57,29 @@ public class HelloController {
 		model.setViewName("hello");
 		return model;
 
-	}
+    }
+
+    @RequestMapping(value = {"/principal"}, method = RequestMethod.GET)
+    public ModelAndView getUserName() {
+
+        ModelAndView model = new ModelAndView();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String name;
+        if (principal instanceof User) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            name = user.getUsername(); //get logged in username
+        } else {
+            name = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        }
+
+
+        model.addObject("title", "Spring Security Custom Login Form");
+        model.addObject("message", name);
+        model.setViewName("hello");
+        return model;
+
+    }
+
 
     @Secured("ROLE_FLASH")
     @RequestMapping(value = {"/seccheck" }, method = RequestMethod.GET)
