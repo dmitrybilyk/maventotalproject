@@ -10,6 +10,7 @@
     <modules>
         <module>complexweb</module>
         <module>transactionmanagementspring</module>
+        <module>springsecurity</module>
     </modules>
     <packaging>pom</packaging>
 
