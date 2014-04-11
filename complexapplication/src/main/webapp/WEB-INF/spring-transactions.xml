@@ -35,7 +35,7 @@
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
-        <property name="packagesToScan" value="com.complex.model.*" />
+        <property name="packagesToScan" value="com.complex.model" />
     </bean>
 	
 	<bean id="transactionManager"

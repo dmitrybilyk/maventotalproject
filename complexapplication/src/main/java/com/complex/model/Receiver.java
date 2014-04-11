@@ -1,13 +1,11 @@
 package com.complex.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by dmitry.bilyk on 4/11/14.
  */
+@Entity
 public class Receiver {
 
     @Id
