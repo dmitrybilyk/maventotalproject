@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * Created by dmitry.bilyk on 4/11/14.
  */
 @Entity
-@Table(name="RECEIPTS")
+//@Table(name="RECEIPTS")
 @DiscriminatorValue("R")
 public class Receipt extends Document implements Cloneable{
     @OneToOne

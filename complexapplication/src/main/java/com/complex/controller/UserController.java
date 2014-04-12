@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by dmitry.bilyk on 4/11/14.
  */
@@ -16,7 +18,8 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/")
-    public String defaultPage(){
+    public String defaultPage(HttpServletRequest request){
+        request.setAttribute("errorMessage", request.getParameter("errorMessage"));
         return "login";
     }
 

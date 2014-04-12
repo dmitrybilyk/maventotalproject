@@ -8,7 +8,7 @@ import javax.persistence.Table;
  * Created by dmitry.bilyk on 4/11/14.
  */
 @Entity
-@Table(name="DIRECTDEBITS")
+//@Table(name="DIRECTDEBITS")
 @DiscriminatorValue("D")
 public class DirectDebit extends Document {
     private String description;
