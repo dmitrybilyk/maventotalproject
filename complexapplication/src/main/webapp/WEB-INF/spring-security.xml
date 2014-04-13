@@ -12,11 +12,11 @@
     <global-method-security pre-post-annotations="enabled" secured-annotations="enabled"/>
 
 	<http auto-config="true">
-		<intercept-url pattern="/hello**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/user**" access="ROLE_ADMIN" />
 
 		<form-login 
 		    login-page="/login"
-		    default-target-url="/welcome" 
+		    default-target-url="/user/usersList"
 			authentication-failure-url="/login?error"
 			username-parameter="username"
 			password-parameter="password" />

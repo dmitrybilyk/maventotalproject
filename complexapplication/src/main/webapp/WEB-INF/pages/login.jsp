@@ -53,7 +53,7 @@
 
 		<form name='loginForm'
 			<%--action="<c:url value='/j_spring_security_check' />" method='POST'>--%>
-			action="${pageContext.request.contextPath}/welcome" method='POST'>
+			action="${pageContext.request.contextPath}/user/usersList" method='POST'>
 
 			<table>
 				<tr>

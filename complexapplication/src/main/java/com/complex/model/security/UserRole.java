@@ -1,6 +1,7 @@
 package com.complex.model.security;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by dmitry.bilyk on 4/11/14.
@@ -14,9 +15,9 @@ public class UserRole {
     @Column(name = "USER_ROLE_ID")
     private int userRoleId;
 
-    @OneToOne
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name="USER_ID")
-    private User user;
+    private List<User> users;
 
     private String authority;
 
@@ -28,12 +29,12 @@ public class UserRole {
         this.userRoleId = userRoleId;
     }
 
-    public User getUser() {
-        return user;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     public String getAuthority() {

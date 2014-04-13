@@ -22,6 +22,11 @@ public class User {
 
     private int active = 1;
 
+
+    @ManyToOne
+    @JoinColumn(name="USER_ROLE")
+    private UserRole userRole;
+
     public User() {
     }
 
@@ -68,6 +73,14 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 
     public int getActive() {

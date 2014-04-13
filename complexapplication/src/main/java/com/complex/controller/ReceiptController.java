@@ -5,10 +5,13 @@ package com.complex.controller;
  */
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping(value = "/receipt")
 public class ReceiptController {
+
     public ModelAndView createReceipt(){
         ModelAndView model = new ModelAndView();
         return model;
