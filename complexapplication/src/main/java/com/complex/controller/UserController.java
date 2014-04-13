@@ -15,6 +15,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -58,7 +59,7 @@ public class UserController {
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public String saveUser(@ModelAttribute("user") User user,
                            BindingResult result, Model model){
-//        user.setUserRole(userRoleService.getUserRoleById(userRoleId));
+        user.setUserRole(userRoleService.getUserRoleById(user.getUserRole().getUserRoleId()));
         userService.addUser(user);
         model.addAttribute("users", userService.getAll());
         return "usersList";
@@ -82,16 +83,16 @@ public class UserController {
 
 
     @ModelAttribute("userRoles")
-    public Map<String, String> populateUserRoles() {
+    public Map<Integer, String> populateUserRoles() {
 
         //Data referencing for user roles options
 
-        Map<String, String> userRoleMap = null;
+        Map<Integer, String> userRoleMap = new HashMap<Integer, String>();
 
         List<UserRole> userRoles = userRoleService.getAll();
 
         for (UserRole userRole : userRoles) {
-            userRoleMap.put(userRole.getAuthority(), userRole.getAuthority());
+            userRoleMap.put(userRole.getUserRoleId(), userRole.getAuthority());
         }
 
         return userRoleMap;

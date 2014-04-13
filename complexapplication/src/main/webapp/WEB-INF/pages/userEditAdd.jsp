@@ -35,10 +35,10 @@
         <tr>
             <td>User role :</td>
             <td>
-                <form:select path="userRole.authority">
+                <form:select path="userRole.userRoleId">
                     <%--<form:option value="NONE" label="--- Select ---"/>--%>
                     <%--<form:option value="-" label="--Select phone">--%>
-                        <form:options items="${userRoles}"/>
+                        <form:options items="${userRoles}" />
                     <%--</form:option>--%>
                 </form:select>
             </td>
