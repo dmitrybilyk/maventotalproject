@@ -30,7 +30,7 @@ public class HibernateUtil {
             Configuration configuration = new Configuration();
             configuration.configure("library_hql_hibernate.cfg.xml");
             serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
-            factory = configuration.buildSessionFactory(serviceRegistry);
+            factory = configuration.buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
