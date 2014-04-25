@@ -1,0 +1,34 @@
+Spring Security is a customizable authentication and access service
+framework for server side Java-based enterprise software applications.
+two major areas of application security are “authentication” and
+“authorization” (or “access-control”). These are the two main areas
+that Spring Security targets.
+
+1. “Authentication” is the process of establishing a principal
+is who they claim to be (a “principal” generally means a user,
+device or some other system which can perform an action in your
+application).
+
+2. “Authorization” refers to the process of deciding whether a principal
+is allowed to perform an action within your application.
+
+There are three main areas of interest in respect of authorization,
+these being authorizing web requests, authorizing whether methods
+can be invoked, and authorizing access to individual domain object
+instances.
+
+
+Following are the some of the important facilities that Spring Security
+Framework provides to it’s users:
+
+    User authentication and authorization.
+    Role based authorization control.
+    Easy to configure with database based authentication and authorization.
+    Encrypted password.
+    Form authentication.
+    File bases user authentication and authorization.
+
+Spring security take care about all incoming HTTP requests via servlet
+filters, and implements "user defined" security checking
+
+
