@@ -10,6 +10,8 @@
             src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript"
             src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+    <script src="<c:url value="/resources/mytheme/js/jquery.combobox.js" />"></script>
+    <link href="<c:url value="/resources/mytheme/css/style.css" />" rel="stylesheet">
 
 </head>
 <body>
@@ -36,8 +38,7 @@
             <td>User role :</td>
             <td>
                 <form:select path="userRole.userRoleId">
-                    <%--<form:option value="NONE" label="--- Select ---"/>--%>
-                    <%--<form:option value="-" label="--Select phone">--%>
+                    <%--<form:input path="userRole.authority" value="otherReason" label="Other reason"/>--%>
                         <form:options items="${userRoles}" />
                     <%--</form:option>--%>
                 </form:select>

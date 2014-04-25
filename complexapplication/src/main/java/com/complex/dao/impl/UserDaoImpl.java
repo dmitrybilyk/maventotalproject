@@ -38,7 +38,11 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void addUser(User user) {
-        sessionFactory.getCurrentSession().merge(user);
+        Session session = sessionFactory.getCurrentSession();
+//        Query query = session.createQuery("insert into User where id = :id ");
+//        query.setParameter("id", id);
+//        User user = (User) query.uniqueResult();
+//        return user;
     }
 
     @Override

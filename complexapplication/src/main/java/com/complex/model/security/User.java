@@ -23,7 +23,7 @@ public class User {
     private int active = 1;
 
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name="USER_ROLE")
     private UserRole userRole;
 
