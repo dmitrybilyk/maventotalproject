@@ -1,0 +1,117 @@
+GIT - это сложная распределенная система контроля версий. ГИТ работает с состояниями
+файлов, а не с самими файлами.
+
+сначала apt-get install git и
+установка имени и почты
+
+git config --global user.name dmitrybilyk
+git config --global user.email dmitry.bilyk@gmail.com
+
+create new repository in the dir you are in at the moment
+git init (.git dir is created)
+
+to add file (files) to repository
+git add hello.html
+
+to commit to repository
+git commit -m "First commit"
+
+to check the current status of repository
+git status
+
+to add changes to git repository
+git add
+
+to discard (revert) changes
+git checkout
+
+to index (add) changes (to stage...)
+git add hello.html
+
+to unstage (remove indexed changes from git)
+git reset
+
+to see history
+git log
+
+to see history in one row
+git log --pretty=oneline
+
+some variants:
+git log --pretty=oneline --max-count=2
+git log --pretty=oneline --since='5 minutes ago'
+git log --pretty=oneline --until='5 minutes ago'
+git log --pretty=oneline --author='dmitrybilyk'
+git log --pretty=oneline --all
+
+to get old versions of files
+git checkout <hash>
+then cat hello.html to see the old content
+
+git checkout master - to go gack to newest changes in master branch
+
+
+to create tag of the first version
+git tag v1
+
+to go to the tag before current
+git checkout v1^
+
+
+to see tags in the log
+git hist master -all
+
+to revert unindexed (no add was triggered yet) changes
+git checkout hello.html
+
+to revert indexed changes
+git reset HEAD hello.html (and we also have to call checkout in order to remove changes in
+file)
+
+to revert last commit
+git revert HEAD
+
+to remove tag oops from repository
+git tag -d oops
+
+to change existed commit (in order not to add new)
+git commit --amend -m "author/email"
+
+to move file to lib folder
+git mv hello.html lib
+
+
+
+to create a branch with the name 'style'
+git checkout -b style   where -b - shortcat for branch...
+
+git checkout master - go to master branch
+
+git merger master - merge from master to style branch
+
+to know the names of removed repositories
+git remote
+
+show all branches
+git branch
+
+show all remote branches
+git branch -a
+
+to get new commits but without affecting of changed files - use fetch
+to merger changes fils - use merge.
+But 'pull' command does these two thins togather!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
