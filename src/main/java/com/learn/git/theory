@@ -99,7 +99,7 @@ show all remote branches
 git branch -a
 
 to get new commits but without affecting of changed files - use fetch
-to merger changes fils - use merge.
+to merge changes fills - use merge.
 But 'pull' command does these two thins together!
 
 to ignore file or path from to be staged
