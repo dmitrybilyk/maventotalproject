@@ -105,6 +105,10 @@ But 'pull' command does these two thins togather!
 to ignore file or path from to be staged
 git update-index --assume-unchanged <file>
 
+git rm --cached file - remove file from git
+
+
+
 
 
 
