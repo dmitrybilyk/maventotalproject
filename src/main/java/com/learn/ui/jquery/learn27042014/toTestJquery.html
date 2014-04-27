@@ -7,15 +7,22 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("button").click(function () {
-                $("div").hide();
+                $("div").toggle();
+//                $("div#anotherDiv").css("background-color","black")
+            });
+            $("button").on('click', function(){
+                alert("Button is Clicked.");
             });
         });
+        function myFunc(){
+            alert("test")
+        }
     </script>
 </head>
 <body>
 <h2>This is a heading</h2>
 <div>This is a div.</div>
-<div>This is another div.</div>
+<div id = "anotherDiv">This is another div.</div>
 <button>Click me</button>
 </body>
 </html>
