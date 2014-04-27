@@ -105,6 +105,7 @@ But 'pull' command does these two thins together!
 to ignore file or path from to be staged
 git update-index --assume-unchanged <file>
 
+git checkout - to revert changes on not added file
 
 for testddd rrrr
 
