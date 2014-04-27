@@ -29,7 +29,7 @@ to index (add) changes (to stage...)
 git add hello.html
 
 to unstage (remove indexed changes from git)
-git reset
+git reset <fileName>/mask
 
 to see history
 git log
@@ -107,7 +107,7 @@ git update-index --assume-unchanged <file>
 
 git checkout - to revert changes on not added file
 
-for testddd rrrr
+changed tip
 
 
 
