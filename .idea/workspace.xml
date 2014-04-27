@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81f30ddc-311e-47b0-86df-7bafb01082f7" name="Default" comment="complex">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/learn/git/git_tutorial/work/hello" afterPath="$PROJECT_DIR$/src/main/java/com/learn/git/git_tutorial/work/hello" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/complexapplication/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" afterPath="$PROJECT_DIR$/complexapplication/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/learn/git/theory" afterPath="$PROJECT_DIR$/src/main/java/com/learn/git/theory" />
     </list>
     <list id="0e2b4a3e-e199-4ae1-80fc-6a945a9afbb1" name="ignored" comment="" />
     <ignored path="totalmavenproject.iws" />
@@ -67,11 +68,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="theory" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="theory" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/learn/git/theory">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.5418327" vertical-offset="1604" max-vertical-offset="2214">
-              <caret line="74" column="15" selection-start-line="74" selection-start-column="15" selection-end-line="74" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1658" max-vertical-offset="2268">
+              <caret line="77" column="15" selection-start-line="77" selection-start-column="15" selection-end-line="77" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="workspace.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.63190186" vertical-offset="32019" max-vertical-offset="32508">
+              <caret line="1796" column="6" selection-start-line="1796" selection-start-column="6" selection-end-line="1796" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -116,16 +127,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-5.12" vertical-offset="160" max-vertical-offset="702">
               <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProcessController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/complexapplication/src/main/java/com/complex/controller/ProcessController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="324">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -187,7 +188,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/complexweb/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/complexweb/src/main/webapp/WEB-INF/spring-security.xml" />
         <option value="$PROJECT_DIR$/complexapplication/src/main/webapp/WEB-INF/pages/sessionExpired.jsp" />
         <option value="$PROJECT_DIR$/complexapplication/src/main/java/com/complex/model/document/Receipt.java" />
@@ -234,10 +234,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/learn/git/git_tutorial/work/hello/index.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/learn/git/git_tutorial/work/hello/hello.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/learn/git/git_tutorial/work/hello/README.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/learn/git/theory" />
         <option value="$PROJECT_DIR$/src/main/java/com/learn/bases/appacheutils/beanutils/DynaBeansExampleV1.java" />
         <option value="$PROJECT_DIR$/complexapplication/src/main/java/com/complex/controller/ProcessController.java" />
         <option value="$PROJECT_DIR$/complexapplication/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/learn/git/theory" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
@@ -630,6 +631,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maventotalproject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="totalmavenproject" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1158,7 +1173,7 @@
       <workItem from="1398016458632" duration="1742000" />
       <workItem from="1398450749685" duration="1753000" />
       <workItem from="1398580496062" duration="2965000" />
-      <workItem from="1398585295392" duration="1239000" />
+      <workItem from="1398585295392" duration="1522000" />
     </task>
     <task id="LOCAL-00001" summary="spring security">
       <created>1397063532037</created>
@@ -1192,7 +1207,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78954000" />
+    <option name="totallyTimeSpent" value="79237000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1235,6 +1250,7 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32932165" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918552" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32949308" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1248,7 +1264,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32932165" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918552" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1319,13 +1334,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="dbDummy://db-console:/653dd46a/1b8beb64-6e54-43bc-96cf-ace805d7a581/">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.862069" vertical-offset="0" max-vertical-offset="486">
-          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/complexapplication/src/main/java/com/complex/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="79" max-vertical-offset="648">
@@ -1700,8 +1708,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/learn/git/theory">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5418327" vertical-offset="1604" max-vertical-offset="2214">
-          <caret line="74" column="15" selection-start-line="74" selection-start-column="15" selection-end-line="74" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1658" max-vertical-offset="2268">
+          <caret line="77" column="15" selection-start-line="77" selection-start-column="15" selection-end-line="77" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.63190186" vertical-offset="32019" max-vertical-offset="32508">
+          <caret line="1796" column="6" selection-start-line="1796" selection-start-column="6" selection-end-line="1796" selection-end-column="6" />
           <folding />
         </state>
       </provider>
