@@ -100,7 +100,7 @@ git branch -a
 
 to get new commits but without affecting of changed files - use fetch
 to merger changes fils - use merge.
-But 'pull' command does these two thins togather!
+But 'pull' command does these two thins together!
 
 
 
