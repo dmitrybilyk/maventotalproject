@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="complexweb:war">
+    <output-path>$PROJECT_DIR$/complexweb/target</output-path>
+    <root id="archive" name="webapplication.war">
+      <element id="artifact" artifact-name="complexweb:war exploded" />
+    </root>
+  </artifact>
+</component>

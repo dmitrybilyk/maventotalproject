@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="orderapp:war">
+    <output-path>$USER_HOME$/Downloads/5401_Code/ApacheCXFBook/Chapter2/orderapp/target</output-path>
+    <root id="archive" name="orderapp.war">
+      <element id="artifact" artifact-name="orderapp:war exploded" />
+    </root>
+  </artifact>
+</component>

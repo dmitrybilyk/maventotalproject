@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="webcomplexlearning:war">
+    <output-path>$PROJECT_DIR$/totalweb/target</output-path>
+    <root id="archive" name="totalweb-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="webcomplexlearning:war exploded" />
+    </root>
+  </artifact>
+</component>
