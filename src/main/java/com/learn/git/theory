@@ -92,7 +92,7 @@ git merger master - merge from master to style branch
 to know the names of removed repositories
 git remote
 
-show all branches
+show local branches
 git branch
 
 show all remote branches
