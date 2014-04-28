@@ -16,6 +16,8 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
     <tx:annotation-driven />
 
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
