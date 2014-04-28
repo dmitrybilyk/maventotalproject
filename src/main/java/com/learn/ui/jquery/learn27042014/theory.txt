@@ -126,6 +126,82 @@ Methods which allow to change or get values of elements:
     .val() – Get or set the value of form elements.
 
 
+you can copy element with clone() method
+$( "#myList li:first" ).clone().appendTo( "#myList" );
 
 
+you can create an element
+$( "<p>This is a new paragraph</p>" );
+
+Checking the .length property is a common way to ensure that the selector successfully
+matched one or more elements.
+
+to get the first h1 on the page
+var headings = $( "h1" );
+var firstHeading = headings.eq( 0 );
+
+to get actual object (not jquery object)
+$( "div" ).get(1)
+
+// Selecting only the first <h1> element on the page (alternate approach).
+var firstHeadingElem = $( "h1" )[ 0 ];
+
+In either case, firstHeadingElem contains the native DOM element.
+This means it has DOM properties like .innerHTML and methods like .appendChild(),
+but not jQuery methods like .html() or .after().
+
+alert( $( "#logo" ) === $( "#logo" ) ); - every jquery object is unique, even if
+it is selected from the same element
+
+jQuery Objects Are Not "Live"
+you have to run selection again if number of 'p' elements increased
+
+
+
+// Working with classes.
+var h1 = $( "h1" );
+h1.addClass( "big" );
+h1.removeClass( "big" );
+h1.toggleClass( "big" );
+if ( h1.hasClass( "big" ) ) {
+...
+}
+
+
+// Getting CSS properties.
+$( "h1" ).css( "fontSize" ); // Returns a string such as "19px".
+$( "h1" ).css( "font-size" ); // Also works.
+
+
+// Setting CSS properties.
+$( "h1" ).css( "fontSize", "100px" ); // Setting an individual property.
+// Setting multiple properties.
+$( "h1" ).css({
+fontSize: "100px",
+color: "red"
+});
+
+
+
+There's often data about an element you want to store with the element.
+In plain JavaScript, you might do this by adding a property to the DOM element,
+but you'd have to deal with memory leaks in some browsers.
+jQuery offers a straightforward way to store data related to an element,
+and it manages the memory issues for you.
+
+
+Data element example:
+
+$( "li" ).each(function() {
+var li = $( this );
+var div = li.find( "div" );
+li.data( "contentDiv", div );
+});
+// Later, we don't have to find the div again;
+// we can just read it from the list item's data
+var firstLi = $( "li" ).eq(2);
+firstLi.data( "contentDiv" ).html( "new content" );
+
+In addition to passing .data() a single key-value pair to store data, you can also
+pass an object containing one or more pairs.
 
