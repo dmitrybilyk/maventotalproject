@@ -1,4 +1,4 @@
-From JQEURY.COM
+From JQEURY.COM  (you may play here - http://jsfiddle.net/buHTm/)
 
 There are 2 types of methods in jquery: ran on objects (they return and send 'this' object always)
 and utility methods (ran on '$'). Their return types and in params are vary.
@@ -126,8 +126,63 @@ Methods which allow to change or get values of elements:
     .val() – Get or set the value of form elements.
 
 
+<<<<<<< HEAD
 you can copy element with clone() method
 $( "#myList li:first" ).clone().appendTo( "#myList" );
+=======
+ In JQuery there are several utility methods you can call on $
+
+ - trim
+ - each()
+$.each([ "foo", "bar", "baz" ], function( idx, val ) {
+console.log( "element " + idx + " is " + val );
+});
+$.each({ foo: "bar", baz: "bim" }, function( k, v ) {
+console.log( k + " : " + v );
+});
+
+-$.inArray()
+Returns a value's index in an array, or -1 if the value is not in the array:
+
+var myArray = [ 1, 2, 3, 5 ];
+if ( $.inArray( 4, myArray ) !== -1 ) {
+console.log( "found it!" );
+}
+
+-$.extend()
+Changes the properties of the first object using the properties of subsequent objects:
+If you don't want to change any of the objects you pass to $.extend(), pass an empty object
+as the first argument:
+
+- $.proxy()
+Returns a function that will always run in the provided scope — that is, sets the
+meaning of this inside the passed function to the second argument.
+
+
+$.each() is a generic iterator function for looping over object, arrays, and array-like objects.
+Plain objects are iterated via their named properties while arrays and array-like objects are
+iterated via their indices.
+
+
+// Incorrect:
+$.each( $( "p" ), function() {
+// Do something
+});
+For jQuery collections, use .each().
+
+<ul>
+<li><a href="#">Link 1</a></li>
+<li><a href="#">Link 2</a></li>
+<li><a href="#">Link 3</a></li>
+</ul>
+
+
+
+
+
+
+
+>>>>>>> 31bf47affbe11492f090d5304d7bf2064a578239
 
 
 you can create an element

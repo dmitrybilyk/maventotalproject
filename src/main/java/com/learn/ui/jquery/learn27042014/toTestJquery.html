@@ -3,6 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Learning JQuery</title>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -11,9 +12,23 @@
                 $("div").toggle();
 //                $("div#anotherDiv").css("background-color","black")
             });
-            $("button").on('click', function(){
+            $("button#clickMe").on('click', function(){
                 alert("Button is Clicked.");
             });
+
+
+
+            var foo = $( "#foo1" );
+            console.log( "Index: " + foo.index() ); // 1
+            var listItem = $( "li" );
+// This implicitly calls .first()
+            console.log( "Index: " + listItem.index() ); // 1
+            console.log( "Index: " + listItem.first().index() ); // 1
+            var div = $( "div" );
+// This implicitly calls .first()
+            console.log( "Index: " + div.index() ); // 0
+            console.log( "Index: " + div.first().index() ); // 0
+
         });
         $( window ).load(function() {
             console.log( "window loaded" );
@@ -21,14 +36,128 @@
         function myFunc(){
             alert("test")
         }
+
+
+
+        $.each([ "foo", "bar", "baz" ], function( idx, val ) {
+            console.log( "element " + idx + " is " + val );
+        });
+        $.each({ foo: "bar", baz: "bim" }, function( k, v ) {
+            console.log( k + " : " + v );
+        });
+
+        var myArray = [ 1, 2, 3, 5 ];
+        if ( $.inArray( 3, myArray ) !== -1 ) {
+            console.log( "found it!" );
+        }
+
+        var firstObject = { foo: "bar7", a: "b" };
+        var secondObject = { foo: "baz23" };
+        var newObject = $.extend( {}, firstObject, secondObject );
+        console.log( firstObject.foo ); // "baz"
+        console.log( newObject.foo ); // "baz"
+
+
+        var myFunction = function() {
+            console.log( this );
+        };
+        var myObject = {
+            foo: "bar"
+        };
+        myFunction(); // window
+        var myProxyFunction = $.proxy( myFunction, myObject );
+        myProxyFunction(); // myObject
+
+
+        var myObject = {
+            myFn: function() {
+                console.log( this );
+            }
+        };
+        $( "#foo" ).click( myObject.myFn ); // HTMLElement #foo
+        $( "#foo" ).click( $.proxy( myObject, "myFn" ) ); // myObject
+
+
+
+        var sum = 0;
+        var arr = [ 1, 2, 3, 4, 5 ];
+
+//        for ( var i = 0, l = arr.length; i < l; i++ ) {
+//            sum += arr[ i ];
+//        }
+//        console.log( sum ); // 15
+        $.each( arr, function( index, value ){
+            sum += value;
+        });
+        console.log( sum ); // 15
+
+        var sum = 0;
+        var obj = {
+            foo: 1,
+            bar: 2
+        }
+
+        $.each( obj, function( key, value ) {
+            sum += value;
+        });
+        console.log( sum ); // 3
+
+
+        $( "li" ).each( function( index, element ){
+            console.log( $( this ).text() );
+        });
+
+        $("button#hideLis").on('click', function(){
+            $('li').addClass('hideLis')
+        })
+
+
+
+        var arr = [{
+            id: "a",
+            tagName: "li"
+        }, {
+            id: "b",
+            tagName: "li"
+        }, {
+            id: "c",
+            tagName: "li"
+        }];
+        // Returns [ "a", "b", "c" ]
+        $( "li" ).map( function( index, element ) {
+            return element.id;
+        }).get();
+        // Also returns ["a", "b", "c"]
+        // Note that the value comes first with $.map
+        $.map( arr, function( value, index ) {
+            return value.id;
+        });
+
     </script>
 </head>
 <body>
 <h2 id="heading">This is a heading</h2>
 <div class="mydivClass">This is a div.</div>
 <div id = "anotherDiv">This is another div.</div>
-<button>Click me</button>
+<button id="clickMe">Click me</button>
 
+<button id="toogleLis">Hide all li's</button>
+
+
+<ul>
+    <li><a href="#">Link 1</a></li>
+    <li><a href="#">Link 2</a></li>
+    <li><a href="#">Link 3</a></li>
+</ul>
+<!--<iframe src="http://techcrunch.com"></iframe>-->
+
+
+
+<li id="a">dd</li>
+<li id="b">ss</li>
+<li id="c">aa</li>
+
+<<<<<<< HEAD
 <div class="grandparent">
     <div class="parent">
         <div class="child">
@@ -63,5 +192,15 @@
 
 
 <!--<iframe src="http://techcrunch.com"></iframe>-->
+=======
+<ul>
+    <div></div>
+    <li id="foo1">foo</li>
+    <li id="bar1">bar</li>
+    <li id="baz1">baz</li>
+    <div></div>
+</ul>
+
+>>>>>>> 31bf47affbe11492f090d5304d7bf2064a578239
 </body>
 </html>
