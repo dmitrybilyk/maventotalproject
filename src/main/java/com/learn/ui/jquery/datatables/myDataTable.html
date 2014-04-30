@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data table</title>
+    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            var editor = new $.fn.dataTable.Editor( {
+                "domTable": "#reg_more"
+            } );
+            $("input[name= 'Reg_num_r']").change( function () {
+                if($(this).val()==1) {
+                    $('#Reg_num2').hide();
+                } else {
+                    $('#Reg_num2').show();
+                    $('#reg_more').dataTable({
+                        "aoColumns": [
+                            { "mDataProp": "First Name" },
+                            { "mDataProp": "Last Name" },
+                            { "mDataProp": "Phone" },
+                            { "mDataProp": "Email", "sClass": "center" },
+                            { "mDataProp": "Ethnicity", "sClass": "center" },
+                            {
+                                "mDataProp": null,
+                                "sClass": "center",
+                                "sDefaultContent": '<a href="" class="editor_edit">Edit</a>',
+                                "bSortable": false,
+                                "bSearchable": false
+                            },
+                            {
+                                "mDataProp": null,
+                                "sClass": "center",
+                                "sDefaultContent": '<a href="" class="editor_remove">Delete</a>',
+                                "bSortable": false,
+                                "bSearchable": false
+                            }
+                        ]
+                    });
+                }
+                $("#submit").show();
+            });
+            editor.add( [
+                {
+                    "label": "First Name:",
+                    "name": "fname"
+                }, {
+                    "label": "Last Name:",
+                    "name": "lname"
+                }, {
+                    "label": "Phone:",
+                    "name": "phone"
+                }, {
+                    "label": "Email:",
+                    "name": "email"
+                }, {
+                    "label": "Ethnicity:",
+                    "name": "ethnicity"
+                }
+            ] );
+
+            $('button.editor_create').on('click', function (e) {
+                e.preventDefault();
+
+                editor.create(
+                        'Add new person',
+                        {
+                            "label": "Add",
+                            "fn": function () {
+                                editor.submit()
+                            }
+                        }
+                );
+            } );
+
+            $('#reg_more').on('click', 'a.editor_edit', function (e) {
+                e.preventDefault();
+
+                editor.edit(
+                        $(this).parents('tr')[0],
+                        'Edit record',
+                        {
+                            "label": "Update",
+                            "fn": function () { editor.submit(); }
+                        }
+                );
+            } );
+
+            $('#reg_more').on('click', 'a.editor_remove', function (e) {
+                e.preventDefault();
+
+                editor.message( "Are you sure you want to remove this row?" );
+                editor.remove(
+                        $(this).parents('tr')[0],
+                        'Delete row',
+                        {
+                            "label": "Update",
+                            "fn": function () {
+                                editor.submit()
+                            }
+                        }
+                );
+            } )});
+    </script>
+</head>
+<body>
+
+<div id="example" />
+
+
+</body>
+</html>
