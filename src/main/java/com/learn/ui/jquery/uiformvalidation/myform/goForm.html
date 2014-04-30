@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My validation form</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="jquery.validate.min.js"></script>-->
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+
+    <script type="text/javascript">
+        /**
+         * Basic jQuery Validation Form Demo Code
+         * Copyright Sam Deering 2012
+         * Licence: http://www.jquery4u.com/license/
+         */
+        (function($,W,D)
+        {
+            var JQUERY4U = {};
+
+            JQUERY4U.UTIL =
+            {
+                setupFormValidation: function()
+                {
+                    //form validation rules
+                    $("#myForm").validate({
+                        rules: {
+                            name: "required",
+                            lastname: "required",
+                            email: {
+                                required: true,
+                                email: true
+
+                            },
+                            password: {
+                                number: true,
+                                required: true,
+                                minlength: 3
+                            },
+                            password2: {
+                                equalTo: "#password",
+                                required: true,
+                                minlength: 3
+                            }
+
+                        },
+                        messages: {
+                            name: "Please enter your firstname",
+                            password: {
+                                number: "please, enter only numbers",
+                                required: "Please provide a password",
+                                minlength: "Your password must be at least 5 characters long"
+                            },
+                            lastname: "Please enter your lastname",
+//                            password2: {
+//                                required: "Please provide a password",
+//                                minlength: "Your password must be at least 5 characters long"
+//                                equalTo: "Passwords should be the same"
+//                            },
+                            email: "Please enter a valid email address!"
+                        },
+                        submitHandler: function(form) {
+                            form.submit();
+                        }
+                    });
+                }
+            }
+
+            //when the dom has loaded setup form validation rules
+            $(D).ready(function($) {
+                JQUERY4U.UTIL.setupFormValidation();
+            });
+
+        })(jQuery, window, document);
+    </script>
+
+</head>
+<body>
+
+<form id="myForm">
+    <tr>Name
+        <td><label title="Name" for="name" /></td>
+        <td><input id="name" type="text" name="name" /></td>
+    </tr>
+
+    <tr>
+        LastName
+        <input type="text" name="lastName" />
+    </tr>
+
+    <tr>
+        Email
+        <input type="email" name="email" />
+    </tr>
+
+    <tr>
+        Password
+        <input id="password" type="password" name="password" />
+    </tr>
+
+    <tr>
+        Password again
+        <input type="password" name="password2" />
+    </tr>
+
+    <tr>
+        <input type="submit" name="Submit" value="Save2" />
+    </tr>
+
+</form>
+
+
+</body>
+</html>
