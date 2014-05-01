@@ -16,9 +16,9 @@ public class MainConstructorArgsTest {
 //        Clothes clothes = (Clothes) applicationContext.getBean("adidas");
 //        System.out.println(clothes);
 
-        FootballPlayer player = (FootballPlayer) applicationContext.getBean("footballPlayer");
-        System.out.println(player);
-        System.out.println(player.getAward().getName());
+//        com.learn.spring.springinjection.constructor.FootballPlayer player = (com.learn.spring.springinjection.constructor.FootballPlayer) applicationContext.getBean("footballPlayer");
+//        System.out.println(player);
+//        System.out.println(player.getAward().getName());
     }
 
 }
