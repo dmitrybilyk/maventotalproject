@@ -6,13 +6,13 @@ package com.learn.spring.resourceAnnotation;
 import javax.annotation.Resource;
 
 public class Student {
-    @Resource(name="add")
-    private City city;
-
-    public City getCity() {
-        return city;
-    }
-    public void setCity(City city) {
-        this.city = city;
-    }
+//    @Resource(name="add")
+//    private City city;
+//
+//    public City getCity() {
+//        return city;
+//    }
+//    public void setCity(com.learn.spring.resourceAnnotation.City city) {
+//        this.city = city;
+//    }
 }

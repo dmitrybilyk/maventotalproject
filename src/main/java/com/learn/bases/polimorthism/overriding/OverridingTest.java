@@ -10,7 +10,7 @@ package com.learn.bases.polimorthism.overriding;
 public class OverridingTest {
 
     public static void main(String[] args) {
-        ParentClass entity = new SecondChild();
+        ParentClass2 entity = new SecondChild();
         entity.printSomething();
     }
 

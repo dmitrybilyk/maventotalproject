@@ -11,7 +11,7 @@ public class SpringDemo {
     public static void main(String... args) {
         AbstractApplicationContext context = new ClassPathXmlApplicationContext("resource-annotation-spring.xml");
         Student st=(Student) context.getBean("student");
-        String city=st.getCity().getCityName();
-        System.out.println(city);
+//        String city=st.getCity().getCityName();
+//        System.out.println(city);
     }
 }

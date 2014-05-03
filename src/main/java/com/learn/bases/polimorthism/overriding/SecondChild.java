@@ -7,7 +7,7 @@ package com.learn.bases.polimorthism.overriding;
  * Time: 22:57
  * To change this template use File | Settings | File Templates.
  */
-public class SecondChild extends ParentClass{
+public class SecondChild extends ParentClass2 {
     @Override
     public void printSomething() {
         System.out.println("Printing something in second");

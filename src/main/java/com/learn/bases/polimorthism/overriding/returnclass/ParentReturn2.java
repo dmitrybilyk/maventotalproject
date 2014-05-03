@@ -7,5 +7,5 @@ package com.learn.bases.polimorthism.overriding.returnclass;
  * Time: 23:11
  * To change this template use File | Settings | File Templates.
  */
-public class ParentReturn {
+public class ParentReturn2 {
 }

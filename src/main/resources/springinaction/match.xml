@@ -23,16 +23,29 @@
        <ref bean="shakhtar" />
     </util:set>
 
-    <bean id="barsa" class="com.learn.spring.springinaction.di.model.Barsa" >
+    <bean id="barsa" class="com.learn.spring.springinaction.di.model.Barsa" lazy-init="false">
+        <property name="path" value="#{systemEnvironment['HOME']}" />
+        <property name="city" value="#{cities[2]}" />
+        <property name="teamCities" value="#{cities.?[population gt 100000]}"/>
+        <property name="states" value="#{cities.![population gt 100000]}"/>
+        <property name="couchName" value="#{settings['couch.name']}" />
+        <property name="couchAge" value="#{couch.name == null and couch != null? 20: 30 }" />
+        <!--<property name="couchAge" value="#{T(java.lang.Math).random()}" />-->
+        <property name="couch" ref="couch" />
         <property name="players" ref="barsaPlayers" />
+    </bean>
+
+    <bean id="couch" class="com.learn.spring.springinaction.di.model.Couch" >
+        <!--<property name="name" value="Mourinho" />-->
     </bean>
 
     <bean id="real" class="com.learn.spring.springinaction.di.model.Real" scope="prototype"/>
 
-    <bean id="shakhtar" class="com.learn.spring.springinaction.di.model.Shakhtar"
-        p:players-ref="shahktarPlayers">
+    <bean id="shakhtar" class="com.learn.spring.springinaction.di.model.Shakhtar">
+        <property name="players" ref="shahktarPlayers" />
+        <property name="alternativeName" value="#{T(java.lang.Math).random()}" />
         <property name="name">
-            <bean id="shakhtarName" class="java.lang.String" />
+            <bean id="shakhtarName" class="java.lang.String"/>
         </property>
          <!--/>-->
     </bean>
@@ -50,7 +63,7 @@
         <ref bean="adriano" />
     </util:set>
 
-    <bean id = "inesta" class="com.learn.spring.springinaction.di.model.Player" lazy-init="true">
+    <bean id = "inesta" class="com.learn.spring.springinaction.di.model.Player" lazy-init="false">
         <property name="name" value="Inesta" />
         <property name="age" value="34" />
         <property name="number" value="10" />
@@ -76,7 +89,7 @@
 
     <bean id = "srna" class="com.learn.spring.springinaction.di.model.Player" >
         <property name="name" value="Srna" />
-        <property name="age" value="34" />
+        <property name="age" value="#{adriano.age * 2}" />
         <property name="number" value="7" />
     </bean>
 
@@ -95,6 +108,29 @@
     </aop:config>
 
     <bean id="singingAspect" class="com.learn.spring.springinaction.di.model.SigningBeforeMatch" />
+
+
+
+    <util:list id="cities">
+    <bean class="com.learn.spring.springinaction.di.model.TeamCity"
+          p:name="Chicago" p:state="IL" p:population="2853114"/>
+    <bean class="com.learn.spring.springinaction.di.model.TeamCity"
+          p:name="Atlanta" p:state="GA" p:population="537958"/>
+    <bean class="com.learn.spring.springinaction.di.model.TeamCity"
+          p:name="Dallas" p:state="TX" p:population="1279910"/>
+    <bean class="com.learn.spring.springinaction.di.model.TeamCity"
+          p:name="Houston" p:state="TX" p:population="2242193"/>
+    <bean class="com.learn.spring.springinaction.di.model.TeamCity"
+          p:name="Odessa" p:state="TX" p:population="90943"/>
+    <bean class="com.learn.spring.springinaction.di.model.TeamCity"
+          p:name="El Paso" p:state="TX" p:population="613190"/>
+    <bean class="com.learn.spring.springinaction.di.model.TeamCity"
+          p:name="Jal" p:state="NM" p:population="1996"/>
+
+    </util:list>
+
+    <util:properties id="settings" location="classpath:springinaction/settings.properties"/>
+
 
 
 </beans>
