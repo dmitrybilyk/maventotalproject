@@ -9,11 +9,11 @@
        http://www.springframework.org/schema/util/spring-util-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-    <!--<bean id="parent" abstract="true">-->
-        <!--<property name="name" value="parentStringName" />-->
-    <!--</bean>-->
+    <bean id="parent" abstract="true">
+        <property name="name" value="parentStringName" />
+    </bean>
 
-    <!--<bean id="child1" class="com.learn.spring.springinaction.parentchild.Child1" parent="parent" />-->
-    <!--<bean id="child2" class="com.learn.spring.springinaction.parentchild.Child2" parent="parent" />-->
+    <bean id="child1" class="com.learn.spring.springinaction.parentchild.Child1" parent="parent" />
+    <bean id="child2" class="com.learn.spring.springinaction.parentchild.Child2" parent="parent" />
 
 </beans>

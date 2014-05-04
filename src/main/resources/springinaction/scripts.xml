@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:lang="http://www.springframework.org/schema/lang"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/lang
+http://www.springframework.org/schema/lang/spring-lang-2.0.xsd">
+
+
+    <!--<lang:groovy id="lime" script-source="classpath:com.spring.TestGroovy.groovy" />-->
+
+    <lang:bsh id="lime"
+              script-interfaces="com.learn.spring.springinaction.scriptsrunning.Lime">
+        <lang:inline-script><![CDATA[
+void drink() {
+System.out.println("Called the doctor woke him up!");
+}
+]]>
+        </lang:inline-script>
+    </lang:bsh>
+
+</beans>
