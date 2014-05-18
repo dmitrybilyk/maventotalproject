@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="myTags" uri="http://journaldev.com/jsp/tlds/mytags"%>
 
 <%--
   Created by IntelliJ IDEA.
@@ -100,7 +101,7 @@
     </script>
 </head>
 <body>
-
+Substring result of /'Dimonckink/' from 1 to 3 = <myTags:subString input="Dimonckik" start="0" end="2" />
 <div>
     <a href="#" id="showLink" onclick="showStudents()">Show students</a>
 </div>
