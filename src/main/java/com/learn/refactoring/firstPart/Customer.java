@@ -22,56 +22,67 @@ class Customer {
     }
 
     public String statement() {
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
         Enumeration rentals = _rentals.elements();
         String result = "Учет аренды для " + getName() + "\n";
         while (rentals.hasMoreElements()) {
-            double thisAmount = 0;
             Rental each = (Rental) rentals.nextElement();
-
-            thisAmount = amountFor(each);
-
-//определить сумму для каждой строки
-
-// добавить очки для активного арендатора
-            frequentRenterPoints ++;
-// бонус за аренду новинки на два дня
-            if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE) &&
-                    each.getDaysRented() > 1) frequentRenterPoints ++;
 //показать результаты для этой аренды
             result += "\t" + each.getMovie().getTitle()+ "\t" +
-                    String.valueOf(thisAmount) + "\n";
-            totalAmount += thisAmount;
+                    String.valueOf(each.getCharge()) + "\n";
         }
 //добавить нижний колонтитул
         result += "Сумма задолженности составляет " +
-                String.valueOf(totalAmount) + "\n";
-        result += "Вы заработали " + String.valueOf(frequentRenterPoints) +
+                String.valueOf(getTotalCharge()) + "\n";
+        result += "Вы заработали " + String.valueOf(getTotalFrequentRenterPoints()) +
                 " очков за активность";
         return result;
     }
 
+//    private double amountFor(Rental aRental) {
+//        return aRental.getCharge();
+//    }
 
-    private double amountFor(Rental each) {
-        double thisAmount = 0;
-        switch (each.getMovie().getPriceCode()) {
-            case Movie.REGULAR:
-                thisAmount += 2;
-                if (each.getDaysRented() > 2)
-                    thisAmount += (each.getDaysRented() - 2) * 1.5;
-                break;
-            case Movie.NEW_RELEASE:
-                thisAmount += each.getDaysRented() * 3;
-                break;
-            case Movie.CHILDRENS:
-                thisAmount += 1.5;
-                if (each.getDaysRented() > 3)
-                    thisAmount += (each.getDaysRented() - 3 * 1.5);
-                break;
+    private double getTotalCharge() {
+        double result = 0;
+        Enumeration rentals = _rentals.elements();
+        while (rentals.hasMoreElements()) {
+            Rental each = (Rental) rentals.nextElement();
+            result += each.getCharge();
         }
-        return thisAmount;
+        return result;
     }
+
+    private int getTotalFrequentRenterPoints(){
+        int result = 0;
+        Enumeration rentals = _rentals.elements();
+        while (rentals.hasMoreElements()) {
+            Rental each = (Rental) rentals.nextElement();
+            result += each.getFrequentRenterPoints();
+        }
+        return result;
+    }
+
+
+
+    public String htmlStatement() {
+        Enumeration rentals = _rentals.elements();
+        String result = "<H1>Операции аренды для <EM>" + getName() +
+                "</EM></H1><P>\n";
+        while (rentals.hasMoreElements()) {
+            Rental each = (Rental) rentals.nextElement();
+// показать результаты по каждой аренде
+            result += each.getMovie().getTitle()+ ": " +
+                    String.valueOf(each.getCharge()) + "<BR>\n";
+        }
+//добавить нижний колонтитул
+        result += "<P>Ваша задолженность составляет <EM>" +
+                String.valueOf(getTotalCharge()) + "</EM><P>\n";
+        result += "На этой аренде вы заработали <EM>" +
+                String.valueOf(getTotalFrequentRenterPoints()) +
+                "</EM> очков за активность<P>";
+        return result;
+    }
+
 
 
 }
