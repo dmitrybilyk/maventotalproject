@@ -18,7 +18,7 @@ public class HelloWorld {
 * Creation of VelocityEngine object is available from 1.2 version only
 * */
 /*STEP 3: Create the template object by calling getTemplate() method in VE(VelocityEngine)*/
-        Template template = velocityEngine.getTemplate("/home/bid/Dev/projects/maventotalproject/src/main/resources/velocity/helloworld.txt");
+        Template template = velocityEngine.getTemplate("./src/main/resources//velocity/helloworld.txt");
 /*STEP 4: Create VelocityContext */
         VelocityContext context = new VelocityContext();
         StringWriter writer = new StringWriter();
