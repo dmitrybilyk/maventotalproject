@@ -1,0 +1,40 @@
+<html>
+<head> <title>Hello Velocity</title> </head>
+<body>
+<h1>Hello World..!!</h1>
+<br />
+## this is a comment, set variable name with "Edw" value
+    #set( $name = "Edw" )
+
+<h2> $name is using velocity</h2>
+
+## if-else statement
+    #if($name.equals("NotEdw"))
+    <br />
+    not an Edw
+    #else
+    <br />
+    Only the Paranoid Survive
+    #end
+
+<br />
+<br />
+
+<table>
+    <tr>
+        <td>Name</td>
+        <td>Address</td>
+<tr>
+## for each statement to iterate over a collection
+    #foreach($user in $users)
+        <tr>
+            <td>$user.name</td>
+            <td>$user.address</td>
+    <tr>
+    #end
+</table>
+
+## simple velocity method
+Today is :  $date.medium
+</body>
+</html>
