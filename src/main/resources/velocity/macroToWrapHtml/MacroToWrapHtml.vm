@@ -1,0 +1,9 @@
+#macro( function )
+<tr>
+<td>
+	komal
+</td>
+</tr>
+#end
+
+#function()

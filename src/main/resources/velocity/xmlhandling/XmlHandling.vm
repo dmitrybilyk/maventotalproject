@@ -1,0 +1,26 @@
+#macro ( recursive $e $indent )
+    #if( $e.getChildren().size() > 0 )
+        $indent <$e.getName()>
+        #foreach ($child in $e.getChildren() )
+            #recursive( $child "$indent  " )
+        #end
+        $indent </$e.getName()>
+    #else
+        $indent <$e.getName()>
+        $indent  $e.getTextTrim()
+        $indent </$e.getName()>
+    #end
+#end
+
+#set($i = " ")
+
+Handling.xml
+
+#recursive( $root.getRootElement() $i )
+
+Data directly :
+
+Rno  : $root.getRootElement()
+.getChild("student").getChild("rno").getText()
+Name : $root.getRootElement()
+.getChild("student").getChild("name").getText()

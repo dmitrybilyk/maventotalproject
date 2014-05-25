@@ -1,0 +1,8 @@
+Student:
+
+#foreach( $stu in $stuList )
+    $stu.rno
+    $stu.name
+    $stu.libno
+
+#end

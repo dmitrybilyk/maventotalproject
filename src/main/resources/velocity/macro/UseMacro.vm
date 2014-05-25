@@ -1,0 +1,12 @@
+#macro(add $list)
+    #set($total=0)
+    #foreach($item in $list)
+        $item
+        #set($total =$total+$item)
+    #end
+--------------
+total = $total
+#end
+
+#set ($list = [1, 2, 2])
+#add($list)

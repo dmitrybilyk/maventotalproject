@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <student>
+        <rno>1</rno>
+        <name>Komal</name>
+    </student>
+    <student>
+        <rno>2</rno>
+        <name>Sandy</name>
+    </student>
+    <student>
+        <rno>3</rno>
+        <name>Ajay</name>
+    </student>
+</document>

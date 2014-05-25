@@ -1,0 +1,15 @@
+##we reference methods here
+
+Day: $date.getDate()
+Month: $date.getMonth()
+#set($year=$date.getYear()+1900)
+Year : $year
+
+
+##we reference properties here
+
+Day: $date.Date
+Month: $date.Month
+#set($year=$date.Year+1900)
+Year: $year
+
