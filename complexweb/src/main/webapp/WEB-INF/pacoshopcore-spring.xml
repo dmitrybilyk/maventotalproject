@@ -1,0 +1,1089 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2013 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--
+        Registering the hybris scopes: "yrequest"
+    -->
+    <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
+        <property name="scopes">
+            <map>
+                <entry key="yrequest" value="de.hybris.platform.spring.HybrisRequestScope"/>
+            </map>
+        </property>
+    </bean>
+
+    <!--&lt;!&ndash; SystemSetup for the PacoshopCore &ndash;&gt;-->
+    <!--<bean id="acceleratorCoreSystemSetup" class="com.cgi.pacoshop.core.setup.CoreSystemSetup"-->
+          <!--parent="abstractCoreSystemSetup"/>-->
+
+    <!-- Solr field value providers -->
+
+    <!--<bean id="electronicsCategorySource" parent="abstractCategorySource">-->
+        <!--<property name="rootCategory" value="1"/>-->
+        <!--&lt;!&ndash; '1' is the root icecat category &ndash;&gt;-->
+    <!--</bean>-->
+    <!--<bean id="electronicsBrandCategorySource" parent="abstractCategorySource">-->
+        <!--<property name="rootCategory" value="brands"/>-->
+        <!--&lt;!&ndash; 'brands' is the root of the brands hierarchy &ndash;&gt;-->
+    <!--</bean>-->
+
+    <!--<bean id="apparelCategorySource" parent="abstractCategorySource">-->
+        <!--<property name="rootCategory" value="categories"/>-->
+        <!--&lt;!&ndash; 'categories' is the root apparel category &ndash;&gt;-->
+    <!--</bean>-->
+    <!--<bean id="apparelBrandCategorySource" parent="abstractCategorySource">-->
+        <!--<property name="rootCategory" value="brands"/>-->
+        <!--&lt;!&ndash; 'brands' is the root of the brands hierarchy &ndash;&gt;-->
+    <!--</bean>-->
+    <!--<bean id="apparelCollectionCategorySource" parent="abstractCategorySource">-->
+        <!--<property name="rootCategory" value="collections"/>-->
+        <!--&lt;!&ndash; 'collections' is the root of the collections hierarchy &ndash;&gt;-->
+    <!--</bean>-->
+
+    <!--<bean id="abstractCategoryCodeValueProvider" abstract="true"-->
+          <!--class="de.hybris.platform.commerceservices.search.solrfacetsearch.provider.impl.CategoryCodeValueProvider"-->
+          <!--parent="abstractPropertyFieldValueProvider">-->
+        <!--<property name="fieldNameProvider" ref="solrFieldNameProvider"/>-->
+        <!--<property name="commonI18NService" ref="commonI18NService"/>-->
+    <!--</bean>-->
+    <!--<bean id="abstractCategoryNameValueProvider" abstract="true"-->
+          <!--class="de.hybris.platform.commerceservices.search.solrfacetsearch.provider.impl.CategoryNameValueProvider"-->
+          <!--parent="abstractPropertyFieldValueProvider">-->
+        <!--<property name="fieldNameProvider" ref="solrFieldNameProvider"/>-->
+        <!--<property name="commonI18NService" ref="commonI18NService"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="electronicsCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">-->
+        <!--<property name="categorySource" ref="electronicsCategorySource"/>-->
+    <!--</bean>-->
+    <!--<bean id="electronicsBrandCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">-->
+        <!--<property name="categorySource" ref="electronicsBrandCategorySource"/>-->
+    <!--</bean>-->
+    <!--<bean id="electronicsCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">-->
+        <!--<property name="categorySource" ref="electronicsCategorySource"/>-->
+    <!--</bean>-->
+    <!--<bean id="electronicsBrandCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">-->
+        <!--<property name="categorySource" ref="electronicsBrandCategorySource"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="apparelCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">-->
+        <!--<property name="categorySource" ref="apparelCategorySource"/>-->
+    <!--</bean>-->
+    <!--<bean id="apparelBrandCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">-->
+        <!--<property name="categorySource" ref="apparelBrandCategorySource"/>-->
+    <!--</bean>-->
+    <!--<bean id="apparelCollectionCategoryCodeValueProvider" parent="abstractCategoryCodeValueProvider">-->
+        <!--<property name="categorySource" ref="apparelCollectionCategorySource"/>-->
+    <!--</bean>-->
+    <!--<bean id="apparelCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">-->
+        <!--<property name="categorySource" ref="apparelCategorySource"/>-->
+    <!--</bean>-->
+    <!--<bean id="apparelBrandCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">-->
+        <!--<property name="categorySource" ref="apparelBrandCategorySource"/>-->
+    <!--</bean>-->
+    <!--<bean id="apparelCollectionCategoryNameValueProvider" parent="abstractCategoryNameValueProvider">-->
+        <!--<property name="categorySource" ref="apparelCollectionCategorySource"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="image515ValueProvider" parent="abstractImageValueProvider">-->
+        <!--<property name="mediaFormat" value="515Wx515H"/>-->
+    <!--</bean>-->
+    <!--<bean id="image300ValueProvider" parent="abstractImageValueProvider">-->
+        <!--<property name="mediaFormat" value="300Wx300H"/>-->
+    <!--</bean>-->
+    <!--<bean id="image96ValueProvider" parent="abstractImageValueProvider">-->
+        <!--<property name="mediaFormat" value="96Wx96H"/>-->
+    <!--</bean>-->
+    <!--<bean id="image65ValueProvider" parent="abstractImageValueProvider">-->
+        <!--<property name="mediaFormat" value="65Wx65H"/>-->
+    <!--</bean>-->
+    <!--<bean id="image30ValueProvider" parent="abstractImageValueProvider">-->
+        <!--<property name="mediaFormat" value="30Wx30H"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="productUrlValueProvider"-->
+          <!--class="de.hybris.platform.commerceservices.search.solrfacetsearch.provider.impl.ProductUrlValueProvider"-->
+          <!--parent="abstractPropertyFieldValueProvider">-->
+        <!--<property name="urlResolver" ref="productModelUrlResolver"/>-->
+        <!--<property name="fieldNameProvider" ref="solrFieldNameProvider"/>-->
+        <!--<property name="i18nService" ref="i18nService"/>-->
+        <!--<property name="commonI18NService" ref="commonI18NService"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="promotionCodeValueProvider"-->
+          <!--class="de.hybris.platform.commerceservices.search.solrfacetsearch.provider.impl.PromotionCodeValueProvider"-->
+          <!--parent="abstractPropertyFieldValueProvider">-->
+        <!--<property name="promotionsService" ref="promotionsService"/>-->
+        <!--<property name="fieldNameProvider" ref="solrFieldNameProvider"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="promotionImageValueProvider"-->
+          <!--class="de.hybris.platform.commerceservices.search.solrfacetsearch.provider.impl.PrimaryPromotionImageValueProvider"-->
+          <!--parent="abstractPropertyFieldValueProvider">-->
+        <!--<property name="promotionsService" ref="promotionsService"/>-->
+        <!--<property name="fieldNameProvider" ref="solrFieldNameProvider"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="apparelPointOfServiceFacetDisplayNameProvider"-->
+          <!--class="com.cgi.pacoshop.core.search.solrfacetsearch.provider.impl.PointOfServiceFacetDisplayNameProvider"-->
+            <!-->-->
+        <!--<property name="pointOfServiceService" ref="pointOfServiceService"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="electronicsPointOfServiceFacetDisplayNameProvider"-->
+          <!--class="com.cgi.pacoshop.core.search.solrfacetsearch.provider.impl.PointOfServiceFacetDisplayNameProvider"-->
+            <!-->-->
+        <!--<property name="pointOfServiceService" ref="pointOfServiceService"/>-->
+    <!--</bean>-->
+
+    <!--
+        Event listeners are singletons, therefore the dependency for a bean in tenant-scope
+        must be configured with a lookup method.
+    -->
+    <!--<bean id="orderCancelledEventListener"
+          class="com.cgi.pacoshop.core.event.OrderCancelledEventListener" parent="abstractSiteEventListener">
+        <property name="modelService" ref="modelService"/>
+        <property name="businessProcessService" ref="businessProcessService"/>
+    </bean>
+    <bean id="orderRefundEventListener"
+          class="com.cgi.pacoshop.core.event.OrderRefundEventListener" parent="abstractSiteEventListener">
+        <property name="modelService" ref="modelService"/>
+        <property name="businessProcessService" ref="businessProcessService"/>
+    </bean>
+    <bean id="customerRegistrationEventListener"
+          class="com.cgi.pacoshop.core.event.RegistrationEventListener" parent="abstractSiteEventListener">
+        <property name="modelService" ref="modelService"/>
+        <property name="businessProcessService" ref="businessProcessService"/>
+    </bean>
+    <bean id="forgottenPasswordEventListener"
+          class="com.cgi.pacoshop.core.event.ForgottenPasswordEventListener" parent="abstractSiteEventListener">
+        <property name="modelService" ref="modelService"/>
+        <property name="businessProcessService" ref="businessProcessService"/>
+    </bean>-->
+    <!--<bean id="submitOrderEventListener" class="com.cgi.pacoshop.core.event.SubmitOrderEventListener"-->
+          <!--parent="abstractSiteEventListener">-->
+        <!--<property name="businessProcessService" ref="businessProcessService"/>-->
+        <!--<property name="modelService" ref="modelService"/>-->
+        <!--<property name="baseStoreService" ref="baseStoreService"/>-->
+    <!--</bean>-->
+    <!--<bean id="orderConfirmationEventListener"-->
+          <!--class="com.cgi.pacoshop.core.event.OrderConfirmationEventListener" parent="abstractSiteEventListener">-->
+        <!--<property name="modelService" ref="modelService"/>-->
+        <!--<property name="businessProcessService" ref="businessProcessService"/>-->
+    <!--</bean>-->
+    <!--<bean id="orderErrorEventListener"-->
+          <!--class="com.cgi.pacoshop.core.event.OrderErrorEventListener" parent="abstractSiteEventListener">-->
+        <!--<property name="modelService" ref="modelService"/>-->
+        <!--<property name="businessProcessService" ref="businessProcessService"/>-->
+    <!--</bean>-->
+    <!--<bean id="emailFulfillmentEventListener"-->
+          <!--class="com.cgi.pacoshop.core.event.EmailFulfillmentEventListener" parent="abstractSiteEventListener">-->
+        <!--<property name="modelService" ref="modelService"/>-->
+        <!--<property name="businessProcessService" ref="businessProcessService"/>-->
+    <!--</bean>-->
+    <!--<bean id="sendDeliveryMessageEventListener"
+          class="com.cgi.pacoshop.core.event.SendDeliveryMessageEventListener" parent="abstractEventListener">
+        <property name="modelService" ref="modelService"/>
+        <property name="businessProcessService" ref="businessProcessService"/>
+    </bean>
+    <bean id="sendReadyForPickupMessageEventListener"
+          class="com.cgi.pacoshop.core.event.SendReadyForPickupMessageEventListener" parent="abstractEventListener">
+        <property name="modelService" ref="modelService"/>
+        <property name="businessProcessService" ref="businessProcessService"/>
+    </bean>
+    <bean id="sendOrderPartiallyCanceledMessageEventListener"
+          class="com.cgi.pacoshop.core.event.SendOrderPartiallyCanceledMessageEventListener" parent="abstractEventListener">
+        <property name="modelService" ref="modelService"/>
+        <property name="businessProcessService" ref="businessProcessService"/>
+    </bean>
+    <bean id="sendOrderPartiallyRefundedMessageEventListener"
+          class="com.cgi.pacoshop.core.event.SendOrderPartiallyRefundedMessageEventListener" parent="abstractEventListener">
+        <property name="modelService" ref="modelService"/>
+        <property name="businessProcessService" ref="businessProcessService"/>
+    </bean>
+    <bean id="sendNotPickedUpConsignmentCanceledMessageEventListener"
+          class="com.cgi.pacoshop.core.event.SendNotPickedUpConsignmentCanceledMessageEventListener"
+          parent="abstractEventListener">
+        <property name="modelService" ref="modelService"/>
+        <property name="businessProcessService" ref="businessProcessService"/>
+    </bean>
+    <bean id="orderCompletedEventListener" class="com.cgi.pacoshop.core.event.OrderCompletedEventListener"
+          parent="abstractSiteEventListener">
+        <property name="modelService" ref="modelService"/>
+        <property name="businessProcessService" ref="businessProcessService"/>
+    </bean>
+-->
+    <!-- Process resources definition -->
+
+    <!--<bean id="customerRegistrationEmailProcessDefinitionResource"-->
+          <!--class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">-->
+        <!--<property name="resource" value="classpath:/pacoshopcore/processes/customerRegistrationEmailProcess.xml"/>-->
+    <!--</bean>-->
+    <!--<bean id="forgottenPasswordEmailProcessDefinitionResource"-->
+          <!--class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">-->
+        <!--<property name="resource" value="classpath:/pacoshopcore/processes/forgottenPasswordEmailProcess.xml"/>-->
+    <!--</bean>-->
+    <!--<bean id="orderConfirmationEmailProcessDefinitionResource"-->
+          <!--class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">-->
+        <!--<property name="resource" value="classpath:/pacoshopcore/processes/orderConfirmationEmailProcess.xml"/>-->
+    <!--</bean>-->
+    <!--<bean id="orderErrorEmailProcessDefinitionResource"-->
+          <!--class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">-->
+        <!--<property name="resource" value="classpath:/pacoshopcore/processes/orderErrorEmailProcess.xml"/>-->
+    <!--</bean>-->
+    <!--<bean id="sendDeliveryEmailProcessDefinitionResource"-->
+          <!--class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">-->
+        <!--<property name="resource" value="classpath:/pacoshopcore/processes/sendDeliveryEmailProcess.xml"/>-->
+    <!--</bean>-->
+    <!--<bean id="sendReadyForPickupEmailProcessDefinitionResource"-->
+          <!--class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">-->
+        <!--<property name="resource" value="classpath:/pacoshopcore/processes/sendReadyForPickupEmailProcess.xml"/>-->
+    <!--</bean>-->
+    <!--<bean id="sendOrderCancelledEmailProcessDefinitionResource"-->
+          <!--class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">-->
+        <!--<property name="resource" value="classpath:/pacoshopcore/processes/sendOrderCancelledEmailProcess.xml"/>-->
+    <!--</bean>-->
+    <!--<bean id="sendOrderRefundEmailProcessDefinitionResource"-->
+          <!--class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">-->
+        <!--<property name="resource" value="classpath:/pacoshopcore/processes/sendOrderRefundEmailProcess.xml"/>-->
+    <!--</bean>-->
+    <!--<bean id="sendOrderPartiallyCanceledEmailProcessDefinitionResource"-->
+          <!--class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">-->
+        <!--<property name="resource" value="classpath:/pacoshopcore/processes/sendOrderPartiallyCanceledEmailProcess.xml"/>-->
+    <!--</bean>-->
+    <!--<bean id="sendOrderPartiallyRefundedEmailProcessDefinitionResource"-->
+          <!--class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">-->
+        <!--<property name="resource" value="classpath:/pacoshopcore/processes/sendOrderPartiallyRefundedEmailProcess.xml"/>-->
+    <!--</bean>-->
+    <!--<bean id="sendNotPickedUpConsignmentCanceledEmailProcessDefinitionResource"-->
+          <!--class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">-->
+        <!--<property name="resource" value="classpath:/pacoshopcore/processes/sendNotPickedUpConsignmentCanceledEmailProcess.xml"/>-->
+    <!--</bean>-->
+    <!--<bean id="orderEmailFulfillmentProcessDefinitionResource"-->
+          <!--class="de.hybris.platform.processengine.definition.ProcessDefinitionResource">-->
+        <!--<property name="resource" value="classpath:/pacoshopcore/processes/orderEmailFulfillmentProcess.xml"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; Actions &ndash;&gt;-->
+    <!--<bean id="abstractAction" class="de.hybris.platform.processengine.action.AbstractAction"-->
+          <!--abstract="true">-->
+        <!--<property name="modelService" ref="modelService"/>-->
+        <!--<property name="processParameterHelper" ref="processParameterHelper"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="sendEmail" class="de.hybris.platform.acceleratorservices.process.email.actions.SendEmailAction"-->
+          <!--parent="abstractAction">-->
+        <!--<property name="emailService" ref="emailService"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="abstractGenerateEmailAction"-->
+          <!--class="de.hybris.platform.acceleratorservices.process.email.actions.GenerateEmailAction"-->
+          <!--parent="abstractAction" abstract="true">-->
+        <!--<property name="modelService" ref="modelService"/>-->
+        <!--<property name="cmsEmailPageService" ref="cmsEmailPageService"/>-->
+        <!--<property name="contextResolutionStrategy" ref="processContextResolutionStrategy"/>-->
+        <!--<property name="emailGenerationService" ref="emailGenerationService"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="generateCustomerRegistrationEmail" parent="abstractGenerateEmailAction">-->
+        <!--<property name="frontendTemplateName" value="CustomerRegistrationEmailTemplate"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="generateForgottenPasswordEmail" parent="abstractGenerateEmailAction">-->
+        <!--<property name="frontendTemplateName" value="ForgottenPasswordEmailTemplate"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="generateOrderConfirmationEmail" parent="abstractGenerateEmailAction">-->
+        <!--<property name="frontendTemplateName" value="OrderConfirmationEmailTemplate"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="generateOrderErrorEmail" parent="abstractGenerateEmailAction">-->
+        <!--<property name="frontendTemplateName" value="OrderErrorEmailTemplate"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="generateDeliverySentEmail" parent="abstractGenerateEmailAction">-->
+        <!--<property name="frontendTemplateName" value="DeliverySentEmailTemplate"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="generateReadyForPickupEmail" parent="abstractGenerateEmailAction">-->
+        <!--<property name="frontendTemplateName" value="ReadyForPickupEmailTemplate"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="generateOrderCancelledEmail" parent="abstractGenerateEmailAction">-->
+        <!--<property name="frontendTemplateName" value="OrderCancelledEmailTemplate"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="generateOrderRefundEmail" parent="abstractGenerateEmailAction">-->
+        <!--<property name="frontendTemplateName" value="OrderRefundEmailTemplate"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="generateOrderPartiallyCanceledEmail" parent="abstractGenerateEmailAction">-->
+        <!--<property name="frontendTemplateName" value="OrderPartiallyCanceledEmailTemplate"/>-->
+    <!--</bean>-->
+    <!--<bean id="generateOrderPartiallyRefundedEmail" parent="abstractGenerateEmailAction">-->
+        <!--<property name="frontendTemplateName" value="OrderPartiallyRefundedEmailTemplate"/>-->
+    <!--</bean>-->
+    <!--<bean id="generateNotPickedUpConsignmentCanceledEmail" parent="abstractGenerateEmailAction">-->
+        <!--<property name="frontendTemplateName" value="NotPickedUpConsignmentCanceledEmailTemplate"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="generateEmailFulfillmentEmail" parent="abstractGenerateEmailAction">-->
+        <!--<property name="frontendTemplateName" value="OrderEmailFulfillmentEmailTemplate"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="removeSentEmail"-->
+          <!--class="de.hybris.platform.acceleratorservices.process.email.actions.RemoveSentEmailAction"-->
+          <!--parent="abstractAction">-->
+        <!--<property name="modelService" ref="modelService"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; Simple Suggestion Service &ndash;&gt;-->
+    <!--<alias alias="simpleSuggestionService" name="defaultSimpleSuggestionService"/>-->
+    <!--<bean id="defaultSimpleSuggestionService"-->
+          <!--class="com.cgi.pacoshop.core.suggestion.impl.DefaultSimpleSuggestionService">-->
+        <!--<property name="simpleSuggestionDao" ref="simpleSuggestionDao"/>-->
+    <!--</bean>-->
+    <!--<alias alias="simpleSuggestionDao" name="defaultSimpleSuggestionDao"/>-->
+    <!--<bean id="defaultSimpleSuggestionDao"-->
+          <!--class="com.cgi.pacoshop.core.suggestion.dao.impl.DefaultSimpleSuggestionDao"-->
+          <!--parent="abstractItemDao">-->
+        <!--<property name="flexibleSearchService" ref="flexibleSearchService"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="mccSiteUrlHelper" class="com.cgi.pacoshop.core.util.MccSiteUrlHelper">-->
+        <!--<property name="siteBaseUrlResolutionService" ref="siteBaseUrlResolutionService"/>-->
+        <!--<property name="cmsSiteService" ref="cmsSiteService"/>-->
+    <!--</bean>-->
+
+
+    <!-- checkout flow configuration -->
+
+    <!--<alias alias="checkoutFlowStrategy" name="uiExperienceCheckoutFlowStrategy"/>-->
+    <!--<bean id="uiExperienceCheckoutFlowStrategy"-->
+          <!--class="com.cgi.pacoshop.core.checkout.flow.impl.UiExperienceCheckoutFlowStrategy"-->
+            <!-->-->
+        <!--&lt;!&ndash; This strategy looks up a strategy based on the current UI experience level &ndash;&gt;-->
+        <!--<property name="uiExperienceService" ref="uiExperienceService"/>-->
+
+        <!--<property name="experienceMappings">-->
+            <!--<map>-->
+                <!--<entry key="MOBILE" value-ref="multiStepCheckoutFlowStrategy"/>-->
+            <!--</map>-->
+        <!--</property>-->
+
+        <!--&lt;!&ndash; Default to site specific checkout &ndash;&gt;-->
+        <!--<property name="defaultStrategy" ref="pickUpInStoreCheckoutFlowStrategy"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="pickUpInStoreCheckoutFlowStrategy"-->
+          <!--class="com.cgi.pacoshop.core.checkout.flow.impl.PickUpInStoreCheckoutFlowStrategy">-->
+        <!--<property name="pickupStrategy" ref="pickupStrategy"/>-->
+        <!--<property name="defaultStrategy" ref="siteCheckoutFlowStrategy"/>-->
+        <!--<property name="multiStepCheckoutFlowStrategy" ref="multiStepCheckoutFlowStrategy"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="siteCheckoutFlowStrategy"-->
+          <!--class="com.cgi.pacoshop.core.checkout.flow.impl.SiteCheckoutFlowStrategy">-->
+        <!--&lt;!&ndash; This strategy looks up a strategy based on the current site UID &ndash;&gt;-->
+        <!--<property name="cmsSiteService" ref="cmsSiteService"/>-->
+        <!--<property name="siteMappings">-->
+            <!--<map>-->
+                <!--<entry key="electronics" value-ref="newCustomerCheckoutFlowStrategy"/>-->
+                <!--<entry key="apparel-de" value-ref="multiStepCheckoutFlowStrategy"/>-->
+                <!--<entry key="apparel-uk" value-ref="singleStepCheckoutFlowStrategy"/>-->
+            <!--</map>-->
+        <!--</property>-->
+        <!--&lt;!&ndash; Default to SINGLE step checkout &ndash;&gt;-->
+        <!--<property name="defaultStrategy" ref="singleStepCheckoutFlowStrategy"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="newCustomerCheckoutFlowStrategy"-->
+          <!--class="com.cgi.pacoshop.core.checkout.flow.impl.NewCustomerCheckoutFlowStrategy">-->
+        <!--&lt;!&ndash; This strategy works out if the user has created any data &ndash;&gt;-->
+        <!--<property name="userService" ref="userService"/>-->
+        <!--<property name="customerAccountService" ref="customerAccountService"/>-->
+        <!--<property name="defaultStrategy" ref="singleStepCheckoutFlowStrategy"/>-->
+        <!--<property name="newCustomerStrategy" ref="multiStepCheckoutFlowStrategy"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="singleStepCheckoutFlowStrategy"-->
+          <!--class="com.cgi.pacoshop.core.checkout.flow.impl.FixedCheckoutFlowStrategy">-->
+        <!--<property name="checkoutFlow" value="SINGLE"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="multiStepCheckoutFlowStrategy"-->
+          <!--class="com.cgi.pacoshop.core.checkout.flow.impl.FixedCheckoutFlowStrategy">-->
+        <!--<property name="checkoutFlow" value="MULTISTEP"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash;Checkout PCI Strategies &ndash;&gt;-->
+    <!--<alias alias="checkoutPciStrategy" name="configuredCheckoutPciStrategy"/>-->
+    <!--<bean id="configuredCheckoutPciStrategy"-->
+          <!--class="com.cgi.pacoshop.core.checkout.pci.impl.ConfiguredCheckoutPciStrategy">-->
+        <!--&lt;!&ndash; This strategy looks in the session to see if HOP is the chosen option.  HOP is only valid if configured in the application properties file. Defaults to wsCheckoutPciStrategy. &ndash;&gt;-->
+        <!--<property name="siteConfigService" ref="siteConfigService"/>-->
+
+        <!--&lt;!&ndash; Default to the wsCheckoutPciStrategy &ndash;&gt;-->
+        <!--<property name="defaultCheckoutPciStrategy" ref="wsCheckoutPciStrategy"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="wsCheckoutPciStrategy"-->
+          <!--class="com.cgi.pacoshop.core.checkout.pci.impl.FixedCheckoutPciStrategy">-->
+        <!--&lt;!&ndash; Use the Payment extension web services to create credit card details &ndash;&gt;-->
+        <!--<property name="subscriptionPciOption" value="DEFAULT"/>-->
+    <!--</bean>-->
+    <!--<bean id="hopCheckoutPciStrategy"-->
+          <!--class="com.cgi.pacoshop.core.checkout.pci.impl.FixedCheckoutPciStrategy">-->
+        <!--&lt;!&ndash; Use the Hosted Order Payment to create credit card details &ndash;&gt;-->
+        <!--<property name="subscriptionPciOption" value="HOP"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash;********************************************CUSTOM***************************************************&ndash;&gt;-->
+
+
+    <!--<bean id="pacoshopProductDao" class="com.cgi.pacoshop.core.daos.impl.PacoshopProductDaoImpl" parent="defaultProductDao">-->
+        <!--<property name="flexibleSearchService" ref="flexibleSearchService"/>-->
+    <!--</bean>-->
+
+
+    <!--<bean id="pacoshopProductService" class="com.cgi.pacoshop.core.service.impl.PacoshopProductServiceImpl"-->
+          <!--parent="defaultProductService">-->
+        <!--<property name="pacoshopProductDao" ref="pacoshopProductDao"/>-->
+        <!--<property name="modelService" ref="modelService"/>-->
+        <!--<property name="txManager" ref="txManager"/>-->
+        <!--<property name="sessionService" ref="sessionService"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="productUniqueInterceptor" class="com.cgi.pacoshop.core.interceptors.ProductUniqueInterceptor">-->
+        <!--<property name="productService" ref="pacoshopProductService"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="ProductInterceptorMapping" class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">-->
+        <!--<property name="interceptor" ref="productUniqueInterceptor"/>-->
+        <!--<property name="typeCode" value="Product"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="singleProductImportJob" class="com.cgi.pacoshop.core.jobs.SingleProductImportJob" autowire="byName"/>-->
+    <!--<bean id="subscriptionProductImportJob" class="com.cgi.pacoshop.core.jobs.SubscriptionProductsImportJob" autowire="byName"/>-->
+
+    <!--<bean id="clientProperties" class="com.cgi.pacoshop.core.service.RestClientProperties">-->
+        <!--<property name="configurationService" ref="configurationService"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="restTemplateProductSingle" class="org.springframework.web.client.RestTemplate"/>-->
+    <!--<bean id="restTemplateProductSubscription" class="org.springframework.web.client.RestTemplate"/>-->
+
+    <!--<bean id="restClient" class="com.cgi.pacoshop.core.service.impl.ProductImportRestClientImpl">-->
+    <!--</bean>-->
+
+    <!--<bean id="restTemplateUser" class="org.springframework.web.client.RestTemplate"/>-->
+
+    <!--<bean id="restTemplateBusinessPartner" class="org.springframework.web.client.RestTemplate"/>-->
+
+    <!--<bean id="ssoRestClient" class="com.cgi.pacoshop.core.service.sso.impl.SSORestClientImpl">-->
+    <!--</bean>-->
+
+    <!--<bean id="ssoCustomerService" class="com.cgi.pacoshop.core.service.sso.impl.SSOCustomerServiceImpl">-->
+    <!--</bean>-->
+
+    <!--<bean id="serviceBusRestClient" class="com.cgi.pacoshop.core.service.servicebus.impl.ServiceBusRestClientImpl">-->
+    <!--</bean>-->
+
+    <!--<bean id="serviceBusBusinessPartnerService"-->
+          <!--class="com.cgi.pacoshop.core.service.servicebus.impl.ServiceBusBusinessPartnerServiceImpl">-->
+    <!--</bean>-->
+
+    <!--<bean id="abstractFormElementGroup" abstract="true"-->
+          <!--class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.AbstractFormElementGroup"/>-->
+
+    <!--***********************************************Create 4 checkout step beans***************************************************-->
+    <!--
+        STEP NAMES ARE USED IN A "GO TO SPECIFIC STEP" FLOW: http://shop.site1.local:9001/dynamiccheckout/<step name>
+    -->
+    <!--Login -->
+    <bean name="loginFormDTO" class="com.learn.formgroups.formdtoimpl.LoginFormDTO" scope="prototype"/>
+    <bean id="loginStep" class="com.learn.formgroups.DefaultCheckoutStep" scope="request">
+        <property name="stepName" value="#{configurationService.configuration.getProperty('dcf.login.step.name')}"/>
+        <property name="cmsPageLabel" value="loginPage"/>
+        <property name="lastStep" value="false"/>
+        <property name="formElementGroups">
+            <list>
+                <bean id="loginPageFormElementGroup"
+                      class="LoginPageFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+                <bean id="anonymousFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.loginpage.AnonymousFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+            </list>
+        </property>
+        <property name="formDTO" ref="loginFormDTO"/>
+    </bean>
+
+    <!--Kundendaten-->
+    <bean name="checkoutFormDTO" class="com.cgi.pacoshop.core.checkout.dynamic.impl.CheckoutFormDTO" scope="prototype"/>
+    <bean id="customerDataStep" class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.impl.DefaultCheckoutStep"
+          scope="yrequest">
+        <property name="stepName" value="#{configurationService.configuration.getProperty('dcf.customer.step.name')}"/>
+        <property name="lastStep" value="false"/>
+        <property name="cmsPageLabel" value="userDataPage"/>
+        <property name="formElementGroups">
+            <list>
+                <bean id="differentInvoiceAddressFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.customerdatapage.DifferentInvoiceAddressFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+                <bean id="downloadProductTypeFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.customerdatapage.DownloadProductTypeFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+                <bean id="goodPrintDigitalProductTypeFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.customerdatapage.GoodPrintDigitalProductTypeFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+                <bean id="milesAndMoreBonusFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.customerdatapage.MilesAndMoreBonusFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+                <bean id="monetaryBonusReferralFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.customerdatapage.MonetaryBonusReferralFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+                <bean id="monetaryBonusNoReferralFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.customerdatapage.MonetaryBonusNoReferralFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+                <bean id="studentOfferFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.customerdatapage.StudentOfferFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+                <bean id="digitalDifferentShipmentAddressFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.customerdatapage.DigitalDifferentShipmentAddressFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+                <bean id="physicalDifferentShipmentAddressFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.customerdatapage.PhysicalDifferentShipmentAddressFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+                <bean id="aboOfferFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.customerdatapage.AboOfferFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+                <bean id="physicalBonusWithReferralFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.customerdatapage.PhysicalBonusWithReferralFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+                <bean id="newsletterProductTypeFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.customerdatapage.NewsletterProductTypeFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+
+            </list>
+        </property>
+        <property name="formDTO" ref="checkoutFormDTO"/>
+    </bean>
+
+
+    <!--Lieferung-->
+    <bean name="shipmentInfoFormDTO" class="com.cgi.pacoshop.core.checkout.dynamic.impl.ShipmentInfoFormDTO" scope="prototype"/>
+    <bean id="deliveryStep" class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.impl.DefaultCheckoutStep"
+          scope="yrequest">
+        <property name="stepName" value="#{configurationService.configuration.getProperty('dcf.shipment.step.name')}"/>
+        <property name="cmsPageLabel" value="shipmentPage"/>
+        <property name="lastStep" value="false"/>
+        <property name="formElementGroups">
+            <list>
+                <bean id="GoodPrintDigitalDifferentInvoiceAddressFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.shipmentpage.GoodPrintDigitalDifferentInvoceAddressFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+                <bean id="DeliveryStartFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.shipmentpage.DeliveryStartFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+
+
+                <bean id="ShipmentPagePhysicalDifferentShipmentAddressFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.shipmentpage.ShipmentPagePhysicalDifferentShipmentAddressFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+
+                <bean id="ShipmentPageDigitalDifferentShipmentAddressFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.shipmentpage.ShipmentPageDigitalDifferentShipmentAddressFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+            </list>
+        </property>
+        <property name="formDTO" ref="shipmentInfoFormDTO"/>
+    </bean>
+    <!--Zahlungsinformationen-->
+    <bean name="paymentInfoFormDTO" class="com.cgi.pacoshop.core.checkout.dynamic.impl.PaymentInfoFormDTO" scope="prototype"/>
+    <bean id="paymentInfoStep" class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.impl.DefaultCheckoutStep"
+          scope="yrequest">
+        <property name="stepName" value="#{configurationService.configuration.getProperty('dcf.payment.step.name')}"/>
+        <property name="cmsPageLabel" value="paymentPage"/>
+        <property name="lastStep" value="false"/>
+        <property name="formElementGroups">
+            <list>
+                <!--                <bean id="onlineArticleFormElementGroup"
+                                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.paymentpage.OnlineArticleFormElementGroup"
+                                      parent="abstractFormElementGroup"/>
+                                <bean id="downloadElementGroup"
+                                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.paymentpage.DownloadFormElementGroup"
+                                      parent="abstractFormElementGroup"/>
+                                <bean id="goodFormElementGroup"
+                                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.paymentpage.GoodFormElementGroup"
+                                      parent="abstractFormElementGroup"/>
+                                <bean id="newsLetterFormElementGroup"
+                                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.paymentpage.NewsLetterFormElementGroup"
+                                      parent="abstractFormElementGroup"/>
+                                <bean id="digitalAboFormElementGroup"
+                                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.paymentpage.DigitalAboFormElementGroup"
+                                      parent="abstractFormElementGroup"/>
+                                <bean id="printAboFormElementGroup"
+                                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.paymentpage.PrintAboFormElementGroup"
+                                      parent="abstractFormElementGroup"/>-->
+                <bean id="paymentPageFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.paymentpage.PaymentFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+                <bean id="paymentInAdvanceFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.paymentpage.PaymentInAdvanceFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+            </list>
+        </property>
+        <property name="formDTO" ref="paymentInfoFormDTO"/>
+    </bean>
+    <!--Zusammenfassung -->
+    <bean name="summaryStepFormDTO" class="com.cgi.pacoshop.core.checkout.dynamic.impl.SummaryStepFormDTO" scope="prototype"/>
+    <bean id="summaryStep" class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.impl.DefaultCheckoutStep" scope="yrequest">
+        <property name="stepName" value="#{configurationService.configuration.getProperty('dcf.summary.step.name')}"/>
+        <property name="cmsPageLabel" value="summaryPage"/>
+        <property name="lastStep" value="true"/>
+        <property name="formElementGroups">
+            <list>
+                <bean id="downloadOnlineArtikel"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.summarypage.SummaryPageFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+
+                <bean id="customerInfoSummaryPageFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.summarypage.CustomerInfoSummaryPageFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+
+                <bean id="OnlineArtikelSummaryPageFormElementGroup"
+                      class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.summarypage.OnlineArtikelSummaryPageFormElementGroup"
+                      parent="abstractFormElementGroup"/>
+            </list>
+        </property>
+        <property name="formDTO" ref="summaryStepFormDTO"/>
+    </bean>
+    <!--Set checkout steps-->
+    <bean id="steps" class="java.util.ArrayList" scope="yrequest">
+        <constructor-arg>
+            <list>
+                <ref bean="loginStep"/>
+                <ref bean="customerDataStep"/>
+                <ref bean="deliveryStep"/>
+                <ref bean="paymentInfoStep"/>
+                <ref bean="summaryStep"/>
+            </list>
+        </constructor-arg>
+    </bean>
+    <alias alias="checkoutStepService" name="defaultCheckoutStepService"/>
+    <bean id="defaultCheckoutStepService"
+          class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.impl.DefaultCheckoutStepService">
+        <lookup-method name="getCheckoutSteps" bean="steps"/>
+    </bean>
+
+    <!-- This is needed by DCF to be able to recognize what step is responsible for handling particular FormDTO -->
+    <!-- When you define a FormDTO for checkoutstep you should specify its full name (.getClass().getName() in appropriate entry key entry -->
+    <bean id="cartContentsFragmentDTO" class="com.cgi.pacoshop.core.checkout.dynamic.CartContentsFragmentDTO" scope="session"/>
+
+    <bean id="formsAndStepAssociations" class="java.util.HashMap" scope="singleton">
+        <constructor-arg>
+            <map key-type="java.lang.String" value-type="java.lang.String">
+                <entry key="com.cgi.pacoshop.core.checkout.dynamic.impl.CheckoutFormDTO"
+                       value="#{configurationService.configuration.getProperty('dcf.customer.step.name')}"/>
+                <entry key="com.cgi.pacoshop.core.checkout.dynamic.impl.ShipmentInfoFormDTO"
+                       value="#{configurationService.configuration.getProperty('dcf.shipment.step.name')}"/>
+                <entry key="com.cgi.pacoshop.core.checkout.dynamic.impl.PaymentInfoFormDTO"
+                       value="#{configurationService.configuration.getProperty('dcf.payment.step.name')}"/>
+                <entry key="com.cgi.pacoshop.core.checkout.dynamic.impl.SummaryStepFormDTO"
+                       value="#{configurationService.configuration.getProperty('dcf.summary.step.name')}"/>
+                <entry key="com.cgi.pacoshop.core.checkout.dynamic.impl.LoginFormDTO"
+                       value="#{configurationService.configuration.getProperty('dcf.login.step.name')}"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="importProductService" class="com.cgi.pacoshop.core.service.impl.ImportProductServiceImpl"/>
+
+    <bean id="restRetryService" class="com.cgi.pacoshop.core.service.impl.RestRetryServiceImpl"/>
+
+    <bean id="vatGroupService" class="com.cgi.pacoshop.core.service.impl.VATGroupServiceImpl"/>
+
+    <bean id="vatGroupDao" class="com.cgi.pacoshop.core.daos.impl.VATGroupDaoImpl">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <bean id="productTypeDAO" class="com.cgi.pacoshop.core.daos.impl.ProductTypeDAOImpl">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <bean id="paymentTypeDAO" class="com.cgi.pacoshop.core.daos.impl.PaymentTypeDAOImpl">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <bean id="productTypeService" class="com.cgi.pacoshop.core.service.impl.ProductTypeServiceImpl"/>
+
+    <bean id="pacoshopCartService" class="com.cgi.pacoshop.core.service.impl.PacoshopCartServiceImpl"/>
+
+    <bean id="formValidationService" class="com.cgi.pacoshop.core.service.impl.FormValidationServiceImpl"/>
+
+    <bean id="plzValidationService" class="com.cgi.pacoshop.core.service.impl.PLZValidationServiceImpl"/>
+
+    <bean id="businessPartnerIdDAO" class="com.cgi.pacoshop.core.daos.impl.BusinessPartnerIdDAOImpl">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <bean id="businessPartnerIdService" class="com.cgi.pacoshop.core.service.impl.BusinessPartnerIdServiceImpl"/>
+
+    <bean id="pacoAddressService" class="com.cgi.pacoshop.core.service.impl.PacoAddressServiceImpl"/>
+
+    <bean id="pacoAddressDAO" class="com.cgi.pacoshop.core.daos.impl.PacoAddressDAOImpl">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <bean id="defaultFingerprintCalculationStrategy" class="com.cgi.pacoshop.core.strategies.impl.DefaultFingerprintCalculationStrategy"/>
+
+    <bean id="taxCalculationStrategy" class="com.cgi.pacoshop.core.strategies.impl.DefaultTaxCalculationStrategy"/>
+
+    <bean id="deeplinkSecurityService" class="com.cgi.pacoshop.core.service.security.impl.DeeplinkSecurityServiceImpl">
+        <property name="deeplinkFingerprintSecretService" ref="deeplinkFingerprintSecretService"/>
+        <property name="fingerprintCalculationStrategy" ref="defaultFingerprintCalculationStrategy"/>
+    </bean>
+
+    <bean id="deeplinkFingerprintSecretService"
+          class="com.cgi.pacoshop.core.service.security.impl.DeeplinkFingerprintSecretServiceImpl"/>
+
+    <bean id="deeplinkFingerprintSecretDao" class="com.cgi.pacoshop.core.daos.impl.DeeplinkFingerprintSecretDaoImpl">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <bean id="shopConfigurationService" class="com.cgi.pacoshop.core.service.ShopConfigurationService"/>
+
+    <bean id="referenceDataProviderService" class="com.cgi.pacoshop.core.refdata.impl.ReferenceDataProviderServiceImpl"/>
+
+    <bean id="paymentTypeService" class="com.cgi.pacoshop.core.service.impl.DefaultPaymentTypeServiceImpl"/>
+
+    <bean id="campaignIdService" class="com.cgi.pacoshop.core.service.impl.CampaignIdServiceImpl"/>
+
+
+    <!--<bean id="cartAdditionalParametersValidateInterceptor"
+          class="com.cgi.pacoshop.storefront.controllers.checkout.deeplink.CartAdditionalParametersValidator" autowire="byName"/>-->
+
+    <!--    <bean id="cartAdditionalParametersValidateInterceptorMapping"
+              class="de.hybris.platform.servicelayer.interceptor.impl.InterceptorMapping">
+            <property name="interceptor" ref="cartAdditionalParametersValidateInterceptor"/>
+            <property name="typeCode" value="CartEntry"/>
+        </bean>-->
+
+
+    <alias alias="createOrderFromCartStrategy" name="pacoShopCreateOrderFromCartStrategy"/>
+    <bean id="pacoShopCreateOrderFromCartStrategy"
+          class="com.cgi.pacoshop.core.strategies.impl.PacoShopCreateOrderFromCartStrategy"
+          parent="defaultCreateOrderFromCartStrategy">
+        <property name="cartValidator" ref="cartValidator"/>
+        <property name="cloneAbstractOrderStrategy" ref="cloneAbstractOrderStrategy"/>
+        <property name="keyGenerator"
+                  ref="#{configurationService.configuration.getProperty('commerceservices.orderCode.keyGenerator')}"/>
+    </bean>
+
+    <!-- overriding europe1 manager to filter subscription price rows -->
+    <bean id="europe1.manager" class="com.cgi.pacoshop.core.subscriptionservices.PacoCatalogAwareEurope1PriceFactory"
+          init-method="init" destroy-method="destroy"/>
+
+    <bean id="billingEventDao" class="com.cgi.pacoshop.core.daos.impl.DefaultBillingEventDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <bean id="billingFrequencyDao" class="com.cgi.pacoshop.core.daos.impl.DefaultBillingFrequencyDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <bean id="billingPlanDao" class="com.cgi.pacoshop.core.daos.impl.DefaultBillingPlanDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+
+    <!-- Alternative DeepLink -->
+    <bean id="alternativeDeeplinkFacade" class="com.cgi.pacoshop.facades.checkout.deeplink.impl.DeeplinkCallbackFacadeImpl"/>
+    <bean id="calbackRestService" class="com.cgi.pacoshop.core.service.impl.CallbackRestServiceImpl"/>
+
+    <bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="classesToBeBound" value="com.cgi.pacoshop.core.model.OrderDTO"/>
+        <property name="schema" value="classpath:callback/portal-schemas.xsd"/>
+    </bean>
+
+    <bean id="marshallingHttpMessageConverter" class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+        <property name="marshaller" ref="jaxb2Marshaller"/>
+        <property name="unmarshaller" ref="jaxb2Marshaller"/>
+    </bean>
+
+    <bean id="restTemplateCallback" class="org.springframework.web.client.RestTemplate">
+        <property name="messageConverters">
+            <list>
+                <ref bean="marshallingHttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="deeplinkCallbackDAO" class="com.cgi.pacoshop.core.daos.impl.DeeplinkCallbackDAOImpl">
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    </bean>
+    <bean id="deeplinkCallbackService" class="com.cgi.pacoshop.core.service.impl.DeeplinkCallbackServiceImpl"/>
+
+    <bean id="billingEventService" class="com.cgi.pacoshop.core.service.impl.DefaultBillingEventService"/>
+
+    <bean id="billingFrequencyService" class="com.cgi.pacoshop.core.service.impl.DefaultBillingFrequencyService"/>
+
+    <bean id="billingPlanService" class="com.cgi.pacoshop.core.service.impl.DefaultBillingPlanService"/>
+
+    <!-- Product Import after refactor -->
+    <bean id="productTypeQualifier" class="com.cgi.pacoshop.core.util.sap.ProductTypeQualifier"/>
+
+    <bean id="vatGroupQualifier" class="com.cgi.pacoshop.core.util.sap.VATGroupQualifier"/>
+
+    <bean id="unitCreator" class="com.cgi.pacoshop.core.util.sap.UnitCreator"/>
+
+    <bean id="priceRowCreator" class="com.cgi.pacoshop.core.util.sap.PriceRowCreator"/>
+
+    <bean id="subscriptionTypeQualifier" class="com.cgi.pacoshop.core.util.sap.subscription.SubscriptionTypeQualifier"/>
+
+    <bean id="commonBasicFieldsReversePopulator" class="com.cgi.pacoshop.core.service.sap.CommonBasicFieldsReversePopulator"/>
+
+    <bean id="productImageReversePopulator" class="com.cgi.pacoshop.core.service.sap.ProductImageReversePopulator"/>
+
+    <bean id="priceRowSingleProductReversePopulator"
+          class="com.cgi.pacoshop.core.service.sap.PriceRowSingleProductReversePopulator"/>
+
+    <bean id="singleProductReversePopulator" class="com.cgi.pacoshop.core.service.sap.SingleProductReversePopulator"/>
+
+    <bean id="subscriptionProductReversePopulator" class="com.cgi.pacoshop.core.service.sap.SubscriptionProductReversePopulator"/>
+
+    <bean id="bonusesReversePopulator" class="com.cgi.pacoshop.core.service.sap.BonusesReversePopulator"/>
+
+    <bean id="subscriptionTermsReversePopulator" class="com.cgi.pacoshop.core.service.sap.SubscriptionTermsReversePopulator"/>
+
+    <bean id="subscriptionPricePlansReversePopulator"
+          class="com.cgi.pacoshop.core.service.sap.SubscriptionPricePlansReversePopulator"/>
+
+    <bean id="singleProductImportService" class="com.cgi.pacoshop.core.service.sap.DefaultSingleProductImportService">
+        <property name="populators">
+            <list>
+                <ref bean="commonBasicFieldsReversePopulator"/>
+                <ref bean="productImageReversePopulator"/>
+                <ref bean="priceRowSingleProductReversePopulator"/>
+                <ref bean="singleProductReversePopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id = "subscriptionProductDeliveryCountriesReversePopulator" class="com.cgi.pacoshop.core.service.sap.SubscriptionProductDeliveryCountriesReversePopulator"/>
+
+    <bean id="subscriptionProductImportService" class="com.cgi.pacoshop.core.service.sap.DefaultSubscriptionProductImportService">
+        <property name="populators">
+            <list>
+                <ref bean="commonBasicFieldsReversePopulator"/>
+                <ref bean="productImageReversePopulator"/>
+                <ref bean="subscriptionProductReversePopulator"/>
+                <ref bean="bonusesReversePopulator"/>
+                <ref bean="subscriptionTermsReversePopulator"/>
+                <ref bean="subscriptionPricePlansReversePopulator"/>
+                <ref bean="subscriptionProductDeliveryCountriesReversePopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="billingTimeChargeEntryAttribute" class="com.cgi.pacoshop.core.model.BillingTimeChargeEntryAttribute"/>
+
+
+
+    <alias name="defaultPacoshopSubscriptionCommerceCartService" alias="pacoshopSubscriptionCommerceCartService"/>
+    <bean id="defaultPacoshopSubscriptionCommerceCartService"
+          class="com.cgi.pacoshop.core.service.impl.PacoshopSubscriptionCommerceCartServiceImpl"
+          parent="defaultSubscriptionCommerceCartService">
+        <property name="modelService" ref="modelService"/>
+    </bean>
+
+
+    <alias name="pacoshopCommerceCheckoutService" alias="commerceCheckoutService"/>
+    <bean id="pacoshopCommerceCheckoutService" parent="subscriptionCommerceCheckoutService"
+             class="com.cgi.pacoshop.core.service.order.PacoShopCommerceCheckoutService" />
+
+
+    <alias name="pacoshopFindDeliveryCostStrategy" alias="findDeliveryCostStrategy"/>
+    <bean id="pacoshopFindDeliveryCostStrategy" class="com.cgi.pacoshop.core.strategies.impl.PacoshopFindDeliveryCostStrategy"
+          parent="abstractBusinessService"/>
+
+    <alias name="pacoshopFindPaymentCostStrategy" alias="findPaymentCostStrategy" />
+    <bean id="pacoshopFindPaymentCostStrategy" class="com.cgi.pacoshop.core.strategies.PacoShopFindPaymentCostStrategy" />
+
+
+    <alias name="defaultStorePaymentModeFeeService" alias="storePaymentModeFeeService"/>
+    <bean id="defaultStorePaymentModeFeeService" class="com.cgi.pacoshop.core.service.basestore.impl.DefaultStorePaymentModeFeeService" />
+
+
+    <!--************************************-product dto population**********************************************-->
+
+    <bean class="com.cgi.pacoshop.core.service.productdtopopulation.impl.kombi.KombiAboProductDTOPopulationServiceLocator"
+          id="kombiAboProductDTOPopulationServiceLocator"/>
+
+    <alias name="defaultProductDTOPopulationServiceLocator" alias="productDTOPopulationServiceLocator"/>
+    <bean class="com.cgi.pacoshop.core.service.productdtopopulation.impl.DefaultProductDTOPopulationServiceLocator"
+          id="defaultProductDTOPopulationServiceLocator">
+    </bean>
+
+
+    <bean id="singleProductDTOPopulationService"
+          class="com.cgi.pacoshop.core.service.productdtopopulation.impl.SingleProductDTOPopulationService"/>
+    <bean id="bonusProductDTOPopulationService"
+          class="com.cgi.pacoshop.core.service.productdtopopulation.impl.BonusProductDTOPopulationService"/>
+    <bean id="subscriptionProductDTOPopulationService"
+          class="com.cgi.pacoshop.core.service.productdtopopulation.impl.SubscriptionProductDTOPopulationService">
+        <property name="productDTOPopulationServices">
+            <util:list value-type="com.cgi.pacoshop.core.service.productdtopopulation.AbstractProductDTOPopulationService">
+                <ref bean="bonusProductDTOPopulationService"/>
+            </util:list>
+        </property>
+    </bean>
+    <bean id="kombiAboSecondaryProductProductDTOPopulationService"
+          class="com.cgi.pacoshop.core.service.productdtopopulation.impl.kombi.KombiAboSecondaryProductProductDTOPopulationService">
+        <property name="productDTOPopulationServices">
+            <util:list value-type="com.cgi.pacoshop.core.service.productdtopopulation.AbstractProductDTOPopulationService">
+                <ref bean="bonusProductDTOPopulationService"/>
+            </util:list>
+        </property>
+    </bean>
+
+    <util:map id="productDTOServices" key-type="java.lang.String"
+              value-type="com.cgi.pacoshop.core.service.productdtopopulation.AbstractProductDTOPopulationService">
+        <entry key="ProductModel" value-ref="singleProductDTOPopulationService"/>
+        <entry key="SubscriptionProductModel" value-ref="subscriptionProductDTOPopulationService"/>
+    </util:map>
+
+    <util:map id="kombiAboDtoPopulationServices" key-type="java.lang.String"
+              value-type="com.cgi.pacoshop.core.service.productdtopopulation.AbstractProductDTOPopulationService">
+        <entry key="0" value-ref="subscriptionProductDTOPopulationService"/>
+        <entry key="1" value-ref="kombiAboSecondaryProductProductDTOPopulationService"/>
+    </util:map>
+
+
+    <bean id="notificationEmailPopulator"
+          class="com.cgi.pacoshop.facades.populators.NotificationEmailPopulator"/>
+
+    <bean id="orderEmailFulfillmentEmailPopulator" class="com.cgi.pacoshop.facades.populators.OrderEmailFulfillmentEmailPopulator">
+    </bean>
+
+    <!--  Processes -->
+    <!--  Actions -->
+
+    <bean id="sendOrderErrorEmailAction" class="com.cgi.pacoshop.core.process.email.actions.SendOrderErrorEmailAction">
+        <property name="emailService" ref="emailService"/>
+        <property name="configurationService" ref="configurationService"/>
+        <property name="retryDelayConfigurationKey" value="email.order.error.sending.delay"/>
+        <property name="retryMaxAttemptsConfigurationKey" value="email.order.error.sending.retry.count"/>
+    </bean>
+
+    <bean id="sendOrderConfirmationEmailAction" class="com.cgi.pacoshop.core.process.email.actions.SendOrderConfirmationEmailAction">
+        <property name="emailService" ref="emailService"/>
+        <property name="configurationService" ref="configurationService"/>
+       <!-- <property name="retryDelayConfigurationKey" value="email.order.error.sending.delay"/>
+        <property name="retryMaxAttemptsConfigurationKey" value="email.order.error.sending.retry.count"/>-->
+    </bean>
+
+    <bean id="sendEmailFulfillmentEmail" class="com.cgi.pacoshop.core.process.email.actions.SendOrderEmailFulfillmentEmailAction">
+        <property name="emailService" ref="emailService"/>
+        <property name="configurationService" ref="configurationService"/>
+        <property name="businessProcessService" ref="businessProcessService" />
+        <property name="modelService" ref="modelService"/>
+        <property name="retryDelayConfigurationKey" value="email.fulfillment.sending.delay"/>
+        <property name="retryMaxAttemptsConfigurationKey" value="email.fulfillment.sending.retry.count"/>
+    </bean>
+
+    <!--  Actions -->
+
+
+    <alias name="pacoShopTaxingWithPriceFactoryStrategy" alias="currentFactoryFindPricingStrategy"/>
+    <bean id="pacoShopTaxingWithPriceFactoryStrategy"
+          class="com.cgi.pacoshop.core.strategies.impl.PacoShopTaxingWithPriceFactoryStrategy" parent="abstractBusinessService">
+        <property name="commercePriceService" ref="subscriptionCommercePriceService"/>
+    </bean>
+
+    <alias name="pacoShopCalculationService" alias="calculationService"/>
+    <bean id="pacoShopCalculationService" class="com.cgi.pacoshop.core.service.order.PacoShopCalculationService"
+          parent="defaultCalculationService">
+    </bean>
+
+    <bean id="pacoshopRequestFactory" class="com.cgi.pacoshop.core.service.impl.PacoshopRequestFactory">
+        <property name="shopConfigurationService" ref="shopConfigurationService"/>
+    </bean>
+
+
+    <alias name="pacoshopCustomerAddressService" alias="customerAddressService"/>
+    <bean id="pacoshopCustomerAddressService" class="com.cgi.pacoshop.core.service.impl.CustomerAddressServiceImpl"/>
+
+
+    <alias name="defaultCompareAddressesStrategy" alias="compareAddressesStrategy"/>
+    <bean id="defaultCompareAddressesStrategy" class="com.cgi.pacoshop.core.strategies.impl.DefaultCompareAddressesStrategy"/>
+
+
+    <!-- Delivery Address Check via SAP -->
+    <bean id="deliveryAddressPopulator" class="com.cgi.pacoshop.core.populator.impl.DefaultDeliveryAddressPopulator"/>
+    <bean id="deliveryAddressValidationService"
+          class="com.cgi.pacoshop.core.service.impl.DefaultDeliveryAddressValidationService"/>
+    <bean id="restTemplateDeliveryAddressValidation" class="org.springframework.web.client.RestTemplate">
+        <property name="requestFactory" ref="pacoshopRequestFactory"/>
+    </bean>
+    <bean id="deliveryAddressValidationRestService"
+          class="com.cgi.pacoshop.core.service.impl.DefaultDeliveryAddressValidationRestService"/>
+
+    <alias name="defaultSessionCache" alias="sessionCache"/>
+    <bean id="defaultSessionCache" class="com.cgi.pacoshop.core.checkout.dynamic.session.impl.DefaultSessionCache"/>
+
+    <!-- INTEGRATION START -->
+    <bean name="pacoshopPaymentFilter" class="com.cgi.pacoshop.core.payment.filters.PacoshopPaymentFilter"/>
+
+    <alias alias="paymentExtMethodFilters" name="pacoPaymentExtMethodFilters" />
+    <util:list id="pacoPaymentExtMethodFilters" value-type="com.cgi.hybris.payment.core.filter.PaymentExtMethodFilter">
+        <ref bean="baseSitePaymentExtMethodFilter" />
+        <ref bean="pacoshopPaymentFilter" />
+    </util:list>
+
+    <alias alias="paymentExtMethodFilter" name="pacoshopPaymentExtMethodFilter"/>
+    <bean name="pacoshopPaymentExtMethodFilter" class="java.util.HashSet">
+        <constructor-arg>
+            <set>
+                <ref bean="pacoshopPaymentFilter"/>
+            </set>
+        </constructor-arg>
+    </bean>
+
+    <alias alias="paymentModePopulator" name="pacoshopPaymentModePopulator"/>
+    <bean name="pacoshopPaymentModePopulator" class="com.cgi.pacoshop.core.payment.populators.PacoshopPaymentModePopulator">
+    </bean>
+
+    <bean name="pacoshopPaymentModeComparator" class="com.cgi.pacoshop.core.payment.comparators.PacoshopPaymentModeComparator"/>
+
+    <bean name="paymentPageFormElementGroup"
+          class="com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.paymentpage.PaymentFormElementGroup">
+    </bean>
+
+    <bean id="campaignIdRestrictionDynamicDescription" class="com.cgi.pacoshop.core.service.handler.CampaignIdRestrictionDynamicDescription" >
+    </bean>
+
+    <bean id="campaignIdCMSRestrictionEvaluator" class="com.cgi.pacoshop.core.service.evaluator.CampaignIdCMSRestrictionEvaluator" >
+    </bean>
+
+    <bean id="campaignIdRestrictionEvaluatorMapping" class="de.hybris.platform.cms2.servicelayer.services.evaluator.CMSRestrictionEvaluatorMapping" >
+        <property name="restrictionTypeCode" value="CampaignIdRestriction" />
+        <property name="restrictionEvaluator" ref="campaignIdCMSRestrictionEvaluator" />
+    </bean>
+
+    <!-- INTEGRATION END -->
+</beans>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+    <!--With Spring, you can declare Quartz job in two ways :-->
+
+    <!--3.1 MethodInvokingJobDetailFactoryBean-->
+
+    <!--<bean id="runMeJob"-->
+          <!--class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
+
+        <!--<property name="targetObject" ref="runMeTask" />-->
+        <!--<property name="targetMethod" value="printMe" />-->
+
+    <!--</bean>-->
+
+
+    <!--3.2 JobDetailBean-->
+    <!--The QuartzJobBean is more flexible and suitable for complex scheduler. You need to create a class -->
+    <!--extends the Spring’s QuartzJobBean, and define the method you want to schedule in executeInternal() -->
+    <!--method, and pass the scheduler task (RunMeTask) via setter method.-->
+    <!---->
+
+    <bean id="runMeTask" class="com.learn.spring.quartz.RunMeTask"/>
+
+    <bean name="runMeJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+
+        <property name="jobClass" value="com.learn.spring.quartz.RunMeJob" />
+
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="runMeTask" value-ref="runMeTask" />
+            </map>
+        </property>
+
+    </bean>
+
+
+
+    <!--Trigger-->
+
+    <!--Configure Quartz trigger to define when will run your scheduler job. Two type of triggers are supported :-->
+
+    <!--4.1 SimpleTrigger-->
+    <!--It allows to set the start time, end time, repeat interval to run your job.-->
+
+    <!-- Simple Trigger, run every 5 seconds -->
+    <bean id="simpleTrigger"
+          class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+
+        <property name="jobDetail" ref="runMeJob" />
+        <property name="repeatInterval" value="5000" />
+        <property name="startDelay" value="1000" />
+
+    </bean>
+
+
+    <!--2 CronTrigger-->
+    <!--It allows Unix cron expression to specify the dates and times to run your job.-->
+
+    <!-- Cron Trigger, run every 5 seconds -->
+    <bean id="cronTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerBean">
+
+        <property name="jobDetail" ref="runMeJob" />
+        <property name="cronExpression" value="0/2 * * * * ?" />
+
+    </bean>
+
+
+    <!--Scheduler Factory-->
+
+    <!--Create a Scheduler factory bean to integrate both job detail and trigger together.-->
+
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="jobDetails">
+            <list>
+                <ref bean="runMeJob" />
+            </list>
+        </property>
+
+        <property name="triggers">
+            <list>
+                <!--<ref bean="simpleTrigger" />-->
+                <ref bean="cronTrigger" />
+            </list>
+        </property>
+    </bean>
+
+</beans>
