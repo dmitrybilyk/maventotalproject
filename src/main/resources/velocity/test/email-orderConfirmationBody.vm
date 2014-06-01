@@ -1,0 +1,430 @@
+## messageSource=classpath:/pacoshopcore/messages/email-orderConfirmation_$lang.properties
+#macro( genHtmlBoldFont $text )
+<font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif"><b>$text</b></font>
+#end
+
+#macro(putHostForUrlTag $url)
+    #if($url != "" && $url.contains('http'))
+    <img src="$url" alt="" border="0" align="left" hspace="0" vspace="0" width="160" />
+    #else
+    <img src="${ctx.baseThemeUrl}$url" alt="" border="0" align="left" hspace="0" vspace="0" width="160" />
+    #end
+#end
+
+#macro(genHtmlLinkEndTag)
+</font></a>
+#end
+#macro(genHtmlLink $url $textColor $bodyContent)
+<a href="$url"><font color="$textColor">$bodyContent</font></a>
+#end
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>VHB</title>
+    <style type="text/css">
+        .ExternalClass{
+            display:block !important;
+            width:100% !important;
+        }
+        a {
+            text-decoration:none !important;
+        }
+    </style>
+</head>
+<body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" bgcolor="#ffffff">
+<table width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+<tr>
+<td align="center">
+<table width="800" align="center" cellpadding="0" cellspacing="0">
+<tr style="font-size:0; line-height:0;">
+    <td height="40" bgcolor="#000000" style="font-size:0; line-height:0;"></td>
+</tr>
+<tr>
+    <td bgcolor="#9A1F3C">
+        <table width="100%" align="center" cellpadding="0" cellspacing="0">
+            <tr style="font-size:0; line-height:0;">
+                <td colspan="3" height="25" style="font-size:0; line-height:0;"></td>
+            </tr>
+            <tr>
+                <td width="25"></td>
+                <td width="750" valign="top"><a href="#">
+                    <img alt="Logo" border="0" align="left" hspace="0" vspace="0" width="411" height="69" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZsAAABFCAYAAACc20sTAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjY3QjEyNEEzNkM5MzExRTM4MDg2Q0YxNEM4MzBEREU5IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjY3QjEyNEE0NkM5MzExRTM4MDg2Q0YxNEM4MzBEREU5Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NjdCMTI0QTE2QzkzMTFFMzgwODZDRjE0QzgzMERERTkiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NjdCMTI0QTI2QzkzMTFFMzgwODZDRjE0QzgzMERERTkiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz78P/37AABKPUlEQVR42ux9B2BURd74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" />
+                </a></td>
+                <td width="25"></td>
+            </tr>
+            <tr style="font-size:0; line-height:0;">
+                <td colspan="3" height="25" style="font-size:0; line-height:0;"></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table width="100%" align="center" cellpadding="0" cellspacing="0">
+            <tr style="font-size:0; line-height:0;">
+                <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+            </tr>
+            <tr>
+                <td width="20"></td>
+                <td>
+                    <font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><b>${ctx.messages.getMessage('salutation', ${ctx.title},${ctx.name})}</b>,</font> <br/>
+                    <font color="#000000" size="2" face="Arial, Helvetica, sans-serif">${ctx.messages.getMessage('thankYouForOrder')}</font> <br/>
+                </td>
+                <td width="20"></td>
+            </tr>
+            <tr style="font-size:0; line-height:0;">
+                <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table width="100%" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="20"></td>
+                <td>
+                    <font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><b>${ctx.messages.getMessage('deliveryTitle')}</b></font> <br/>
+                </td>
+                <td width="20"></td>
+            </tr>
+            <tr style="font-size:0; line-height:0;">
+                <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+            </tr>
+            <tr>
+                <td width="20"></td>
+                <td>
+                    <table >
+                        <tr>
+                            #if($ctx.startAboDelivery != "")
+                                <td width="240" height="100px" bgcolor="#EBF3F6" valign="top">
+                                    <table width="100%" align="center" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td width="20" bgcolor="#D9E8ED"></td>
+                                            <td height="54" valign="middle" bgcolor="#D9E8ED"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><b>${ctx.messages.getMessage('deliveryBegin')}</b></font></td>
+                                            <td width="20" bgcolor="#D9E8ED"></td>
+                                        </tr>
+                                        <tr style="font-size:0; line-height:0;">
+                                            <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20"></td>
+                                            <td>
+                                                <font color="#000000" size="2" face="Arial, Helvetica, sans-serif">
+
+                                                    ${ctx.startAboDelivery}
+
+                                                </font>
+                                            </td>
+                                            <td width="20"></td>
+                                        </tr>
+                                        <tr style="font-size:0; line-height:0;">
+                                            <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="20" bgcolor="#ffffff"></td>
+                            #end
+
+                            #if($ctx.hasPhysicalProduct == true)
+                                <td width="240" height="100px" bgcolor="#EBF3F6" valign="top">
+                                    <table width="100%" align="center" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td width="20" bgcolor="#D9E8ED"></td>
+                                            <td height="54" valign="middle" bgcolor="#D9E8ED"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><b>${ctx.messages.getMessage('deliveryTitle')}</b></font></td>
+                                            <td width="20" bgcolor="#D9E8ED"></td>
+                                        </tr>
+                                        <tr style="font-size:0; line-height:0;">
+                                            <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20"></td>
+                                            <td>
+                                                <font color="#000000" size="2" face="Arial, Helvetica, sans-serif">
+
+                                                    ${ctx.deliveryAddress.title.name} ${ctx.deliveryAddress.firstname} ${ctx.deliveryAddress.lastname}<br/>
+                                                    ${ctx.deliveryAddress.line1}<br/>
+                                                    #if(${ctx.deliveryAddress.line2}) ${ctx.deliveryAddress.line2}<br/>#end
+                                                    ${ctx.deliveryAddress.town}<br/>
+                                                    ${ctx.deliveryAddress.postalcode}<br/>
+                                                    ${ctx.deliveryAddress.country.name}
+
+                                                </font>
+                                            </td>
+                                            <td width="20"></td>
+                                        </tr>
+                                        <tr style="font-size:0; line-height:0;">
+                                            <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="20" bgcolor="#ffffff"></td>
+                            #end
+
+                            #if($ctx.hasDigitalProduct == true)
+                                <td width="240" height="100px" bgcolor="#EBF3F6" valign="top">
+                                    <table width="100%" align="center" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td width="20" bgcolor="#D9E8ED"></td>
+                                            <td height="54" valign="middle" bgcolor="#D9E8ED"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><b>${ctx.messages.getMessage('deliveryTitleDigital')}</b></font></td>
+                                            <td width="20" bgcolor="#D9E8ED"></td>
+                                        </tr>
+                                        <tr style="font-size:0; line-height:0;">
+                                            <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="20"></td>
+                                            <td>
+                                                <font color="#000000" size="2" face="Arial, Helvetica, sans-serif">
+
+                                                    ${ctx.deliveryAddress.email}<br/>
+
+                                                </font>
+                                            </td>
+                                            <td width="20"></td>
+                                        </tr>
+                                        <tr style="font-size:0; line-height:0;">
+                                            <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            #end
+
+                        </tr>
+                    </table>
+                </td>
+                <td width="20"></td>
+            </tr>
+            <tr style="font-size:0; line-height:0;">
+                <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table width="100%" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="20"></td>
+                <td>
+                    <font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><b>${ctx.messages.getMessage('checkout.order.details')}</b></font> <br/>
+                </td>
+                <td width="20"></td>
+            </tr>
+            <tr style="font-size:0; line-height:0;">
+                <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+            </tr>
+            <tr>
+                <td width="20"></td>
+                <td>
+                    <table width="100%" align="center" cellpadding="0" cellspacing="0" bgcolor="#fafafa">
+                        <td width="520" bgcolor="#C8C9CB" valign="top">
+                            <table width="100%" align="center" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td width="10"></td>
+                                    <td width="160" height="44" valign="middle"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><b>${ctx.messages.getMessage('checkout.ordered.items')}</b></font></td>
+                                    <td width="20"></td>
+                                    <td width="320" height="44" valign="middle"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><b>${ctx.messages.getMessage('checkout.ordered.items.details')}</b></font></td>
+                                    <td width="10"></td>
+                                </tr>
+                                <tr style="font-size:0; line-height:0;">
+                                    <td colspan="5" height="1" bgcolor="#000000" style="font-size:0; line-height:0;"></td>
+                                </tr>
+                                <tr style="font-size:0; line-height:0;">
+                                    <td colspan="5" height="20" style="font-size:0; line-height:0;"></td>
+                                </tr>
+
+                                #foreach ($product in $ctx.productDTOs)
+                                    <tr>
+                                        <td width="10"></td>
+                                        <td width="160" valign="top">
+                                            #putHostForUrlTag(${product.url})
+                                        </td>
+                                        <td width="20"></td>
+                                        <td width="320" valign="top">
+                                            <font color="#000000" size="3" face="Arial, Helvetica, sans-serif"><b>${product.name}</b></font><br/>
+
+
+                                            <font color="#000000" size="2" face="Arial, Helvetica, sans-serif">
+                                                <span>${product.description}</span>
+                                                #if ($product.subscriptionInfoDisplayed == true)
+                                                ##------------------------------------------------------------
+                                                    #if ($product.termsOfServiceRenewal == true)
+                                                        <span>${ctx.messages.getMessage('checkout.subscriptionproducts.termofservice.renewal')}</span>
+                                                    #end
+
+                                                ## *******************************PRODUCT UNIT************************
+                                                    #set ($productUnit = '')
+                                                    #if ($product.unit == 'month')
+                                                        #set ($productUnit = ${ctx.messages.getMessage("checkout.subscriptionproducts.unit.month")})
+                                                    #end
+
+                                                    #if ($product.unit == 'week')
+                                                        #set ($productUnit = ${ctx.messages.getMessage("checkout.subscriptionproducts.unit.week")})
+                                                    #end
+
+                                                    #if ($product.unit == 'edition')
+                                                        #set ($productUnit = ${ctx.messages.getMessage("checkout.subscriptionproducts.unit.edition")})
+                                                    #end
+
+                                                ##************************************************************************
+                                                ## &#32 - space symbol &nbsp;
+                                                    #set ($displayedDeliveryPeriod = $product.deliveryPeriod + '&nbsp;' + $productUnit)
+
+                                                ##*************************************************************************
+                                                #*<span>${ctx.messages.getMessage('checkout.subscriptionproducts.description', ${displayedDeliveryPeriod}, ${displayedPricePerUnit}, ${displayedUnit})}</span>*#
+                                                    <span>${displayedDeliveryPeriod}</span>
+
+                                                ##------------------------------------------------------------
+                                                #*<checkout:subscprionProductDescription product="${product}"/>*#
+                                                #end
+
+                                            </font>
+
+                                        </td>
+                                        <td width="10"></td>
+                                    </tr>
+                                    <tr style="font-size:0; line-height:0;">
+                                        <td colspan="5" height="20" style="font-size:0; line-height:0;"></td>
+                                    </tr>
+
+                                    #foreach ($bonus in $product.bonuses)
+                                        <tr>
+                                            <td width="10"></td>
+                                            <td width="160" valign="top">
+                                                #putHostForUrlTag(${bonus.url})
+                                            </td>
+                                            <td width="20"></td>
+                                            <td width="320" valign="top">
+                                                <font color="#000000" size="3" face="Arial, Helvetica, sans-serif"><b>${bonus.name}</b></font><br/>
+
+
+                                                <font color="#000000" size="2" face="Arial, Helvetica, sans-serif">
+                                                    <span>${bonus.description}</span>
+                                                    #if ($bonus.additionalPayment > 0)
+                                                        <br>
+                                                        <span>${ctx.messages.getMessage('checkout.bonus.additionalpayment')}</span>
+                                                    #end
+                                                </font>
+
+                                            </td>
+                                            <td width="10"></td>
+                                        </tr>
+                                        <tr style="font-size:0; line-height:0;">
+                                            <td colspan="5" height="20" style="font-size:0; line-height:0;"></td>
+                                        </tr>
+                                    #end
+
+                                #end
+                            </table>
+                        </td>
+                        <td width="240" valign="top">
+                            <table width="100%" align="center" cellpadding="0" cellspacing="0">
+                                <tr style="font-size:0; line-height:0;">
+                                    <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+                                </tr>
+                                <tr>
+                                    <td width="20"></td>
+                                    <td>
+                                        <font color="#000000" size="2" face="Arial, Helvetica, sans-serif">${ctx.messages.getMessage('checkout.order.number')}</font><br/><br/>
+                                    </td>
+                                    <td width="20"></td>
+                                </tr>
+                                <tr>
+                                    <td width="20"></td>
+                                    <td>
+                                        <table width="100%" align="center" cellpadding="0" cellspacing="0" bgcolor="#828387">
+                                            <tr style="font-size:0; line-height:0;">
+                                                <td colspan="3" height="10" style="font-size:0; line-height:0;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="10"></td>
+                                                <td><font color="#ffffff" size="3" face="Arial, Helvetica, sans-serif">${ctx.orderCode}</font><br/></td>
+                                                <td width="10"></td>
+                                            </tr>
+                                            <tr style="font-size:0; line-height:0;">
+                                                <td colspan="3" height="10" style="font-size:0; line-height:0;"></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width="20"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </table>
+                </td>
+                <td width="20"></td>
+            </tr>
+            <tr style="font-size:0; line-height:0;">
+                <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table width="100%" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td width="20"></td>
+                <td>
+                    <font color="#000000" size="2" face="Arial, Helvetica, sans-serif">
+                        Bei Fragen und Anmerkungen helfen wir ihnen gerne weiter... <br/><br/>
+                        Hilfe <br/><br/>
+                        Ihr Verlagskaufhaus-Team&nbsp; <br/><br/>
+                    </font>
+                </td>
+                <td width="20"></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr style="font-size:0; line-height:0;">
+    <td height="5" bgcolor="#EEEEEE" style="font-size:0; line-height:0;"></td>
+</tr>
+<tr>
+    <td>
+        <table width="100%" align="center" cellpadding="0" cellspacing="0" bgcolor="#D1D5D8">
+            <tr style="font-size:0; line-height:0;">
+                <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+            </tr>
+            <tr>
+                <td width="20"></td>
+                <td valign="middle">
+                    <font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><a href="#"><font color="#000000"><b>Impressum</b></font></a></font>
+                    <font color="#000000" size="2" face="Arial, Helvetica, sans-serif">|</font>
+                    <font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><a href="#"><font color="#000000"><b>Geschäfts- und Nutzungsbedingungen</b></font></a></font>
+                    <font color="#000000" size="2" face="Arial, Helvetica, sans-serif">|</font>
+                    <font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><a href="#"><font color="#000000"><b>Handelsblatt.com</b></font></a></font>
+                    <br/><br/>
+                    <font color="#000000" size="2" face="Arial, Helvetica, sans-serif">&copy; 2013 Handelsblatt GmbH - ein Unternehmen der Verlagsgruppe Handelsblatt GmbH & Co. KG
+                        <br/>
+                        Keine Gewähr für die Richtigkeit der Angaben. Bitte beachten Sie auch unsere Geschäfts- und Nutzungsbedingungen und das Impressum. </font>
+                    #if($ctx.hasToBeDeliveredProducts == true)
+                    <font color="#000000" size="2" face="Arial, Helvetica, sans-serif">
+                        <br/>
+                        &copy; Hinweis: diese E-Mail ist eine Bestätigung, dass Ihr Auftrag bei uns eingegangen ist. Sie stellt noch keinen Vertragsabschluss dar und enthält aus diesem
+                        <br/>
+                        Grund keine Informationen zu Zahlungs-, Liefer- und Leistungsbedingungen sowie zum Liefertermin (nach Art. 246a § 1 Abs. 1 Nr. 7 EGBGB)
+                    #end
+                </td>
+                <td width="20"></td>
+            <tr style="font-size:0; line-height:0;">
+                <td colspan="3" height="20" style="font-size:0; line-height:0;"></td>
+            </tr>
+            #if($ctx.bonusList.size() != 0)
+                sdfsdfsdfd
+            #end
+            #if(${ctx.miles} &&! $ctx.miles.isEmpty())
+                Miles is always present
+            #end
+        </table>
+    </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

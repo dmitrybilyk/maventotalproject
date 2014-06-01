@@ -46,9 +46,9 @@ public class Timer {
         }
         Timer timer = new Timer();
 
-        if (actionType.equalsIgnoreCase("set wake up timer")) {
+        if (actionType.equalsIgnoreCase("set wake up spring.timer")) {
             timer.action = new WakeUpAction();
-        } else if (actionType.equalsIgnoreCase("set chicken timer")) {
+        } else if (actionType.equalsIgnoreCase("set chicken spring.timer")) {
             timer.action = new ChickenIsReadyAction();
         }
 

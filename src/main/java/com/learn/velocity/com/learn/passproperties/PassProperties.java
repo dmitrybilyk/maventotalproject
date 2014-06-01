@@ -14,6 +14,8 @@ public class PassProperties {
   Properties props = new Properties();
   props.put("input.encoding", "utf-8");
 
+
+
   Velocity.init(props);
 
   Template template = Velocity.getTemplate("./src/main/resources/velocity/passproperties/PassProperties.vm");
