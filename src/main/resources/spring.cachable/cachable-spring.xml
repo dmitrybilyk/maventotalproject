@@ -8,6 +8,8 @@
            http://www.springframework.org/schema/cache
            http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--changes from my own work on bugs and user story-->
+
     <cache:annotation-driven />
     <context:component-scan base-package="com.learn.spring.cachable" />
 
