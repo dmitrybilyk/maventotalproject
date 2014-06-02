@@ -1,0 +1,349 @@
+*.iml
+*.eml
+
+#Generated class from Hybris (I think evry dev shoul have his own generated class)
+Generated*.java
+
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+#*.gz
+*.iso
+#*.jar
+*.rar
+*.tar
+*.zip
+*.war
+*.ear
+
+**/**/target/*
+**/**/.idea/*
+.idea/*
+
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.*~
+#hybris generated class
+
+build/hybris/bin/custom/**/**/gensrc/**
+
+#hybris basic stuff
+build/hybris/bin/ext-*/*
+
+build/hybris/bin/platform/*
+build/hybris/data/*
+build/hybris/temp/*
+build/hybris/licenses/*
+build/hybris/log/*
+build/hybris/config/*
+build/hybris/bin/hybris.version
+
+platformhome.properties
+*-testclasses.xml
+*-webtestclasses.xml
+
+
+.idea/.name
+        .idea/compiler.xml
+        .idea/encodings.xml
+        .idea/libraries/Java_EE_6_Java_EE_6.xml
+        .idea/libraries/Maven__antlr_antlr_2_7_6.xml
+        .idea/libraries/Maven__antlr_antlr_2_7_7.xml
+        .idea/libraries/Maven__aopalliance_aopalliance_1_0.xml
+        .idea/libraries/Maven__asm_asm_1_5_3.xml
+        .idea/libraries/Maven__asm_asm_3_1.xml
+        .idea/libraries/Maven__asm_asm_attrs_1_5_3.xml
+        .idea/libraries/Maven__bouncycastle_bcmail_jdk14_138.xml
+        .idea/libraries/Maven__bouncycastle_bcprov_jdk14_138.xml
+        .idea/libraries/Maven__cglib_cglib_2_1_3.xml
+        .idea/libraries/Maven__cglib_cglib_2_2.xml
+        .idea/libraries/Maven__cglib_cglib_nodep_2_1_3.xml
+        .idea/libraries/Maven__com_external_jar_myjar_1_0_1.xml
+        .idea/libraries/Maven__com_google_code_gson_gson_1_7_1.xml
+        .idea/libraries/Maven__com_googlecode_json_simple_json_simple_1_1.xml
+        .idea/libraries/Maven__com_ibm_icu_icu4j_4_0_1.xml
+        .idea/libraries/Maven__com_lowagie_itext_2_1_7.xml
+        .idea/libraries/Maven__com_sun_jdmk_jmxtools_1_2_1.xml
+        .idea/libraries/Maven__com_sun_jmx_jmxri_1_2_1.xml
+        .idea/libraries/Maven__com_sun_xml_bind_jaxb_impl_2_1_3.xml
+        .idea/libraries/Maven__com_sun_xml_bind_jaxb_impl_2_1_7.xml
+        .idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_2.xml
+        .idea/libraries/Maven__commons_beanutils_commons_beanutils_1_8_0.xml
+        .idea/libraries/Maven__commons_chain_commons_chain_1_2.xml
+        .idea/libraries/Maven__commons_codec_commons_codec_1_3.xml
+        .idea/libraries/Maven__commons_collections_commons_collections_3_2.xml
+        .idea/libraries/Maven__commons_collections_commons_collections_3_2_1.xml
+        .idea/libraries/Maven__commons_dbcp_commons_dbcp_1_2_2.xml
+        .idea/libraries/Maven__commons_digester_commons_digester_1_7.xml
+        .idea/libraries/Maven__commons_el_commons_el_1_0.xml
+        .idea/libraries/Maven__commons_fileupload_commons_fileupload_1_0.xml
+        .idea/libraries/Maven__commons_fileupload_commons_fileupload_1_2_2.xml
+        .idea/libraries/Maven__commons_httpclient_commons_httpclient_3_1.xml
+        .idea/libraries/Maven__commons_io_commons_io_1_3_2.xml
+        .idea/libraries/Maven__commons_lang_commons_lang_1_0.xml
+        .idea/libraries/Maven__commons_lang_commons_lang_2_4.xml
+        .idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml
+        .idea/libraries/Maven__commons_logging_commons_logging_1_1_3.xml
+        .idea/libraries/Maven__commons_pool_commons_pool_1_3.xml
+        .idea/libraries/Maven__commons_validator_commons_validator_1_3_1.xml
+        .idea/libraries/Maven__dom4j_dom4j_1_6_1.xml
+        .idea/libraries/Maven__eclipse_jdtcore_3_1_0.xml
+        .idea/libraries/Maven__javassist_javassist_3_12_0_GA.xml
+        .idea/libraries/Maven__javassist_javassist_3_12_1_GA.xml
+        .idea/libraries/Maven__javax_activation_activation_1_1.xml
+        .idea/libraries/Maven__javax_annotation_jsr250_api_1_0.xml
+        .idea/libraries/Maven__javax_jms_jms_1_1.xml
+        .idea/libraries/Maven__javax_mail_mail_1_4.xml
+        .idea/libraries/Maven__javax_persistence_persistence_api_1_0.xml
+        .idea/libraries/Maven__javax_servlet_jsp_jsp_api_2_1.xml
+        .idea/libraries/Maven__javax_servlet_jstl_1_1_2.xml
+        .idea/libraries/Maven__javax_servlet_servlet_api_2_4.xml
+        .idea/libraries/Maven__javax_servlet_servlet_api_2_5.xml
+        .idea/libraries/Maven__javax_transaction_jta_1_1.xml
+        .idea/libraries/Maven__javax_validation_validation_api_1_0_0_GA.xml
+        .idea/libraries/Maven__javax_ws_rs_jsr311_api_1_1_1.xml
+        .idea/libraries/Maven__javax_xml_bind_jaxb_api_2_1.xml
+        .idea/libraries/Maven__javax_xml_stream_stax_api_1_0_2.xml
+        .idea/libraries/Maven__jaxen_jaxen_1_1.xml
+        .idea/libraries/Maven__jdom_jdom_1_0.xml
+        .idea/libraries/Maven__jfree_jcommon_1_0_15.xml
+        .idea/libraries/Maven__jfree_jfreechart_1_0_12.xml
+        .idea/libraries/Maven__jline_jline_0_9_94.xml
+        .idea/libraries/Maven__jstl_jstl_1_2.xml
+        .idea/libraries/Maven__junit_junit_3_8_1.xml
+        .idea/libraries/Maven__junit_junit_dep_4_4.xml
+        .idea/libraries/Maven__log4j_log4j_1_2_15.xml
+        .idea/libraries/Maven__myfaces_myfaces_all_1_1_0.xml
+        .idea/libraries/Maven__mysql_mysql_connector_java_5_1_18.xml
+        .idea/libraries/Maven__mysql_mysql_connector_java_5_1_21.xml
+        .idea/libraries/Maven__mysql_mysql_connector_java_5_1_9.xml
+        .idea/libraries/Maven__net_jcip_jcip_annotations_1_0.xml
+        .idea/libraries/Maven__net_sf_ehcache_ehcache_1_2_2.xml
+        .idea/libraries/Maven__net_sf_ehcache_ehcache_core_2_0_0.xml
+        .idea/libraries/Maven__net_sf_ehcache_ehcache_terracotta_2_0_0.xml
+        .idea/libraries/Maven__net_sf_hibernate_hibernate_2_1_8.xml
+        .idea/libraries/Maven__net_sf_jasperreports_jasperreports_4_5_0.xml
+        .idea/libraries/Maven__org_apache_abdera_abdera_core_0_4_0_incubating.xml
+        .idea/libraries/Maven__org_apache_abdera_abdera_extensions_json_0_4_0_incubating.xml
+        .idea/libraries/Maven__org_apache_abdera_abdera_extensions_main_0_4_0_incubating.xml
+        .idea/libraries/Maven__org_apache_abdera_abdera_i18n_0_4_0_incubating.xml
+        .idea/libraries/Maven__org_apache_abdera_abdera_parser_0_4_0_incubating.xml
+        .idea/libraries/Maven__org_apache_ant_ant_1_9_2.xml
+        .idea/libraries/Maven__org_apache_ant_ant_launcher_1_9_2.xml
+        .idea/libraries/Maven__org_apache_commons_commons_lang3_3_1.xml
+        .idea/libraries/Maven__org_apache_cxf_cxf_api_2_7_4.xml
+        .idea/libraries/Maven__org_apache_cxf_cxf_bundle_jaxrs_2_1_2.xml
+        .idea/libraries/Maven__org_apache_cxf_cxf_rt_bindings_soap_2_7_4.xml
+        .idea/libraries/Maven__org_apache_cxf_cxf_rt_bindings_xml_2_7_4.xml
+        .idea/libraries/Maven__org_apache_cxf_cxf_rt_core_2_7_4.xml
+        .idea/libraries/Maven__org_apache_cxf_cxf_rt_databinding_jaxb_2_7_4.xml
+        .idea/libraries/Maven__org_apache_cxf_cxf_rt_frontend_jaxws_2_7_4.xml
+        .idea/libraries/Maven__org_apache_cxf_cxf_rt_frontend_simple_2_7_4.xml
+        .idea/libraries/Maven__org_apache_cxf_cxf_rt_transports_http_2_7_4.xml
+        .idea/libraries/Maven__org_apache_cxf_cxf_rt_ws_addr_2_7_4.xml
+        .idea/libraries/Maven__org_apache_cxf_cxf_rt_ws_policy_2_7_4.xml
+        .idea/libraries/Maven__org_apache_geronimo_specs_geronimo_activation_1_1_spec_1_0_2.xml
+        .idea/libraries/Maven__org_apache_geronimo_specs_geronimo_annotation_1_0_spec_1_1_1.xml
+        .idea/libraries/Maven__org_apache_geronimo_specs_geronimo_javamail_1_4_spec_1_3.xml
+        .idea/libraries/Maven__org_apache_geronimo_specs_geronimo_servlet_2_5_spec_1_2.xml
+        .idea/libraries/Maven__org_apache_geronimo_specs_geronimo_stax_api_1_0_spec_1_0.xml
+        .idea/libraries/Maven__org_apache_geronimo_specs_geronimo_stax_api_1_0_spec_1_0_1.xml
+        .idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_0_3.xml
+        .idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_0_1.xml
+        .idea/libraries/Maven__org_apache_ibatis_ibatis_sqlmap_2_3_0.xml
+        .idea/libraries/Maven__org_apache_neethi_neethi_2_0_4.xml
+        .idea/libraries/Maven__org_apache_poi_poi_3_7.xml
+        .idea/libraries/Maven__org_apache_poi_poi_ooxml_3_7.xml
+        .idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_7.xml
+        .idea/libraries/Maven__org_apache_struts_struts_core_1_3_10.xml
+        .idea/libraries/Maven__org_apache_ws_commons_axiom_axiom_api_1_2_7.xml
+        .idea/libraries/Maven__org_apache_ws_commons_axiom_axiom_impl_1_2_7.xml
+        .idea/libraries/Maven__org_apache_ws_commons_schema_XmlSchema_1_4_2.xml
+        .idea/libraries/Maven__org_apache_ws_xmlschema_xmlschema_core_2_0_3.xml
+        .idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_3_0.xml
+        .idea/libraries/Maven__org_aspectj_aspectjweaver_1_6_8.xml
+        .idea/libraries/Maven__org_bouncycastle_bcmail_jdk14_1_38.xml
+        .idea/libraries/Maven__org_bouncycastle_bcprov_jdk14_1_38.xml
+        .idea/libraries/Maven__org_bouncycastle_bctsp_jdk14_1_38.xml
+        .idea/libraries/Maven__org_codehaus_castor_castor_1_2.xml
+        .idea/libraries/Maven__org_codehaus_groovy_groovy_all_1_7_0.xml
+        .idea/libraries/Maven__org_codehaus_jackson_jackson_core_asl_1_8_5.xml
+        .idea/libraries/Maven__org_codehaus_jackson_jackson_core_asl_1_9_13.xml
+        .idea/libraries/Maven__org_codehaus_jackson_jackson_core_lgpl_1_7_4.xml
+        .idea/libraries/Maven__org_codehaus_jackson_jackson_jaxrs_1_6_3.xml
+        .idea/libraries/Maven__org_codehaus_jackson_jackson_mapper_asl_1_8_5.xml
+        .idea/libraries/Maven__org_codehaus_jackson_jackson_mapper_asl_1_9_13.xml
+        .idea/libraries/Maven__org_codehaus_jackson_jackson_mapper_lgpl_1_7_4.xml
+        .idea/libraries/Maven__org_codehaus_jackson_jackson_xc_1_6_3.xml
+        .idea/libraries/Maven__org_codehaus_jettison_jettison_1_0_1.xml
+        .idea/libraries/Maven__org_codehaus_woodstox_stax2_api_3_1_1.xml
+        .idea/libraries/Maven__org_codehaus_woodstox_woodstox_core_asl_4_2_0.xml
+        .idea/libraries/Maven__org_codehaus_woodstox_wstx_asl_3_2_4.xml
+        .idea/libraries/Maven__org_easymock_easymock_2_4.xml
+        .idea/libraries/Maven__org_easymock_easymockclassextension_2_4.xml
+        .idea/libraries/Maven__org_hamcrest_hamcrest_core_1_1.xml
+        .idea/libraries/Maven__org_hamcrest_hamcrest_library_1_1.xml
+        .idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_4_0_1_Final.xml
+        .idea/libraries/Maven__org_hibernate_hibernate_3_2_0_cr3.xml
+        .idea/libraries/Maven__org_hibernate_hibernate_commons_annotations_3_2_0_Final.xml
+        .idea/libraries/Maven__org_hibernate_hibernate_core_3_6_10_Final.xml
+        .idea/libraries/Maven__org_hibernate_hibernate_core_4_1_9_Final.xml
+        .idea/libraries/Maven__org_hibernate_hibernate_entitymanager_3_6_10_Final.xml
+        .idea/libraries/Maven__org_hibernate_hibernate_entitymanager_4_1_7_Final.xml
+        .idea/libraries/Maven__org_hibernate_hibernate_envers_4_1_7_Final.xml
+        .idea/libraries/Maven__org_hibernate_hibernate_validator_4_0_2_GA.xml
+        .idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_0_api_1_0_1_Final.xml
+        .idea/libraries/Maven__org_javassist_javassist_3_17_1_GA.xml
+        .idea/libraries/Maven__org_jboss_logging_jboss_logging_3_1_0_GA.xml
+        .idea/libraries/Maven__org_jboss_resteasy_jaxrs_api_2_2_1_GA.xml
+        .idea/libraries/Maven__org_jboss_resteasy_resteasy_jackson_provider_2_2_1_GA.xml
+        .idea/libraries/Maven__org_jboss_resteasy_resteasy_jaxrs_2_2_1_GA.xml
+        .idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_1_spec_1_0_0_Final.xml
+        .idea/libraries/Maven__org_jdom_jaxen_core_1_0_FCS.xml
+        .idea/libraries/Maven__org_jdom_jdom_1_1.xml
+        .idea/libraries/Maven__org_jmock_jmock_2_5_1.xml
+        .idea/libraries/Maven__org_jmock_jmock_junit4_2_5_1.xml
+        .idea/libraries/Maven__org_json_json_20090211.xml
+        .idea/libraries/Maven__org_jsoup_jsoup_1_7_2.xml
+        .idea/libraries/Maven__org_mockito_mockito_all_1_9_5.xml
+        .idea/libraries/Maven__org_mortbay_jetty_jetty_6_1_9.xml
+        .idea/libraries/Maven__org_mortbay_jetty_jetty_util_6_1_9.xml
+        .idea/libraries/Maven__org_scannotation_scannotation_1_0_3.xml
+        .idea/libraries/Maven__org_slf4j_slf4j_api_1_5_6.xml
+        .idea/libraries/Maven__org_slf4j_slf4j_api_1_6_1.xml
+        .idea/libraries/Maven__org_slf4j_slf4j_jdk14_1_3_1.xml
+        .idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_5_6.xml
+        .idea/libraries/Maven__org_springframework_security_spring_security_acl_3_2_3_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_security_spring_security_config_3_2_3_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_security_spring_security_core_3_2_3_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_security_spring_security_taglibs_3_2_3_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_security_spring_security_web_3_2_3_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_aop_3_2_2_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_aop_3_2_8_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_aspects_3_2_2_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_beans_3_2_0_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_beans_3_2_2_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_beans_3_2_8_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_context_3_2_0_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_context_3_2_2_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_context_3_2_8_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_context_support_3_2_2_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_core_3_2_0_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_core_3_2_2_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_core_3_2_8_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_expression_3_2_0_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_expression_3_2_2_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_expression_3_2_8_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_jdbc_3_2_0_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_jdbc_3_2_2_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_jdbc_3_2_8_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_orm_3_2_0_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_orm_3_2_2_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_orm_3_2_8_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_test_3_2_3_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_tx_3_2_0_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_tx_3_2_2_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_tx_3_2_8_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_web_3_2_2_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_web_3_2_8_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_webmvc_3_2_2_RELEASE.xml
+        .idea/libraries/Maven__org_springframework_spring_webmvc_3_2_8_RELEASE.xml
+        .idea/libraries/Maven__oro_oro_2_0_8.xml
+        .idea/libraries/Maven__poi_poi_1_8_0_dev_20020919.xml
+        .idea/libraries/Maven__stax_stax_api_1_0_1.xml
+        .idea/libraries/Maven__taglibs_standard_1_1_2.xml
+        .idea/libraries/Maven__wsdl4j_wsdl4j_1_6_2.xml
+        .idea/libraries/Maven__xml_apis_xml_apis_1_0_b2.xml
+        .idea/libraries/Maven__xml_apis_xml_apis_1_3_02.xml
+        .idea/libraries/Maven__xml_resolver_xml_resolver_1_2.xml
+        .idea/misc.xml
+        .idea/modules.xml
+        .idea/vcs.xml
+        .idea/workspace.xml
+        HibernateExample/target/classes/cacheusing/
+        complexweb/target/classes/com/learn/controller/regularservlets/servletsjsp/taglibs/
+        complexweb/target/classes/com/learn/controller/springsecurity/
+        complexweb/target/classes/com/learn/email/
+        complexweb/target/classes/emailBody.vm
+        complexweb/target/classes/emailContext.xml
+        complexweb/target/classes/mail.properties
+        complexweb/target/test-classes/
+        complexweb/target/webapplication/WEB-INF/classes/com/learn/controller/regularservlets/servletsjsp/taglibs/
+        complexweb/target/webapplication/WEB-INF/classes/com/learn/controller/springsecurity/
+        complexweb/target/webapplication/WEB-INF/classes/com/learn/email/
+        complexweb/target/webapplication/WEB-INF/classes/emailBody.vm
+        complexweb/target/webapplication/WEB-INF/classes/emailContext.xml
+        complexweb/target/webapplication/WEB-INF/classes/mail.properties
+        complexweb/target/webapplication/WEB-INF/emaiilContext.xml
+        complexweb/target/webapplication/WEB-INF/lib/activation-1.1.jar
+        complexweb/target/webapplication/WEB-INF/lib/commons-beanutils-1.8.3.jar
+        complexweb/target/webapplication/WEB-INF/lib/commons-configuration-1.7.jar
+        complexweb/target/webapplication/WEB-INF/lib/commons-digester-1.8.1.jar
+        complexweb/target/webapplication/WEB-INF/lib/commons-httpclient-3.1.jar
+        complexweb/target/webapplication/WEB-INF/lib/guava-r05.jar
+        complexweb/target/webapplication/WEB-INF/lib/jsp-api-2.1.jar
+        complexweb/target/webapplication/WEB-INF/lib/junit-4.4.jar
+        complexweb/target/webapplication/WEB-INF/lib/log4j-1.2.17.jar
+        complexweb/target/webapplication/WEB-INF/lib/mail-1.4.jar
+        complexweb/target/webapplication/WEB-INF/lib/slf4j-log4j12-1.7.5.jar
+        complexweb/target/webapplication/WEB-INF/lib/spring-aop-3.2.2.RELEASE.jar
+        complexweb/target/webapplication/WEB-INF/lib/spring-beans-3.2.2.RELEASE.jar
+        complexweb/target/webapplication/WEB-INF/lib/spring-context-3.2.2.RELEASE.jar
+        complexweb/target/webapplication/WEB-INF/lib/spring-core-3.2.2.RELEASE.jar
+        complexweb/target/webapplication/WEB-INF/lib/spring-expression-3.2.2.RELEASE.jar
+        complexweb/target/webapplication/WEB-INF/lib/spring-security-config-3.2.3.RELEASE.jar
+        complexweb/target/webapplication/WEB-INF/lib/spring-security-core-3.2.3.RELEASE.jar
+        complexweb/target/webapplication/WEB-INF/lib/spring-security-web-3.2.3.RELEASE.jar
+        complexweb/target/webapplication/WEB-INF/lib/spring-support-2.0.6.jar
+        complexweb/target/webapplication/WEB-INF/lib/spring-test-2.5.jar
+        complexweb/target/webapplication/WEB-INF/lib/spring-web-3.2.2.RELEASE.jar
+        complexweb/target/webapplication/WEB-INF/lib/spring-webmvc-3.2.2.RELEASE.jar
+        complexweb/target/webapplication/WEB-INF/lib/validation-api-1.0.0.GA.jar
+        complexweb/target/webapplication/WEB-INF/lib/velocity-1.7.jar
+        complexweb/target/webapplication/WEB-INF/pacoshopcore-spring.xml
+        complexweb/target/webapplication/WEB-INF/pages/springsecurity/
+        complexweb/target/webapplication/WEB-INF/spring-security.xml
+        complexweb/target/webapplication/WEB-INF/tld/
+        lib/
+        springsecurity/target/
+        target/classes/aop/Spring-Customer-Mkyong.xml
+        target/classes/com/
+        target/classes/mockitospringcontext/
+        target/classes/spring.quartz/
+        target/classes/spring.timer/
+        target/classes/springinaction/
+        target/classes/testing/spring-context-mockito.xml
+        target/classes/velocity/
+        target/test-classes/
+        transactionmanagementspring/target/
+        velocity.log
+
+        lib/
+
