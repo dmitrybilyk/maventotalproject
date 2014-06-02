@@ -8,14 +8,7 @@
            http://www.springframework.org/schema/cache
            http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--changes from my own work on bugs and user story-->
-    <!--changes from my own work on bugs and user story22222-->
-    <!--changes from my own work on bugs and user story22222-->
-    <!--changes from my own work on bugs and user story22222-->
-    <!--changes from my own work on bugs and user story22222-->
-    <!--changes from my own work on bugs and user story22222-->
-    <!--changes from my own work on bugs and user storks-->
-    <!--changes from my own work on bugs and user story22222-->
+<!--Many changes to ks-->
 
     <cache:annotation-driven />
     <!--some changes from regression branch for pull here-->
