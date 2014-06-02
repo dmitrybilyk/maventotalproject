@@ -8,19 +8,21 @@
            http://www.springframework.org/schema/cache
            http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-
+    <!--changes from my own work on bugs and user story-->
+    <!--changes from my own work on bugs and user story22222-->
+    <!--changes from my own work on bugs and user story22222-->
+    <!--changes from my own work on bugs and user story22222-->
+    <!--changes from my own work on bugs and user story22222-->
+    <!--changes from my own work on bugs and user story22222-->
+    <!--changes from my own work on bugs and user storks-->
+    <!--changes from my own work on bugs and user story22222-->
 
     <cache:annotation-driven />
+    <!--some changes from regression branch for pull here-->
     <context:component-scan base-package="com.learn.spring.cachable" />
 
     <bean id="employee" class="com.learn.spring.cachable.Employee">
     </bean>
     <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cacheManager-ref="ehcache"/>
     <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:configLocation="classpath:spring.cachable/ehcache.xml"/>
-
-
-    <!--regression changes. We need to pull changes from regression and then unshelve our changes and commit-->
-
-
-
 </beans>
