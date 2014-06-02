@@ -18,6 +18,7 @@
     <!--changes from my own work on bugs and user story22222-->
 
     <cache:annotation-driven />
+    <!--some changes from regression branch for pull here-->
     <context:component-scan base-package="com.learn.spring.cachable" />
 
     <bean id="employee" class="com.learn.spring.cachable.Employee">
