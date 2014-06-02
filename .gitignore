@@ -346,4 +346,5 @@ platformhome.properties
         velocity.log
 
         lib/
+        target/
 
