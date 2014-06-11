@@ -1,6 +1,10 @@
 package com.mkyong.rest.mkyong;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.Gson;
 import com.mkyong.rest.Track;
+import com.mkyong.rest.mkyong.model.Student;
+import com.mkyong.rest.mkyong.model.StudentJson;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -8,6 +12,7 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("/rest/users")
@@ -26,6 +31,57 @@ public class UserRestService {
 //http://localhost:8080/RESTfulExample/users/vip
         return Response.status(200).entity("getUserVIP is called").build();
 
+    }
+
+
+    @POST
+    @Path("/saveall")
+    @Consumes("application/xml")
+    public void saveAll(List<Student> students){
+        System.out.println(students);
+    }
+
+    @GET
+    @Path("/student")
+    @Produces("application/xml")
+    public List<Student> getStudents() {
+        Student student = new Student();
+        student.setAge(30);
+        student.setName("Vasya");
+        student.setHeight(180);
+        Student student2 = new Student();
+        student2.setAge(33);
+        student2.setName("Vasya2");
+        student2.setHeight(182);
+        List<Student> students = new ArrayList<Student>();
+        students.add(student);
+        students.add(student2);
+        return students;
+    }
+
+    @GET
+    @Path("/studentjson")
+    @Produces("application/json")
+    public  String getStudentsJson() {
+        StudentJson student = new StudentJson();
+        student.setAge(30);
+        student.setName("Vasya");
+        student.setHeight(180);
+        StudentJson student2 = new StudentJson();
+        student2.setAge(33);
+        student2.setName("Vasya2");
+        student2.setHeight(182);
+        List<StudentJson> students = new ArrayList<StudentJson>();
+        students.add(student);
+        students.add(student2);
+
+        Gson gson = new Gson();
+
+        // convert java object to JSON format,
+        // and returned as JSON formatted string
+        String json = gson.toJson(students);
+
+        return json;
     }
 
     @GET

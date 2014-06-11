@@ -9,6 +9,11 @@
         <!--<param-value>true</param-value>-->
 	<!--</context-param>-->
 
+    <context-param>
+        <param-name>resteasy.resources</param-name>
+        <param-value>com.mkyong.rest.mkyong.UserRestService</param-value>
+    </context-param>
+
 
     <welcome-file-list>
         <welcome-file>form.html</welcome-file>
@@ -27,12 +32,6 @@
     <!--</servlet>-->
 
 
-
-
-	<context-param>
-		<param-name>resteasy.resources</param-name>
-		<param-value>com.mkyong.rest.mkyong.UserRestService</param-value>
-	</context-param>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
