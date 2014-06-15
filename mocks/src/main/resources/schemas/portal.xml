@@ -1,0 +1,30 @@
+<order>
+    <cartid>12</cartid>
+    <cartentries>
+        <product>
+            <description><![CDATA[Some description]]></description>
+            <name>first</name>
+            <id>product1</id>
+            <quantity>10</quantity>
+            <summary><![CDATA[A very big summary for product]]></summary>
+            <imageurl>http://delhi4cats.files.wordpress.com/2011/05/smiley-face.jpg</imageurl>
+        </product>
+        <product>
+            <description><![CDATA[Some description]]></description>
+            <name>first</name>
+            <id>product2</id>
+            <quantity>10</quantity>
+            <summary><![CDATA[A very big summary for product]]></summary>
+            <imageurl>http://delhi4cats.files.wordpress.com/2011/05/smiley-face.jpg</imageurl>
+        </product>
+    </cartentries>
+    <paymentmethods>
+        <paymentmethod>PAYPAL</paymentmethod>
+        <paymentmethod>CREDITCARD</paymentmethod>
+        <paymentmethod>DIRECTDEBIT</paymentmethod>
+        <paymentmethod>SOFORTUEBERWEISUNG</paymentmethod>
+        <paymentmethod>CASHONDELIVERY</paymentmethod>
+        <paymentmethod>MOBILEPAY</paymentmethod>
+    </paymentmethods>
+    <shippingcost>6.99</shippingcost>
+</order>
