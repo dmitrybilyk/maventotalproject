@@ -32,6 +32,29 @@
             <param-value>/WEB-INF/toolbox.xml</param-value>
         </init-param>
     </servlet>
+
+
+    <servlet>
+        <servlet-name>GoToAnotherPageServlet</servlet-name>
+        <servlet-class>com.learn.servlet.GoToAnotherPageServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GoToAnotherPageServlet</servlet-name>
+        <url-pattern>/GoToAnotherPage</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ShowXlsServlet</servlet-name>
+        <servlet-class>com.learn.servlet.ShowXlsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShowXlsServlet</servlet-name>
+        <url-pattern>/ShowXls</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>velocity</servlet-name>
         <url-pattern>*.vm</url-pattern>

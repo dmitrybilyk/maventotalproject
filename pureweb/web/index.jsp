@@ -39,5 +39,12 @@
 
     <p><strong>Thanks You!!</strong></p>
 
+
+
+    <td><a href="${pageContext.request.contextPath}/GoToAnotherPage">Go to another page</a></td>
+
+    <td><a href="${pageContext.request.contextPath}/ShowXls">Show xls</a></td>
+    <td><a href="${pageContext.request.contextPath}/show-image">Show image</a></td>
+
   </body>
 </html>
