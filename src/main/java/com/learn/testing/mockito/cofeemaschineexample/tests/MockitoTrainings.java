@@ -29,14 +29,14 @@ public class MockitoTrainings {
     public void test(){
 
 //        You can verify interactions:
-//        List mockedList = mock(List.class);
+//        List mockedList = com.cgi.pacoshop.mock(List.class);
 //        mockedList.add("one");
 //        mockedList.clear();
 //        verify(mockedList).add("one");
 //        verify(mockedList).clear();
 
 //        Or stub method calls
-        // you can mock concrete class, not only interfaces
+        // you can com.cgi.pacoshop.mock concrete class, not only interfaces
         LinkedList mockedList = mock(LinkedList.class);
         // stubbing - before execution
                 when(mockedList.get(0)).thenReturn("first");

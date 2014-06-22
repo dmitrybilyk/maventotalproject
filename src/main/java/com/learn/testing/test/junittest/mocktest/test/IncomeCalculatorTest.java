@@ -34,7 +34,7 @@ public class IncomeCalculatorTest {
                 .times(2);
         EasyMock.expect(calcMethod.calc(Position.PROGRAMMER))
                 .andReturn(50000.0);
-        // Setup is finished need to activate the mock
+        // Setup is finished need to activate the com.cgi.pacoshop.mock
         EasyMock.replay(calcMethod);
 
         calc.setCalcMethod(calcMethod);
@@ -72,7 +72,7 @@ public class IncomeCalculatorTest {
         // Setting up the expected value of the method call calc
         EasyMock.expect(calcMethod.calc(Position.SURFER)).andThrow(new PositionException("Don't know this guy")).times(1);
 
-        // Setup is finished need to activate the mock
+        // Setup is finished need to activate the com.cgi.pacoshop.mock
         EasyMock.replay(calcMethod);
         calc.setPosition(Position.SURFER);
         calc.setCalcMethod(calcMethod);

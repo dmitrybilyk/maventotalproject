@@ -18,7 +18,7 @@
     <myprefix:MyMsg>
         Test String
     </myprefix:MyMsg>
-
+<%--fsdfsdfsdfsdfsdfsdfsdfsdf--%>
     <form action="userdetails.jsp" method="post">
         User Name: <input type="text" name="username"><br>
         User Password: <input type="password" name="password"><br>

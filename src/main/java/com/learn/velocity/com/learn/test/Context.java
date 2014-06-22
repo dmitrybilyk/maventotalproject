@@ -14,7 +14,20 @@ public class Context {
 
     private AddressModel invoiceAddress;
 
-    public AddressModel getInvoiceAddress() {
+	 private Double doubleForTest;
+
+	public Double getDoubleForTest()
+	{
+		return doubleForTest;
+	}
+
+	public void setDoubleForTest(final Double doubleForTest)
+	{
+		this.doubleForTest = doubleForTest;
+	}
+
+	public AddressModel getInvoiceAddress() {
+	public AddressModel getInvoiceAddress() {
         return invoiceAddress;
     }
 

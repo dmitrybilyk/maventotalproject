@@ -13,22 +13,22 @@ public class Main
 	public static void main(String[] args)
 	{
 		Human human = new Human();
-		human.setBusinessPartnerId("3");
+//		human.setBusinessPartnerId("3");
 		human.setBirthDate(new Date(1403009850928l));
 
 		Human human2 = new Human();
 //		human2.setBusinessPartnerId("5");
 		Date date2 = new Date(1403008851928l);
-		human2.setBirthDate(date2);
+//		human2.setBirthDate(date2);
 
 		Human human3= new Human();
-//		human3.setBusinessPartnerId("3");
+		human3.setBusinessPartnerId("3");
 		human3.setBirthDate(new Date(1403004857928l));
 
 		Human human4 = new Human();
 		human4.setBusinessPartnerId("7");
 		Date date1 = new Date(1403009651828l);
-		human4.setBirthDate(date1);
+//		human4.setBirthDate(date1);
 
 		List<Human> arrayList = new ArrayList<Human>();
 		arrayList.add(human);

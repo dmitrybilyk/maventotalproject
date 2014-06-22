@@ -162,5 +162,12 @@
 #end
 <br/>
 
+
+#if($ctx.doubleForTest > 0)
+    some text for testtttttttttttttttttttttttttttttttttttttttttt
+#end
+
+ffffffffffffffffffffffffff
+
 </body>
 </html>

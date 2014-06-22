@@ -53,7 +53,7 @@ public class GojkoTest {
         osw.close();
     }
 
-//    To verify actual calls to underlying objects (typical mock object usage),
+//    To verify actual calls to underlying objects (typical com.cgi.pacoshop.mock object usage),
 // we can use verify(mock_object).method_call; For example:
 
     @Test
@@ -74,7 +74,7 @@ public class GojkoTest {
         osw.write('a');
         osw.flush();
         // can't do this as we don't know how long the array is going to be
-        // verify(mock).write(new byte[]{'a'},0,1);
+        // verify(com.cgi.pacoshop.mock).write(new byte[]{'a'},0,1);
 
         BaseMatcher arrayStartingWithA=new BaseMatcher(){
             @Override

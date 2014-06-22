@@ -44,6 +44,18 @@ public class TestVelocity {
 
       infoContext.setInvoiceAddress(invoiceAddress);
 
+      AddressModel deliveryAddress = new AddressModel();
+      deliveryAddress.set_town("town");
+      deliveryAddress.set_title2("title");
+      deliveryAddress.set_postalcode("postalCode");
+      deliveryAddress.setFirstname("deliveryfirstNaaame");
+      deliveryAddress.setLastname("lastNaaame");
+      deliveryAddress.set_line1("line1");
+      deliveryAddress.set_line2("line2");
+      deliveryAddress.setTitle(TitleEnum.MR);
+
+      infoContext.setInvoiceAddress(invoiceAddress);
+
   infoContext.setHasToBeDeliveredProducts(true);
 //  infoContext.setHasToBeDeliveredProducts(false);
   context.put("ctx", infoContext);

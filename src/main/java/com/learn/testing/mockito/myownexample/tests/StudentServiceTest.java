@@ -63,7 +63,7 @@ public class StudentServiceTest {
 //            public Object answer(InvocationOnMock invocation) {
 //                Object[] args = invocation.getArguments();
 //                System.out.println(args[0]);
-////              Mock mock = invocation.getMock();
+////              Mock com.cgi.pacoshop.mock = invocation.getMock();
 //                return null;
 //            }}).when(studentDaoMock).publishDoubleName("nameToPrint");
 

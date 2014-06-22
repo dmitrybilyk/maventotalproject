@@ -28,7 +28,7 @@ public void testCalc1() {
 // Setting up the expected value of the method call calc
 expect(calcMethod.calc(Position.BOSS)).andReturn(70000.0).times(2);
 expect(calcMethod.calc(Position.PROGRAMMER)).andReturn(50000.0);
-// Setup is finished need to activate the mock
+// Setup is finished need to activate the com.cgi.pacoshop.mock
 replay(calcMethod);
 
 calc.setCalcMethod(calcMethod);
@@ -67,7 +67,7 @@ public void testCalc2() {
 expect(calcMethod.calc(Position.SURFER)).
 andThrow(new RuntimeException("Don't know this guy")).times(1);
 
-// Setup is finished need to activate the mock
+// Setup is finished need to activate the com.cgi.pacoshop.mock
 replay(calcMethod);
 calc.setPosition(Position.SURFER);
 calc.setCalcMethod(calcMethod);

@@ -40,7 +40,7 @@ public class PersonServiceTest
         verify( personDAO ).update( personCaptor.capture() );
         Person updatedPerson = personCaptor.getValue();
         assertEquals( "David", updatedPerson.getPersonName() );
-        // asserts that during the test, there are no other calls to the mock object.
+        // asserts that during the test, there are no other calls to the com.cgi.pacoshop.mock object.
         verifyNoMoreInteractions( personDAO );
     }
     @Test
