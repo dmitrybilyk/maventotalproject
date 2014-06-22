@@ -7,3 +7,40 @@ Overview of request headers: http://users.polytech.unice.fr/~buffa/cours/interne
 
 Overview of response headers (and servlets in common):
 http://www.tutorialspoint.com/servlets/servlets-server-response.htm
+
+
+When an HTTP client (e.g. a browser) sends a request, it is required to supply a request line (usually GET or POST). If it wants
+to, it can also send a number of headers, all of which are optional except for Content-Length
+
+
+
+When an HTTP client (e.g. a browser) sends a request, it is required to supply a request line (usually GET or POST). If it wants to, it can also send a number of headers, all of which are optional except for Content-Length, which is required only for POST requests. Here are the most common headers:
+
+    Accept The MIME types the browser prefers.
+    Accept-Charset The character set the browser expects.
+    Accept-Encoding The types of data encodings (such as gzip) the browser knows how to decode.
+    Servlets can explicitly check for gzip support and return gzipped HTML pages to browsers that
+    support them, setting the Content-Encoding response header to indicate that they are gzipped. In many cases, this can reduce page download times by a factor of five or ten.
+    Accept-Language The language the browser is expecting, in case the server has versions in more
+    than one language.
+    Authorization Authorization info, usually in response to a WWW-Authenticate header from the server.
+    Connection Use persistent connection? If a servlet gets a Keep-Alive value here, or gets a request
+    line indicating HTTP 1.1 (where persistent connections are the default), it may be able to take
+    advantage of persistent connections, saving significant time for Web pages that include several
+    small pieces (images or applet classes). To do this, it needs to send a Content-Length header
+    in the response, which is most easily accomplished by writing into a ByteArrayOutputStream,
+    then looking up the size just before writing it out.
+    Content-Length (for POST messages, how much data is attached)
+    Cookie (one of the most important headers; see separate section in this tutorial on handling
+    cookies)
+    From (email address of requester; only used by Web spiders and other custom clients, not by
+    browsers)
+    Host (host and port as listed in the original URL)
+    If-Modified-Since (only return documents newer than this, otherwise send a 304 "Not Modified"
+    response)
+    Pragma (the no-cache value indicates that the server should return a fresh document, even if
+    it is a proxy with a local copy)
+    Referer (the URL of the page containing the link the user followed to get to current page)
+    User-Agent (type of browser, useful if servlet is returning browser-specific content)
+    UA-Pixels, UA-Color, UA-OS, UA-CPU (nonstandard headers sent by some Internet Explorer versions,
+    indicating screen size, color depth, operating system, and cpu type used by the browser's system)

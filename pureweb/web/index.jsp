@@ -45,6 +45,7 @@
 
     <td><a href="${pageContext.request.contextPath}/ShowXls">Show xls</a></td>
     <td><a href="${pageContext.request.contextPath}/show-image">Show image</a></td>
+    <td><a href="${pageContext.request.contextPath}/show-headers">Show Headers</a></td>
 
   </body>
 </html>
