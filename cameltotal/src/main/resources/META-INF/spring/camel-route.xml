@@ -42,7 +42,7 @@
     <!-- test route -->
     <route>
       <from uri="seda:incomingOrders" />
-      <to uri="mock:end"/>
+      <to uri="com.cgi.pacoshop.mock:end"/>
     </route>
   </camelContext>
 
