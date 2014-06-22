@@ -26,7 +26,7 @@ public class Context {
 		this.doubleForTest = doubleForTest;
 	}
 
-	public AddressModel getInvoiceAddress() {
+
 	public AddressModel getInvoiceAddress() {
         return invoiceAddress;
     }

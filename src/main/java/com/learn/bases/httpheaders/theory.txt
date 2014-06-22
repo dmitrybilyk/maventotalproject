@@ -1,0 +1,9 @@
+All headers are tested in pureweb module.
+
+standard in which headers are described: RFC 2616 (http://tools.ietf.org/html/rfc2616#page-117)
+
+
+Overview of request headers: http://users.polytech.unice.fr/~buffa/cours/internet2000/POLYS/servlets/Servlet-Tutorial-Request-Headers.html
+
+Overview of response headers (and servlets in common):
+http://www.tutorialspoint.com/servlets/servlets-server-response.htm
