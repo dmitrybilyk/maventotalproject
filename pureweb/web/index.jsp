@@ -49,5 +49,9 @@
     <td><a href="${pageContext.request.contextPath}/refresh">Go To Refresh Servlet</a></td>
     <td><a href="${pageContext.request.contextPath}/sendEmail">Send email</a></td>
 
+    <td><a href="${pageContext.request.contextPath}/goToRadioButtons">Go to radio form</a></td>
+
+
+
   </body>
 </html>
