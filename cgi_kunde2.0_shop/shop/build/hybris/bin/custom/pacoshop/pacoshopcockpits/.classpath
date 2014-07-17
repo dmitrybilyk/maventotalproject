@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gensrc"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="src" path="testsrc"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/acceleratorcms"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/acceleratorservices"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/cmscockpit"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/cockpit"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/platform"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/productcockpit"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/acceleratorfacades"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/cscockpit"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

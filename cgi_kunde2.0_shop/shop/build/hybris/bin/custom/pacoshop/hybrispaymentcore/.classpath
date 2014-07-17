@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/platform"/>
+	<classpathentry exported="true" kind="lib" path="resources"/>
+	<classpathentry kind="lib" path="web/webroot/WEB-INF/lib/spring-webmvc-3.1.4.RELEASE.jar"/>
+	<classpathentry exported="true" kind="lib" path="bin/hybrispaymentcoreserver.jar" sourcepath="/home/developer/git/shop-paco/shop/lib-sources/payment/hybrispaymentcore-src.zip"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/hmc"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/commercefacades"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/acceleratorfacades"/>
+	<classpathentry kind="output" path="eclipsebin/notused"/>
+</classpath>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="hmc/src"/>
+	<classpathentry kind="src" path="testsrc"/>
+	<classpathentry kind="src" path="gensrc"/>
+	<classpathentry kind="src" path="resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/acceleratorcms"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/acceleratorservices"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/hmc"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/platform"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/subscriptionservices"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/pacoshopfulfilmentprocess"/>
+	<classpathentry kind="lib" path="/amazoncloud/lib/httpclient-4.2.jar"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/hybrispaymentcore"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/hybrispaymentwirecard"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/commercefacades"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/acceleratorfacades"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
