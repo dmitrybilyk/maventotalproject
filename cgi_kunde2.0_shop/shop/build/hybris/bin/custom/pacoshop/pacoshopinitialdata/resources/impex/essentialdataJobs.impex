@@ -1,0 +1,10 @@
+INSERT_UPDATE CronJob; code[unique=true];job(code);singleExecutable;sessionLanguage(isocode)
+;singleProductImportCronJob;singleProductImportJob;false;de
+;subscriptionProductImportJob;subscriptionProductImportJob;false;de
+;termsVersionImportJob;termsVersionImportJob;false;de
+
+INSERT_UPDATE Trigger;cronjob(code)[unique=true];cronExpression
+#% afterEach: impex.getLastImportedItem().setActivationTime(new Date());
+;singleProductImportCronJob; 0 0 9 * * ?
+;subscriptionProductImportJob; 0 0 9 * * ?
+;termsVersionImportJob; 0 0 1 * * ?

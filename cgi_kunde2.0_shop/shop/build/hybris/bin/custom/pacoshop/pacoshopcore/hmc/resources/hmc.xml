@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2013 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+<configuration xmlns="hybris.de/schemas/hmc/generic"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="hybris.de/schemas/hmc/generic hmc.xsd">
+
+
+    <!-- Configuration for extension pacoshopcore -->
+    <explorertree width="185" columns="2">
+        <group name="catalog" expand="false" description="group.catalog.description">
+            <typeref type="ProductType" description="typeref.producttype.description"/>
+        </group>
+        <group name="pricesettings" description="group.pricesettings.description">
+            <group name="prices" description="typeref.prices.description">
+                <typeref type="VATGroup" description="typeref.vatgroup.description"/>
+            </group>
+            <typeref type="Zone" description="typeref.zone.description"/>
+        </group>
+        <group name="system" expand="false" description="group.system.description">
+            <typeref type="PaymentType" description="typeref.paymenttype.description"/>
+            <typeref type="PortalId" description="typeref.portalid.description"/>
+        </group>
+        <group name="user" expand="false" description="group.user.description">
+            <typeref type="TermVersion" description="typeref.term.description"/>
+            <typeref type="Title2" description="typeref.title2.description" position="6"/>
+        </group>
+    </explorertree>
+
+
+    <type name="Consignment" mode="append">
+        <organizer>
+            <editor mode="append">
+                <tab name="properties" position="0" mode="append">
+                    <section name="consignment.details">
+                        <listlayout mode="append">
+                            <action type="item" classname="com.cgi.pacoshop.core.hmc.PickupConfirmationHMCAction"
+                                    name="btn.consignment.confirm.pickup"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="PaymentType" mode="append">
+        <organizer>
+            <search mode="replace" autoperform="true">
+                <condition attribute="code"/>
+                <condition attribute="name"/>
+            </search>
+            <result>
+                <listview mode="replace">
+                    <itemlayout>
+                        <attribute name="code"/>
+                        <attribute name="name"/>
+                        <attribute name="externalId"/>
+                    </itemlayout>
+                </listview>
+            </result>
+            <editor>
+                <essentials>
+                    <listlayout>
+                        <attribute name="code"/>
+                    </listlayout>
+                </essentials>
+                <tab name="tab.paymenttype.description">
+                    <section name="section.paymenttype.description">
+                        <listlayout>
+                            <attribute name="name"/>
+                            <attribute name="externalId"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="PortalId" mode="append">
+        <organizer>
+            <search mode="replace" autoperform="true">
+                <condition attribute="portalId"/>
+            </search>
+            <result>
+                <listview mode="replace">
+                    <itemlayout>
+                        <attribute name="portalId"/>
+                        <attribute name="portalUrl"/>
+                    </itemlayout>
+                </listview>
+            </result>
+            <editor>
+                <tab name="tab.portalid.description">
+                    <section name="section.portalid.description">
+                        <listlayout>
+                            <attribute name="portalId"/>
+                            <attribute name="portalUrl"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="VATGroup" mode="append">
+        <organizer>
+            <search mode="replace">
+                <condition attribute="id"/>
+                <condition attribute="name"/>
+                <condition attribute="vatRate"/>
+            </search>
+            <result>
+                <listview mode="replace">
+                    <itemlayout>
+                        <attribute name="id"/>
+                        <attribute name="name"/>
+                        <attribute name="vatRate"/>
+                    </itemlayout>
+                </listview>
+            </result>
+            <editor>
+                <essentials>
+                    <listlayout>
+                        <attribute name="id"/>
+                    </listlayout>
+                </essentials>
+                <tab name="tab.vatgroup.description">
+                    <section name="section.vatgroup.description">
+                        <listlayout>
+                            <attribute name="name"/>
+                            <attribute name="vatRate"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+        <defaultreference searchattribute="vatRate" mode="replace">
+            <itemlayout>
+                <attribute name="vatRate"/>
+            </itemlayout>
+        </defaultreference>
+    </type>
+
+    <type name="ProductType" mode="append">
+        <organizer>
+            <search mode="replace" autoperform="true">
+                <condition attribute="code"/>
+            </search>
+            <result>
+                <listview mode="replace">
+                    <itemlayout>
+                        <attribute name="code"/>
+                    </itemlayout>
+                </listview>
+            </result>
+            <editor>
+                <essentials>
+                    <listlayout>
+                        <attribute name="code"/>
+                    </listlayout>
+                </essentials>
+                <tab name="tab.producttype.description">
+                    <section name="section.producttype.description">
+                        <listlayout>
+                            <attribute name="sendInvoice"/>
+                            <attribute name="productGroup"/>
+                            <attribute name="productClass"/>
+                            <attribute name="productCluster"/>
+                            <attribute name="paymentTypes"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+        <defaultreference searchattribute="code" mode="replace">
+            <itemlayout>
+                <attribute name="code"/>
+            </itemlayout>
+        </defaultreference>
+    </type>
+
+
+    <type name="Product" mode="append">
+        <organizer>
+            <search mode="replace">
+               <condition attribute="code"/>
+               <condition attribute="name"/>
+               <condition attribute="catalogVersion"/>
+               <condition attribute="productType"/>
+            </search>
+            <editor>
+                <tab name="tab.product.properties">
+                    <section name="section.product.options" position="0">
+                        <listlayout>
+                            <attribute name="externalOfferId"/>
+                            <attribute name="offerOrigin"/>
+                            <attribute name="productOwner"/>
+                            <attribute name="externalProductId"/>
+                            <attribute name="fulfillmentType"/>
+                            <attribute name="active"/>
+                            <attribute name="productType"/>
+                            <attribute name="digital"/>
+                            <attribute name="dummy"/>
+                            <attribute name="prepayOnly"/>
+                            <attribute name="differingInvoiceRecipientAllowed"/>
+                            <attribute name="differingConsigneeAllowed"/>
+                            <attribute name="vatGroup"/>
+                            <!-- TODO: confirm the modification of that attribute. The value is used to defined the fulfiller.
+                            <attribute name="importSource" editable="false"/>  -->
+                            <attribute name="importSource"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="SubscriptionProduct" mode="append">
+        <organizer>
+            <editor>
+                <tab name="tab.product.subscriptions" position="2">
+                    <section name="section.product.bonuses" position="0">
+                        <listlayout>
+                            <attribute name="bonuses">
+                                <referencecollectioneditor add="false" create="true" editable="true">
+                                    <itemlayout>
+                                          <attribute name="id" width="100"/>
+                                          <attribute name="itemtype" width="200" />
+                                     </itemlayout>
+                                </referencecollectioneditor>
+                            </attribute>
+                            <attribute name="bonusDescription"/>
+                            <attribute name="bonusImage" />
+					<attribute name="studentOffer"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+
+    <type name="Address" mode="append">
+        <organizer>
+            <editor>
+                <tab name="tab.common">
+                   <section name="section.address.address" mode="replace" position="0">
+                      <columnlayout>
+                         <row>
+                            <attribute name="line1"/>
+                            <attribute name="line2"/>
+                         </row>
+                         <row>
+                             <attribute name="line3"/>
+                             <attribute name="postalcode"/>
+                         </row>
+                          <row>
+                              <attribute name="country"/>
+                              <attribute name="town"/>
+                          </row>
+                      </columnlayout>
+                   </section>
+                   <section name="section.address.additional" mode="replace" position="1">
+                      <columnlayout>
+                        <row>
+                            <attribute name="email"/>
+                            <attribute name="gender"/>
+                        </row>
+                         <row>
+                            <attribute name="phone1"/>
+                            <attribute name="phone2"/>
+                         </row>
+                         <row>
+                            <attribute name="company"/>
+                            <attribute name="roleInCompany"/>
+                         </row>
+                          <row>
+                              <attribute name="businessPartnerId"/>
+                              <attribute name="lastUpdate"/>
+                          </row>
+                      </columnlayout>
+                    </section>
+                    <section name="section.address.contact" mode="replace" position="3">
+                        <columnlayout>
+                            <row>
+                                <attribute name="title"/>
+                                <attribute name="title2"/>
+                            </row>
+                            <row>
+                                <attribute name="lastname"/>
+                                <attribute name="firstname"/>
+                            </row>
+                            <row>
+                                <attribute name="middlename"/>
+                                <attribute name="department"/>
+                            </row>
+                            <row>
+                                <attribute name="middlename2"/>
+                                <attribute name="building"/>
+                            </row>
+                            <row>
+                                <attribute name="appartment"/>
+                                <attribute name="region"/>
+                            </row>
+                            <row>
+                                <attribute name="district"/>
+                            </row>
+                        </columnlayout>
+                    </section>
+                  </tab>
+                </editor>
+            </organizer>
+        </type>
+
+    <type name="BusinessPartnerId" mode="append">
+        <organizer>
+            <search mode="replace">
+                <condition attribute="id"/>
+            </search>
+            <result>
+                <listview mode="replace">
+                    <itemlayout>
+                        <attribute name="id"/>
+                    </itemlayout>
+                </listview>
+            </result>
+            <editor>
+                <essentials>
+                    <listlayout>
+                        <attribute name="id"/>
+                    </listlayout>
+                </essentials>
+            </editor>
+        </organizer>
+    </type>
+
+
+
+    <type name="Customer" mode="append">
+        <organizer>
+            <search mode="append">
+                <condition attribute="firstName"/>
+                <condition attribute="lastName"/>
+            </search>
+            <result>
+                <listview mode="append">
+                    <itemlayout>
+                        <attribute name="firstName"/>
+                        <attribute name="lastName"/>
+                    </itemlayout>
+                </listview>
+            </result>
+            <editor>
+                <essentials>
+                    <listlayout>
+                        <attribute name="firstName"/>
+                        <attribute name="lastName"/>
+                    </listlayout>
+                </essentials>
+                <tab name="tab.common">
+                    <section name="properties" mode="append">
+                        <columnlayout>
+                            <row>
+                                <attribute name="businessPartnerIds">
+                                    <referencecollectioneditor editable="false" remove="true" create="true" autosave="true" showsearcheditor="true">
+                                        <itemlayout>
+                                            <attribute name="id"/>
+                                        </itemlayout>
+                                    </referencecollectioneditor>
+                                </attribute>
+                            </row>
+                            <row>
+                                <attribute name="studentGraduationDate" editable="true"/>
+                            </row>
+                        </columnlayout>
+                    </section>
+                    <section name="section.customer.terms" mode="append">
+                        <columnlayout>
+                            <row>
+                                <attribute name="termsAccepted">
+                                    <referencecollectioneditor add="false" editable="false" remove="true" create="true" autosave="true" showsearcheditor="true">
+                                        <itemlayout>
+                                            <attribute name="termsVersion"/>
+                                            <attribute name="confirmed"/>
+                                        </itemlayout>
+                                    </referencecollectioneditor>
+                                </attribute>
+                            </row>
+                        </columnlayout>
+                    </section>
+                </tab>
+                <tab name="addresses" id="tab_addresses" position="1" mode="append">
+                    <section name="addresses" mode="append">
+                        <listlayout>
+                            <attribute name="mainAddress" editable="true"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <explorertree mode="append">
+        <group name="group.basecommerce.deeplink">
+            <typeref type="FingerprintSecret" description="deeplink.fingerprint.description"/>
+        </group>
+    </explorertree>
+
+    <type name="FingerprintSecret" mode="append">
+        <organizer>
+            <search mode="append">
+                <condition attribute="fingerPrintSecretNo" />
+                <condition attribute="secret" />
+            </search>
+            <result defaultview="list">
+                <listview>
+                    <itemlayout mode="replace">
+                        <attribute name="fingerPrintSecretNo" width="125"></attribute>
+                        <attribute name="secret" width="250"></attribute>
+                    </itemlayout>
+                </listview>
+            </result>
+            <editor>
+                <tab name="properties">
+                    <section name="properties" mode="replace" position="0">
+                        <columnlayout>
+                            <row>
+                                <attribute name="fingerPrintSecretNo"/>
+                                <attribute name="secret"/>
+                            </row>
+                        </columnlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="SSOLoginIFrameComponent" mode="append">
+        <organizer>
+            <editor>
+                <tab name="properties">
+                    <section name="properties" mode="replace" position="0">
+                        <columnlayout>
+                            <row>
+                                <attribute name="baseUrl"/>
+                                <attribute name="src"/>
+                            </row>
+                            <row>
+                                <attribute name="id"/>
+                            </row>
+                            <row>
+                                <attribute name="title"/>
+                                <attribute name="description"/>
+                            </row>
+                            <row>
+                                <attribute name="width"/>
+                                <attribute name="height"/>
+                            </row>
+                            <row>
+                                <attribute name="frameborder"/>
+                            </row>
+                        </columnlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="SSORegisterFormComponent" mode="append">
+        <organizer>
+            <editor>
+                <tab name="properties">
+                    <section name="properties" mode="replace" position="0">
+                        <columnlayout>
+                            <row>
+                                <attribute name="baseUrl"/>
+                                <attribute name="id"/>
+                            </row>
+                            <row>
+                                <attribute name="text"/>
+                                <attribute name="label"/>
+                            </row>
+                        </columnlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="SSORegisterLightBoxComponent" mode="append">
+        <organizer>
+            <editor>
+                <tab name="properties">
+                    <section name="properties" mode="replace" position="0">
+                        <columnlayout>
+                            <row>
+                                <attribute name="registerUrl"/>
+                                <attribute name="header"/>
+                            </row>
+                            <row>
+                                <attribute name="text"/>
+                                <attribute name="label"/>
+                            </row>
+                            <row>
+                                <attribute name="timeout"/>
+                            </row>
+                        </columnlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+
+   <type name="BaseStore" mode="append">
+      <organizer>
+         <editor>
+            <tab name="properties" mode="append" position="0">
+               <section name="section.basestore.paymentfees" mode="append" position="2">
+                  <listlayout>
+                     <attribute name="paymentModeFees">
+                        <referencecollectioneditor add="false" create="true" editable="true">
+                            <itemlayout>
+                                  <attribute name="description" width="100"/>
+                                  <attribute name="paymentMode" width="100" />
+                                  <attribute name="amount" width="100"/>
+                                  <attribute name="currency" width="100"/>
+                             </itemlayout>
+                        </referencecollectioneditor>
+                     </attribute>
+                  </listlayout>
+               </section>
+            </tab>
+         </editor>
+      </organizer>
+   </type>
+
+   <type name="StorePaymentModeFee" mode="append">
+    <organizer>
+        <editor>
+            <tab name="properties" position="0">
+                <section name="properties">
+                    <listlayout>
+                        <attribute name="description" />
+                        <attribute name="paymentMode" />
+                        <attribute name="amount" />
+                        <attribute name="currency" />
+                    </listlayout>
+                </section>
+            </tab>
+        </editor>
+    </organizer>
+   </type>
+
+
+   <type name="BusinessProcess" useselector="true" mode="replace">
+        <organizer>
+            <search mode="replace">
+                <condition attribute="code" />
+                <condition attribute="processDefinitionName" />
+                <!-- condition attribute="state" /-->
+            </search>
+            <result defaultview="list">
+                <listview mode="replace">
+                    <itemlayout>
+                        <attribute name="code" width="100" />
+                        <attribute name="processDefinitionName" width="180" />
+                        <attribute name="processState" width="100" />
+                        <attribute name="endMessage" width="120" />
+                    </itemlayout>
+                </listview>
+                <editview mode="replace">
+                    <itemlayout>
+                        <attribute name="code" width="150" />
+                    </itemlayout>
+                </editview>
+                <treeview mode="replace">
+                    <itemlayout>
+                        <attribute name="code" />
+                        <attribute name="processDefinitionName" />
+                        <attribute name="processState" />
+                    </itemlayout>
+                </treeview>
+            </result>
+            <editor>
+                <essentials mode="replace">
+                    <listlayout>
+                        <attribute name="code" />
+                        <attribute name="processDefinitionName" />
+                        <attribute name="processState" />
+                        <attribute name="endMessage" />
+                    </listlayout>
+                </essentials>
+                <tab name="tab.process.properties">
+                    <section name="sec.process.properties">
+                        <listlayout>
+                            <attribute name="contextParameters">
+                                <referencecollectioneditor resortable="false" create="true" remove="true" autosave="true">
+                                    <itemlayout>
+                                        <attribute name="name"/>
+                                        <attribute name="value"/>
+                                    </itemlayout>
+                                </referencecollectioneditor>
+                            </attribute>
+                            <attribute name="currentTasks">
+                                <referencecollectioneditor resortable="false" create="true" remove="true" autosave="true">
+                                    <itemlayout>
+                                        <attribute name="action"/>
+                                        <attribute name="executionDate"/>
+                                        <attribute name="failed"/>
+                                    </itemlayout>
+                                </referencecollectioneditor>
+                            </attribute>
+                            <attribute name="taskLogs">
+                                <referencecollectioneditor resortable="false" create="true" remove="true" autosave="true">
+                                    <itemlayout>
+                                        <attribute name="actionId"/>
+                                        <attribute name="startDate"/>
+                                        <attribute name="endDate"/>
+                                        <attribute name="logMessages"/>
+                                    </itemlayout>
+                                </referencecollectioneditor>
+                            </attribute>
+                        </listlayout>
+                        <table>
+                            <tr>
+                                <td width="16px">
+                                </td>
+                                <td>
+                                    <!-- TODO need own icons (using cronjob ones now) -->
+                                    <action type="item"
+                                            classname="com.cgi.pacoshop.core.processengine.hmc.OrderRepairProcessAction"
+                                            name="action.repairprocess"
+                                            toolbaricon="images/ext/cronjob/e_cronjob_start"
+                                            disabledicon="images/ext/cronjob/e_cronjob_start_inactive.gif"
+                                            icon="images/ext/cronjob/e_cronjob_start.gif"
+                                            autosave="true"
+                                            showtoolbarlabel="true"
+                                            hidebutton="true" />
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+        <defaultreference searchattribute="code" mode="replace">
+            <itemlayout>
+                <attribute name="code" />
+            </itemlayout>
+        </defaultreference>
+     </type>
+
+    <type name="AbstractOrder" mode="append">
+        <organizer>
+            <editor mode="append">
+                <tab name="payment_and_delivery" mode="append">
+                    <section name="payment" mode="append">
+                        <listlayout mode="append">
+                            <attribute name="paymentInfo" mode="replace">
+                                <referenceeditor autoperform="true">
+                                    <preset targetattribute="user" sourceattribute="user"/>
+                                    <restriction attribute="user" sourceattribute="user"/>
+                                </referenceeditor>
+                            </attribute>
+                            <attribute name="prepaidOnly"/>
+                            <attribute name="bonusRecipientPaymentInfo" mode="replace">
+                                <referenceeditor autoperform="true">
+                                    <preset targetattribute="user" sourceattribute="user"/>
+                                    <restriction attribute="user" sourceattribute="user"/>
+                                </referenceeditor>
+                            </attribute>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="PaymentTransaction" mode="append">
+        <organizer>
+            <editor mode="append">
+                <tab name="administration" mode="append">
+                    <section name="unbound" mode="replace">
+                        <listlayout mode="append">
+                            <attribute name="info" mode="replace">
+                                <referenceeditor autoperform="true">
+                                    <preset targetattribute="user" sourceattribute="user"/>
+                                    <restriction attribute="user" sourceattribute="user"/>
+                                </referenceeditor>
+                            </attribute>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="OrderRepairProcessWizard" icon="images/ext/catalog/e_catalog_publicate.gif" mode="append">
+      <organizer>
+         <editor>
+            <tab name="tab.repairprocesswizard.stateselection" position="0">
+               <section name="section.repairprocesswizard.stateselection">
+                  <listlayout>
+                     <attribute name="selectedProcess">
+                        <referenceeditor autocomplete="false" autoperform="false" />
+                     </attribute>
+                     <text name="text.repairprocesswizard.stateselection.howto"/>
+                     <attribute name="availableProcessStates">
+                        <collectioneditor addremove="false" editable="false"/>
+                     </attribute>
+                  </listlayout>
+               </section>
+            </tab>
+         </editor>
+      </organizer>
+   </type>
+
+   <type name="CMSSite" mode="append">
+      <organizer>
+         <editor>
+            <tab name="properties" position="0">
+               <section name="links">
+                  <listlayout>
+                     <attribute name="termsAndConditionsLink" />
+                     <attribute name="contradictionPolicyLink" />
+                  </listlayout>
+               </section>
+            </tab>
+            <tab name="payment_and_delivery" position="1">
+               <section name="payment">
+                  <listlayout>
+                     <attribute name="allowedPaymentMethods" />
+                  </listlayout>
+               </section>
+               <section name="tab.cmssite.subscribtions">
+                  <listlayout>
+                     <attribute name="deliveryStartDateEarliest" />
+                     <attribute name="deliveryStartDateLatest" />
+                  </listlayout>
+               </section>
+            </tab>
+         </editor>
+      </organizer>
+   </type>
+
+    <type name="CMSLinkComponent" mode="append">
+        <organizer>
+            <editor>
+                <tab name="properties" position="0">
+                    <section name="properties" mode="append" position="0">
+                        <columnlayout>
+                            <row>
+                                <attribute name="link"/>
+                            </row>
+                            <row>
+                                <attribute name="rel"/>
+                                <attribute name="mimeType"/>
+                            </row>
+                            <row>
+                                <attribute name="charset"/>
+                            </row>
+                        </columnlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="CampaignIdRestriction" mode="append">
+        <organizer>
+            <editor>
+                <tab name="properties" position="0">
+                    <section name="properties" mode="append" position="0">
+                        <columnlayout>
+                            <row>
+                                <attribute name="campaignId"/>
+                            </row>
+                        </columnlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="ProductTypesRestriction" mode="append">
+        <organizer>
+            <editor>
+                <tab name="properties" position="0">
+                    <section name="properties" mode="append" position="0">
+                        <columnlayout>
+                            <row>
+                                <attribute name="productTypes"/>
+                            </row>
+                        </columnlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+    </type>
+
+    <type name="TermVersion" mode="append">
+        <organizer>
+            <search mode="replace" autoperform="true">
+                <condition attribute="termVersionId"/>
+                <condition attribute="name"/>
+                <condition attribute="type"/>
+                <condition attribute="version"/>
+            </search>
+            <result>
+                <listview mode="replace">
+                    <itemlayout>
+                        <attribute name="termVersionId"/>
+                        <attribute name="name"/>
+                        <attribute name="type"/>
+                        <attribute name="version"/>
+                    </itemlayout>
+                </listview>
+            </result>
+        </organizer>
+        <defaultreference mode="replace">
+            <itemlayout>
+                <attribute name="termsVersionId"/>
+            </itemlayout>
+        </defaultreference>
+    </type>
+
+    <type name="Title2" icon="images/icons/e_title.gif" mode="append" useselector="true">
+        <organizer>
+            <search autoperform="true" mode="replace">
+                <condition attribute="code" operator="contains"/>
+            </search>
+            <result>
+                <listview mode="replace">
+                    <itemlayout>
+                        <attribute name="code" width="50"/>
+                        <attribute name="name"/>
+                    </itemlayout>
+                </listview>
+                <editview mode="replace">
+                    <itemlayout>
+                        <attribute name="code" width="50"/>
+                        <attribute name="name"/>
+                    </itemlayout>
+                </editview>
+                <treeview mode="replace">
+                    <itemlayout>
+                        <attribute name="code"/>
+                    </itemlayout>
+                </treeview>
+            </result>
+            <editor>
+                <essentials>
+                </essentials>
+                <tab name="properties" position="0">
+                    <section name="common">
+                        <listlayout>
+                            <attribute name="code"/>
+                            <attribute name="name"/>
+                        </listlayout>
+                    </section>
+                </tab>
+            </editor>
+        </organizer>
+        <defaultreference searchattribute="name" mode="replace">
+            <itemlayout>
+                <attribute name="name"/>
+            </itemlayout>
+        </defaultreference>
+    </type>
+
+
+</configuration>

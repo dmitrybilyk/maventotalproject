@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<testclasses>
+  <pacoshopcockpits>
+    <testclass>com.cgi.pacoshop.cockpits.cmscockpit.sitewizard.CMSSiteUtilsTest</testclass>
+    <testclass>com.cgi.pacoshop.cockpits.jalo.YAcceleratorcockpitsTest</testclass>
+  </pacoshopcockpits>
+</testclasses>

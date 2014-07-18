@@ -1,0 +1,89 @@
+#
+# Import Payment Configuration
+# 
+
+INSERT_UPDATE Cart;code[unique=true];site(uid)
+;ahertzCart;testSite
+;abrodeCart;testSite
+;deJolStored;testSite
+;promotedStored;testSite
+
+# Payment Modes
+# The modes are originally defined in yacceleratortest -> qa-test-users.impex (Hybris 5.0.4)
+INSERT_UPDATE StandardPaymentMode;code[unique=true];active;paymentinfotype(code)
+;creditcard ;true   ;CreditCardPaymentInfo
+;debitentry ;false  ;DebitPaymentInfo
+;invoice    ;true   ;InvoicePaymentInfo
+;advance    ;true   ;AdvancePaymentInfo
+;paypal     ;false  ;PayPalPaymentInfo
+;fantasy    ;false  ;CreditCardPaymentInfo
+
+INSERT_UPDATE PaymentServiceProvider;code[unique=true];name;active
+;hpay;Hybris Core Payment;true
+;intercard;InterCard;false
+;wirecard;Wirecard;true
+
+INSERT_UPDATE CCPaymentMethodType;code[unique=true];type(code)
+;amex;amex
+;maestro;maestro
+;switch;switch
+;visa;visa
+;master;master
+;mastercard_eurocard;mastercard_eurocard
+;diners;diners
+
+INSERT_UPDATE PaymentMethodType;code[unique=true]
+;invoice;invoice
+;advance;advance
+;fantasy1;fantasy
+;fantasy2;fantasy
+
+INSERT_UPDATE PaymentMethod;code[unique=true];psp(code)[unique=true];mode(code)[unique];type(code)[unique=true];active[default=true];requiresIssuer[default=false]
+;hpay_invoice           ;hpay       ;invoice    ;invoice    ;true
+;hpay_advance           ;hpay       ;advance    ;advance    ;false
+;WC_MC                  ;wirecard   ;creditcard ;master     ;false
+;WC_Visa                ;wirecard   ;creditcard ;visa       ;true
+;ic_visa                ;intercard  ;creditcard ;visa       ;true
+;ic_master              ;intercard  ;creditcard ;master     ;true
+;wc_fantasy1            ;wirecard   ;fantasy    ;fantasy1   ;true
+;wc_fantasy2            ;wirecard   ;fantasy    ;fantasy2   ;true
+;ic_fantasy1            ;intercard  ;fantasy    ;fantasy1   ;true
+;ic_fantasy2            ;intercard  ;fantasy    ;fantasy2   ;true
+
+
+$lang=en
+INSERT_UPDATE StandardPaymentMode;code[unique=true];name[lang=$lang];description[lang=$lang]
+;creditcard;Credit Card;Payment with creditcard
+;debitentry;Bank Collection;Payment with bank collection
+;invoice;Invoice;Payment with invoice
+;advance;Advance;Payment in advance
+;paypal;PayPal;Payment with PayPal
+;fantasy;Fantasy;Payment with Fantasy
+
+INSERT_UPDATE PaymentMethodType;code[unique=true];name[lang=$lang]
+;invoice;Invoice
+;advance;Advance
+;fantasy1;Fantasy 1
+;fantasy2;Fantasy 2
+
+INSERT_UPDATE CCPaymentMethodType;code[unique=true];name[lang=$lang]
+;amex;American Express
+;maestro;Maestro
+;switch;Switch
+;visa;Visa
+;master;MasterCard
+;mastercard_eurocard;MasterCard
+;diners;Diners
+
+INSERT_UPDATE Customer;uid[unique=true];customerID;name;description;password
+;sbrueck;K2006-C0003;Sabine Brück;;1234
+;mmust;K2006-C0004;Max Mustermann;;1234
+
+INSERT_UPDATE Address;owner(Customer.uid)[unique=true];streetname[unique=true];streetnumber[unique=true];postalcode[unique=true];duplicate[unique=true];town;billingAddress;contactAddress;shippingAddress;unloadingAddress;firstname;lastname;email;middlename;phone1;url;company;fax;department
+;sbrueck;Kiefernweg;1;49456;false;Bakum;true;true;false;true;Sabine;Brück;2653265637.2345732354634@t-online.de
+
+INSERT_UPDATE DebitPaymentInfo;code[unique=true];user(uid)[unique=true];baOwner;bankIDNumber;accountNumber;bank;saved
+;debit;sbrueck;Sabine Brück;28022822;K777453844;Oldenburgische Landesbank AG;true
+
+INSERT_UPDATE CreditCardPaymentInfo;code[unique=true];user(uid)[unique=true];ccOwner;number;type(code);validFromMonth;validFromYear;validToMonth;validToYear;saved
+;master;sbrueck;Sabine Brück;5105105105105100;master;;;09;2029;false

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="base.xsd">
+	<search>
+		<search-properties>
+			<property qualifier="DeliveryMode.code" />
+			<property qualifier="DeliveryMode.name" />
+		</search-properties>
+		<sort-properties>
+			<property qualifier="Item.modifiedtime"/>
+			<property qualifier="DeliveryMode.code" />
+			<property qualifier="DeliveryMode.name" />
+		</sort-properties>
+	</search>
+</base>

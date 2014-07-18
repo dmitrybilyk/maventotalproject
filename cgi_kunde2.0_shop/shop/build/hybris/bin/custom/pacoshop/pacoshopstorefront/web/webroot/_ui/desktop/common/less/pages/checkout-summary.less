@@ -1,0 +1,83 @@
+/*
+ * Styles for the following page: checkout-summary
+ * 
+ */
+
+.page-checkout-summary {
+
+	.content-main {
+
+		.content-form {
+
+			.mod-terms-of-use {
+                margin-top: @grid-gutter-width;
+                margin-bottom: @grid-gutter-width;
+                background: @color-form-title-background;
+
+                .inner {
+                    .clearfix();
+                }
+
+                p {
+                    .col-m3();
+                    font-weight: bold;
+                    padding: @grid-gutter-width;
+                    @media(@col-m) {
+                        padding-top: 15px;
+                    }
+                }
+
+                .input-list {
+                    .col-m9();
+                    background: @color-form-list-background;
+                    padding-top: (@grid-gutter-width / 2);
+                    padding-bottom: (@grid-gutter-width / 2);
+                }
+
+				a {
+					text-decoration: underline;
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+
+			.mod-order-items {
+                margin-top: 0;
+
+                .inner {
+                    background: @color-form-list-background;
+                }
+			}
+
+			.mod-order-totals {
+                margin-top: 0;
+
+                .inner {
+                    background: @color-form-list-background;
+                }
+			}
+
+			.mod-buy-button {
+				.push-s0();
+				.col-s12();
+				text-align: right;
+                margin-bottom: 0;
+                margin-top: @grid-gutter-width;
+
+				@media(@col-m) {
+					text-align: left;
+				}
+
+                .btn {
+                    width: 100%;
+                    height: 30px;
+                }
+			}
+
+		}
+
+	}
+
+}

@@ -1,0 +1,30 @@
+#
+# Import Payment Configuration
+# 
+
+$lang=de
+
+UPDATE StandardPaymentMode;code[unique=true];name[lang=$lang];description[lang=$lang]
+;creditcard;Kreditkarte;Bezahlung per Kreditkarte
+;directdebit;Lastschrift;Bezahlung per Lastschrift
+;invoice;Rechnung;per Rechnung bezahlen
+;advance;Vorkasse;per Vorkasse bezahlen;
+;paypal;PayPal;Bezahlung per PayPal
+;payondelivery;Nachnahme;Bezahlung bei Lieferung an der Haustür
+
+UPDATE CCPaymentMethodType;code[unique=true];name[lang=$lang]
+;amex;American Express
+;maestro;Maestro
+;switch;Switch
+;visa;Visa
+;mastercard;MasterCard
+;mastercard_eurocard;MasterCard
+;diners;Diners
+
+UPDATE PaymentMethodType;code[unique=true];name[lang=$lang]
+;invoice;Rechnung
+;advance;Vorrauszahlung
+;directdebit;elektronisches Lastschriftverfahren
+;sepadirectdebit;SEPA Lastschriftverfahren
+;payondelivery;Nachnahme
+

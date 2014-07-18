@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<testclasses>
+  <pacoshopfulfilmentprocess>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.populator.SubmitCAEntryPopulatorImplTest</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.actions.SendErrorEmailActionTest</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.client.HttpSSOSearchAccountClientTest</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.populator.SAPAccountPopulatorImplTest</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.SendOrderCompletedNotificationTest</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.actions.SubmitToEmailFulfillmentActionTest</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.AbstractProcessDemoTest</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.client.HttpCAClientTest</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.beans.ActionExecution</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.converter.SubmitCAEntryJsonConverterTest</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.actions.SendOrderPlacedNotification</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.populator.SAPOrderEntryEntityPopulatorImplTest</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.events.TestEventListenerCountingEvents</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.DefaultCheckOrderServiceTest</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.actions.CheckOrder</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.service.OrderRoutingServiceImplTest</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.actions.UpdateRecipientActionTest</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.beans.QueueServiceImpl</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.actions.TestActionTemp</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.actions.SendOrderCompletedNotification</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.populator.SAPAddressPopulatorImplTest</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.beans.QueueService</testclass>
+    <testclass>com.cgi.pacoshop.fulfilmentprocess.test.util.TestOrderGenerator</testclass>
+  </pacoshopfulfilmentprocess>
+</testclasses>

@@ -1,0 +1,15 @@
+#
+# Import Users and Groups for Product Cockpit
+#
+
+INSERT_UPDATE UserGroup;UID[unique=true];groups(uid)[mode=append]
+;productmanagergroup;cockpitgroup,employeegroup
+
+
+#INSERT_UPDATE Usergroup;uid[unique=true];name
+#;cmsmanagergroup;CMS Manager Group
+
+INSERT_UPDATE Employee;UID[unique=true];password;description;name;groups(uid);sessionLanguage(isocode);sessionCurrency(isocode)
+;productmanager;1234;Can edit all product data.;Product Manager;employeegroup,productmanagergroup;de;EUR
+
+

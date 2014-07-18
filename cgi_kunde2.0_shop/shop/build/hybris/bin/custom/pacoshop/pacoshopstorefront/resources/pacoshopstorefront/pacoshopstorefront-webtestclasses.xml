@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<testclasses>
+  <pacoshopstorefront>
+    <testclass>com.cgi.pacoshop.storefront.interceptors.i18n.SetLanguageBeforeControllerHandlerTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.controllers.pages.CartPageControllerTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.controllers.cms.DefaultCMSComponentControllerTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.filters.AnonymousCheckoutFilterTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.filters.CommonResourcesAddOnFilterTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.filters.CustomerLocationRestorationFilterTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.controllers.cms.MiniCartComponentControllerTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.filters.AbstractAddOnFilterTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.web.view.UiExperienceViewResolverTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.controllers.pages.SearchPageControllerUnitTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.controllers.cms.CategoryFeatureComponentControllerTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.filters.TagResourcesAddOnFilterTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.controllers.cms.ProductCarouselComponentControllerTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.controllers.cms.NavigationBarComponentControllerTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.controllers.cms.ProductFeatureComponentControllerTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.security.impl.WebHttpSessionRequestCacheUnitTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.filters.AcceleratorAddOnFilterTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.controllers.cms.ProductReferencesComponentControllerTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.security.cookie.EnhancedCookieGeneratorTest</testclass>
+    <testclass>com.cgi.pacoshop.storefront.controllers.cms.PurchasedProductReferenceComponentControllerTest</testclass>
+  </pacoshopstorefront>
+</testclasses>

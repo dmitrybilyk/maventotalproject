@@ -1,0 +1,53 @@
+#
+# Import CMS content for the Kunde2 site
+#
+
+$contentCatalog=kunde2ContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+# Language
+$lang=en
+$defaultImageUrl=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSviv8Mjsvg1pi_seOM6fcrdygPD4G5GEUiFQlbRpU6Ip49_V5lwA
+
+# Content Pages
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;userDataPage;"User Data Page"
+;;loginPage;"Login Page"
+;;thankyouPage;"ThankYou Page"
+;;paymentPage;"Payment Page"
+;;shipmentPage;"Shipment Page"
+;;summaryPage;"Summary Page"
+;;errorPage;"Sorry!"
+
+#Media
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;url;url2;altText;
+;;SiteLogoImage_media;image/png;/_ui/desktop/common/images/logo-white-label.png;/_ui/desktop/common/images/logo-white-label.png;WHITE LABEL PUBLISHER SOLUTION;
+;;SimpleBannerMedia_media1;image/png;$defaultImageUrl;$defaultImageUrl;Leser werben Leser;
+;;SimpleBannerMedia_media2;image/png;$defaultImageUrl;$defaultImageUrl;Product Image;
+;;SimpleBannerMedia_media3;image/png;$defaultImageUrl;$defaultImageUrl;Product Image;
+
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];urlLink;name;media(code,$contentCV)[lang=$lang];&componentRef;
+;;SimpleBannerComponent1;http://www.google.com;Simple Banner Component #1;SimpleBannerMedia_media1;SimpleBannerComponent1;
+;;SimpleBannerComponent2;http://www.google.com;Simple Banner Component #2;SimpleBannerMedia_media2;SimpleBannerComponent2;
+;;SimpleBannerComponent3;http://www.google.com;Simple Banner Component #3;SimpleBannerMedia_media3;SimpleBannerComponent3;
+
+# Site Logo Component
+INSERT_UPDATE CMSImageComponent;$contentCV[unique=true];uid[unique=true];name;media(code,$contentCV)[lang=$lang];&componentRef;
+;;SiteLogoImage;Site Logo Image;SiteLogoImage_media;SiteLogoImage;
+
+# CMS Paragraph Components
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;content[lang=$lang];&componentRef
+;;copyright;copyright;"<p class='copyright'>© 2013 Handelsblatt GmbH - ein Unternehmen der Verlagsgruppe Handelsblatt GmbH &amp; Co. KG <br>Keine Gewähr für die Richtigkeit der Angaben. Bitte beachten Sie auch unsere Geschäfts- und Nutzungsbedingungen und das Impressum.</p>";copyright
+;;safeInfoList1;safeInfoList1;<li>Verwalten Sie Ihre Abos</li>;safeInfoList1
+;;safeInfoList2;safeInfoList2;<li>Kommentieren Sie Artikel</li>;safeInfoList2
+;;safeInfoList3;safeInfoList3;<li>Werben Sie Freunde</li>;safeInfoList3
+;;safeInfo;safeInfo;Ihre Daten sind bei uns sicher;safeInfo
+;;contactInfo1;contactInfo1;"Bei Fragen sind wir f&uuml;r Sie da <br /><br />";contactInfo1
+;;contactInfo2;contactInfo2;Telefon 012345678 <br /><br />;contactInfo2
+;;contactInfo3;contactInfo3;"08:00 - 22:00 Uhr <br />";contactInfo3
+;;contactInfo4;contactInfo4;"( 0,14 &euro; / Min. )";contactInfo4
+;;bannerConsiderationText;bannerConsiderationText;"<p>Wir m&ouml;chten Sie an dieser Stelle noch auf unsere Bestseller aufmerksam machen:</p>";bannerConsiderationText
+
+# Header auth component
+INSERT_UPDATE HeaderAuthComponent;$contentCV[unique=true];uid[unique=true];name;loginTitle[lang=$lang];registerTitle[lang=$lang];salutation[lang=$lang];
+;;HeaderAuth;Header Authentication;Login;Register;Hello, {title} {firstName} {lastName}!

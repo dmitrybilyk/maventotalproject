@@ -1,0 +1,22 @@
+$catalog-id=testCatalog
+$catalog-version=Online
+
+$testCategory0-id=testCategory0
+$testCategory1-id=testCategory1
+$testCategory2-id=testCategory2
+$testCategory3-id=testCategory3
+
+$catalogversion=catalogversion(catalog(id),version)[unique=true,default=$catalog-id:$catalog-version]
+$prices=europe1prices[translator=de.hybris.platform.europe1.jalo.impex.Europe1PricesTranslator]
+
+$approved=approvalstatus(code)[default='approved']
+
+INSERT_UPDATE Catalog;id[unique=true];name[lang=de];name[lang=en];defaultCatalog
+;$catalog-id;$catalog-id;$catalog-id;true
+
+INSERT_UPDATE CatalogVersion; catalog(id)[unique=true]; version[unique=true]; active;defaultCurrency(isocode)
+;$catalog-id;$catalog-version;true;EUR;de,en
+
+INSERT_UPDATE Product;code[unique=true];externalProductId[unique=true];unit(code);offerOrigin(code);$catalogversion;name;summary;active;onlineDate[dateformat=dd-MM-yyyy];offlineDate[dateformat=dd-MM-yyyy];description;externalOfferId;digital;dummy;productType(code);fulfillmentType(code);prepayOnly;productOwner(code);minOrderQuantity;maxOrderQuantity;differingInvoiceRecipientAllowed;differingConsigneeAllowed;vatGroup(id);$prices;$approved
+;pA;simplePaper1;pieces;SAP-SD;;Happy Days;;true;01-01-2000;10-10-2015;Happy Days newspaper;simplePaper1;true;false;DOWNLOAD;NEWSLETTER;false;Wirtschaftswoche;2;6;true;true;FULL_TAX;5,50 EUR
+;pB;simplePaper2;pieces;CRM;;Brownsville Gerald;;true;01-01-2000;10-10-2015;Brownsville Gerald newspaper;simplePaper2;true;false;DOWNLOAD;SAP_SINGLE_OFFER;false;HANDELSBLATT;1;5;true;true;REDUCED_TAX;2,75 EUR

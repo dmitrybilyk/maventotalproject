@@ -1,0 +1,121 @@
+/*
+ * Styles for the following module: progress-bar
+ * 
+ */
+
+.mod-progress-bar {
+	
+	ul {
+		.clearfix();
+		
+		li {
+			float: left;
+			display: block;
+			width: 20%;
+			text-align: center;
+            position: relative;
+            &:after {
+                border-top: 1px solid @color-progress-bar;
+                content: "";
+                height: 0;
+                left: 0;
+                position: absolute;
+                top: 20px;
+                width: 100%;
+                z-index: 1;
+                @media(@col-m) {
+                    top: 25px;
+                }
+            }
+            &:first-child:after {
+                left: auto;
+                right: 0;
+                width: 50%;
+            }
+            &:last-child:after {
+                width: 50%;
+            }
+			
+			// Step counter
+            @circle-width: 50px;
+            @circle-width-s: 30px;
+            @circle-width-active-s: 40px;
+			.count {
+				display: block;
+				width: @circle-width-s;
+				height: @circle-width-s;
+				line-height: @circle-width-s;
+                border: 1px solid @color-progress-bar;
+				border-radius: @circle-width;
+				margin: 5px auto 0;
+                position: relative;
+                z-index: 2;
+                @media(@col-m) {
+                    font-size: 30px;
+                    height: @circle-width;
+                    line-height: @circle-width;
+                    margin-top: 0;
+                    width: @circle-width;
+                }
+			}
+			
+			// Step name
+			.name {
+                color: @color-progress-bar;
+				display: block;	
+				visibility: hidden;
+                margin-top: 12px;
+				@media(@col-m) {
+					visibility: visible;
+				}
+			}
+			
+			// STATE: Visited
+			&.visited {
+				a {
+					text-decoration: none;
+				}
+				.count {
+					background-color: @color-white;
+                    color: @color-progress-bar;
+				}
+				.name {					
+				}
+			}
+			
+			// STATE: Current
+			&.current {
+				font-weight: normal;
+				.count {
+					background-color: @color-progress-bar;
+					color: @color-white;
+                    font-size: 25px;
+                    height: @circle-width-active-s;
+                    line-height: @circle-width-active-s;
+                    margin-top: 0;
+                    width: @circle-width-active-s;
+                    @media(@col-m) {
+                        width: @circle-width;
+                        height: @circle-width;
+                        line-height: @circle-width;
+                    }
+				}
+				.name {
+					visibility: visible;
+				}
+			}
+			
+			// STATE: Todo
+			&.todo {	
+				.count {
+					background-color: @color-white;
+                    color: @color-progress-bar;
+				}
+				.name {
+				}
+			}
+			
+		}
+	}
+	
+}

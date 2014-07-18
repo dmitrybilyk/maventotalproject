@@ -1,0 +1,28 @@
+## messageSource=classpath:/pacoshopcore/messages/email-orderConfirmation_$lang.properties
+#macro( genHtmlBoldFont $text )
+<font color="#414a4f" size="2" face="Arial, Helvetica, sans-serif"><b>$text</b></font>
+#end
+#macro(genHtmlLinkStartTag $url)
+<a href="$url"><font color="#666666">
+#end
+#macro(genHtmlLinkEndTag)
+</font></a>
+#end
+#macro(genHtmlLink $url $textColor $bodyContent)
+<a href="$url"><font color="$textColor">$bodyContent</font></a>
+#end
+
+<html>
+<head>
+</head>
+<body bgcolor="#e4e7e8">
+
+<p>Order number: ${ctx.order.code}</p>
+<p></p>
+<p>Order status: ${ctx.order.status}</p>
+<p></p>
+<p>Error message: $!{ctx.errorMessage}</p>
+
+
+</body>
+</html>

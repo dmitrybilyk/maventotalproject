@@ -1,0 +1,130 @@
+/*
+ * Forms
+ * 
+ */
+ 
+ul.input-list {
+
+    &.main-form-actions {
+        background: @color-form-title-background;
+    }
+
+	// Input field rows
+	li {
+
+		&.has-msg {
+		
+			&.has-msg-info {
+				background-color: @color-msg-info-bg;
+			}
+			
+			&.has-msg-warning {
+				background-color: @color-msg-warning-bg;
+			}
+			
+			&.has-msg-error {
+				background-color: @color-msg-error-bg;
+			}
+			
+			&.has-msg-success {
+				background-color: @color-msg-success-bg;
+			} 
+			
+			.msg {
+
+				&.info {
+					color: @color-msg-info-text;
+				}
+				
+				&.warning {
+					color: @color-msg-warning-text;
+				}
+				
+				&.error {
+					color: @color-msg-error-text;
+				}
+				
+				&.success {
+					color: @color-msg-success-text;
+				}
+				
+			}
+		}
+		
+		&.has-tooltip {
+			
+			.field,
+			.field.radio,
+			.field.checkbox,
+			.button {
+
+				.tooltip {
+                    background-color: @color-info-icon;
+
+					&:before {
+						color: #fff;
+					}
+				}
+			}
+		}
+
+        &.has-date {
+            .field {
+
+                .ui-datepicker-trigger {
+                    &:before {
+                        color: @color-progress-bar;
+                    }
+                }
+            }
+        }
+
+		// Link item
+		.link {
+            a {
+                color: @color-text-body;
+            }
+		}
+
+        .field {
+
+            & {
+
+                input[type='text'],
+                input[type='email'],
+                input[type='tel'],
+                input[type='password'],
+                textarea,
+                select {
+                    .box-shadow(inset 3px 3px 10px 0px #dddddd);
+                    border: 1px solid @color-form-fields-border;
+                    width: 100%;
+                }
+
+            }
+
+        }
+
+	}
+}
+
+.btn {
+    .col-m12();
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid @color-form-btn-border;
+    border-radius: 3px;
+    #gradient > .vertical(@color-form-btn-gradient-top, @color-form-btn-gradient-bottom);
+    color: @color-form-btn-color;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: block;
+
+    &.btn-submit {
+        #gradient > .vertical(@color-form-btn-submit-gradient-top, @color-form-btn-submit-gradient-bottom);
+    }
+    &.btn-default {
+        #gradient > .vertical(@color-form-btn-gradient-top, @color-form-btn-gradient-bottom);
+    }
+}

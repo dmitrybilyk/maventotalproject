@@ -1,0 +1,165 @@
+/*
+ * Grid - 12 columns, fluid, two breakpoints
+ * 
+ * Rules (general):
+ * - COLs can only be within a ROW
+ * - All child elements of a ROW have to be COLs
+ * 
+ * Rules (our coding style):
+ * - A module might be a ROW and has COLs within, but it NEVER IS a COL
+ * 
+ */
+
+
+@col-s: ~"min-width:0";
+@col-m: ~"min-width:" @screen-medium;
+@col-l: ~"min-width:" @screen-large;
+
+.container {
+	padding-left:  0;
+	padding-right: 0;
+	max-width: @grid-container-max-width;
+}
+
+.row {
+	margin-left:  0;
+	margin-right: 0;
+}
+
+// Basic column setup
+.col-l1,.col-l2,.col-l3,.col-l4,.col-l5,.col-l6,.col-l7,.col-l8,.col-l9,.col-l10,.col-l11,.col-l12,
+.col-m1,.col-m2,.col-m3,.col-m4,.col-m5,.col-m6,.col-m7,.col-m8,.col-m9,.col-m10,.col-m11,.col-m12,
+.col-s1,.col-s2,.col-s3,.col-s4,.col-s5,.col-s6,.col-s7,.col-s8,.col-s9,.col-s10,.col-s11,.col-s12 {
+	float: left;
+	position: relative;
+	min-height: 1px;
+	padding-left:  (@grid-gutter-width / 2);
+	padding-right: (@grid-gutter-width / 2);
+	width: 100%;
+}
+
+// Mobile
+.col-s1 { @media (@col-s) { width: percentage(1/@grid-columns); } }
+.col-s2 { @media (@col-s) { width: percentage(2/@grid-columns); } }
+.col-s3 { @media (@col-s) { width: percentage(3/@grid-columns); } }
+.col-s4 { @media (@col-s) { width: percentage(4/@grid-columns); } }
+.col-s5 { @media (@col-s) { width: percentage(5/@grid-columns); } }
+.col-s6 { @media (@col-s) { width: percentage(6/@grid-columns); } }
+.col-s7 { @media (@col-s) { width: percentage(7/@grid-columns); } }
+.col-s8 { @media (@col-s) { width: percentage(8/@grid-columns); } }
+.col-s9 { @media (@col-s) { width: percentage(9/@grid-columns); } }
+.col-s10 { @media (@col-s) { width: percentage(10/@grid-columns); } }
+.col-s11 { @media (@col-s) { width: percentage(11/@grid-columns); } }
+.col-s12 { @media (@col-s) { width: percentage(12/@grid-columns); } }
+
+.push-s0 { @media (@col-s) { left: 0; } }
+.push-s1 { @media (@col-s) { left: percentage(1/@grid-columns); } }
+.push-s2 { @media (@col-s) { left: percentage(2/@grid-columns); } }
+.push-s3 { @media (@col-s) { left: percentage(3/@grid-columns); } }
+.push-s4 { @media (@col-s) { left: percentage(4/@grid-columns); } }
+.push-s5 { @media (@col-s) { left: percentage(5/@grid-columns); } }
+.push-s6 { @media (@col-s) { left: percentage(6/@grid-columns); } }
+.push-s7 { @media (@col-s) { left: percentage(7/@grid-columns); } }
+.push-s8 { @media (@col-s) { left: percentage(8/@grid-columns); } }
+.push-s9 { @media (@col-s) { left: percentage(9/@grid-columns); } }
+.push-s10 { @media (@col-s) { left: percentage(10/@grid-columns); } }
+.push-s11 { @media (@col-s) { left: percentage(11/@grid-columns); } }
+.push-s12 { @media (@col-s) { left: percentage(12/@grid-columns); } }
+
+.pull-s0 { @media (@col-s) { right: 0; } }
+.pull-s1 { @media (@col-s) { right: percentage(1/@grid-columns); } }
+.pull-s2 { @media (@col-s) { right: percentage(2/@grid-columns); } }
+.pull-s3 { @media (@col-s) { right: percentage(3/@grid-columns); } }
+.pull-s4 { @media (@col-s) { right: percentage(4/@grid-columns); } }
+.pull-s5 { @media (@col-s) { right: percentage(5/@grid-columns); } }
+.pull-s6 { @media (@col-s) { right: percentage(6/@grid-columns); } }
+.pull-s7 { @media (@col-s) { right: percentage(7/@grid-columns); } }
+.pull-s8 { @media (@col-s) { right: percentage(8/@grid-columns); } }
+.pull-s9 { @media (@col-s) { right: percentage(9/@grid-columns); } }
+.pull-s10 { @media (@col-s) { right: percentage(10/@grid-columns); } }
+.pull-s11 { @media (@col-s) { right: percentage(11/@grid-columns); } }
+.pull-s12 { @media (@col-s) { right: percentage(12/@grid-columns); } }
+
+// Tablet
+.col-m1 { @media (@col-m) { width: percentage(( 1 / @grid-columns )); } }
+.col-m2 { @media (@col-m) { width: percentage(( 2 / @grid-columns )); } }
+.col-m3 { @media (@col-m) { width: percentage(( 3 / @grid-columns )); } }
+.col-m4 { @media (@col-m) { width: percentage(( 4 / @grid-columns )); } }
+.col-m5 { @media (@col-m) { width: percentage(( 5 / @grid-columns )); } }
+.col-m6 { @media (@col-m) { width: percentage(( 6 / @grid-columns )); } }
+.col-m7 { @media (@col-m) { width: percentage(( 7 / @grid-columns )); } }
+.col-m8 { @media (@col-m) { width: percentage(( 8 / @grid-columns )); } }
+.col-m9 { @media (@col-m) { width: percentage(( 9 / @grid-columns )); } }
+.col-m10 { @media (@col-m) { width: percentage(( 10 / @grid-columns )); } }
+.col-m11 { @media (@col-m) { width: percentage(( 11 / @grid-columns )); } }
+.col-m12 { @media (@col-m) { width: percentage(( 12 / @grid-columns )); } }
+
+.push-m0 { @media (@col-m) { left: 0; } }
+.push-m1 { @media (@col-m) { left: percentage(( 1 / @grid-columns )); } }
+.push-m2 { @media (@col-m) { left: percentage(( 2 / @grid-columns )); } }
+.push-m3 { @media (@col-m) { left: percentage(( 3 / @grid-columns )); } }
+.push-m4 { @media (@col-m) { left: percentage(( 4 / @grid-columns )); } }
+.push-m5 { @media (@col-m) { left: percentage(( 5 / @grid-columns )); } }
+.push-m6 { @media (@col-m) { left: percentage(( 6 / @grid-columns )); } }
+.push-m7 { @media (@col-m) { left: percentage(( 7 / @grid-columns )); } }
+.push-m8 { @media (@col-m) { left: percentage(( 8 / @grid-columns )); } }
+.push-m9 { @media (@col-m) { left: percentage(( 9 / @grid-columns )); } }
+.push-m10 { @media (@col-m) { left: percentage(( 10 / @grid-columns )); } }
+.push-m11 { @media (@col-m) { left: percentage(( 11 / @grid-columns )); } }
+.push-m12 { @media (@col-m) { left: percentage(( 12 / @grid-columns )); } }
+
+.pull-m0 { @media (@col-m) { right: 0; } }
+.pull-m1 { @media (@col-m) { right: percentage(( 1 / @grid-columns )); } }
+.pull-m2 { @media (@col-m) { right: percentage(( 2 / @grid-columns )); } }
+.pull-m3 { @media (@col-m) { right: percentage(( 3 / @grid-columns )); } }
+.pull-m4 { @media (@col-m) { right: percentage(( 4 / @grid-columns )); } }
+.pull-m5 { @media (@col-m) { right: percentage(( 5 / @grid-columns )); } }
+.pull-m6 { @media (@col-m) { right: percentage(( 6 / @grid-columns )); } }
+.pull-m7 { @media (@col-m) { right: percentage(( 7 / @grid-columns )); } }
+.pull-m8 { @media (@col-m) { right: percentage(( 8 / @grid-columns )); } }
+.pull-m9 { @media (@col-m) { right: percentage(( 9 / @grid-columns )); } }
+.pull-m10 { @media (@col-m) { right: percentage(( 10 / @grid-columns )); } }
+.pull-m11 { @media (@col-m) { right: percentage(( 11 / @grid-columns )); } }
+.pull-m12 { @media (@col-m) { right: percentage(( 12 / @grid-columns )); } }
+
+// Desktop
+.col-l1 { @media (@col-l) { width: percentage(( 1 / @grid-columns ));  } }
+.col-l2 { @media (@col-l) { width: percentage(( 2 / @grid-columns ));  } }
+.col-l3 { @media (@col-l) { width: percentage(( 3 / @grid-columns ));  } }
+.col-l4 { @media (@col-l) { width: percentage(( 4 / @grid-columns ));  } }
+.col-l5 { @media (@col-l) { width: percentage(( 5 / @grid-columns ));  } }
+.col-l6 { @media (@col-l) { width: percentage(( 6 / @grid-columns ));  } }
+.col-l7 { @media (@col-l) { width: percentage(( 7 / @grid-columns ));  } }
+.col-l8 { @media (@col-l) { width: percentage(( 8 / @grid-columns ));  } }
+.col-l9 { @media (@col-l) { width: percentage(( 9 / @grid-columns ));  } }
+.col-l10 { @media (@col-l) { width: percentage(( 10 / @grid-columns ));  } }
+.col-l11 { @media (@col-l) { width: percentage(( 11 / @grid-columns ));  } }
+.col-l12 { @media (@col-l) { width: percentage(( 12 / @grid-columns ));  } }
+
+.push-l0 { @media (@col-l) { left: 0;  } }
+.push-l1 { @media (@col-l) { left: percentage(( 1 / @grid-columns ));  } }
+.push-l2 { @media (@col-l) { left: percentage(( 2 / @grid-columns ));  } }
+.push-l3 { @media (@col-l) { left: percentage(( 3 / @grid-columns ));  } }
+.push-l4 { @media (@col-l) { left: percentage(( 4 / @grid-columns ));  } }
+.push-l5 { @media (@col-l) { left: percentage(( 5 / @grid-columns ));  } }
+.push-l6 { @media (@col-l) { left: percentage(( 6 / @grid-columns ));  } }
+.push-l7 { @media (@col-l) { left: percentage(( 7 / @grid-columns ));  } }
+.push-l8 { @media (@col-l) { left: percentage(( 8 / @grid-columns ));  } }
+.push-l9 { @media (@col-l) { left: percentage(( 9 / @grid-columns ));  } }
+.push-l10 { @media (@col-l) { left: percentage(( 10 / @grid-columns ));  } }
+.push-l11 { @media (@col-l) { left: percentage(( 11 / @grid-columns ));  } }
+.push-l12 { @media (@col-l) { left: percentage(( 12 / @grid-columns ));  } }
+
+.pull-l0 { @media (@col-l) { right: 0;  } }
+.pull-l1 { @media (@col-l) { right: percentage(( 1 / @grid-columns ));  } }
+.pull-l2 { @media (@col-l) { right: percentage(( 2 / @grid-columns ));  } }
+.pull-l3 { @media (@col-l) { right: percentage(( 3 / @grid-columns ));  } }
+.pull-l4 { @media (@col-l) { right: percentage(( 4 / @grid-columns ));  } }
+.pull-l5 { @media (@col-l) { right: percentage(( 5 / @grid-columns ));  } }
+.pull-l6 { @media (@col-l) { right: percentage(( 6 / @grid-columns ));  } }
+.pull-l7 { @media (@col-l) { right: percentage(( 7 / @grid-columns ));  } }
+.pull-l8 { @media (@col-l) { right: percentage(( 8 / @grid-columns ));  } }
+.pull-l9 { @media (@col-l) { right: percentage(( 9 / @grid-columns ));  } }
+.pull-l10 { @media (@col-l) { right: percentage(( 10 / @grid-columns ));  } }
+.pull-l11 { @media (@col-l) { right: percentage(( 11 / @grid-columns ));  } }
+.pull-l12 { @media (@col-l) { right: percentage(( 12 / @grid-columns ));  } }

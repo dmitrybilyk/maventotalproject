@@ -1,0 +1,12 @@
+#
+# Import Themes
+#
+
+# Language
+$lang=en
+
+# SiteTheme
+UPDATE SiteTheme;code[unique=true];name[lang=$lang]
+ ;handelsblatt;"Handelsblatt Theme"
+ ;cgi;"CGI-en Theme"
+

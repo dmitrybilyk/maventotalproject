@@ -1,0 +1,10 @@
+#
+# Import the Kunde1 Content Catalog
+#
+
+# Language
+$lang=en
+
+# Create Content Catalog
+UPDATE ContentCatalog;id[unique=true];name[lang=$lang]
+ ;kunde1ContentCatalog;"Kunde1 Content Catalog"

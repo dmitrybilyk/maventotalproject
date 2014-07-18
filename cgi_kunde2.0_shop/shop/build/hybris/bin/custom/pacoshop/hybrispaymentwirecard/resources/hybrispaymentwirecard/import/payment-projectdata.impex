@@ -1,0 +1,26 @@
+#
+# Import Payment Configuration
+# 
+
+$psp=wirecard
+
+UPDATE StandardPaymentMode;code[unique=true];active[default=true]
+;paybox
+;quick
+;click2pay
+;giropay
+;sofortueberweisung
+;eps
+;ideal
+
+UPDATE PaymentServiceProvider;code[unique=true];active[default=true]
+;$psp;true
+
+UPDATE PaymentMethod[batchMode=true];psp(code)[unique=true];active[default=true]
+;$psp
+
+# enable only one of them! Now enabled two directdebit methods
+UPDATE PaymentMethod;code[unique=true];active[default=true]
+;internal_directdebit;false
+;WC_ELV;
+;WC_SEPA-DD;

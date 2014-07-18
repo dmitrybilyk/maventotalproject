@@ -1,0 +1,56 @@
+
+$billingFrequency=billingFrequency(code)[default='monthly']
+$lang=en
+
+
+INSERT_UPDATE BillingFrequency;code[unique=true];order;SubscriptionPhase(code);cartAware[default=true]
+;daily;3;STANDART;
+;weekly;4;SAMPLE;
+;monthly;5;SAMPLE;
+;quarterly;6;CONSECUTIVE;
+;yearly;7;CONSECUTIVE;
+
+UPDATE BillingFrequency;code[unique=true];nameInCart[lang=$lang];nameInOrder[lang=$lang];description[lang=$lang]
+;daily;Daily;;Daily
+;weekly;Weekly;;Weekly
+;monthly;Monthly;;Monthly
+;quarterly;Quarterly;;Quarterly
+;yearly;Annually;;Yearly
+
+INSERT_UPDATE BillingEvent;code[unique=true];nameInCart;order;cartAware[default=true]
+;paynow;PayNow;1
+;onfirstbill;OnFirstBill;2
+;oncancellation;OnCancellation;0;false
+
+
+INSERT_UPDATE BillingPlan;id[unique=true];name[lang=$lang];billingCycleDay(code);billingCycleType(code);$billingFrequency
+;MonthlyPlan;Monthly Plan;;subscription_start;monthly
+
+# Subscription pricing
+INSERT_UPDATE UsageUnit;id[unique=true];accumulative[default=false];name[lang=$lang];namePlural[lang=$lang]
+;phone_minutes;;minute;minutes
+;sms;;text message;text messages
+;mobile_data;;MB;MBs
+
+INSERT_UPDATE MeteredEntitlement;id[unique=true];usageUnit(id);name[lang=$lang]
+;ME_PHONE_MIN;phone_minutes;Phone minutes
+;ME_SMS_TEXTS;sms;SMS
+;ME_DATA_MB;mobile_data;Mobile Data
+
+INSERT_UPDATE NonMeteredEntitlement;id[unique=true];name[lang=$lang]
+;upload;Upload
+
+
+# ImpEx for Subscription Terms
+
+INSERT_UPDATE SubscriptionTerm;id[unique=true];name[lang=$lang];termOfServiceFrequency(code);termOfServiceNumber(code);termOfServiceRenewal(code);billingPlan(id);cancellable
+;none;None;none;;auto_renewing;MonthlyPlan;true
+;monthly_1;Monthly 1;monthly;1;auto_renewing;MonthlyPlan;false
+;monthly_12;Monthly 12;monthly;12;non_renewing;MonthlyPlan;false
+;monthly_18;Monthly 18;monthly;18;auto_renewing;MonthlyPlan;false
+;monthly_24;Monthly 24;monthly;24;auto_renewing;MonthlyPlan;false
+;monthly_36;Monthly 36;monthly;36;auto_renewing;MonthlyPlan;false
+;annually_1;Annually 1;annually;1;non_renewing;MonthlyPlan;false
+;annually_2;Annually 2;annually;2;auto_renewing;MonthlyPlan;false
+;annually_3;Annually 3;annually;3;auto_renewing;MonthlyPlan;false
+

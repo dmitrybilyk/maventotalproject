@@ -1,0 +1,41 @@
+#
+# Import Payment Configuration
+# 
+
+$psp=internal
+
+# Payment Modes
+# The modes are originally defined in yacceleratortest -> qa-test-users.impex (Hybris 5.0.4)
+INSERT_UPDATE StandardPaymentMode;code[unique=true];paymentinfotype(code);active[default=true]
+;creditcard;CreditCardPaymentInfo
+;directdebit;DebitPaymentInfo
+;invoice;InvoicePaymentInfo
+;advance;AdvancePaymentInfo
+;paypal;PayPalPaymentInfo
+;payondelivery;PayOnDeliveryPaymentInfo
+
+INSERT_UPDATE PaymentServiceProvider;code[unique=true];name
+;$psp;Hybris Core Payment
+
+INSERT_UPDATE CCPaymentMethodType;code[unique=true];type(code)
+;amex;amex
+;maestro;maestro
+;switch;switch
+;visa;visa
+;mastercard;mastercard
+;mastercard_sc;mastercard
+;mastercard_eurocard;mastercard_eurocard
+;diners;diners
+
+INSERT_UPDATE PaymentMethodType;code[unique=true]
+;invoice
+;advance
+;directdebit
+;sepadirectdebit
+;payondelivery
+
+INSERT_UPDATE PaymentMethod;code[unique=true];psp(code);mode(code);type(code);requiresIssuer
+;internal_invoice;$psp;invoice;invoice
+;internal_advance;$psp;advance;advance
+;internal_payondelivery;$psp;payondelivery;payondelivery
+;internal_directdebit;$psp;directdebit;directdebit

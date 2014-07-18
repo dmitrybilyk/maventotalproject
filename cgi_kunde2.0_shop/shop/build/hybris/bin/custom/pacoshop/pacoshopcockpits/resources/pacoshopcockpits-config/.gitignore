@@ -1,0 +1,2 @@
+# Ignore all xsd. In this folder, they should usually all be auto-generated
+*.xsd

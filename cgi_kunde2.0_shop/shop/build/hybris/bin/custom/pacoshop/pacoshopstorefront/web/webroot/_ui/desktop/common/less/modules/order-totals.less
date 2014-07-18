@@ -1,0 +1,90 @@
+/*
+ * Styles for the following module: order-totals
+ * 
+ */
+
+.mod-order-totals {
+	.col-s12();
+	.col-l4();
+	.push-l0();
+	padding-right: 0;
+	padding-left: 0;
+	@media(@col-l) {
+		padding-left: @grid-gutter-width/2;
+		.content-totals_newsletter & {
+			.push-l8();
+			> .inner {
+				display: none;
+			}
+			.mod-buy-button {
+				margin-top: 0 !important;
+			}
+		}
+	}
+
+	dl {
+        .row();
+		padding: @grid-gutter-width;
+		margin: 0;
+
+		dt,
+		dd {
+			padding: (@grid-gutter-width/2);
+			padding-left: @grid-gutter-width;
+			padding-right: @grid-gutter-width;
+
+			&.net {
+				font-size: 1.4em;
+				font-weight: bold;
+			}
+
+			&.subtotal {
+			}
+			
+			&.shipping {				
+			}
+			
+			&.tax {
+				margin-top: 0;
+				color: #999;		
+			}
+			
+			&.total {
+				margin-top: 0;
+				font-size: 1.4em;
+				font-weight: bold;
+				border-top: 1px solid #7c8d94;
+
+				.includes-tax {
+					font-size: 0.7em;
+					font-weight: normal;
+					display: block;
+				}
+				
+			}
+			
+		}
+		
+		dt {
+			.col-s6();
+			text-align: left;
+			padding-left: 0;
+			padding-right: 0;
+		}
+		
+		dd {
+			.col-s6();
+			text-align: right;
+		}
+		
+	}
+
+	h3 {
+		background: @color-form-title-background;
+		font-weight: bold;
+		padding: @grid-gutter-width;
+		margin-bottom: 0;
+		position: relative;
+	}
+
+}

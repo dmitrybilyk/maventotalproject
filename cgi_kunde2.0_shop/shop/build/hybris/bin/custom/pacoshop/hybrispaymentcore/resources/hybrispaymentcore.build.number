@@ -1,0 +1,10 @@
+
+project.name=kunde20
+builddate=20131218 1454
+description=hybrispaymentcore
+name=hybrispaymentcore
+vendor=${project.vendor}
+version=${project.version}
+hybris.version=5.0.4.1
+hybris.version.api=5.0.4
+            

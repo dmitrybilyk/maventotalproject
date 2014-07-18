@@ -1,0 +1,10 @@
+#
+# Import the Kunde1 BaseStore
+#
+
+# Language
+$lang=en
+
+# Create Base Store
+UPDATE BaseStore;uid[unique=true];name[lang=$lang]
+ ;kunde1;"Kunde1 Store"

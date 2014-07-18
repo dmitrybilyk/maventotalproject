@@ -1,0 +1,19 @@
+
+
+UPDATE CatalogVersion;catalog(id)[unique=true];version[unique=true];writePrincipals(uid)[default=productmanagergroup];
+;kundeProductCatalog;Online;productmanagergroup,productmanager;
+;kundeProductCatalog;Staged;productmanagergroup,productmanager;
+
+$START_USERRIGHTS;;;;;;;;;
+Type;UID;MemberOfGroups;Password;Target;read;change;create;remove;change_perm
+UserGroup;productmanagergroup;cockpitgroup;;;;;;;
+;;;;Catalog;+;+;+;+;+
+;;;;CatalogVersion;+;+;+;+;+
+;;;;CompareCatalogVersionWizard;+;+;+;+;+
+;;;;ProductReference;+;+;+;+;+
+;;;;SynchronizeCatalogVersionWizard;+;+;+;+;+
+;;;;SyncItemJob;+;+;+;+;+
+;;;;Product;+;+;+;+;+
+;;;;ProductType;+;+;+;+;+
+;;;;VATGroup;+;+;+;+;+
+$END_USERRIGHTS;;;;;;;;;

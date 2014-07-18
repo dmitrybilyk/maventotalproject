@@ -1,0 +1,219 @@
+/*
+ * Styles for the following page: ALL
+ * 
+ */
+
+
+/*
+ * Overall page behaviour
+ */
+.page-checkout-login,
+.page-checkout-userdata,
+.page-checkout-delivery,
+.page-checkout-payment,
+.page-checkout-summary,
+.page-checkout-confirmation {
+	
+	.content-main {
+		.row();
+
+		margin: 0;
+		background: @color-white;
+
+		.content-heading,
+		.content-errors {
+			.col-s12();
+			padding-left:  @grid-gutter-width;
+			padding-right: @grid-gutter-width;
+			margin-top: @grid-gutter-width;
+		}
+		
+		.content-messages {
+			.col-s12();
+			padding-left:  @grid-gutter-width;
+			padding-right: @grid-gutter-width;
+
+			.mod-message {
+				margin-top: @grid-gutter-width;				
+			}
+		}
+
+	}
+
+	.content-totals {
+		overflow: hidden;
+		background: @color-form-list-background;
+		position: relative;
+		margin-bottom: @grid-gutter-width;
+
+		@media(@col-l){
+			&:after {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				.push-l8();
+				width: @grid-gutter-width;
+				background: #fff;
+				margin-left: -@grid-gutter-width/2;
+			}
+			&.content-totals_newsletter {
+				&:after {
+					display: none;
+				}
+			}
+		}
+
+		.mod-buy-button {
+			.col-s12();
+			.push-s0();
+
+			background: @color-form-list-background;
+			margin-top: 0;
+			margin-bottom: 0;
+			padding-bottom: @grid-gutter-width;
+
+			.inner {
+				.push-s0();
+				.col-s12();
+				.col-m6();
+				.push-m6();
+				.col-l12();
+				.push-l0();
+				text-align: right;
+				@media(@col-m) {
+					text-align: left;
+				}
+			}
+
+			.btn {
+				width: 100%;
+				height: 30px;
+			}
+		}
+
+	}
+
+	#globalMessages {
+		clear: both;
+		overflow: hidden;
+		width: 100%;
+
+		.information_message.negative {
+			position: relative;
+			padding: @grid-gutter-width;
+			background-color: #f9e2e2;
+			color: #d9534f;
+			margin: @grid-gutter-width @grid-gutter-width 0;
+		}
+	}
+
+
+}
+
+
+
+/*
+ * Special page behaviour (main-area + sidebar)
+ */
+.page-checkout-login,
+.page-checkout-userdata,
+.page-checkout-payment,
+.page-checkout-delivery {
+
+	.content-main {
+		margin: 0;
+
+		.content-form {
+			.col-l9();
+			margin-top: @grid-gutter-width;
+			padding-left:  @grid-gutter-width/2;
+			padding-right:  @grid-gutter-width/2;
+			@media (@col-m) {
+				padding-left: @grid-gutter-width;
+				padding-right: @grid-gutter-width;
+			}
+		}
+
+        .content-sidebar {
+            @media (@col-s) {
+                .col-s12();
+                margin-top: 0;
+                margin-bottom: @grid-gutter-width;
+                padding-left: @grid-gutter-width/2;
+                padding-right: @grid-gutter-width/2;
+            }
+            @media (@col-m) {
+                width: 260px;
+                margin-top: 0;
+                margin-bottom: @grid-gutter-width;
+                padding-left: @grid-gutter-width;
+                padding-right: @grid-gutter-width;
+            }
+            @media (@col-l) {
+                .col-m3();
+                padding-left: 0;
+                padding-right: @grid-gutter-width;
+                margin-top: @grid-gutter-width;
+            }
+        }
+	}
+	
+}
+
+
+
+/*
+ * Special page behaviour (main-area only)
+ */
+.page-checkout-summary,
+.page-checkout-confirmation {
+
+	.content-main {
+		margin: 0;
+
+		.content-form {
+			.col-l12();
+			margin-top: @grid-gutter-width;
+			padding-left:  @grid-gutter-width/2;
+			padding-right:  @grid-gutter-width/2;
+			@media (@col-m) {
+				padding-left: @grid-gutter-width;
+				padding-right: @grid-gutter-width;
+			}
+		}
+		
+		.content-sidebar {
+			display: none;
+		}
+		
+	}
+	
+}
+
+/**
+ * Error page
+ */
+.page-checkout-error {
+
+    .content-main {
+        background: #fff;
+        overflow: hidden;
+        padding: @grid-gutter-width;
+        min-height: 300px;
+
+        .mod-heading {
+            margin: @grid-gutter-width 0;
+
+            h2 {
+                font-size: 3em;
+            }
+
+        }
+    }
+
+    hr {
+        display: none;
+    }
+
+}

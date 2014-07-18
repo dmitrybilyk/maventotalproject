@@ -1,0 +1,8 @@
+# IMPORTANT STUFF
+# fix sync attributes (similar to DefaultSetupSyncJobService.createProductCatalogSyncJob())
+$productCatalog=kundeProductCatalog
+
+$ProductCatalogVersionSyncJobId=syncJob(code[default=sync $productCatalog:Staged->Online])[unique=true]
+
+INSERT_UPDATE SyncAttributeDescriptorConfig;$ProductCatalogVersionSyncJobId;attributeDescriptor(enclosingType(code),qualifier)[unique=true];includedInSync;copyByValue;untranslatable
+;;SubscriptionProduct:bonuses;true;true;false

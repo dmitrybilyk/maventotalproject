@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2013 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+
+
+-->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items.xsd">
+
+    <collectiontypes>
+        <collectiontype code="PaymentMethodCollection" elementtype="PaymentMethod" autocreate="true" />
+    </collectiontypes>
+
+    <enumtypes>
+        <!-- add additional credit card types -->
+        <enumtype code="CreditCardType" autocreate="false" generate="false">
+            <value code="mastercard" />
+            <value code="discover" />
+            <value code="jcb" />
+            <value code="uatp" />
+        </enumtype>
+        <enumtype code="PaymentPspStatusTypeEnum" autocreate="true" generate="true">
+            <value code="Initiate" />
+            <value code="Success" />
+            <value code="Failure" />
+            <value code="Canceled" />
+            <value code="Pending" />
+        </enumtype>
+    </enumtypes>
+
+    <itemtypes>
+        <itemtype code="BaseSite" autocreate="false" generate="false">
+            <attributes>
+                <attribute qualifier="allowedPaymentMethods" type="PaymentMethodCollection" >
+                    <persistence type="property" />
+                    <description>list of allowed PaymentMethods. if not set all active PaymentMethods are allowed.</description>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="PaymentInfo" autocreate="false" generate="false">
+            <attributes>
+                <attribute qualifier="paymentMethod" type="PaymentMethod">
+                    <description>The selected payment method.</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="paymentSubscriptionId" type="java.lang.String">
+                    <description>the subscription id to reuse an existing payment method</description>
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="DebitPaymentInfo" autocreate="false" generate="false">
+            <attributes>
+                <attribute qualifier="country" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <!-- SEPA Fields -->
+                <attribute qualifier="bic" type="java.lang.String">
+                    <description>Business Identifier Code</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="iban" type="java.lang.String">
+                    <description> International Bank Account Number</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="creditorId" type="java.lang.String">
+                    <description>Creditor Identifier, Unique identifier of creditor (merchant)</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="dueDate" type="java.util.Date">
+                    <description>Date when payment is deducted from consumers bank account</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="mandateId" type="java.lang.String">
+                    <description>Identifier of mandate (Unique Identifier for a creditor)</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="mandateSignDate" type="java.util.Date">
+                    <description>Date when the mandate was signed by the consumer</description>
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="PayOnDeliveryPaymentInfo" extends="PaymentInfo" autocreate="true" generate="true">
+        </itemtype>
+
+        <itemtype code="PayPalPaymentInfo" extends="PaymentInfo" autocreate="true" generate="true">
+            <attributes>
+                <attribute qualifier="payerID" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="payerAddress" type="Address">
+                    <modifiers partof="true" optional="true" />
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="billingAgreementID" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="PaymentMode" autocreate="false" generate="false">
+            <indexes>
+                <index name="pmodeactive">
+                    <key attribute="active" />
+                </index>
+            </indexes>
+        </itemtype>
+
+        <itemtype code="PaymentServiceProvider" autocreate="true" generate="true">
+            <deployment table="paymentserviceprovider" typecode="10000" />
+            <attributes>
+                <attribute qualifier="code" type="java.lang.String">
+                    <modifiers unique="true" initial="true" write="false" />
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="name" type="java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="active" type="java.lang.Boolean">
+                    <modifiers optional="true" />
+                    <defaultvalue>java.lang.Boolean.TRUE</defaultvalue>
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+            <indexes>
+                <index name="pspactive">
+                    <key attribute="active" />
+                </index>
+                <index name="psp1" unique="true">
+                    <key attribute="code" />
+                </index>
+            </indexes>
+        </itemtype>
+
+        <itemtype code="PaymentMethodType" autocreate="true" generate="true">
+            <deployment table="paymentmethodtypes" typecode="10001" />
+            <attributes>
+                <attribute qualifier="code" type="java.lang.String">
+                    <modifiers unique="true" initial="true" write="false" />
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="name" type="localized:java.lang.String">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="CCPaymentMethodType" autocreate="true" generate="true" extends="PaymentMethodType">
+            <attributes>
+                <attribute qualifier="type" type="CreditCardType">
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="PaymentMethod" autocreate="true" generate="true">
+            <deployment table="paymentmethods" typecode="10002" />
+            <attributes>
+                <attribute qualifier="code" type="java.lang.String">
+                    <modifiers unique="true" initial="true" write="false" />
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="psp" type="PaymentServiceProvider">
+                    <modifiers initial="true" write="false" />
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="type" type="PaymentMethodType">
+                    <modifiers initial="true" write="false" />
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="mode" type="PaymentMode">
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="active" type="java.lang.Boolean">
+                    <modifiers optional="false" />
+                    <defaultvalue>java.lang.Boolean.TRUE</defaultvalue>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="requiresIssuer" type="java.lang.Boolean">
+                    <description>Requires issuer number, month and year (e.g Maestro UK)</description>
+                    <modifiers optional="true" initial="true" write="false" />
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="requiresDirectDebit" type="java.lang.Boolean">
+                    <description>Requires a bank connection</description>
+                    <modifiers optional="true" initial="true" write="false" />
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="requiresPhone" type="java.lang.Boolean">
+                    <description>Requires a phone number</description>
+                    <modifiers optional="true" initial="true" write="false" />
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="requiresDateOfBirth" type="java.lang.Boolean">
+                    <description>Requires date of birth</description>
+                    <modifiers optional="true" initial="true" write="false" />
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+            <indexes>
+                <index name="pmethodactive">
+                    <key attribute="active" />
+                </index>
+                <index name="pmethod1" unique="true">
+                    <key attribute="psp" />
+                    <key attribute="type" />
+                    <key attribute="mode" />
+                </index>
+            </indexes>
+        </itemtype>
+
+        <itemtype code="AbstractOrder" generate="false" autocreate="false">
+            <attributes>
+                <attribute qualifier="designatedOrderCode" type="java.lang.String">
+                    <description>The order number a order cloned from this cart will receive.</description>
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="PaymentPspStatus" generate="true" autocreate="true">
+            <deployment table="paymentpspstatus" typecode="10003" />
+            <attributes>
+                <attribute qualifier="transactionId" type="java.lang.String">
+                    <description>The transaction Id.</description>
+                    <modifiers unique="true" initial="true" write="false" />
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="paymentToken" type="java.lang.String">
+                    <description>The order number for Wirecard payment to check the payment status if there is no callback.</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="cart" type="Cart">
+                    <description>The cart.</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="order" type="Order">
+                    <description>The order.</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="status" type="PaymentPspStatusTypeEnum">
+                    <description>The status of the payment process with the PSP.</description>
+                    <persistence type="property" />
+                </attribute>
+                <attribute qualifier="message" type="java.lang.String">
+                    <description>For a error message from the provider</description>
+                    <persistence type="property" />
+                </attribute>
+            </attributes>
+            <indexes>
+                <index name="pspstatustid">
+                    <key attribute="transactionId" />
+                </index>
+            </indexes>
+        </itemtype>
+    </itemtypes>
+</items>

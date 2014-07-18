@@ -1,0 +1,267 @@
+/*
+ * Styles for the following module: delivery-address
+ * 
+ */
+
+.mod-delivery-address {
+	.row();
+	
+	p.intro {
+		.col-s12();
+		margin-left: -(@grid-gutter-width / 2);
+		margin-right: -(@grid-gutter-width / 2);
+	}
+	p.title-address {
+		.col-s12();
+		.col-m4();
+		@media (@col-s) {
+			background: @color-form-title-background;
+			font-weight: bold;
+			padding: @grid-gutter-width;
+		}
+		@media (@col-m) {
+			background: none;
+			padding-left: @grid-gutter-width;
+			position: relative;
+			z-index: 20;
+			bottom: -(@grid-gutter-width);
+			margin-bottom: -(@grid-gutter-width*1.5);
+			margin-top: -@grid-gutter-width;
+		}
+	}
+
+	> .inner {
+		padding-top: 0;
+	}
+
+	ul.addresses {
+		.clearfix();
+
+		li.new,
+		li.existing {	
+			
+			margin-top: 0;
+			background: @color-form-title-background;
+
+			div.address {
+				span {
+
+					&.title {
+						font-weight: bold;
+					}
+					
+				}
+				
+				ul.actions {
+					.row();
+					margin-top: 0;
+
+					li {						
+
+						&.use {
+							.col-m12();
+							padding: 0;
+						}
+						&.edit,
+						&.remove {
+							.col-m6();
+							padding-top: @grid-gutter-width/2;
+							padding-left: 0;
+							padding-right: 0;
+
+							button {
+								background: none;
+								border: 0;
+								color: #54696e;
+								font-weight: normal;
+								font-size: 1em;
+							}
+						}
+						@input-height: 30px;
+						button {
+							.col-m12();
+							-webkit-box-sizing: border-box;
+							-moz-box-sizing: border-box;
+							box-sizing: border-box;
+							border: 1px solid #b9babc;
+							border-radius: 3px;
+							#gradient > .vertical(@color-form-btn-gradient-top, @color-form-btn-gradient-bottom);
+							color: @color-form-btn-color;
+							font-size: 1.2em;
+							font-weight: bold;
+							display: block;
+							min-height: @input-height;
+							padding: 0;
+						}
+					}
+				}
+			}
+
+		}
+		
+		// List of existing addresses
+		li.existing {
+			.col-s12();
+			padding: 0;
+
+			div.address {
+				.col-m8();
+				.push-m4();
+				background: @color-form-list-background;
+				padding: (@grid-gutter-width/2);
+
+				ul.actions,
+				.mod-address {
+					.col-m6();
+					.push-m6();
+					clear: both;
+
+					li {
+
+						&.edit {
+
+							button {
+								text-align: left;
+
+								@media (@col-m) {
+									text-align: center;
+								}
+
+								&:before {
+									#icon-cgi > .edit();
+									display: inline-block;
+									margin-right: 4px;
+									margin-top: 1px;
+									vertical-align: top;
+								}
+
+							}
+
+						}
+
+						&.remove {
+
+							button {
+								text-align: left;
+
+								@media (@col-m) {
+									text-align: center;
+								}
+
+								&:before {
+									#icon-cgi > .delete();
+									display: inline-block;
+									margin-right: 4px;
+									margin-top: 1px;
+									vertical-align: top;
+								}
+
+							}
+
+						}
+
+					}
+
+					.title-holder {
+						.prename,
+						.surname {
+							font-weight: bold;
+						}
+
+						@media (@col-m) {
+							.col-m12();
+							position: absolute;
+							left: -100%;
+
+							.company {
+								padding-top: (@grid-gutter-width / 2);
+							}
+						}
+
+					}
+
+				}
+			}
+
+		}
+
+		// Existing and selected address
+		li.existing.selected {
+			padding: 0;
+
+			div.address {
+				border: 0;
+
+				ul.actions {
+
+					li {
+						&.use {
+
+							button {
+								border-color: #839096;
+								background: #fff;
+								color: #54696e;
+							}
+
+						}
+
+					}
+
+				}
+			}
+
+		}
+
+		li.existing.has-msg-error {
+			padding: 0;
+
+			div.address {
+				background: @color-msg-error-bg;
+			}
+			.msg {
+				.push-s0();
+				.push-m6();
+				.col-m6();
+				color: @color-msg-error-text;
+				clear: left;
+				margin-top: (@grid-gutter-width * 0.25);
+			}
+
+		}
+
+		// New address form
+		li.new {
+			.col-s12();
+			padding: 0;
+			margin-top: @grid-gutter-width;
+
+			.title {
+				.col-m4();
+				padding: @grid-gutter-width;
+			}
+
+			.input-list {
+				.col-m8();
+			}
+
+			div.address {
+				ul.actions {
+					.col-m8();
+					.push-m4();
+
+					background: @color-form-list-background;
+					padding-bottom: @grid-gutter-width;
+
+					li {
+						&.use {
+							.col-m6();
+							.push-m6();
+						}
+					}
+				}
+			}
+		}
+
+	}
+	
+}

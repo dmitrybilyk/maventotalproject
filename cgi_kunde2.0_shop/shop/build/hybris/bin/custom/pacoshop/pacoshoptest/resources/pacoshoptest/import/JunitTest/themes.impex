@@ -1,0 +1,12 @@
+#
+# Import Themes
+# Import the themes supported by the store front
+#
+$contentCatalog=kunde1ContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+INSERT_UPDATE SiteTheme;code[unique=true]
+;black
+;blue
+;handelsblatt
+;wiwo

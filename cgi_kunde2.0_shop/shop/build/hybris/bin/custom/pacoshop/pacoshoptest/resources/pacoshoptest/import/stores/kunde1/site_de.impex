@@ -1,0 +1,10 @@
+#
+# Import the CMS Site configuration for the Kunde1 store
+#
+
+# Language
+$lang=de
+
+# Create CMS Site
+UPDATE CMSSite;uid[unique=true];name[lang=$lang];locale[lang=$lang]
+ ;kunde1;"Website Kunde1";de_DE

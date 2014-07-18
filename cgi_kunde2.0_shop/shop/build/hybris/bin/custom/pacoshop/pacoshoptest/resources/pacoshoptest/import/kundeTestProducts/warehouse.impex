@@ -1,0 +1,2 @@
+INSERT_UPDATE Warehouse;code[unique=true];vendor(code);default[default=true]
+;kundeWarehouse;kundeVendor;

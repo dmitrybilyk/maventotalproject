@@ -1,0 +1,189 @@
+$productCatalog=kundeProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)[unique=true]
+
+$bonuses=bonuses(id, $catalogVersion)
+
+$approved=approvalstatus(code)[default='approved']
+$prices=europe1prices[translator=de.hybris.platform.europe1.jalo.impex.Europe1PricesTranslator]
+$taxGroup=Europe1PriceFactory_PTG(code)[default=eu-vat-full]
+$productType=ProductType(code)[default=DOWNLOAD]
+$paymentType=PaymentTypes(code)[default=CREDIT_CARD]
+$vatGroup=VATGroup(id)[default=FULL_TAX]
+$lang=en
+$deliveryMode=deliveryModes(code)
+
+$billingTime=billingFrequency(code)[default='daily']
+
+#Import Products without bonuses
+#---------------------------------------------------------------------------------------------------
+INSERT_UPDATE SubscriptionProduct;code[unique=true];$catalogVersion;unit(code);approvalStatus(code);owner(Principal.uid)[unique=true];$taxGroup;fulfillmentType(code);differingConsigneeAllowed;productOwner(code);active;$vatGroup;externalOfferId;dummy;differingInvoiceRecipientAllowed;digital;prepayOnly;$productType;offerOrigin(code);name;externalProductId;studentOffer;clientOffer;invoiceRecipientOffer;consigneeOffer;onlineOffer;mandatoryAddress;mandatoryPhone;mandatoryMobile;mandatoryEmail;mandatoryOptIn;minOrderQuantity;maxOrderQuantity;readersCanvassReaders;$supercategories;$paymentType;subscriptionTerm(id);consecutiveSubscriptionTerm(id);
+;subProdId1;;pieces;approved;admin;;SAP_PERIODIC_OFFER;false;Wirtschaftswoche;true;;XYZ1234;false;false;true;true;PRINT ABO;CRM;A simple active PrintAbo;SAPxyz1234-01;false;false;false;false;false;false;false;false;false;false;1;1;false;;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_1;monthly_18;
+;subProdId2;;week;approved;admin;;SAP_PERIODIC_OFFER;false;Wirtschaftswoche;true;;XYZ1235;false;false;true;true;PRINT ABO;CRM;A future Abo;SAPxyz1236-01;true;false;false;false;false;false;false;false;false;false;1;1;false;;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_12;;
+;subProdId3;;month;approved;admin;;SAP_PERIODIC_OFFER;false;FAZ;true;;XYZ1236;false;false;true;true;PRINT ABO;SAP-MSD;An outdated Abo;SAPxyz2236-01;true;false;false;false;false;false;false;false;false;false;1;1;false;;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_18;;
+;subProdId4;;pieces;approved;admin;;SAP_PERIODIC_OFFER;false;FAZ;true;;XYZ1237;false;false;true;true;PRINT ABO;SAP-MSD;No picture, existing cust Print Abo;SAPxyz3236-01;false;true;false;false;false;false;false;false;false;false;1;1;false;;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_24;;
+;subProdId5;;pieces;approved;admin;;SAP_PERIODIC_OFFER;false;FAZ;true;;XYZ1238;false;false;true;true;PRINT ABO;SAP-MSD;Ambiguous Identifier;SAPxyz4236-01;false;false;true;false;false;false;false;false;false;false;1;1;false;;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_36;;
+;subProdId6;;pieces;approved;admin;;SAP_PERIODIC_OFFER;false;Wirtschaftswoche;true;;XYZ1239;false;false;true;true;PRINT ABO;CRM;AStudent PrintAbo no bonus;SAPxyz1235-01;true;false;false;false;false;false;false;false;false;false;1;1;false;;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_12;;
+#---------------------------------------------------------------------------------------------------
+
+
+#Import Products with bonuses
+#---------------------------------------------------------------------------------------------------
+INSERT_UPDATE SubscriptionProduct;code[unique=true];$catalogVersion;unit(code);approvalStatus(code);owner(Principal.uid)[unique=true];$taxGroup;fulfillmentType(code);differingConsigneeAllowed;productOwner(code);active;$vatGroup;externalOfferId;dummy;differingInvoiceRecipientAllowed;digital;prepayOnly;$productType;offerOrigin(code);name;externalProductId;studentOffer;clientOffer;invoiceRecipientOffer;consigneeOffer;onlineOffer;mandatoryAddress;mandatoryPhone;mandatoryMobile;mandatoryEmail;mandatoryOptIn;minOrderQuantity;maxOrderQuantity;readersCanvassReaders;$supercategories;$bonuses;$paymentType;subscriptionTerm(id);consecutiveSubscriptionTerm(id);
+;subProdId7;;pieces;approved;admin;;SAP_PERIODIC_OFFER;true;Wirtschaftswoche;true;;xyz6123;false;true;true;true;PRINT ABO;CRM;Student Print Abo Cash bonus;SAPxyz1234-02;true;false;false;false;false;false;false;false;false;false;1;1;false;;11;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_1;;
+;subProdId8;;pieces;approved;admin;;SAP_PERIODIC_OFFER;true;Wirtschaftswoche;true;;xyz6124;false;true;true;true;PRINT ABO;CRM;Ex. Cust. (invoice) Print Abo Product Bonus Mandatory Registration;SAPxyz1236-02;false;false;true;false;true;false;false;false;false;false;1;1;false;;12;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_12;;
+;subProdId9;;pieces;approved;admin;;SAP_PERIODIC_OFFER;true;FAZ;true;;xyz6125;false;true;true;true;PRINT ABO;SAP-MSD;Ex. Cust. (shipment) Print Abo Product Bonus;SAPxyz2236-02;false;false;false;true;false;false;false;false;false;false;1;1;false;;13;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_24;;
+;subProdId10;;pieces;approved;admin;;SAP_PERIODIC_OFFER;true;FAZ;true;;xyz6126;false;true;true;true;PRINT ABO;SAP-MSD;Ex. Cust. (order) Print Abo Product Bonus with pymt;SAPxyz3236-02;false;true;false;false;false;false;false;false;false;false;1;1;false;;14;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_36;;
+;subProdId11;;pieces;approved;admin;;SAP_PERIODIC_OFFER;false;FAZ;true;;xyz6127;false;true;true;true;PRINT ABO;SAP-MSD;print Abo MM Bonus, No Other shipment;SAPxyz4236-02;false;false;false;false;false;false;false;false;false;false;1;1;false;;15;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_1;;
+;subProdId12;;pieces;approved;admin;;SAP_PERIODIC_OFFER;false;Wirtschaftswoche;true;;xyz6128;false;false;true;true;DIGITAL ABO;CRM;Digital Abo MM Bonus, No Other shipment, no other invoice;SAPxyz1235-02;false;false;false;false;true;false;false;false;false;false;1;1;false;;16;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_12;;
+;subProdId13;;week;approved;admin;;SAP_PERIODIC_OFFER;true;Wirtschaftswoche;true;;xyz6129;false;true;true;true;DIGITAL ABO;CRM;Digital Abo several bonusses;SAPxyz1234-03;false;false;false;false;true;false;false;false;false;false;1;1;false;;17;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_24;;
+;subProdId14;;month;approved;admin;;SAP_PERIODIC_OFFER;true;Wirtschaftswoche;true;;xyz6130;false;true;true;true;DIGITAL ABO;CRM;Digital Abo several bonusses incl. MM;SAPxyz1236-03;false;false;false;false;true;false;false;false;false;false;1;1;false;;18;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_36;;
+;subProdId15;;pieces;approved;admin;;SAP_PERIODIC_OFFER;true;FAZ;true;;xyz6131;false;true;true;true;PRINT ABO;SAP-MSD;Print Abo LWL Product Bonus;SAPxyz2236-03;false;false;false;false;false;false;false;false;false;false;1;1;true;;19;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_1;;
+;subProdId16;;pieces;approved;admin;;SAP_PERIODIC_OFFER;true;FAZ;true;;xyz6132;false;true;true;true;DIGITAL ABO;SAP-MSD;Digital Abo LWL MM Bonus;SAPxyz3236-03;false;false;false;false;true;false;false;false;false;false;1;1;true;;20;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_12;;
+;subProdId17;;pieces;approved;admin;;SAP_PERIODIC_OFFER;true;FAZ;true;;xyz6133;false;true;true;true;PRINT ABO;SAP-MSD;Student Print Abo LWL  Cash Bonus;SAPxyz4236-03;true;false;false;false;false;false;false;false;false;false;1;1;true;;21;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_24;;
+;subProdId18;;pieces;approved;admin;;SAP_PERIODIC_OFFER;true;Wirtschaftswoche;true;;xyz6134;false;true;true;true;DIGITAL ABO;CRM;Digital Abo Ex. Cust. LWL Product Bonus with pymt, registration by type;SAPxyz1235-03;false;true;false;false;false;false;false;false;false;false;1;1;true;;22;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_36;;
+;subProdId19;;pieces;approved;admin;;SAP_PERIODIC_OFFER;false;Wirtschaftswoche;true;;xyz6135;false;false;true;true;PRINT ABO;CRM;LWL Student Print Abo for Existing Customers with M&M Abo;SAPxyz1234-04;true;false;true;false;false;false;false;false;false;false;1;1;true;;23;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_1;;
+;subProdId20;;pieces;approved;admin;;SAP_PERIODIC_OFFER;false;Wirtschaftswoche;true;;xyz6136;false;true;true;true;PRINT ABO;CRM;Print Abo LWL Cash Bonus With other invoice;SAPxyz1236-04;false;false;false;false;false;false;false;false;false;false;1;1;true;;24;CREDIT_CARD,PAY_PAL,DIRECT_DEBIT;monthly_12;;
+;subProdId21;;pieces;approved;admin;;NEWSLETTER;false;Wirtschaftswoche;true;;xyz6137;false;true;false;false;NEWSLETTER;CRM;Newsletter With other invoice;SAPxyz1237-07;false;false;true;false;false;false;false;false;true;false;1;1;true;;24;;monthly_12;;
+;subProdId22;;pieces;approved;admin;;NEWSLETTER;false;HANDELSBLATT;true;;xyz6138;false;false;false;false;NEWSLETTER;SAP-MSD;Newsletter Without other invoice;SAPxyz1238-08;false;false;false;false;false;false;false;false;true;false;1;1;true;;24;;monthly_1;;
+#---------------------------------------------------------------------------------------------------
+
+#breaks the synchronisation job.
+#UPDATE SubscriptionProduct;code[unique=true];importSource(code);$catalogVersion
+#;subProdId1;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId2;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId3;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId4;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId5;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId6;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId7;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId8;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId9;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId10;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId11;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId12;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId13;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId14;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId15;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId16;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId17;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId18;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId19;SERVICE_BUS_PERIODIC_PRODUCTS;
+#;subProdId20;SERVICE_BUS_PERIODIC_PRODUCTS;
+
+
+# Insert Subscription Price Plan
+INSERT_UPDATE SubscriptionPricePlan;&pricePlan;product(code, $catalogVersion)[unique=true];$catalogVersion;currency(isocode)[default=EUR,unique=true];unit(code)[default=pieces]
+;pricePlan_subProd1;subProdId1;
+;pricePlan_subProd2;subProdId2;;;week
+;pricePlan_subProd3;subProdId3;;;month
+;pricePlan_subProd4;subProdId4;
+;pricePlan_subProd5;subProdId5;
+;pricePlan_subProd6;subProdId6;
+;pricePlan_subProd7;subProdId7;
+;pricePlan_subProd8;subProdId8;
+;pricePlan_subProd9;subProdId9;
+;pricePlan_subProd10;subProdId10;
+;pricePlan_subProd11;subProdId11;
+;pricePlan_subProd12;subProdId12;
+;pricePlan_subProd13;subProdId13;;;week
+;pricePlan_subProd14;subProdId14;;;month
+;pricePlan_subProd15;subProdId15;
+;pricePlan_subProd16;subProdId16;
+;pricePlan_subProd17;subProdId17;
+;pricePlan_subProd18;subProdId18;
+;pricePlan_subProd19;subProdId19;
+;pricePlan_subProd20;subProdId20;
+;pricePlan_subProd21;subProdId21;
+;pricePlan_subProd22;subProdId22;
+
+#---------------------------------------------------------------------------------------------------
+
+#INSERT_UPDATE BillingEvent;code[unique=true];
+#;paynow
+
+INSERT_UPDATE BillingFrequency;code[unique=true];order;cartAware[default=true];externalFrequency[default=1];unit(code)[default=week]
+;daily;3;;
+;weekly;4;;
+;monthly;5;;
+;quarterly;6;;
+;yearly;7;;
+
+#---------------------------------------------------------------------------------------------------
+
+INSERT_UPDATE OneTimeChargeEntry;id[unique=true];subscriptionPricePlanOneTime(&pricePlan);price;billingEvent(code)[default=paynow];$catalogVersion
+;SUBPROD1_PAYNOW;pricePlan_subProd1;29;;
+;SUBPROD2_PAYNOW;pricePlan_subProd2;39;;
+;SUBPROD3_PAYNOW;pricePlan_subProd3;49;;
+;SUBPROD4_PAYNOW;pricePlan_subProd4;59;;
+;SUBPROD5_PAYNOW;pricePlan_subProd5;69;;
+;SUBPROD6_PAYNOW;pricePlan_subProd6;79;;
+;SUBPROD7_PAYNOW;pricePlan_subProd7;89;;
+;SUBPROD8_PAYNOW;pricePlan_subProd8;99;;
+;SUBPROD9_PAYNOW;pricePlan_subProd9;109;;
+;SUBPROD10_PAYNOW;pricePlan_subProd10;20;;
+;SUBPROD11_PAYNOW;pricePlan_subProd11;30;;
+;SUBPROD12_PAYNOW;pricePlan_subProd12;40;;
+;SUBPROD13_PAYNOW;pricePlan_subProd13;50;;
+;SUBPROD14_PAYNOW;pricePlan_subProd14;60;;
+;SUBPROD15_PAYNOW;pricePlan_subProd15;70;;
+;SUBPROD16_PAYNOW;pricePlan_subProd16;80;;
+;SUBPROD17_PAYNOW;pricePlan_subProd17;90;;
+;SUBPROD18_PAYNOW;pricePlan_subProd18;100;;
+;SUBPROD19_PAYNOW;pricePlan_subProd19;75;;
+;SUBPROD20_PAYNOW;pricePlan_subProd20;85;;
+;SUBPROD21_PAYNOW;pricePlan_subProd21;0;;
+;SUBPROD22_PAYNOW;pricePlan_subProd22;0;;
+#---------------------------------------------------------------------------------------------------
+
+INSERT_UPDATE RecurringChargeEntry;id[unique=true];subscriptionPricePlanRecurring(&pricePlan);price;cycleStart;communicatedPrice;communicatedBillingFrequency(code)[default=daily];$catalogVersion
+;SUBPROD1_DAILY;pricePlan_subProd1;29;1;10;;
+;SUBPROD2_DAILY;pricePlan_subProd2;39;1;10;;
+;SUBPROD3_DAILY;pricePlan_subProd3;49;1;10;;
+;SUBPROD4_DAILY;pricePlan_subProd4;59;1;10;;
+;SUBPROD5_DAILY;pricePlan_subProd5;69;1;10;;
+;SUBPROD6_DAILY;pricePlan_subProd6;79;1;10;;
+;SUBPROD7_DAILY;pricePlan_subProd7;89;1;10;;
+;SUBPROD8_DAILY;pricePlan_subProd8;99;1;10;;
+;SUBPROD9_DAILY;pricePlan_subProd9;109;1;10;;
+;SUBPROD10_DAILY;pricePlan_subProd10;20;1;10;;
+;SUBPROD11_DAILY;pricePlan_subProd11;30;1;10;;
+;SUBPROD12_DAILY;pricePlan_subProd12;40;1;10;;
+;SUBPROD13_DAILY;pricePlan_subProd13;50;1;10;;
+;SUBPROD14_DAILY;pricePlan_subProd14;60;1;10;;
+;SUBPROD15_DAILY;pricePlan_subProd15;70;1;10;;
+;SUBPROD16_DAILY;pricePlan_subProd16;80;1;10;;
+;SUBPROD17_DAILY;pricePlan_subProd17;90;1;10;;
+;SUBPROD18_DAILY;pricePlan_subProd18;100;1;10;;
+;SUBPROD19_DAILY;pricePlan_subProd19;75;1;10;;
+;SUBPROD20_DAILY;pricePlan_subProd20;85;1;10;;
+;SUBPROD21_DAILY;pricePlan_subProd21;0;1;10;;
+;SUBPROD22_DAILY;pricePlan_subProd22;0;1;10;;
+#---------------------------------------------------------------------------------------------------
+
+#Delivery mode
+INSERT_UPDATE SubscriptionProduct;code[unique=true];$catalogVersion;$deliveryMode
+;subProdId1;;continentalEurope_testData
+;subProdId2;;northEurope-shipping
+;subProdId3;;easternEurope-shipping
+;subProdId4;;westernEurope-shipping
+;subProdId5;;northEurope-shipping
+;subProdId6;;continentalEurope_testData
+;subProdId7;;easternEurope-shipping
+;subProdId8;;intersection_DE_RU_SE_GR
+;subProdId9;;northEurope-shipping
+;subProdId10;;westernEurope-shipping
+;subProdId11;;southEurope-shipping
+;subProdId12;;intersection_DE_RU_SE_GR
+;subProdId13;;westernEurope-shipping
+;subProdId14;;easternEurope-shipping
+;subProdId15;;westernEurope-shipping
+;subProdId16;;continentalEurope_testData
+;subProdId17;;northEurope-shipping
+;subProdId18;;southEurope-shipping
+;subProdId19;;easternEurope-shipping
+;subProdId20;;intersection_DE_RU_SE_GR
+;subProdId20;;southEurope-shipping
+;subProdId20;;easternEurope-shipping
+
+#---------------------------------------------------------------------------------------------------

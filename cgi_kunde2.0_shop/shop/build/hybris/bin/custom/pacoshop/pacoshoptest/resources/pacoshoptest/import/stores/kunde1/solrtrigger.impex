@@ -1,0 +1,11 @@
+#
+# Import the Solr CronJob Trigger configuration for the Kunde1 Product Catalog
+#
+
+INSERT_UPDATE Trigger;cronJob(code)[unique=true];second;minute;hour;day;month;year;relative;active;maxAcceptableDelay
+
+# Run the full-kunde1Index-cronJob at 3:05 AM every day
+;full-kunde1Index-cronJob;0;5;3;-1;-1;-1;false;false;-1
+
+# Run the update-kunde1Index-cronJob every 1 minutes
+;update-kunde1Index-cronJob;0;1;-1;-1;-1;-1;true;false;-1

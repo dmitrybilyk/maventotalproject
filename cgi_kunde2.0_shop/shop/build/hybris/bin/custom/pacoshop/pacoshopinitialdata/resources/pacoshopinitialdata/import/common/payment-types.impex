@@ -1,0 +1,28 @@
+INSERT_UPDATE PaymentType; code[unique=true];name[lang=en];name[lang=de];externalId;paymentMode(code)
+;CREDIT_CARD;Credit card;Kreditkarte;CREDITCARD;creditcard
+;PAY_PAL;PayPal;PayPal;PAYPAL;paypal
+;DIRECT_DEBIT;Direct debit;Lastschrift;DIRECTDEBIT;directdebit
+;IMMEDIATE_TRANSFER;Immediate transfer;Sofortüberweisung;SOFORTUEBERWEISUNG;sofortueberweisung
+;CASH_ON_DELIVERY;Cash on delivery;Nachnahme;CASHONDELIVERY;payondelivery
+;MPASS;mpass;mpass;MOBILEPAY;
+;INVOICE;invoice;rechnung;INVOICE;invoice
+
+# Updating Payment modes with orderPriority for display in right order and disable unused modes
+INSERT_UPDATE StandardPaymentMode;code[unique=true];orderPriority;active
+;sofortueberweisung;1;true
+;creditcard;2;true
+;paypal;4;true
+;payondelivery;5;true
+;directdebit;6;true
+;invoice;7;true
+;paybox;;false
+;quick;;false
+;click2pay;;false
+;giropay;;false
+;eps;;false
+;ideal;;false
+;advance;;false
+
+
+
+

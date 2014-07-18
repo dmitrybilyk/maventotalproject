@@ -1,0 +1,17 @@
+INSERT_UPDATE StandardPaymentMode;code[unique=true];orderPriority;active;paymentinfotype(code)
+;creditcard;2;true;CreditCardPaymentInfo
+;directdebit;6;true;DebitPaymentInfo
+;invoice;7;true;InvoicePaymentInfo
+;advance;1;true;AdvancePaymentInfo
+;paypal;4;true;PayPalPaymentInfo
+;payondelivery;5;true;PayOnDeliveryPaymentInfo
+;sofortueberweisung;1;true;PayOnDeliveryPaymentInfo
+
+INSERT_UPDATE PaymentType; code[unique=true];name[lang=en];name[lang=de];externalId;paymentMode(code)
+;CREDIT_CARD;Credit card;Kreditkarte;CREDITCARD;creditcard
+;PAY_PAL;PayPal;PayPal;PAYPAL;paypal
+;DIRECT_DEBIT;Direct debit;Lastschrift;DIRECTDEBIT;directdebit
+;CASH_ON_DELIVERY;Cash on delivery;Nachnahme;CASHONDELIVERY;payondelivery
+;MPASS;mpass;mpass;MOBILEPAY;
+;INVOICE;invoice;rechnung;INVOICE;invoice
+;IMMEDIATE_TRANSFER;Immediate transfer;Sofortüberweisung;SOFORTUEBERWEISUNG;sofortueberweisung

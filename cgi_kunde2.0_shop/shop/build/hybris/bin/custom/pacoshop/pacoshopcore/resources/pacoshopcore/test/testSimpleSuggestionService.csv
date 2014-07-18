@@ -1,0 +1,112 @@
+$catalog-id=testCatalog
+$catalog-version=Online
+
+$testCategory0-id=testCategory0
+$testCategory1-id=testCategory1
+
+$catalogversion=catalogversion(catalog(id[default='photoCatalog']),version[default='Online'])[unique=true,default='photoCatalog:Online']
+$supercategories=supercategories(code,catalogversion(catalog(id),version));
+$prices=europe1prices[translator=de.hybris.platform.europe1.jalo.impex.Europe1PricesTranslator]
+
+INSERT_UPDATE Language;isocode[unique=true];active
+;de;true
+;en;true
+
+INSERT_UPDATE Language;isocode[unique=true];active[default=true];name[lang=de];name[lang=en]
+;de;;Deutsch;German
+;en;;Englisch;English
+
+INSERT_UPDATE Unit;unitType[unique=true];code[unique=true];name[lang=de];name[lang=en];conversion;;;
+;pieces;pieces;pieces;pieces;1
+
+INSERT_UPDATE Currency;isocode[unique=true];name[lang=de];name[lang=en];active;base;conversion;digits;symbol
+;EUR;Euro;Euro;true;true;1;2;€
+
+INSERT_UPDATE Title;code[unique=true];name[lang=de];name[lang=en];;
+;dr;Dr.;dr.;;
+
+INSERT_UPDATE Title2;code[unique=true];name[lang=de];name[lang=en];index[unique=true]
+;dr;Dr.;Dr.;0
+;prof;Prof.;Prof.;1
+;profdr;Prof. Dr.;Prof. Dr.;2
+
+INSERT_UPDATE Country;isocode[unique=true];name[lang=de];name[lang=en];active;
+;US;Vereinigte Staaten von Amerika;United States of America;true;
+
+INSERT_UPDATE UserGroup;uid[unique=true];groups(uid);
+;customergroup;
+
+INSERT_UPDATE Customer;uid[unique=true];customerID;name;description;sessionLanguage(isocode);sessionCurrency(isocode);groups(uid);password
+;deJol;K2006-C0007;Max de Jol;;en;EUR;customergroup;1234
+
+INSERT_UPDATE Catalog;id[unique=true];name[lang=de];name[lang=en];defaultCatalog;
+;photoCatalog;Photo Catalog;Photo Catalog;true
+
+INSERT_UPDATE CatalogVersion; catalog(id)[unique=true]; version[unique=true];active;
+;photoCatalog;Online;true;
+
+INSERT_UPDATE Category;code[unique=true];$catalogversion;name[lang=de];name[lang=en];$supercategories
+;cameras;photoCatalog:Online;cameras;cameras;
+;lenses;photoCatalog:Online;lenses;lenses;
+;tripods;photoCatalog:Online;tripods;tripods;
+;batteries;photoCatalog:Online;batteries;batteries;
+;others;photoCatalog:Online;others;others;
+
+INSERT_UPDATE OfferOrigin; code[unique=true]
+;SAP-SD
+;CRM
+
+INSERT_UPDATE ProductOwner; code[unique=true]
+;Wirtschaftswoche
+;HANDELSBLATT
+
+INSERT_UPDATE FulfillmentType; code[unique=true]
+;NEWSLETTER
+;SAP_SINGLE_OFFER
+
+# Updating Payment modes with orderPriority for display in right order and disable unused modes
+INSERT_UPDATE StandardPaymentMode;code[unique=true];orderPriority;active;paymentinfotype(code)
+;creditcard;2;true;CreditCardPaymentInfo
+;paypal;4;true;PayPalPaymentInfo
+
+INSERT_UPDATE PaymentType; code[unique=true];name[lang=en];name[lang=de];externalId;paymentMode(code)
+;CREDIT_CARD;Credit card;Kreditkarte;CREDITCARD;creditcard
+;PAY_PAL;PayPal;PayPal;PAYPAL;paypal
+;MPASS;mpass;mpass;MOBILEPAY;
+
+# Update product types to set those properties whose values are not essential data
+INSERT_UPDATE ProductType; code[unique=true];paymentTypes(code);productCluster(code);productClass(code);productGroup(code);sendInvoice(code)
+;DOWNLOAD;CREDIT_CARD,MPASS,PAY_PAL;EINZEL;DIGITAL;DOWNLOAD;ON_REQUEST
+
+INSERT_UPDATE VatGroup; id[unique=true];name[lang=en];name[lang=de];vatRate
+;FULL_TAX;Full tax;Volle Steuer;19.0
+;REDUCED_TAX;Reduced tax;Ermäßigter Steuer;7.0
+;NO_TAX;No tax;Keine Steuer;0.0
+
+INSERT_UPDATE Product;code[unique=true];$catalogversion;name[lang=de];name[lang=en];unit(code);approvalStatus(code);owner(Principal.uid);$supercategories;externalProductId[unique=true];offerOrigin(code);active;externalOfferId;digital;dummy;productType(code);fulfillmentType(code);prepayOnly;productOwner(code);differingInvoiceRecipientAllowed;differingConsigneeAllowed;vatGroup(id)
+;camera1;photoCatalog:Online;camera1;camera1;pieces;approved;admin;cameras:photoCatalog:Online;simplePaper1;SAP-SD;true;simplePaper1;true;false;DOWNLOAD;NEWSLETTER;false;Wirtschaftswoche;true;true;FULL_TAX
+;camera2;photoCatalog:Online;camera2;camera2;pieces;approved;admin;cameras:photoCatalog:Online;simplePaper2;CRM;true;simplePaper2;true;false;DOWNLOAD;SAP_SINGLE_OFFER;false;HANDELSBLATT;true;true;REDUCED_TAX
+;batteryAAA;photoCatalog:Online;batteryAAA;batteryAAA;pieces;approved;admin;batteries:photoCatalog:Online;simplePaper2;CRM;true;simplePaper2;true;false;DOWNLOAD;SAP_SINGLE_OFFER;false;HANDELSBLATT;true;true;REDUCED_TAX
+;batteryAA;photoCatalog:Online;batteryAA;batteryAA;pieces;approved;admin;batteries:photoCatalog:Online;simplePaper2;CRM;true;simplePaper2;true;false;DOWNLOAD;SAP_SINGLE_OFFER;false;HANDELSBLATT;true;true;REDUCED_TAX
+;tripod;photoCatalog:Online;tripod;tripod;pieces;approved;admin;tripods:photoCatalog:Online;simplePaper1;SAP-SD;true;simplePaper1;true;false;DOWNLOAD;NEWSLETTER;false;Wirtschaftswoche;true;true;FULL_TAX
+;adapterDC;photoCatalog:Online;adapter;adapter;pieces;approved;admin;others:photoCatalog:Online;simplePaper2;CRM;true;simplePaper2;true;false;DOWNLOAD;SAP_SINGLE_OFFER;false;HANDELSBLATT;true;true;REDUCED_TAX
+;lense;photoCatalog:Online;lense;lense;pieces;approved;admin;lenses:photoCatalog:Online;simplePaper2;CRM;true;simplePaper2;true;false;DOWNLOAD;SAP_SINGLE_OFFER;false;HANDELSBLATT;true;true;REDUCED_TAX
+
+INSERT_UPDATE ProductReference;qualifier;source(code, $catalogversion)[unique=true];target(code, $catalogversion)[unique=true];referenceType(code)[unique=true];active;quantity;preselected
+;cam1cam2;camera1;camera2;SIMILAR;true;1;true
+;cam2cam1;camera2;camera1;OTHERS;true;1;true
+;cam1battAA;camera1;batteryAA;ACCESSORIES;true;2;true
+;cam2battAAA;camera2;batteryAAA;ACCESSORIES;true;2;true
+;cam1adapter;camera1;adapterDC;ACCESSORIES;false;1;true
+;cam2adapter;camera2;adapterDC;ACCESSORIES;false;1;true
+;cam1tripod;camera1;tripod;CROSSELLING;true;1;true
+;tripodlense1;tripod;lense;UPSELLING;true;1;true
+;tripodlense2;tripod;lense;FOLLOWUP;true;1;true
+;cam2lense;camera2;lense;SPAREPART;true;1;true
+
+INSERT_UPDATE Order;code[unique=true];date[dateformat=yyyy-MM-dd HH:mm:ss,forceWrite=true];net;currency(isocode);calculated;user(uid)
+;orderRefdeJol;2011-04-27 18:54:00;false;EUR;false;deJol
+
+INSERT_UPDATE OrderEntry;order(Order.code)[unique=true];creationTime[dateformat=yyyy-MM-dd HH:mm:ss];product(code,$catalogversion)[unique=true];quantity;unit(code)
+;orderRefdeJol;2011-04-27 18:54:00;camera1;1;pieces
+;orderRefdeJol;2011-04-27 18:54:00;batteryAA;1;pieces

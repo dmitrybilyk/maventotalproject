@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<testclasses>
+  <pacoshopcore>
+    <testclass>com.cgi.pacoshop.core.service.impl.PacoshopSubscriptionCommerceCartServiceImplTest</testclass>
+    <testclass>com.cgi.pacoshop.core.service.security.DeeplinkSecurityServiceTest</testclass>
+    <testclass>com.cgi.pacoshop.core.checkout.flow.impl.PickUpInStoreCheckoutFlowStrategyTest</testclass>
+    <testclass>com.cgi.pacoshop.core.checkout.AbstractDynamicCheckoutFrameworkMockFactory</testclass>
+    <testclass>com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.customerdatapage.GoodPrintDigitalProductTypeFormElementGroupTest</testclass>
+    <testclass>com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.impl.DefaultCheckoutStepServiceTest</testclass>
+    <testclass>com.cgi.pacoshop.core.suggestion.impl.DefaultSimpleSuggestionServiceTest</testclass>
+    <testclass>com.cgi.pacoshop.core.service.payment.filter.impl.PacoshopPaymentFilterTest</testclass>
+    <testclass>com.cgi.pacoshop.core.checkout.flow.impl.NewCustomerCheckoutFlowStrategyTest</testclass>
+    <testclass>com.cgi.pacoshop.core.checkout.dynamic.checkoutsteps.formelementgroups.summarypage.SummaryPageFormElementGroupTest</testclass>
+    <testclass>com.cgi.pacoshop.core.suggestion.DefaultSimpleSuggestionServiceIntegrationTest</testclass>
+    <testclass>com.cgi.pacoshop.core.service.PLZValidationServiceTest</testclass>
+    <testclass>com.cgi.pacoshop.core.checkout.dynamic.session.impl.DefaultSessionCacheTest</testclass>
+    <testclass>com.cgi.pacoshop.core.checkout.flow.impl.SiteCheckoutFlowStrategyTest</testclass>
+    <testclass>com.cgi.pacoshop.core.setup.CoreSystemSetupUnitTest</testclass>
+    <testclass>com.cgi.pacoshop.core.checkout.flow.impl.FixedCheckoutFlowStrategyTest</testclass>
+  </pacoshopcore>
+</testclasses>

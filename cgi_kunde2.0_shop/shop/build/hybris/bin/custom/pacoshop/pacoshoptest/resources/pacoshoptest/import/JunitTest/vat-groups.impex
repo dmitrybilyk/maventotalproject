@@ -1,0 +1,4 @@
+INSERT_UPDATE VatGroup; id[unique=true];name[lang=en];name[lang=de];vatRate
+;FULL_TAX;Full tax;Volle Steuer;19,0
+;REDUCED_TAX;Reduced tax;Ermäßigter Steuer;7,0
+;NO_TAX;No tax;Keine Steuer;0,0

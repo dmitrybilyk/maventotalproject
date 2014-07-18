@@ -1,0 +1,10 @@
+<%@ taglib prefix="checkout" tagdir="/WEB-INF/tags/desktop/checkout" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<div class="content-totals <c:if test="${displaymappings['NewsletterFormElementGroup'] or (cartContentsFragmentDTO.totals.totalPrice eq 0)}"> content-totals_newsletter</c:if>">
+
+    <checkout:orderItems />
+
+    <checkout:orderTotals />
+
+</div>

@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2013 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--
+        ######### Setup #########
+    -->
+
+    <alias alias="paymentMessageSource" name="defaultPaymentMessageSource" />
+    <bean id="defaultPaymentMessageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>classpath:/localization/hybrispaymentcore-locales</value>
+            </list>
+        </property>
+        <property name="defaultEncoding" value="UTF-8" />
+        <!-- The number of seconds to cache loaded properties files. Set to -1 (never) for production. -->
+        <property name="cacheSeconds" value="#{configurationService.configuration.getProperty('storefront.resourceBundle.cacheSeconds')}" />
+        <property name="fallbackToSystemLocale" value="false" />
+    </bean>
+
+    <bean name="abstractPaymentCoreSetup" class="com.cgi.hybris.payment.core.setup.AbstractCoreSystemSetup" abstract="true">
+        <property name="setupImpexService" ref="setupImpexService" />
+    </bean>
+
+    <bean name="hybrisPaymentCoreSetup" class="com.cgi.hybris.payment.core.setup.CoreSystemSetup" parent="abstractPaymentCoreSetup" />
+
+    <!--
+        ######### Configuration #########
+    -->
+
+    <bean name="baseSitePaymentExtMethodFilter" class="com.cgi.hybris.payment.core.filter.BaseSitePaymentExtMethodFilter"/>
+
+    <alias alias="paymentExtMethodFilters" name="defaultPaymentExtMethodFilters" />
+    <util:list id="defaultPaymentExtMethodFilters" value-type="com.cgi.hybris.payment.core.filter.PaymentExtMethodFilter">
+        <ref bean="baseSitePaymentExtMethodFilter" />
+    </util:list>
+
+    <!--
+        ######### Daos #########
+    -->
+
+    <alias alias="paymentMethodDao" name="defaultPaymentMethodDao" />
+    <bean name="defaultPaymentMethodDao" class="com.cgi.hybris.payment.core.daos.impl.DefaultPaymentMethodDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService" />
+    </bean>
+
+    <alias alias="paymentMethodTypeDao" name="defaultPaymentMethodTypeDao" />
+    <bean name="defaultPaymentMethodTypeDao" class="com.cgi.hybris.payment.core.daos.impl.DefaultPaymentMethodTypeDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService" />
+    </bean>
+
+    <alias alias="paymentServiceProviderDao" name="defaultPaymentServiceProviderDao" />
+    <bean name="defaultPaymentServiceProviderDao" class="com.cgi.hybris.payment.core.daos.impl.DefaultPaymentServiceProviderDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService" />
+    </bean>
+
+    <alias alias="paymentCartDao" name="defaultPaymentCartDao" />
+    <bean name="defaultPaymentCartDao" class="com.cgi.hybris.payment.core.daos.impl.DefaultPaymentCartDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService" />
+    </bean>
+
+    <alias alias="paymentOrderDao" name="defaultPaymentOrderDao" />
+    <bean name="defaultPaymentOrderDao" class="com.cgi.hybris.payment.core.daos.impl.DefaultPaymentOrderDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService" />
+    </bean>
+
+    <alias alias="paymentInfoDao" name="defaultPaymentInfoDao" />
+    <bean name="defaultPaymentInfoDao" class="com.cgi.hybris.payment.core.daos.impl.DefaultPaymentInfoDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService" />
+    </bean>
+
+    <alias alias="paymentPspStatusDao" name="defaultPaymentPspStatusDao" />
+    <bean name="defaultPaymentPspStatusDao" class="com.cgi.hybris.payment.core.daos.impl.DefaultPaymentPspStatusDao">
+        <property name="flexibleSearchService" ref="flexibleSearchService" />
+    </bean>
+
+    <!--
+        ######### Services #########
+    -->
+
+    <alias alias="paymentExtService" name="defaultPaymentExtService" />
+    <bean name="defaultPaymentExtService" class="com.cgi.hybris.payment.core.services.impl.DefaultPaymentExtService">
+        <property name="paymentMethodDao" ref="paymentMethodDao" />
+        <property name="serviceProviderDao" ref="paymentServiceProviderDao" />
+        <property name="paymentCartDao" ref="paymentCartDao" />
+        <property name="paymentInfoDao" ref="paymentInfoDao" />
+        <property name="sessionService" ref="sessionService" />
+        <property name="configurationService" ref="configurationService" />
+        <property name="paymentPspStatusService" ref="paymentPspStatusService" />
+        <property name="filters" ref="paymentExtMethodFilters" />
+        <property name="modelService" ref="modelService" />
+    </bean>
+
+    <bean name="abstractPaymentExtProviderService" abstract="true"
+        class="com.cgi.hybris.payment.core.services.impl.AbstractPaymentExtProviderService">
+        <property name="paymentCartDao" ref="paymentCartDao" />
+        <property name="paymentServiceProviderDao" ref="paymentServiceProviderDao" />
+        <property name="paymentPspStatusService" ref="paymentPspStatusService" />
+        <property name="paymentExtService" ref="paymentExtService" />
+        <property name="modelService" ref="modelService" />
+        <property name="commonI18NService" ref="commonI18NService" />
+        <property name="converterRegistry">
+            <map>
+                <entry key="CreditCardPaymentInfo" value-ref="extCCPaymentInfoReverseConverter" />
+                <entry key="DebitPaymentInfo" value-ref="extDirectDebitPaymentInfoReverseConverter" />
+                <entry key="AdvancePaymentInfo" value-ref="extAdvancePaymentInfoReverseConverter" />
+                <entry key="InvoicePaymentInfo" value-ref="extInvoicePaymentInfoReverseConverter" />
+                <entry key="PayPalPaymentInfo" value-ref="extPayPalPaymentInfoReverseConverter" />
+                <entry key="PayOnDeliveryPaymentInfo" value-ref="extPayOnDeliveryPaymentInfoReverseConverter" />
+            </map>
+        </property>
+        <property name="paymentDescriptionCreator" ref="paymentDescriptionCreator" />
+    </bean>
+
+    <alias alias="paymentDescriptionCreator" name="defaultPaymentDescriptionCreator" />
+    <bean name="defaultPaymentDescriptionCreator" class="com.cgi.hybris.payment.core.services.impl.DefaultPaymentDescriptionCreator">
+        <property name="messageSource" ref="paymentMessageSource" />
+        <property name="i18nService" ref="i18nService" />
+        <property name="baseSiteService" ref="baseSiteService" />
+    </bean>
+
+    <bean name="defaultPaymentExtProviderService" parent="abstractPaymentExtProviderService"
+        class="com.cgi.hybris.payment.core.services.impl.InternalPaymentExtProviderService">
+    </bean>
+
+    <alias alias="paymentPspStatusService" name="defaultPaymentPspStatusService" />
+    <bean name="defaultPaymentPspStatusService" class="com.cgi.hybris.payment.core.services.impl.DefaultPaymentPspStatusService">
+        <property name="paymentPspStatusDao" ref="paymentPspStatusDao" />
+        <property name="modelService" ref="modelService" />
+        <property name="cartService" ref="cartService" />
+        <property name="paymentOrderDao" ref="paymentOrderDao" />
+    </bean>
+
+    <!--
+        ######### Populator / Converter #########
+    -->
+
+    <bean id="paymentContainerData" class="com.cgi.hybris.payment.core.data.PaymentContainerData" scope="prototype" />
+    <alias alias="paymentContainerConverter" name="defaultPaymentContainerConverter" />
+    <bean id="defaultPaymentContainerConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="paymentContainerData" />
+        <property name="populators">
+            <list>
+                <ref bean="paymentExtPopulator" />
+            </list>
+        </property>
+    </bean>
+    <alias alias="paymentExtPopulator" name="defaultPaymentExtPopulator" />
+    <bean name="defaultPaymentExtPopulator" class="com.cgi.hybris.payment.core.populators.core.PaymentExtPopulator">
+        <property name="paymentModeConverter" ref="paymentModeConverter" />
+        <property name="paymentMethodConverter" ref="paymentMethodConverter" />
+    </bean>
+
+    <bean id="paymentModeData" class="com.cgi.hybris.payment.core.data.PaymentModeData" scope="prototype" />
+    <alias alias="paymentModeConverter" name="defaultPaymentModeConverter" />
+    <bean id="defaultPaymentModeConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="paymentModeData" />
+        <property name="populators">
+            <list>
+                <ref bean="paymentModePopulator" />
+            </list>
+        </property>
+    </bean>
+    <alias alias="paymentModePopulator" name="defaultPaymentModePopulator" />
+    <bean name="defaultPaymentModePopulator" class="com.cgi.hybris.payment.core.populators.core.PaymentModePopulator">
+    </bean>
+
+    <bean id="paymentMethodData" class="com.cgi.hybris.payment.core.data.PaymentMethodData" scope="prototype" />
+    <alias alias="paymentMethodConverter" name="defaultPaymentMethodConverter" />
+    <bean id="defaultPaymentMethodConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="paymentMethodData" />
+        <property name="populators">
+            <list>
+                <ref bean="paymentMethodPopulator" />
+            </list>
+        </property>
+    </bean>
+    <alias alias="paymentMethodPopulator" name="defaultPaymentMethodPopulator" />
+    <bean name="defaultPaymentMethodPopulator" class="com.cgi.hybris.payment.core.populators.core.PaymentMethodPopulator">
+        <property name="paymentServiceProviderConverter" ref="paymentServiceProviderConverter" />
+        <property name="siteConfigService" ref="siteConfigService" />
+    </bean>
+
+    <bean id="paymentPaymentServiceProviderData" class="com.cgi.hybris.payment.core.data.PaymentServiceProviderData" scope="prototype" />
+    <alias alias="paymentServiceProviderConverter" name="defaultPaymentServiceProviderConverter" />
+    <bean id="defaultPaymentServiceProviderConverter" parent="abstractPopulatingConverter">
+        <lookup-method name="createTarget" bean="paymentPaymentServiceProviderData" />
+        <property name="populators">
+            <list>
+                <ref bean="paymentServiceProviderPopulator" />
+            </list>
+        </property>
+    </bean>
+    <alias alias="paymentServiceProviderPopulator" name="defaultPaymentServiceProviderPopulator" />
+    <bean name="defaultPaymentServiceProviderPopulator" class="com.cgi.hybris.payment.core.populators.core.PaymentServiceProviderPopulator">
+    </bean>
+
+    <!-- Reverse Populator / Converter: Save PaymentInfo -->
+
+    <bean id="extCCPaymentInfoModel" class="de.hybris.platform.core.model.order.payment.CreditCardPaymentInfoModel" scope="prototype" />
+    <bean id="extDebitPaymentInfoModel" class="de.hybris.platform.core.model.order.payment.DebitPaymentInfoModel" scope="prototype" />
+    <bean id="extAdvancePaymentInfoModel" class="de.hybris.platform.core.model.order.payment.AdvancePaymentInfoModel" scope="prototype" />
+    <bean id="extInvoicePaymentInfoModel" class="de.hybris.platform.core.model.order.payment.InvoicePaymentInfoModel" scope="prototype" />
+    <bean id="extPayPalPaymentInfoModel" class="com.cgi.hybris.payment.core.model.PayPalPaymentInfoModel" scope="prototype" />
+    <bean id="extPayOnDeliveryPaymentInfoModel" class="com.cgi.hybris.payment.core.model.PayOnDeliveryPaymentInfoModel"
+        scope="prototype" />
+
+    <bean id="abstractPaymentInfoReverseConverter" abstract="true"
+        class="com.cgi.hybris.payment.core.converter.AbstractPaymentInfoReverseConverter">
+        <property name="populators">
+            <list>
+                <ref bean="basePaymentInfoReversePopulator" />
+            </list>
+        </property>
+    </bean>
+
+    <alias alias="basePaymentInfoReversePopulator" name="defaultBasePaymentInfoReversePopulator" />
+    <bean id="defaultBasePaymentInfoReversePopulator" class="com.cgi.hybris.payment.core.populators.reverse.BasePaymentInfoReversePopulator" />
+
+    <alias alias="extCCPaymentInfoReverseConverter" name="defaultExtCCPaymentInfoReverseConverter" />
+    <bean id="defaultExtCCPaymentInfoReverseConverter" parent="abstractPaymentInfoReverseConverter">
+        <lookup-method name="createTarget" bean="extCCPaymentInfoModel" />
+        <property name="populators">
+            <list merge="true">
+                <ref bean="extCCPaymentInfoReversePopulator" />
+            </list>
+        </property>
+    </bean>
+    <alias alias="extCCPaymentInfoReversePopulator" name="defaultExtCCPaymentInfoReversePopulator" />
+    <bean name="defaultExtCCPaymentInfoReversePopulator" class="com.cgi.hybris.payment.core.populators.reverse.CCPaymentInfoReversePopulator">
+        <property name="enumerationService" ref="enumerationService" />
+    </bean>
+
+    <alias alias="extDirectDebitPaymentInfoReverseConverter" name="defaultExtDirectDebitPaymentInfoReverseConverter" />
+    <bean id="defaultExtDirectDebitPaymentInfoReverseConverter" parent="abstractPaymentInfoReverseConverter">
+        <lookup-method name="createTarget" bean="extDebitPaymentInfoModel" />
+        <property name="populators">
+            <list merge="true">
+                <ref bean="extDirectDebitPaymentInfoReversePopulator" />
+            </list>
+        </property>
+    </bean>
+    <alias alias="extDirectDebitPaymentInfoReversePopulator" name="defaultExtDirectDebitPaymentInfoReversePopulator" />
+    <bean name="defaultExtDirectDebitPaymentInfoReversePopulator" class="com.cgi.hybris.payment.core.populators.reverse.DirectDebitPaymentInfoReversePopulator" />
+
+    <alias alias="extAdvancePaymentInfoReverseConverter" name="defaultExtAdvancePaymentInfoReverseConverter" />
+    <bean id="defaultExtAdvancePaymentInfoReverseConverter" parent="abstractPaymentInfoReverseConverter">
+        <lookup-method name="createTarget" bean="extAdvancePaymentInfoModel" />
+        <property name="populators">
+            <list merge="true"> <!-- no data to convert -->
+            </list>
+        </property>
+    </bean>
+
+    <alias alias="extInvoicePaymentInfoReverseConverter" name="defaultExtInvoicePaymentInfoReverseConverter" />
+    <bean id="defaultExtInvoicePaymentInfoReverseConverter" parent="abstractPaymentInfoReverseConverter">
+        <lookup-method name="createTarget" bean="extInvoicePaymentInfoModel" />
+        <property name="populators">
+            <list merge="true"> <!-- no data to convert -->
+            </list>
+        </property>
+    </bean>
+
+    <alias alias="extPayPalPaymentInfoReverseConverter" name="defaultExtPayPalPaymentInfoReverseConverter" />
+    <bean id="defaultExtPayPalPaymentInfoReverseConverter" parent="abstractPaymentInfoReverseConverter">
+        <lookup-method name="createTarget" bean="extPayPalPaymentInfoModel" />
+        <property name="populators">
+            <list merge="true"> <!-- no data to convert -->
+            </list>
+        </property>
+    </bean>
+
+    <alias alias="extPayOnDeliveryPaymentInfoReverseConverter" name="defaultExtPayOnDeliveryPaymentInfoReverseConverter" />
+    <bean id="defaultExtPayOnDeliveryPaymentInfoReverseConverter" parent="abstractPaymentInfoReverseConverter">
+        <lookup-method name="createTarget" bean="extPayOnDeliveryPaymentInfoModel" />
+        <property name="populators">
+            <list merge="true"> <!-- no data to convert -->
+            </list>
+        </property>
+    </bean>
+
+    <!-- Populator / Converter: Display PaymentInfo -->
+
+    <alias alias="extCartPaymentInfoPopulator" name="defaultExtCartPaymentInfoPopulator" />
+    <bean name="defaultExtCartPaymentInfoPopulator" class="com.cgi.hybris.payment.core.populators.data.CartPaymentInfoPopulator">
+        <property name="extCorePaymentInfoConverter" ref="extCorePaymentInfoConverter" />
+    </bean>
+    <!-- append a PaymentExt specific payment info populator to the default cartConverter -->
+<!--
+    <bean parent="modifyPopulatorList">
+        <property name="list" ref="cartConverter" />
+        <property name="add" ref="extCartPaymentInfoPopulator" />
+    </bean>
+-->
+    <bean parent="modifyPopulatorList">
+        <property name="list" ref="extendedCartConverter" />
+        <property name="add" ref="extCartPaymentInfoPopulator" />
+    </bean>
+    <!-- append a PaymentExt specific payment info populator to the default orderConverter -->
+    <bean parent="modifyPopulatorList">
+        <property name="list" ref="orderConverter" />
+        <property name="add" ref="extCartPaymentInfoPopulator" />
+    </bean>
+
+    <bean id="extPaymentInfoData" class="com.cgi.hybris.payment.core.data.PaymentInfoData" scope="prototype" />
+    <alias alias="extCorePaymentInfoConverter" name="defaultExtCorePaymentInfoConverter" />
+    <bean id="defaultExtCorePaymentInfoConverter" parent="abstractPaymentInfoReverseConverter">
+        <lookup-method name="createTarget" bean="extPaymentInfoData" />
+        <property name="populators">
+            <list>
+                <ref bean="extCorePaymentInfoPopulator" />
+            </list>
+        </property>
+    </bean>
+    <alias alias="extCorePaymentInfoPopulator" name="defaultExtCorePaymentInfoPopulator" />
+    <bean name="defaultExtCorePaymentInfoPopulator" class="com.cgi.hybris.payment.core.populators.data.CorePaymentInfoPopulator">
+        <property name="addressConverter" ref="addressConverter" />
+        <property name="creditCardPaymentInfoPopulator" ref="creditCardPaymentInfoPopulator" />
+        <property name="extCreditCardPaymentInfoConverter" ref="extCreditCardPaymentInfoConverter" />
+        <property name="extDirectDebitPaymentInfoConverter" ref="extDirectDebitPaymentInfoConverter" />
+        <property name="extPayPalPaymentInfoConverter" ref="extPayPalPaymentInfoConverter" />
+    </bean>
+
+    <bean id="extCreditCardPaymentInfoData" class="com.cgi.hybris.payment.core.data.CreditCardPaymentInfoData" scope="prototype" />
+    <alias alias="extCreditCardPaymentInfoConverter" name="defaultExtCreditCardPaymentInfoConverter" />
+    <bean id="defaultExtCreditCardPaymentInfoConverter" parent="abstractPaymentInfoReverseConverter">
+        <lookup-method name="createTarget" bean="extCreditCardPaymentInfoData" />
+        <property name="populators">
+            <list>
+                <ref bean="extCreditCardPaymentInfoPopulator" />
+            </list>
+        </property>
+    </bean>
+    <alias alias="extCreditCardPaymentInfoPopulator" name="defaultExtCreditCardPaymentInfoPopulator" />
+    <bean name="defaultExtCreditCardPaymentInfoPopulator" class="com.cgi.hybris.payment.core.populators.data.CreditCardPaymentInfoPopulator" />
+
+    <bean id="extBankPaymentInfoData" class="com.cgi.hybris.payment.core.data.BankPaymentInfoData" scope="prototype" />
+    <alias alias="extDirectDebitPaymentInfoConverter" name="defaultExtDirectDebitPaymentInfoConverter" />
+    <bean id="defaultExtDirectDebitPaymentInfoConverter" parent="abstractPaymentInfoReverseConverter">
+        <lookup-method name="createTarget" bean="extBankPaymentInfoData" />
+        <property name="populators">
+            <list>
+                <ref bean="extDirectDebitPaymentInfoPopulator" />
+            </list>
+        </property>
+    </bean>
+    <alias alias="extDirectDebitPaymentInfoPopulator" name="defaultExtDirectDebitPaymentInfoPopulator" />
+    <bean name="defaultExtDirectDebitPaymentInfoPopulator" class="com.cgi.hybris.payment.core.populators.data.DirectDebitPaymentInfoPopulator" />
+
+    <bean id="extPayPalPaymentInfoData" class="com.cgi.hybris.payment.core.data.PayPalPaymentInfoData" scope="prototype" />
+    <alias alias="extPayPalPaymentInfoConverter" name="defaultExtPayPalPaymentInfoConverter" />
+    <bean id="defaultExtPayPalPaymentInfoConverter" parent="abstractPaymentInfoReverseConverter">
+        <lookup-method name="createTarget" bean="extPayPalPaymentInfoData" />
+        <property name="populators">
+            <list>
+                <ref bean="extPayPalPaymentInfoPopulator" />
+            </list>
+        </property>
+    </bean>
+    <alias alias="extPayPalPaymentInfoPopulator" name="defaultExtPayPalPaymentInfoPopulator" />
+    <bean name="defaultExtPayPalPaymentInfoPopulator" class="com.cgi.hybris.payment.core.populators.data.PayPalPaymentInfoPopulator" />
+
+    <!-- address reverse converter/populator as bean must be created via ModelService -->
+    <bean name="paymentAddressReversePopulator" class="com.cgi.hybris.payment.core.populators.AddressReversePopulator" />
+    <alias alias="addressReverseConverter" name="paymentAddressReverseConverter" />
+    <bean id="paymentAddressReverseConverter" parent="abstractPopulatingConverter" class="com.cgi.hybris.payment.core.converter.AddressReverseConverter">
+        <property name="modelService" ref="modelService" />
+        <property name="populators">
+            <list>
+                <ref bean="addressReversePopulator" />
+                <ref bean="paymentAddressReversePopulator" />
+            </list>
+        </property>
+    </bean>
+
+    <!-- address populator -->
+    <bean name="paymentAddressPopulator" class="com.cgi.hybris.payment.core.populators.AddressPopulator" />
+    <bean parent="modifyPopulatorList">
+        <property name="list" ref="addressConverter" />
+        <property name="add" ref="paymentAddressPopulator" />
+    </bean>
+
+    <!--
+        ######### Facades #########
+    -->
+    <alias alias="createOrderFromCartStrategy" name="paymentExtCreateOrderFromCartStrategy" />
+    <bean name="paymentExtCreateOrderFromCartStrategy" parent="defaultCreateOrderFromCartStrategy"
+        class="com.cgi.hybris.payment.core.services.PaymentExtCreateOrderFromCartStrategy">
+        <property name="modelService" ref="modelService" />
+    </bean>
+
+    <alias alias="paymentExtFacade" name="defaultPaymentExtFacade" />
+    <bean name="defaultPaymentExtFacade" class="com.cgi.hybris.payment.core.facades.impl.DefaultPaymentExtFacade">
+        <property name="paymentExtService" ref="paymentExtService" />
+        <property name="paymentPspStatusService" ref="paymentPspStatusService" />
+        <property name="paymentContainerConverter" ref="paymentContainerConverter" />
+        <property name="createOrderFromCartStrategy" ref="paymentExtCreateOrderFromCartStrategy" />
+        <property name="cartFacade" ref="cartFacade" />
+        <property name="cartService" ref="cartService" />
+        <property name="checkoutCustomerStrategy" ref="checkoutCustomerStrategy" />
+        <property name="modelService" ref="modelService" />
+        <property name="commerceCheckoutService" ref="commerceCheckoutService" />
+        <property name="sessionService" ref="sessionService" />
+        <property name="addressReverseConverter" ref="addressReverseConverter" />
+        <property name="orderConverter" ref="orderConverter" />
+        <property name="customerEmailResolutionService" ref="customerEmailResolutionService" />
+        <property name="customerAccountService" ref="customerAccountService" />
+        <property name="paymentInfoConverter" ref="extCorePaymentInfoConverter" />
+    </bean>
+
+    <alias alias="proxyCheckoutFacade" name="defaultProxyCheckoutFacade" />
+    <bean name="defaultProxyCheckoutFacade" class="com.cgi.hybris.payment.core.facades.impl.DefaultProxyCheckoutFacade">
+        <property name="cartService" ref="cartService" />
+        <property name="extCorePaymentInfoConverter" ref="extCorePaymentInfoConverter" />
+        <property name="checkoutFacade" ref="acceleratorCheckoutFacade" />
+    </bean>
+
+</beans>

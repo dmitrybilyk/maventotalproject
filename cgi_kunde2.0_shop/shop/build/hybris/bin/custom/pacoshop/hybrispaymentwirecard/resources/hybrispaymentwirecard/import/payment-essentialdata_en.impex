@@ -1,0 +1,75 @@
+#
+# Import Payment Configuration
+#
+
+$lang=en
+
+UPDATE StandardPaymentMode;code[unique=true];name[lang=$lang];description[lang=$lang]
+;paybox;paybox;Payment with your mobile
+;quick;@Quick;Payment with your Quick account
+;click2pay;CLICK2PAY;Payment with CLICK2PAY
+;giropay;giropay;Payment with giropay
+;sofortueberweisung;SOFORT Banking;Payment with SOFORT.com (former sofortueberweisung)
+;eps;eps e-payment standard;Payment with e-payment standard
+;ideal;iDEAL;Payment with iDEAL
+
+UPDATE CCPaymentMethodType;code[unique=true];name[lang=$lang]
+;mastercard_sc;MasterCard SecureCode
+;visa_vb;Verified by VISA
+;discover;Discover
+;jcb;JCB
+;uatp;Universal Airline Travel Plan
+;maestro_sc;Maestro SecureCode
+
+UPDATE PaymentMethodType;code[unique=true];name[lang=$lang]
+# paymenttype EPS
+;WC_EPS_BA-CA;Bank Austria
+;WC_EPS_BB-Racon;Bank Burgenland
+;WC_EPS_ARZ|BAF;Bank für Ärzte und Freie Berufe
+;WC_EPS_ARZ|BCS;Bankhaus Carl Spängler & Co. AG
+;WC_EPS_Bawag|B;BAWAG
+;WC_EPS_ARZ|VB;Österreichische Volksbanken-AG
+;WC_EPS_Bawag|E;easyBank
+;WC_EPS_Spardat|EBS;Erste Bank und Sparkassen
+;WC_EPS_ARZ|GB;Gärtnerbank
+;WC_EPS_ARZ|HAA;Hypo Alpe-Adria-Bank AG
+;WC_EPS_ARZ|HI;Hypo Investmentbank
+;WC_EPS_Hypo-Racon|O;Hypo Oberösterreich
+;WC_EPS_Hypo-Racon|S;Hypo Salzburg
+;WC_EPS_Hypo-Racon|ST;Hypo Steiermark
+;WC_EPS_ARZ|HTB;Hypo Tirol Bank AG
+;WC_EPS_ARZ|IB;Immo-Bank
+;WC_EPS_ARZ|IKB;Investkredit Bank AG
+;WC_EPS_ARZ|NLH;Niederösterreichische Landes-Hypothekenbank AG
+;WC_EPS_ARZ|OB;Oberbank AG
+;WC_EPS_ARZ|AB;Österreichische Apothekerbank
+;WC_EPS_ARZ|BSS;Bankhaus Schelhammer & Schattera AG
+;WC_EPS_Bawag|P;PSK Bank
+;WC_EPS_Racon;Raiffeisen Bank
+;WC_EPS_Bawag|S;Sparda Bank
+;WC_EPS_ARZ|VLH;Vorarlberger Landes- und Hypothekerbank AG
+;WC_EPS_ARZ|SB;Schoellerbank AG
+;WC_EPS_ARZ|SBL;Sparda-Bank Linz
+;WC_EPS_ARZ|SBVI; Sparda-Bank Villach/Innsbruck
+;WC_EPS_ARZ|VKB;Volkskreditbank AG
+;WC_EPS_ARZ|BTV;BTV VIER LÄNDER BANK
+;WC_EPS_ARZ|BKS;BKS Bank AG
+# paymenttype IDL
+;WC_IDL_ABNAMROBANK;ABN AMRO Bank
+;WC_IDL_ASNBANK;ASN Bank
+;WC_IDL_FRIESLANDBANK;Friesland Bank
+;WC_IDL_INGBANK;ING
+;WC_IDL_KNAB;knab
+;WC_IDL_RABOBANK;Rabobank
+;WC_IDL_SNSBANK;SNS Bank
+;WC_IDL_REGIOBANK;SNS Regio Bank
+;WC_IDL_TRIODOSBANK;Triodos Bank
+;WC_IDL_VANLANSCHOT;Van Lanschot Bank
+# single financialInstitution for paymenttype
+;paybox;Pay per mobile with paybox
+;quick;@Quick
+;click2pay;Click2Pay
+;giropay;Giropay
+;paypal;PayPal
+;sofortueberweisung;SOFORT bank transfer
+
