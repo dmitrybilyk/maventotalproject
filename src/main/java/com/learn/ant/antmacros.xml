@@ -1,0 +1,780 @@
+<?xml version="1.0"?>
+<!--
+    Copyright (c) 2012 CGI Information Systems and Management Consultants (Deutschland) GmbH.
+    All Rights Reserved.
+
+    This software is the confidential and proprietary information of CGI
+    Information Systems and Management Consultants (Deutschland) GmbH
+    ("Confidential Information").
+    You shall not disclose such Confidential Information and shall use it
+    only in accordance with the terms of the license agreement you entered
+    into with CGI Deutschland GmbH.
+
+
+    Author: Thomas Kappen <thomas.kappen@cgi.com>
+    Date: 25.07.2012
+
+    Ant core macros for the installation of the Hybris platform and the config.
+-->
+
+<project name="antmacros" basedir=".">
+	
+ 
+    <!-- The location of this file. -->
+    <dirname property="antmacros.basedir" file="${ant.file.antmacros}"/>
+
+    <property environment="env" />
+    <property name="hybris.home" location="${antmacros.basedir}/../../hybris" />
+    <property name="hybris.log" location="${hybris.home}/log" />
+    <property name="hybris.tmp" location="${hybris.home}/temp" />
+    <property name="hybris.config" location="${hybris.home}/config" />
+    <property name="platform.home" location="${hybris.home}/bin/platform" />
+
+    <property file="${antmacros.basedir}/../build.properties" />
+
+    <property name="findbugs.home" value="${antmacros.basedir}/../checkstyleandfindbugs/lib/findbugs" />
+    <property name="checkstyle.home" value="${antmacros.basedir}/../checkstyleandfindbugs/lib/checkstyle" />
+    <property name="project.root" value="${antmacros.basedir}/../.." />
+<!--
+    <property file="${antmacros.basedir}/../sonar.properties" />
+    <property file="${antmacros.basedir}/../rtc.build.properties" />
+-->
+    <property name="hybris.install.version" value="${hybris.install.version}" />
+
+    <property name="tool.less" location="${antmacros.basedir}/../checkstyleandfindbugs/lib/less-rhino-1.1.3.js"/>
+    <property name="tool.rhino" location="${antmacros.basedir}/../checkstyleandfindbugs/lib/js.jar"/>
+
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+            <pathelement location="${antmacros.basedir}/../checkstyleandfindbugs/lib/ant-contrib-1.0b3.jar" />
+        </classpath>
+    </taskdef>
+    <!--<taskdef name="for" classname="net.sf.antcontrib.logic.ForTask">-->
+        <!--<classpath>-->
+            <!--<pathelement location="${antmacros.basedir}/../checkstyleandfindbugs/lib/ant-contrib-1.0b3.jar" />-->
+        <!--</classpath>-->
+    <!--</taskdef>-->
+    <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+        <classpath>
+            <pathelement location="${antmacros.basedir}/../checkstyleandfindbugs/lib/jacoco/jacocoant.jar" />
+        </classpath>
+    </taskdef>
+    <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+        <classpath>
+            <pathelement location="${antmacros.basedir}/../checkstyleandfindbugs/lib/sonar-ant-task-1.4.jar" />
+        </classpath>
+    </taskdef>
+    <taskdef resource="com/cgi/eb2/ant/antlib.xml">
+        <classpath>
+            <pathelement location="${antmacros.basedir}/../checkstyleandfindbugs/lib/ant-supplement.jar" />
+        </classpath>
+    </taskdef>
+    <taskdef resource="com/cgi/eb2/hybris/configtool/ant/antlib.xml">
+        <classpath>
+            <pathelement location="${antmacros.basedir}/../checkstyleandfindbugs/lib/configtool.jar" />
+        </classpath>
+    </taskdef>
+    <!--<taskdef name="findbugs"-->
+             <!--classname="edu.umd.cs.findbugs.anttask.FindBugsTask"-->
+             <!--classpath="${findbugs.home}/checkstyleandfindbugs/lib/findbugs-ant.jar"-->
+    <!--/>-->
+    <taskdef name="checkstyle"
+             classname="com.puppycrawl.tools.checkstyle.CheckStyleTask"
+             classpath="${checkstyle.home}/checkstyleandfindbugs/lib/checkstyle-5.7-all.jar" />
+
+<!--
+	<taskdef resource="org/apache/commons/vfs2/tasks/tasks.properties">
+	    <classpath>
+	    	 <pathelement location="${antmacros.basedir}/../checkstyleandfindbugs/lib/commons-vfs2-2.0.jar" />
+	    	 <pathelement location="${antmacros.basedir}/../checkstyleandfindbugs/lib/commons-logging-1.1.3.jar" />
+	    </classpath>
+	</taskdef>
+-->
+   <!-- <taskdef name="lesscss"
+        classname="com.pensioenpage.jynx.lesscss.LessCSSTask"
+        classpath="${antmacros.basedir}/../checkstyleandfindbugs/lib/lesscss-ant-task.jar" />-->
+
+    <if>
+        <available file="${hybris.home}/bin/hybris.version" />
+        <then>
+            <property file="${hybris.home}/bin/hybris.version" />
+            <property name="hybris.present" value="true" />
+        </then>
+        <else>
+            <property name="hybris.existing.version" value="0.0.0" />
+            <property name="hybris.present" value="false" />
+        </else>
+    </if>
+    <if>
+        <available file="${hybris.home}/config" />
+        <then>
+            <property name="config.present" value="true" />
+        </then>
+        <else>
+            <property name="config.present" value="false" />
+        </else>
+    </if>
+
+    <!-- =================================
+            macrodef: properties
+         ================================= -->
+    <macrodef name="print-properties" description="Print build properties">
+        <sequential>
+            <property file="${platform.home}/build.number" prefix="platform" />
+            <echo>
+platform.description    = ${platform.description}
+platform.name           = ${platform.name}
+platform.releasedate    = ${platform.releasedate}
+platform.revision       = ${platform.revision}
+platform.vendor         = ${platform.vendor}
+platform.version        = ${platform.version}
+project.name            = ${project.name}
+hybris.home             = ${hybris.home}
+platform.home           = ${platform.home}
+hybris.present          = ${hybris.present}
+config.present          = ${config.present}
+config.mode             = ${config.mode}
+hybris.existing.version = ${hybris.existing.version}
+hybris.install.version  = ${hybris.install.version}
+hybris.download.baseurl = ${hybris.download.baseurl}
+            </echo>
+        </sequential>
+    </macrodef>
+
+    <!-- =================================
+            macrodef: install-hybris
+         ================================= -->
+    <macrodef name="install-hybris-auto" description="Installs the hybris platform conditionally">
+        <attribute name="hybrisInstallVersion" />
+        <attribute name="tmpDir" default="${java.io.tmpdir}/hybris" />
+        <attribute name="force" default="false" />
+        <sequential>
+            <echo message="Force install:  @{force}" />
+            <if>
+                <equals arg1="@{force}" arg2="true" />
+                <then>
+                    <echo message="Force install" />
+                    <install-hybris hybrisInstallVersion="@{hybrisInstallVersion}" tmpDir="@{tmpDir}" />
+                </then>
+                <elseif>
+                    <not>
+                        <equals arg1="${hybris.present}" arg2="true" />
+                    </not>
+                    <then>
+                        <echo message="New install" />
+                        <install-hybris hybrisInstallVersion="@{hybrisInstallVersion}" tmpDir="@{tmpDir}" />
+                    </then>
+                </elseif>
+                <elseif>
+                    <and>
+                        <equals arg1="${hybris.present}" arg2="true" />
+                        <not>
+                            <equals arg1="${hybris.existing.version}" arg2="@{hybrisInstallVersion}" />
+                        </not>
+                    </and>
+                    <then>
+                        <echo message="Update install" />
+                        <install-hybris hybrisInstallVersion="@{hybrisInstallVersion}" tmpDir="@{tmpDir}" />
+                    </then>
+                </elseif>
+                <else>
+                    <echo>No action required.</echo>
+                </else>
+            </if>
+        </sequential>
+    </macrodef>
+
+    <!-- =================================
+            macrodef: install-hybris
+         ================================= -->
+    <macrodef name="install-hybris" description="Installs the hybris platform">
+        
+        <attribute name="hybrisInstallVersion" />
+        <attribute name="tmpDir" default="${java.io.tmpdir}/hybris" />
+        <sequential>
+            <echo message="Installing hybris @{hybrisInstallVersion}" />
+            <mkdir dir="@{tmpDir}" />
+        	
+        	<echo>Starting download of Hybris installation package from server</echo>
+
+        	<!-- Delete any previously downloaded files -->
+        	<delete>
+        	    <fileset dir="." includes="${hybris.install.ftp.filename}*"/>
+        	</delete>
+        	
+        	<!-- Because the ant ftp task is a diva and difficult to use, just use the locally installed wget to download the file -->
+        	<exec executable="wget">
+                <arg value="ftp://${hybris.install.ftp.user}:${hybris.install.ftp.password}@${hybris.install.ftp.host}/${hybris.install.ftp.remotedir}/${hybris.install.ftp.filename}" />
+        	</exec>
+        	
+        	<!-- Move the downloaded file to the correct location -->
+        	<exec executable="mv">
+        		   <arg value="${hybris.install.ftp.filename}" />
+        		   <arg value="@{tmpDir}/hybris-${hybris.install.version}.zip" />
+        	</exec>
+        	
+        	<echo>Download finished.</echo>
+        	
+        	
+       	
+            <unzip src="@{tmpDir}/hybris-${hybris.install.version}.zip" dest="${hybris.home}/../" overwrite="true" />
+            <pathconvert property="hybris.version.file">
+                <path location="${hybris.home}/bin/hybris.version" />
+            </pathconvert>
+            <echo file="${hybris.version.file}" append="false">
+# This file has been automatically generated by the setup/scripts/build.xml script.
+# Do not modify this file
+hybris.existing.version=@{hybrisInstallVersion}
+            </echo>
+            <mkdir dir="${hybris.home}/data"/>
+            <mkdir dir="${hybris.home}/log"/>
+            <mkdir dir="${hybris.home}/temp"/>
+            <echo message="... done" />
+        	
+      	
+        	
+        </sequential>
+    </macrodef>
+
+    <macrodef name="remove-hybris" description="Removes a hybris installation">
+        <sequential>
+            <echo message="Removing hybris installation" />
+            <delete dir="${hybris.home}/bin/platform" failonerror="false" />
+            <delete dir="${hybris.home}/bin/ext-accelerator" failonerror="false" />
+            <delete dir="${hybris.home}/bin/ext-channel" failonerror="false" />
+            <delete dir="${hybris.home}/bin/ext-commerce" failonerror="false" />
+            <delete dir="${hybris.home}/bin/ext-content" failonerror="false" />
+            <delete dir="${hybris.home}/bin/ext-data" failonerror="false" />
+            <delete dir="${hybris.home}/bin/ext-template" failonerror="false" />
+            <delete file="${hybris.home}/bin/hybris.version" />
+            <echo message="... done" />
+        </sequential>
+    </macrodef>
+	
+
+    <!-- =================================
+             macrodef: generate-config
+
+             Generate local.properties files for the environments
+    ================================= -->
+    <macrodef name="generate-config" description="Generates the local.properties files for the environments">
+        <sequential>
+            <configtool configFile="${csvConfigFile}" targetDir="${configTargetDir}">
+            </configtool>
+        </sequential>
+    </macrodef>
+
+    <!-- =================================
+            macrodef: install-config
+         ================================= -->
+    <macrodef name="install-config">
+        <attribute name="config" />
+        <sequential>
+            <generate-config />
+            <echo message="Copying hybris configuration to ${hybris.home}/.." />
+            <!-- Common and environment specific -->
+            <copy todir="${hybris.home}/.." overwrite="true">
+                <fileset dir="${antmacros.basedir}/../configuration/common"
+                    includes="**/*" />
+            </copy>
+            <copy todir="${hybris.home}/.." overwrite="true">
+                <fileset dir="${antmacros.basedir}/../configuration/@{config}/env"
+                    includes="**/*" />
+            </copy>
+
+            <pathconvert property="project.file">
+                <path location="${hybris.home}/config/.project" />
+            </pathconvert>
+            <echo file="${project.file}"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+    <name>config</name>
+    <comment>
+    </comment>
+    <projects>
+    </projects>
+    <buildSpec>
+        <buildCommand>
+            <name>org.eclipse.jdt.core.javabuilder</name>
+            <arguments>
+            </arguments>
+        </buildCommand>
+    </buildSpec>
+    <natures>
+        <nature>org.eclipse.jdt.core.javanature</nature>
+    </natures>
+</projectDescription>
+]]>
+            </echo>
+            <pathconvert property="classpath.file">
+                <path location="${hybris.home}/config/.classpath" />
+            </pathconvert>
+            <echo file="${classpath.file}"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+    <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+    <classpathentry kind="lib" path="licence/hybrislicence.jar"/>
+    <classpathentry kind="output" path="bin"/>
+</classpath>
+]]>
+            </echo>
+            <echo message="... done" />
+        </sequential>
+    </macrodef>
+
+    <!-- =================================
+            macrodef: archive-config
+         ================================= -->
+    <macrodef name="archive-config">
+        <attribute name="config" />
+        <attribute name="targetDir" />
+        <sequential>
+            <!-- Common and environment specific -->
+            <delete file="@{targetDir}/hybrisServer-CommonConfiguration.zip" />
+            <if>
+                <available file="${antmacros.basedir}/../configuration/common"/>
+                <then>
+                    <zip destfile="@{targetDir}/hybrisServer-CommonConfiguration.zip"
+                        basedir="${antmacros.basedir}/../configuration/common"
+                        includes="**/**"
+                        update="true"
+                    />
+                </then>
+            </if>
+            <delete file="@{targetDir}/hybrisServer-EnvConfiguration.zip" />
+            <if>
+                <available file="${antmacros.basedir}/../configuration/@{config}/env"/>
+                <then>
+                    <zip destfile="@{targetDir}/hybrisServer-EnvConfiguration_@{config}.zip"
+                        basedir="${antmacros.basedir}/../configuration/@{config}/env"
+                        includes="**/**"
+                        update="true"
+                    />
+                </then>
+            </if>
+
+        </sequential>
+    </macrodef>
+
+    <!-- =================================
+            macrodef: remove-config
+         ================================= -->
+    <macrodef name="remove-config">
+        <sequential>
+            <echo message="Removing hybris configuration in ${hybris.home}/config" />
+            <delete dir="${hybris.home}/config"  failonerror="false" />
+            <echo message="... done" />
+        </sequential>
+    </macrodef>
+
+
+    <!-- =================================
+            macrodef: create-version-info
+         ================================= -->
+    <macrodef name="create-version-info" description="Generates the version info jsp">
+        <attribute name="storefrontExtPath" />
+        <sequential>
+            <echo message="Creating version.jsp file: ${hybris.home}/@{storefrontExtPath}/web/webroot/version.jsp" />
+            <pathconvert property="version.info.file">
+                <path location="${hybris.home}/@{storefrontExtPath}/web/webroot/version.jsp" />
+            </pathconvert>
+            <property file="${platform.home}/build.number" prefix="platform" />
+            <echo file="${version.info.file}" append="false"><![CDATA[<html>
+<head>
+    <title>Kunde2.0 Shop - Release: ${release.number}</title>
+</head>
+<body>
+Project: cgi_kunde2.0_shop
+<br/>
+Release: ${release.tag}
+<br/>
+Build date/time: ${bamboo.buildTimeStamp}
+<br/>
+Build number: ${bamboo.buildNumber}
+<br/>
+Revision: ${bamboo.repository.revision.number}
+<br/>
+Branch: ${bamboo.repository.git.branch}
+<br/>
+<br/>
+Platform Description: hybris Commerce Suite
+<br/>
+Platform Name: Platform
+<br/>
+Platform Release: Date: 20131218 1454
+<br/>
+Platform Revision: 70310
+<br/>
+Platform.Vendor: hybris
+<br/>
+Platform Version: 5.0.4.1
+</body>
+</html>
+
+]]>
+                </echo>
+
+            <replaceregexp match="build.number=(.*)" replace="build.number=${build.number}" byline="true">
+                <fileset dir="${antmacros.basedir}/../configuration" includes="**/local.properties"/>
+            </replaceregexp>
+            <echo message="... done" />
+        </sequential>
+    </macrodef>
+
+    <!-- =================================
+                macrodef: anthome
+                Reads the platform ANT_HOME environment variable.
+             ================================= -->
+    <macrodef name="anthome" description="Executes an Ant build.">
+        <attribute name="antHomeProperty" default="platform.ant.home" />
+        <sequential>
+            <if>
+                <os family="windows" />
+                <then>
+                    <exec executable="${antmacros.basedir}\anthome.cmd" outputproperty="exec.output">
+                        <env key="PLATFORM_HOME" value="${platform.home}" />
+                    </exec>
+                </then>
+                <else>
+                    <exec executable="chmod">
+                        <arg line="ug+x ${antmacros.basedir}/anthome.sh" />
+                    </exec>
+                    <exec executable="${antmacros.basedir}/anthome.sh" outputproperty="exec.output">
+                        <env key="PLATFORM_HOME" value="${platform.home}" />
+                    </exec>
+                </else>
+            </if>
+            <propertyregex property="@{antHomeProperty}"
+                          input="${exec.output}"
+                          regexp="ANT_HOME=(.*)"
+                          select="\1"
+                          casesensitive="false" />
+        </sequential>
+    </macrodef>
+
+    <!-- =================================
+                macrodef: timestamp
+             ================================= -->
+    <macrodef name="timestamp">
+        <sequential>
+            <tstamp>
+                <format property="timestamp" pattern="dd-MM-yyyy HH:mm:ss.SSS" locale="en,DE" />
+            </tstamp>
+            <echo>Time: ${timestamp}</echo>
+        </sequential>
+    </macrodef>
+
+    <!-- =================================
+              macrodef: findbugs
+           ================================= -->
+    <macrodef name="findbugs-start" description="Start findbugs">
+        <attribute name="outputfile" default="${hybris.log}/findbugs/fb.xml" />
+        <attribute name="output" default="xml" />
+
+        <sequential>
+
+            <property name="reportlevel" value="medium" />
+            <property name="output" value="@{output}" />
+            <property name="outputfile" value="@{outputfile}" />
+            <property name="excludeFilter" value="${findbugs.home}/excludeBugs.xml" />
+            <property name="jvmargs" value="${findbugs.jvmargs}" />
+            <property name="fileset" value="${findbugs.fileset}" />
+            <property name="failBuildOnWarning" value="${findbugs.failBuildOnWarning}" />
+
+            <exec executable="sh" outputproperty="findbugs.random">
+                <arg value="-c" />
+                <arg value="date +%s | sha256sum | base64 | head -c 5 ; echo" />
+            </exec>
+            <property name="auxClassDirectory" value="/tmp/findbugs-aux-${findbugs.random}" />
+            <property name="sourceClassDirectory" value="/tmp/findbugs-source-${findbugs.random}" />
+
+            <if>
+                <not>
+                    <available file="${hybris.log}/findbugs" type="dir" />
+                </not>
+                <then>
+                    <mkdir dir="${hybris.log}/findbugs" />
+                </then>
+                <else>
+                    <delete dir="${hybris.log}/findbugs" />
+                    <mkdir dir="${hybris.log}/findbugs" />
+                </else>
+            </if>
+
+            <echo level="info" message=" " />
+            <echo level="info" message="*************************************************" />
+            <echo level="info" message="- Executing FindBugs" />
+            <echo level="info" message="-------------------------------------------------" />
+            <echo level="info" message="- reportlevel           : ${reportlevel}" />
+            <echo level="info" message="- fileset               : ${findbugs.fileset}" />
+            <echo level="info" message="- sourcepath            : ${findbugs.sourcepath}" />
+            <echo level="info" message="- auxclasspath          : ${findbugs.auxclasspath}" />
+            <echo level="info" message="- failBuildOnWarning    : ${failBuildOnWarning}" />
+            <echo level="info" message="- excludeFilter         : ${excludeFilter}" />
+            <echo level="info" message="- jvmargs               : ${jvmargs}" />
+            <echo level="info" message="*************************************************" />
+            <echo level="info" message=" " />
+
+
+            <!--AUX FILES-->
+            <for list="${findbugs.auxclasspath}" param="pattern" delimiter=";">
+                <sequential>
+                    <copy todir="${auxClassDirectory}">
+                        <fileset dir="${hybris.home}/">
+                            <include name="@{pattern}"/>
+                        </fileset>
+                    </copy>
+                </sequential>
+            </for>
+
+            <path id='auxclasspath'>
+                <fileset dir="${auxClassDirectory}" includes="**/*.class"/>
+                <fileset dir="${auxClassDirectory}" includes="**/*.jar" />
+            </path>
+
+            <!--SOURCE FILES-->
+            <copy todir="${sourceClassDirectory}">
+                <fileset dir="${hybris.home}/">
+                    <include name="${findbugs.fileset}"/>
+                    <exclude name="${findbugs.ignore.gensrc}"/>
+                </fileset>
+                <fileset dir="${hybris.home}/">
+                    <include name="${findbugs.sourcepath}"/>
+                    <exclude name="${findbugs.ignore.gensrc}"/>
+                </fileset>
+            </copy>
+
+            <path id='sourcepath'>
+                <fileset dir="${sourceClassDirectory}" includes="**/*.java" />
+            </path>
+
+            <!--<findbugs home="${findbugs.home}"-->
+                      <!--output="${output}"-->
+                      <!--reportlevel="${reportlevel}"-->
+                      <!--outputFile="${outputfile}"-->
+                      <!--warningsproperty="warningsproperty"-->
+                      <!--excludefilter="${excludeFilter}"-->
+                      <!--jvmargs="${jvmargs}">-->
+
+                <!--<class location='${sourceClassDirectory}'/>-->
+                <!--<sourcepath refid='sourcepath' />-->
+                <!--<auxclasspath refid='auxclasspath' />-->
+            <!--</findbugs>-->
+
+            <!--Cleanup-->
+            <delete dir="${auxClassDirectory}"/>
+            <delete dir="${sourceClassDirectory}"/>
+
+
+            <echo>Fail build on warning = ${failBuildOnWarning}</echo>
+            <echo>Warnings were found = ${warningsproperty}</echo>
+
+            <condition property="raisefail">
+                <and>
+                    <equals arg1="${failBuildOnWarning}" arg2="true"/>
+                    <equals arg1="${warningsproperty}" arg2="true"/>
+                </and>
+            </condition>
+
+            <fail if="${raisefail}" message="Bugs were found. Build FAILED!"/>
+
+        </sequential>
+    </macrodef>
+
+
+    <!-- =================================
+              macrodef: checkstyle
+           ================================= -->
+    <macrodef name="checkstyle-start" description="Start checkstyle">
+        <attribute name="outputfile" default="${hybris.log}/checkstyle/errors.log" />
+        <sequential>
+
+            <if>
+                <not>
+                    <available file="${hybris.log}/checkstyle" type="dir" />
+                </not>
+                <then>
+                    <mkdir dir="${hybris.log}/checkstyle" />
+                </then>
+                <else>
+                    <delete dir="${hybris.log}/checkstyle" />
+                    <mkdir dir="${hybris.log}/checkstyle" />
+                </else>
+            </if>
+
+            <delete file="@{outputfile}" />
+
+            <echo level="info" message=" " />
+            <echo level="info" message="*************************************************" />
+            <echo level="info" message="- Executing CheckStyle" />
+            <echo level="info" message="-------------------------------------------------" />
+            <echo level="info" message="- output                : @{outputfile}" />
+            <echo level="info" message="- sourcepath            : ${hybris.home}/${checkstyle.dirpath}" />
+            <echo level="info" message="- fileset               : ${checkstyle.fileset}" />
+            <echo level="info" message="- exclude               : ${checkstyle.ignore.fileset}" />
+            <echo level="info" message="*************************************************" />
+            <echo level="info" message=" " />
+
+            <checkstyle config="${checkstyle.home}/config.xml">
+                <fileset dir="${hybris.home}/${checkstyle.dirpath.custom}">
+                    <include name="${checkstyle.fileset}"/>
+                    <exclude name="${checkstyle.ignore.gensrc}"/>
+                    <exclude name="${checkstyle.ignore.jalo}"/>
+                    <exclude name="${checkstyle.ignore.testsrc}"/>
+                </fileset>
+                <fileset dir="${hybris.home}/${checkstyle.dirpath.mock}">
+                    <include name="${checkstyle.fileset}"/>
+                    <exclude name="${checkstyle.ignore.gensrc}"/>
+                    <exclude name="${checkstyle.ignore.jalo}"/>
+                    <exclude name="${checkstyle.ignore.testsrc}"/>
+                </fileset>
+                <formatter type="plain"/>
+                <formatter type="plain" toFile="@{outputfile}"/>
+            </checkstyle>
+
+            <fail message="Bugs were found. Build FAILED!">
+                <condition>
+                    <length file="@{outputfile}" when="greater" length="30"/>
+                </condition>
+            </fail>
+        </sequential>
+    </macrodef>
+
+    <!-- =================================
+             macrodef: newrelic-setup
+
+             param: mode
+                platform - override newrelic files in hybris/bin/platform/tomcat-6 directory (used on build-deployment task)
+                config - copy newrelic files from config/common to config/${config.mode} dir, replace settings (used on zip-deployment-artifacts)
+             if env var newrelic.skip set to false -> skips newrelic setup
+
+             Configure newrelic conf files (newrelic.yml, jmx.yml) by local.properties
+    ================================= -->
+    <macrodef name="newrelic-setup" description="Extract new relic and configure it">
+        <attribute name="mode" />
+        <sequential>
+            <echo message="Configuring newrelic, mode: @{mode}" />
+            <if>
+                <equals arg1="${newrelic.skip}" arg2="true"/>
+                <then>
+                    <echo message="Skipping newrelic configuration as newrelic.skip=true" />
+                </then>
+                <else>
+                    <switch value="@{mode}">
+                        <case value="platform">
+                            <echo message="Configuring platform files.." />
+                            <property name="newrelic.distributive_dir" value="${antmacros.basedir}/../../../newrelic" />
+
+                            <!-- load local.properties file as there is no params from it -->
+                            <property file="${antmacros.basedir}/../configuration/${config.mode}/env/hybris/config/local.properties"/>
+                            <property name="platformhome" value="${platform.home}" />
+                            <property file="${platform.home}/project.properties"/>
+
+                            <!-- set server home -->
+                            <if>
+                                <equals arg1="${bundled.server.type}" arg2="tcserver"/>
+                                <then>
+                                    <property name="bundled.server.home" value="${bundled.tcserver.home}" />
+                                </then>
+                                <else>
+                                    <property name="bundled.server.home" value="${bundled.tomcat.home}" />
+                                </else>
+                            </if>
+
+                            <!-- set newrelic dir -->
+                            <property name="newrelic.dir" value="${bundled.server.home}/${newrelic.home_dir}" />
+                            <echo message="Configuring newrelic, home directory: ${newrelic.dir}" />
+
+                            <!-- replace params using local.properties -->
+                            <newrelic-setup-update-files newrelicDir="${newrelic.dir}" />
+                        </case>
+
+                        <case value="config">
+                            <echo message="Configuring config files.." />
+                            <property name="newrelic.common_dir" value="${antmacros.basedir}/../configuration/common/hybris/bin/platform/tomcat-6/newrelic/"/>
+                            <property name="newrelic.dir" value="${antmacros.basedir}/../configuration/${config.mode}/env/hybris/bin/platform/tomcat-6/newrelic/"/>
+
+                            <!-- create directory for newrelic in specific ${config.mode} -->
+                            <mkdir dir="${newrelic.dir}/extensions"/>
+
+                            <!-- copy files from common to ${config.mode} directory, replace them -->
+                            <copy todir="${newrelic.dir}" overwrite="true">
+                                <fileset dir="${newrelic.common_dir}">
+                                    <include name="**/newrelic.yml"/>
+                                    <include name="**/jmx.yml"/>
+                                </fileset>
+                            </copy>
+
+                            <!-- load local.properties file as there is no params from it -->
+                            <property file="${antmacros.basedir}/../configuration/${config.mode}/env/hybris/config/local.properties"/>
+                            <!-- replace params using local.properties -->
+                            <newrelic-setup-update-files newrelicDir="${newrelic.dir}" />
+                        </case>
+
+                        <default>
+                            <echo message="Unrecognized mode: @{mode}, configuration skipped" />
+                        </default>
+                    </switch>
+                </else>
+            </if>
+        </sequential>
+    </macrodef>
+
+    <!-- =================================
+             macrodef: newrelic-setup-update-files
+
+             Configure newrelic conf files (newrelic.yml, jmx.yml) by local.properties
+    ================================= -->
+    <macrodef name="newrelic-setup-update-files" description="Extract new relic and configure it">
+        <attribute name="newrelicDir" />
+        <sequential>
+            <!-- replace params using local.properties -->
+            <if>
+                <available file="@{newrelicDir}" type="dir" />
+                <then>
+                    <echo message="Overriding newrelic parameters .." />
+                    <echo message="Newrelic enabled: ${newrelic.enabled}"/>
+                    <property name="newrelic.conf_file.main" value="@{newrelicDir}/newrelic.yml" />
+                    <property name="newrelic.conf_file.extension" value="@{newrelicDir}/extensions/jmx.yml" />
+
+                    <!-- replace newrelic.yml conf file, with new settings -->
+                    <replaceregexp file="${newrelic.conf_file.main}"
+                                   match="agent_enabled:(.*)"
+                                   replace="agent_enabled: ${newrelic.enabled}"
+                                   byline="true"
+                            />
+                    <replaceregexp file="${newrelic.conf_file.main}"
+                                   match="license_key:(.*)"
+                                   replace="license_key: '${newrelic.license_key}'"
+                                   byline="true"
+                            />
+                    <replaceregexp file="${newrelic.conf_file.main}"
+                                   match="app_name:(.*)"
+                                   replace="app_name: ${newrelic.app_name}"
+                                   byline="true"
+                            />
+
+                    <!-- replace newrelic.yml conf file, with new settings -->
+                    <replaceregexp file="${newrelic.conf_file.extension}"
+                                   match="object_name: Catalina:type=Manager,path=/(.*),(.*)"
+                                   replace="object_name: Catalina:type=Manager,path=/${newrelic.storefront_app},\2"
+                                   byline="true"
+                            />
+                    <replaceregexp file="${newrelic.conf_file.extension}"
+                                   match="object_name: solr/(.*):(.*)"
+                                   replace="object_name: solr/${newrelic.solr_product}:\2"
+                                   byline="true"
+                            />
+                    <replaceregexp file="${newrelic.conf_file.extension}"
+                                   match="(.*)GlobalRequestProcessor,name=http-(.*)"
+                                   replace="\1GlobalRequestProcessor,name=http-${tomcat.http.port}"
+                                   byline="true"
+                            />
+                </then>
+                <else>
+                    <fail message="Newrelic conf directory is not found" />
+                </else>
+            </if>
+            <echo  />
+        </sequential>
+    </macrodef>
+
+</project>

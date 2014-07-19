@@ -1,0 +1,19 @@
+# servicebus files location
+servicebus.singleproduct.file=ServiceBus_Single_Product_Data.xls
+servicebus.periodicproduct.file=ServiceBus_Periodic_Product_Data.xls
+servicebus.businesspartners.file=ServiceBus_getBusinessPartner.xlsx
+
+# sso files location
+#sso.file.accounts=src/main/resources/data/sso/SSO_MockData.xlsx
+
+# local
+sso.file.accounts=src/main/resources/data/sso/SSO_MockData.xlsx
+
+# sso - platform configuration
+sso.file.platforms=src/main/resources/data/sso/SSO_MockData_Platforms.xlsx
+
+# portal properties file location
+portal.file=portal.properties
+
+# deeplink secret id/values for the deeplink fingerprint calculation. See KS-964-Deeplink-security user story for details.
+deeplink.fingerprint.secret.file=src/main/resources/data/uag/Deeplink_FingerprintSecret_Data.xls

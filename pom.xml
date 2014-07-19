@@ -18,6 +18,7 @@
         <module/>
         <module>mocks</module>
         <module>checkstyletest</module>
+        <module>ownmocks</module>
     </modules>
 
 
