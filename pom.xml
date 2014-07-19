@@ -17,6 +17,7 @@
     <modules>
         <module/>
         <module>mocks</module>
+        <module>checkstyletest</module>
     </modules>
 
 
@@ -76,11 +77,11 @@
         </dependency>
 
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.3.1</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>junit</groupId>-->
+            <!--<artifactId>junit</artifactId>-->
+            <!--<version>4.3.1</version>-->
+        <!--</dependency>-->
 
 
         <!--DateUtils-->
@@ -90,12 +91,12 @@
             <version>1.9.2</version>
         </dependency>
 
-        <!--String utils-->
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>1.0</version>
-        </dependency>
+        <!--&lt;!&ndash;String utils&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>commons-lang</groupId>-->
+            <!--<artifactId>commons-lang</artifactId>-->
+            <!--<version>1.0</version>-->
+        <!--</dependency>-->
 
         <!--//jsoup-->
 
