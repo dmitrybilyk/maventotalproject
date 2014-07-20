@@ -1,12 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd
-       http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf="http://cxf.apache.org/core"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+
+       xsi:schemaLocation="http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/util
+			http://www.springframework.org/schema/util/spring-util-2.0.xsd
+			http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+			  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd ">
 
 
     <context:annotation-config/>
@@ -39,6 +43,57 @@
             <bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider"/>
         </jaxrs:providers>
     </jaxrs:server>
+
+
+    <!-- mock portal callback from deeplink -->
+    <jaxrs:server id="jaxrsPortalServer" address="/portal/" staticSubresourceResolution="false">
+        <jaxrs:serviceBeans>
+            <ref bean="portalRest"/>
+        </jaxrs:serviceBeans>
+
+        <jaxrs:providers>
+            <ref bean="jaxbElementProvider"/>
+        </jaxrs:providers>
+        <jaxrs:extensionMappings>
+            <entry key="xml" value="application/xml"/>
+        </jaxrs:extensionMappings>
+    </jaxrs:server>
+
+    <bean id="jaxbElementProvider" class="org.apache.cxf.jaxrs.provider.JAXBElementProvider">
+        <property name="marshallerProperties" ref="propertiesMap"/>
+    </bean>
+    <util:map id="propertiesMap">
+        <entry key="jaxb.formatted.output">
+            <value type="java.lang.Boolean">true</value>
+        </entry>
+    </util:map>
+
+    <bean id="portalRest" class="com.ownmocks.portal.service.impl.PortalRestImpl"/>
+
+
+    <!-- mock service bus -->
+    <bean id="excelReader" class="com.ownmocks.servicebus.service.ExcelReader">
+        <property name="singleProductFileName" value="${servicebus.singleproduct.file}"/>
+        <property name="periodicProductFileName" value="${servicebus.periodicproduct.file}"/>
+    </bean>
+    <cxf:bus>
+        <cxf:features>
+            <cxf:logging/>
+        </cxf:features>
+    </cxf:bus>
+    <jaxrs:server id="jaxrsProductService" address="/servicebus/" staticSubresourceResolution="false">
+        <jaxrs:serviceBeans>
+            <ref bean="restSingleProduct"/>
+            <ref bean="restBusinessPartners"/>
+            <!--<ref bean="portalRest"/>-->
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+
+    <bean id="restSingleProduct" class="com.ownmocks.servicebus.service.impl.RestProductImpl"/>
+    <!--<bean id="portalRest" class="com.ownmocks.portal.service.impl.PortalRestImpl"/>-->
+    <bean id="restBusinessPartners" class="com.ownmocks.servicebus.service.impl.BusinessPartnerServiceImpl"/>
+
+
 
 
 </beans>

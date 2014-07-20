@@ -17,6 +17,11 @@
         <param-value>/WEB-INF/own-mocks-context.xml</param-value>
     </context-param>
 
+    <context-param>
+        <param-name>portalsLocation</param-name>
+        <param-value>portal/data</param-value>
+    </context-param>
+
 
     <!--SERVLETS DEFINITIONS-->
     <servlet>
@@ -25,10 +30,20 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>mockPortalServlet</servlet-name>
+        <servlet-class>com.ownmocks.portal.servlet.MockPortalServlet</servlet-class>
+    </servlet>
+
     <!--MAPPINGS-->
     <servlet-mapping>
         <servlet-name>CXFServlet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>mockPortalServlet</servlet-name>
+        <url-pattern>/portal/upload</url-pattern>
     </servlet-mapping>
 
 
