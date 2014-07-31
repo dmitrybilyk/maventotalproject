@@ -1,0 +1,28 @@
+package com.learn.patterns.freemanAndFreeman.headfirst.decorator.custom;
+
+import java.math.BigDecimal;
+
+/**
+ * Created by bid on 7/31/14.
+ */
+public class ComfortableBath extends ComfortDecorator
+{
+   Room room;
+
+   public ComfortableBath(final Room room)
+   {
+      this.room = room;
+   }
+
+   @Override
+   public BigDecimal cost()
+   {
+      return room.cost().add(new BigDecimal(20.0));
+   }
+
+   @Override
+   public String getName()
+   {
+      return room.getName() + ", " + "Bath";
+   }
+}

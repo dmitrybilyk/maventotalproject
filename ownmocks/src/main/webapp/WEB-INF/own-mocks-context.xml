@@ -33,6 +33,19 @@
         </jaxrs:providers>
     </jaxrs:server>
 
+
+    <!-- mock sso -->
+    <jaxrs:server id="jaxrsSsoServer" address="/sso/">
+        <jaxrs:serviceBeans>
+            <ref bean="SSOService"/>
+        </jaxrs:serviceBeans>
+
+        <jaxrs:providers>
+            <bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>
+
+
     <!-- mock ca -->
     <jaxrs:server id="jaxrsCAServer" address="/ca/">
         <jaxrs:serviceBeans>

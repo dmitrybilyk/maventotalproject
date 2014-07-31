@@ -1,0 +1,5 @@
+In order to be acceptable to inversion of dependencies, the architecture should conform the next
+principles:
+1. You shouldn't keep references to concrete classes in variables
+2. You should not have classes - children of concrete classes
+3. You shouldn't override already implemented methods

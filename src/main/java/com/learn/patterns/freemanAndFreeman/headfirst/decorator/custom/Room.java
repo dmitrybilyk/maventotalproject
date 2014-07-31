@@ -1,17 +1,22 @@
 package com.learn.patterns.freemanAndFreeman.headfirst.decorator.custom;
 
+import java.math.BigDecimal;
+
 /**
  * Created by dmitry on 7/23/14.
  */
 public abstract class Room {
-    private String name;
-    public abstract double cost();
+   protected String name;
 
-    public String getName() {
-        return name;
-    }
+   public abstract BigDecimal cost();
 
-    public void setName(String name) {
-        this.name = name;
-    }
+   public String getName()
+   {
+      return name;
+   }
+
+   public void setName(String name)
+   {
+      this.name = name;
+   }
 }
