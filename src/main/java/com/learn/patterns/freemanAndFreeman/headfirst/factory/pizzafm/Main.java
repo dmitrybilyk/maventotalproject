@@ -1,6 +1,7 @@
 package com.learn.patterns.freemanAndFreeman.headfirst.factory.pizzafm;
 
-public class PizzaTestDrive {
+public class Main
+{
  
 	public static void main(String[] args) {
 		PizzaStore nyStore = new NYPizzaStore();

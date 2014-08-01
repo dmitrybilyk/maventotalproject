@@ -2,7 +2,7 @@ package com.learn.patterns.freemanAndFreeman.headfirst.factory.pizzas;
 
 import java.util.ArrayList;
 
-abstract public class Pizza {
+public class Pizza {
 	String name;
 	String dough;
 	String sauce;
