@@ -1,6 +1,6 @@
 package com.learn.patterns.freemanAndFreeman.headfirst.templatemethod.barista;
 
-public class BeverageTestDrive {
+public class Main {
 	public static void main(String[] args) {
  
 		Tea tea = new Tea();
