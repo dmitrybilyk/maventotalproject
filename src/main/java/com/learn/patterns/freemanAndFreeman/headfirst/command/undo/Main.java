@@ -26,12 +26,11 @@ public class Main
 
 		CeilingFan ceilingFan = new CeilingFan("Living Room");
    
-		CeilingFanMediumCommand ceilingFanMedium = 
+		CeilingFanCommand ceilingFanMedium =
 				new CeilingFanMediumCommand(ceilingFan);
-		CeilingFanHighCommand ceilingFanHigh = 
+      CeilingFanCommand ceilingFanHigh =
 				new CeilingFanHighCommand(ceilingFan);
-		CeilingFanOffCommand ceilingFanOff = 
-				new CeilingFanOffCommand(ceilingFan);
+      CeilingFanCommand ceilingFanOff = new CeilingFanOffCommand(ceilingFan);
   
 		remoteControl.setCommand(0, ceilingFanMedium, ceilingFanOff);
 		remoteControl.setCommand(1, ceilingFanHigh, ceilingFanOff);
