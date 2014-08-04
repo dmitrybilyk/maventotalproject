@@ -1,6 +1,7 @@
 package com.learn.patterns.freemanAndFreeman.headfirst.singleton.subclass;
 
-public class SingletonTestDrive {
+public class Main
+{
 	public static void main(String[] args) {
 		Singleton foo = CoolerSingleton.getInstance();
 		Singleton bar = HotterSingleton.getInstance();
