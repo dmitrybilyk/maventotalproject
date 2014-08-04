@@ -1,6 +1,7 @@
 package com.learn.patterns.freemanAndFreeman.headfirst.command.undo;
 
-public class RemoteLoader {
+public class Main
+{
  
 	public static void main(String[] args) {
 		RemoteControlWithUndo remoteControl = new RemoteControlWithUndo();
