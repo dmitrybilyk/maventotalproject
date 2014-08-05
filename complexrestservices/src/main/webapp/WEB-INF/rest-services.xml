@@ -88,7 +88,7 @@
             <cxf:logging/>
         </cxf:features>
     </cxf:bus>
-    <jaxrs:server id="jaxrsProductService" address="/student/" staticSubresourceResolution="false">
+    <jaxrs:server id="jaxrsStudentService" address="/student/" staticSubresourceResolution="false">
         <jaxrs:serviceBeans>
             <ref bean="restStudentService"/>
         </jaxrs:serviceBeans>
