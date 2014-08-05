@@ -68,7 +68,7 @@ public class UserEntity implements SSOEntity
 
 	private String platformId;
 
-	private List<CustomerDynamicField> dynamicFields;
+//	private List<CustomerDynamicField> dynamicFields;
 
 	private List<CustomerTerms> terms;
 
@@ -283,11 +283,11 @@ public class UserEntity implements SSOEntity
 	 * Get dynamics fields list.
 	 *
 	 * @return Dynamic fields list.
-	 */
-	public List<CustomerDynamicField> getDynamicFields()
-	{
-		return dynamicFields;
-	}
+//	 */
+//	public List<CustomerDynamicField> getDynamicFields()
+//	{
+//		return dynamicFields;
+//	}
 
 	/**
 	 * Get terms.
