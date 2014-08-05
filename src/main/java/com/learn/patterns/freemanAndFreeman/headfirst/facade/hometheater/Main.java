@@ -1,6 +1,7 @@
 package com.learn.patterns.freemanAndFreeman.headfirst.facade.hometheater;
 
-public class HomeTheaterTestDrive {
+public class Main
+{
 	public static void main(String[] args) {
 		Amplifier amp = new Amplifier("Top-O-Line Amplifier");
 		Tuner tuner = new Tuner("Top-O-Line AM/FM Tuner", amp);
