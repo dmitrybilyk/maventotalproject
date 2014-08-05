@@ -19,6 +19,7 @@
         <module>mocks</module>
         <module>checkstyletest</module>
         <module>ownmocks</module>
+        <!--<module>complexrestservices</module>-->
     </modules>
 
 

@@ -49,7 +49,7 @@ public class SSOCustomerRestClientImpl
       parameters.remove(wsTokenKey); // Remove it from parameters.
 
       final UriTemplate uriTemplate = new UriTemplate(
-              "http://localhost:8082/ownmocks/rest/sso/readAccount?delay=0&accountId=u001&platformId=kunde360");
+              "http://localhost:8082/ownmocks/rest/sso/readAccount?delay=0&accountId=u002&platformId=kunde360");
       final URI uri = uriTemplate.expand(parameters);
 
       final int connectTimeout = 2;
