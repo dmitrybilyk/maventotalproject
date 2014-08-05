@@ -1,6 +1,6 @@
 package com.learn.patterns.freemanAndFreeman.headfirst.adapter.ducks;
 
-public class MainTurkey
+public class TurkeyTestDrive
 {
 	public static void main(String[] args) {
 		MallardDuck duck = new MallardDuck();

@@ -1,6 +1,6 @@
 package com.learn.patterns.freemanAndFreeman.headfirst.templatemethod.simplebarista;
 
-public class Barista {
+public class Main {
  
 	public static void main(String[] args) {
 		Tea tea = new Tea();

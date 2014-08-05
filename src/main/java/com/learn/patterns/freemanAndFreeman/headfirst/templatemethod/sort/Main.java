@@ -3,7 +3,7 @@ package com.learn.patterns.freemanAndFreeman.headfirst.templatemethod.sort;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class DuckSortTestDrive {
+public class Main {
 
 	public static void main(String[] args) {
 		Duck[] ducks = { 
