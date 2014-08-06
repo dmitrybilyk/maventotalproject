@@ -19,6 +19,7 @@
         <module>mocks</module>
         <module>checkstyletest</module>
         <module>ownmocks</module>
+        <!--<module>complexrestservices</module>-->
     </modules>
 
 
@@ -91,6 +92,14 @@
             <artifactId>ant</artifactId>
             <version>1.9.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>LATEST</version>
+            <type>jar</type>
+        </dependency>
+
 
         <!--&lt;!&ndash;String utils&ndash;&gt;-->
         <!--<dependency>-->

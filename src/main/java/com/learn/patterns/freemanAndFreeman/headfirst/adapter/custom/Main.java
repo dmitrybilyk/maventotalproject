@@ -7,8 +7,8 @@ public class Main
 {
    public static void main(String[] args)
    {
-       FootballPlayer footballPlayer = new ProfessionalFootballPlayer();
-       HockeyPlayer hockeyPlayerWithFootballSkills = new FootballPlayerAdapter(footballPlayer);
-       hockeyPlayerWithFootballSkills.kickTheDisc();
+      HockeyPlayer hockeyPlayer = new ProfessionalHockeyPlayer();
+      HockeyPlayerAdapter hockeyPlayerAdapted = new HockeyPlayerAdapter(hockeyPlayer);
+      hockeyPlayerAdapted.kickTheBall();
    }
 }
