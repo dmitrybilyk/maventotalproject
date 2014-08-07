@@ -12,7 +12,7 @@ public class AfterMapper {
 
 
 //        0119143001111                                SpanishClient                                                         20121213PRE2012121314334000186111          00190109
-//        0219143002BE31ZZZ12345                       20160420SpanishClient                                                         Main Street                                                                                                                                 ESES5000190109904010053346
+//        0219143002BE31ZZZ12345                       20160420SpanishClient                                                         TurkeyMain Street                                                                                                                                 ESES5000190109904010053346
 //        0319143003111437269871646FC147               111437269871                       RCUR    0000500010020100201BILLLULL   Eric de builde                                                                                                                                                                                                    ES                                                                        ALU860023189150474000
 //        0319143005111437269871646FC147               111437269871                       01861234ESABD123456ABDC1234ABXDef123456
 //        0319143003111437269872BDEF51F3               111437269872                       RCUR    0000500010020100201DEUTESBB   Eric de builde2                                                                                                                                                                                                   LU                                                                        AES5000190109904010053346
@@ -39,7 +39,7 @@ public class AfterMapper {
 //                ^34\d{6}81\d{6}E\s{25}France Telecom\s{21}\d{21}DB FRENCH DEBTOR\s{14}DB FRENCH DEBTOR.{70}\d{6}\s{6}3\d{13}$
 //                ^39\d{6}81\d{6}\s{26}France Telecom\s{42}France Telecom\s{116}\d{12}$
 //        String txt1 = "0119143001111                                SpanishClient                                                         20121213PRE2012121317530400819111          00190109                                                                                                                                                                                                                                                                                                                                 ";
-//        String txt2 =  "0219143002BE31ZZZ12345                       20160420SpanishClient                                                         Main Street                                                                                                                                 ESES5000190109904010053346                               ";
+//        String txt2 =  "0219143002BE31ZZZ12345                       20160420SpanishClient                                                         TurkeyMain Street                                                                                                                                 ESES5000190109904010053346                               ";
 
 
         Pattern pattern1 = Pattern.compile("^HDR1A\\d{6}S\\s{9}\\w{6}\\d{4}0001000100\\s{1}\\d{5}\\s\\d{5}\\s\\d{6}\\s+$");

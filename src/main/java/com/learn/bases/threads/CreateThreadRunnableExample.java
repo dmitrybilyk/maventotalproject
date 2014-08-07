@@ -61,7 +61,7 @@ public class CreateThreadRunnableExample implements Runnable{
         t.start();
 
         for(int i=0; i < 5; i++){
-            System.out.println("Main thread : " + i);
+            System.out.println("TurkeyMain thread : " + i);
             try{
                 Thread.sleep(100);
             }
@@ -69,23 +69,23 @@ public class CreateThreadRunnableExample implements Runnable{
                 System.out.println("Child thread interrupted! " + ie);
             }
         }
-        System.out.println("Main thread finished!");
+        System.out.println("TurkeyMain thread finished!");
     }
 }
 /*
 Typical output of this thread example would be
-Main thread : 0
+TurkeyMain thread : 0
 Child Thread : 0
 Child Thread : 1
-Main thread : 1
-Main thread : 2
+TurkeyMain thread : 1
+TurkeyMain thread : 2
 Child Thread : 2
 Child Thread : 3
-Main thread : 3
-Main thread : 4
+TurkeyMain thread : 3
+TurkeyMain thread : 4
 Child Thread : 4
 Child thread finished!
-Main thread finished!
+TurkeyMain thread finished!
 
 
 */

@@ -21,6 +21,6 @@ public class Main {
                 System.out.println(thread.getName());
             }
         }
-        System.out.println("in Main thread "+ Thread.currentThread().getName());
+        System.out.println("in TurkeyMain thread "+ Thread.currentThread().getName());
     }
 }
