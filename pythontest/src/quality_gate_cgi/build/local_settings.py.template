@@ -1,0 +1,34 @@
+import os
+
+from settings import PROJECT_ROOT
+from settings import QG_IGNORE_FILE
+from main import _gen_config
+
+from pprint import pprint as pp
+
+TESTS = [
+    'package_utf8',
+    'package_bad_content',
+    'package_pylint',
+    'package_pep8',
+    'package_phplint',
+    'package_phpcodesniffer',
+    'package_xml_valid',
+    'package_java_checkstyle',
+    'package_csslint',
+    # 'package_jshint',
+]
+
+FILE_STATE_CACHE_DB = os.path.join(PROJECT_ROOT, 'file_state_cache-%(reponame)s-%(branch)s.sqlite3')
+
+GIT_ONLY_BRANCHES = ['dev']
+
+GIT_EXTRACT_CMD = 'unset GIT_DIR && git clone -lqsn . %(temp_dir)s ' \
+                  '&& cd %(temp_dir)s && git checkout -q %(revision)s'
+
+CONTENT_FILTER_DIR = '~/cgi_qualtiy_gate/qg_content_filters'
+
+UNBLOCKABLE_USERS = []
+
+BUILD_PATH = 'build'
+DOC_PATH = 'doc'

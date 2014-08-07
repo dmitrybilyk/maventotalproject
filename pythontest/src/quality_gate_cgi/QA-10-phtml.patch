@@ -1,0 +1,155 @@
+diff -r 164fdd21789d build/main.py
+--- a/build/main.py	Tue Apr 13 17:49:29 2010 +0200
++++ b/build/main.py	Tue Apr 13 17:50:36 2010 +0200
+@@ -20,16 +20,17 @@
+ from lib.parser import Parser
+ from lib.saas_repo import SaaSRepo
+ 
+ 
+ _config = {}
+ _readme_files = None
+ _py_files = None
+ _php_files = None
++_phtml_files = None
+ _verbose = False
+ _logged_messages = []
+ _content_filter_regex = []
+ 
+ 
+ class Failure(Exception):
+     pass
+ 
+@@ -1150,44 +1151,70 @@
+         raise Failure('Folder build is marked to be ignored but this is not '
+                       'allowed.')
+     _php_files = list(_find_files(build_folder, settings.FIND_PHP_FILES_REGEX,
+                                   True))
+     # print '_php_files =', _php_files
+     return _php_files
+ 
+ 
++def _get_phtml_files(build_folder):
++    '''
++    Finds all .phtml files within given folder
++    
++    @type  build_folder: string
++    @param build_folder: folder to search in
++    
++    @return: list with unmarked php files
++    '''
++    global _phtml_files
++    if _phtml_files is not None:
++        return _phtml_files
++    build_ignore_file = os.path.join(build_folder,
++                                     settings.CODING_STANDARDS_IGNORE_PATH)
++    if os.path.exists(build_ignore_file):
++        raise Failure('Folder build is marked to be ignored but this is not '
++                      'allowed.')
++    _phtml_files = list(_find_files(build_folder,
++                                    settings.FIND_PHTML_FILES_REGEX,
++                                    True))
++    # print '_phtml_files =', _phtml_files
++    return _phtml_files
++
++
+ def package_utf8(config):
+     '''
+     Tests if all Python and PHP files are compatible to UTF-8
+     
+     @type  config: dict
+     @param config: dict with current configuration
+     
+     @return: None
+     '''
+     py_files = _get_py_files(config['build'])
+     php_files = _get_php_files(config['build'])
+-    for file_ in py_files + php_files:
++    phtml_files = _get_phtml_files(config['build'])
++    for file_ in py_files + php_files + phtml_files:
+         _utf8_file(file_)
+ 
+ 
+ def package_bad_content(config):
+     '''
+     Tests if all Python and PHP files do not contain bad content
+     
+     @type  config: dict
+     @param config: dict with current configuration
+     
+     @return: None
+     '''
+     py_files = _get_py_files(config['build'])
+     php_files = _get_php_files(config['build'])
++    phtml_files = _get_phtml_files(config['build'])
+     patterns = settings.CONTENT_FILTER_DIR
+-    for file_ in py_files + php_files:
++    for file_ in py_files + php_files + phtml_files:
+         _bad_content_file(file_)
+ 
+ 
+ def package_pylint(config):
+     '''
+     Tests all Python files using pylint against errors
+     
+     @type  config: dict
+@@ -1219,17 +1246,18 @@
+     Tests all PHP files using phplint against errors
+     
+     @type  config: dict
+     @param config: dict with current configuration
+     
+     @return: None
+     '''
+     php_files = _get_php_files(config['build'])
+-    for file_ in php_files:
++    phtml_files = _get_phtml_files(config['build'])
++    for file_ in php_files + phtml_files:
+         cmd = settings.PHPLINT_CMD % file_
+         res, err = list(Popen([cmd], shell=True, stdout=PIPE,
+                               stderr=PIPE).communicate())  # list for pylint
+         if not res.lower().startswith('no syntax errors detected'):
+             raise Failure('phplint found errors in %s.\n%s' % (file_, res))
+ 
+ 
+ def package_phpcodesniffer(config):
+@@ -1239,17 +1267,18 @@
+     @type  config: dict
+     @param config: dict with current configuration
+     
+     @return: None
+     '''
+     cmd = settings.PHPCS_CMD
+     args = settings.PHPCS_ARGS
+     php_files = _get_php_files(config['build'])
+-    for file_ in php_files:
++    phtml_files = _get_phtml_files(config['build'])
++    for file_ in php_files + phtml_files:
+         _command(file_, cmd, args)
+ 
+ 
+ def package_djangolint(config):
+     '''
+     Tests the project using DjangoLint against errors
+     
+     @type  config: dict
+diff -r 164fdd21789d build/settings.py
+--- a/build/settings.py	Tue Apr 13 17:49:29 2010 +0200
++++ b/build/settings.py	Tue Apr 13 17:50:36 2010 +0200
+@@ -38,16 +38,17 @@
+ LOG_FILE = os.path.join(PROJECT_ROOT, 'history.log')
+ 
+ # how to extract a version out of a source dir
+ HG_EXTRACT_CMD = 'hg -q archive -r %(revision)s %(temp_dir)s'
+ 
+ # find settings
+ FIND_PY_FILES_REGEX = r'.*.py$'
+ FIND_PHP_FILES_REGEX = r'.*.php$'
++FIND_PHTML_FILES_REGEX = r'.*.phtml$'
+ CODING_STANDARDS_IGNORE_PATH = '.codingStandardsIgnorePath'
+ CODING_STANDARDS_IGNORE_FILE = '@codingStandardsIgnoreFile'
+ 
+ # content filter settings
+ CONTENT_FILTER_DIR = os.path.join(PROJECT_ROOT, 'content_filters')
+ 
+ # pylint settings
+ _GENERATED_MEMBERS = (

@@ -1,0 +1,17 @@
+^package
+^\s*$
+^(import .+;$)?\s*$
+^\s*$
+^/\*\*\s*$
+^ \* (?!Here goes 1 line\.\s*$).*\w.*
+^ \*.*\S.*$
+^ \*\s*$
+^ \* @module .*
+^ \* @version \d+\.\d+v [A-Z]{1}[a-z]{2} \d+,? \d{4}$
+^ \* @author symmetrics \- a CGI Group brand \<info@symmetrics\.de\>$
+^ \* @author .* \<\S+@((symmetrics\.de)|(cgi\.com))\>$
+^ \* @link http://www\.symmetrics\.de$
+^ \* @see "https://wiki.hybris.com"$
+^ \* @copyright 201(\d) symmetrics \- a CGI Group brand$
+^ \*\s*$
+^ \*/?\s*$

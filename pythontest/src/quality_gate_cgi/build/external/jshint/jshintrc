@@ -1,0 +1,11 @@
+{
+    "undef": true,
+    "unused": true,
+    "indent": 4,
+    "curly": true,
+    "forin": true,
+    "immed": true,
+    "noempty": true,
+    "asi": false,
+    "funcscope": false
+}

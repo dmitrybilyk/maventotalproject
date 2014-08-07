@@ -1,0 +1,1 @@
+DEPENDS_ON_FILES = \(\s*'app/code/core/.../1.php',\s*'app/code/core/.../2.php',\s*'app/code/core/.../3.php',\s*\)

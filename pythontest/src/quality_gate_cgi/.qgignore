@@ -1,0 +1,3 @@
+# Ignoring wirecard modules - need to fix their checkstyle code later
+build/hybris/bin/custom/pacoshop/hybrispaymentcore
+build/hybris/bin/custom/pacoshop/hybrispaymentwirecard
