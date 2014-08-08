@@ -5,4 +5,5 @@ package quality_gate_cgi.build.external.checkstyle;
  */
 public class SomeClass
 {
+   private static final String dddTHIS_IS_THE_CONSTANT = null;
 }

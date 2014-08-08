@@ -138,7 +138,9 @@ Checkstyle configuration that checks the hybris coding conventions.
         <property name="severity" value="ignore"/>
         <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
-    <module name="NewlineAtEndOfFile"/>
+    <module name="NewlineAtEndOfFile">
+        <property name="minimumMessage" value="wwowwowowo" />
+    </module>
     <module name="Translation"/>
     <module name="FileLength"/>
     <module name="FileTabCharacter">
