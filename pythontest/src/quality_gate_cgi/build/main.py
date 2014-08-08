@@ -1301,7 +1301,7 @@ def package_readmes_parseable(config):
                           file_, excp))
 
 
-def _find_files(folder, regex, check_content=False):
+def _find_files(folder, regex, check_content=True):
     '''
     Recursively finds all files matching regex within given folder
 

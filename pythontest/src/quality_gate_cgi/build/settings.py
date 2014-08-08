@@ -15,7 +15,7 @@ TESTS = [
 
     #'package_build',
     #'package_readmes',
-    #'package_mandatory_readmes',
+    # 'package_mandatory_readmes',
     #'package_readmes_parseable',
     #'package_utf8',
     #'package_bad_content',

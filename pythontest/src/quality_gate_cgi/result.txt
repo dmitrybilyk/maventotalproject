@@ -1,0 +1,18 @@
+Unable to create Checker: cannot initialize module RegexpHeader - unable to load header file /var/lib/gitolite/hg/cgi_quality_gate/build/external/checkstyle/headerTemplateRegexp.txt
+com.puppycrawl.tools.checkstyle.api.CheckstyleException: cannot initialize module RegexpHeader - unable to load header file /var/lib/gitolite/hg/cgi_quality_gate/build/external/checkstyle/headerTemplateRegexp.txt
+	at com.puppycrawl.tools.checkstyle.Checker.setupChild(Checker.java:178)
+	at com.puppycrawl.tools.checkstyle.api.AutomaticBean.configure(AutomaticBean.java:184)
+	at com.puppycrawl.tools.checkstyle.Main.createChecker(Main.java:143)
+	at com.puppycrawl.tools.checkstyle.Main.main(Main.java:120)
+Caused by: com.puppycrawl.tools.checkstyle.api.CheckstyleException: unable to load header file /var/lib/gitolite/hg/cgi_quality_gate/build/external/checkstyle/headerTemplateRegexp.txt
+	at com.puppycrawl.tools.checkstyle.checks.header.AbstractHeaderCheck.loadHeaderFile(AbstractHeaderCheck.java:109)
+	at com.puppycrawl.tools.checkstyle.checks.header.AbstractHeaderCheck.finishLocalSetup(AbstractHeaderCheck.java:189)
+	at com.puppycrawl.tools.checkstyle.api.AutomaticBean.configure(AutomaticBean.java:180)
+	at com.puppycrawl.tools.checkstyle.Checker.setupChild(Checker.java:157)
+	... 3 more
+Caused by: java.io.FileNotFoundException: /var/lib/gitolite/hg/cgi_quality_gate/build/external/checkstyle/headerTemplateRegexp.txt (No such file or directory)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:146)
+	at java.io.FileInputStream.<init>(FileInputStream.java:101)
+	at com.puppycrawl.tools.checkstyle.checks.header.AbstractHeaderCheck.loadHeaderFile(AbstractHeaderCheck.java:104)
+	... 6 more

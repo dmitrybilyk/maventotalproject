@@ -9,5 +9,5 @@
 # @author: Oktay Acikalin <ok@symmetrics.de>
 #
 
-${SYMMETRICS_QUALITYGATE_PROJECT_ROOT}/main.py -v $@ $(pwd)
+/home/bid/Dev/projects/maventotalproject/pythontest/src/quality_gate_cgi/build/main.py -v $@ $(pwd)
 

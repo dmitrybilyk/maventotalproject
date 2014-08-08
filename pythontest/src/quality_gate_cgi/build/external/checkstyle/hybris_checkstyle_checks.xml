@@ -131,7 +131,7 @@ Checkstyle configuration that checks the hybris coding conventions.
     </module>
     <module name="RegexpHeader">
         <property name="headerFile"
-                  value="/var/lib/gitolite/hg/cgi_quality_gate/build/external/checkstyle/headerTemplateRegexp.txt"/>
+                  value="/home/bid/Dev/projects/maventotalproject/pythontest/src/quality_gate_cgi/build/external/checkstyle/headerTemplateRegexp.txt"/>
         <property name="multiLines" value="3,4,7,12,16"/>
     </module>
     <module name="JavadocPackage">
@@ -158,6 +158,6 @@ Checkstyle configuration that checks the hybris coding conventions.
         <property name="severity" value="ignore"/>
     </module>
     <module name="SuppressionFilter">
-        <property name="file" value="/var/lib/gitolite/hg/cgi_quality_gate/build/external/checkstyle/hybris_suppression_filter.xml"/>
+        <property name="file" value="/home/bid/Dev/projects/maventotalproject/pythontest/src/quality_gate_cgi/build/external/checkstyle/hybris_suppression_filter.xml"/>
     </module>
 </module>
