@@ -83,6 +83,8 @@
 
     <!--<bean id="portalRest" class="com.ownmocks.portal.service.impl.PortalRestImpl"/>-->
 
+    <bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
+
     <cxf:bus>
         <cxf:features>
             <cxf:logging/>
@@ -93,7 +95,7 @@
             <ref bean="restStudentService"/>
         </jaxrs:serviceBeans>
         <jaxrs:providers>
-            <bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider"/>
+            <ref bean="jsonProvider" />
         </jaxrs:providers>
     </jaxrs:server>
 

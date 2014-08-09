@@ -1,7 +1,12 @@
 package com.flash.services.impl;
 
 import com.flash.model.Student;
+import com.flash.model.StudentResponse;
 import com.flash.services.RestStudent;
+import java.util.ArrayList;
+import java.util.List;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 /**
@@ -16,8 +21,18 @@ public class RestStudentImpl implements RestStudent
    }
 
    @Override
-   public Response createStudent()
+   public StudentResponse createStudent()
    {
-      return Response.ok(new Student("Dima", 33)).build();
+      StudentResponse studentResponse = new StudentResponse();
+      List<Student> studentList = new ArrayList<Student>();
+      studentList.add(new Student("Dima", 33));
+      studentResponse.setStudents(studentList);
+      return studentResponse;
+   }
+
+   @Override
+   public String createStudentJson()
+   {
+      return "{'friends': ['Michael', 'Tom', 'Daniel', 'John', 'Nick']}";
    }
 }
