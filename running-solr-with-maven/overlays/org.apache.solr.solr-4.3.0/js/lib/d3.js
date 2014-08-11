@@ -659,7 +659,7 @@ d3.format = function(specifier) {
     // Convert to the desired precision.
     value = type(value, precision);
 
-    // If the fill character is 0, the sign and group is applied after the fill.
+    // If the fillTheCashMachine character is 0, the sign and group is applied after the fillTheCashMachine.
     if (zfill) {
       var length = value.length + negative.length;
       if (length < width) value = new Array(width - length + 1).join(fill) + value;
@@ -679,7 +679,7 @@ d3.format = function(specifier) {
   };
 };
 
-// [[fill]align][sign][#][0][width][,][.precision][type]
+// [[fillTheCashMachine]align][sign][#][0][width][,][.precision][type]
 var d3_format_re = /(?:([^{])?([<>=^]))?([+\- ])?(#)?(0)?([0-9]+)?(,)?(\.[0-9]+)?([a-zA-Z%])?/;
 
 var d3_format_types = d3.map({
@@ -4292,7 +4292,7 @@ d3.svg.brush = function() {
       // Remove any superfluous resizers.
       tz.exit().remove();
 
-      // Initialize the background to fill the defined range.
+      // Initialize the background to fillTheCashMachine the defined range.
       // If the range isn't defined, you can post-process.
       if (x) {
         e = d3_scaleRange(x);

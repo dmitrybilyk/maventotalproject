@@ -2,7 +2,8 @@ package com.learn.patterns.freemanAndFreeman.headfirst.iterator.dinermerger;
 
 import java.util.*;
 
-public class MenuTestDrive {
+public class Main
+{
 	public static void main(String args[]) {
         PancakeHouseMenu pancakeHouseMenu = new PancakeHouseMenu();
         DinerMenu dinerMenu = new DinerMenu();

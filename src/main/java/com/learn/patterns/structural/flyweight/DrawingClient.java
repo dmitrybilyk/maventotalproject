@@ -19,7 +19,7 @@ import javax.swing.JPanel;
 //For applying flyweight pattern, we need to create a Flyweight factory that returns the shared objects.
 // For our example, lets say we need to create a drawing with lines and Ovals. So we will have an interface Shape
 // and its concrete implementations as Line and Oval. Oval class will have intrinsic property to determine whether
-// to fill the Oval with given color or not whereas Line will not have any intrinsic property.
+// to fillTheCashMachine the Oval with given color or not whereas Line will not have any intrinsic property.
 //Notice that I have intensionally introduced delay in creating the Object of concrete classes to make the point that
 // flyweight pattern can be used for Objects that takes a lot of time while instantiated.
 //The flyweight factory will be used by client programs to instantiate the Object, so we need to keep a map of

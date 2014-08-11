@@ -23,7 +23,7 @@ public class ChocolateBoiler {
 		if (isEmpty()) {
 			empty = false;
 			boiled = false;
-			// fill the boiler with a milk/chocolate mixture
+			// fillTheCashMachine the boiler with a milk/chocolate mixture
 		}
 	}
  

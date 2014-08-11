@@ -10,7 +10,7 @@ public class Oval implements Shape {
 
     public Oval(boolean f){
         this.fill=f;
-        System.out.println("Creating Oval object with fill="+f);
+        System.out.println("Creating Oval object with fillTheCashMachine="+f);
         //adding time delay
         try {
             Thread.sleep(2000);
