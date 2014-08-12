@@ -47,11 +47,22 @@ public class Directory extends FileUnit {
     @Override
     public void printInfo() {
         System.out.println("Directory name - " + dirName);
-        Iterator iterator = fileUnits.iterator();
-        while (iterator.hasNext()) {
-            RealFile realFile =
-                    (RealFile)iterator.next();
-            realFile.printInfo();
-        }
+       if(fileUnits != null){
+          Iterator iterator = fileUnits.iterator();
+          while (iterator.hasNext()) {
+             FileUnit fileUnit =
+                     (FileUnit)iterator.next();
+             fileUnit.printInfo();
+          }
+       }
     }
+
+   @Override
+   public Iterator createIterator()
+   {
+      if(fileUnits != null){
+         return new CompositeIterator(fileUnits.iterator());
+      }
+      return null;
+   }
 }

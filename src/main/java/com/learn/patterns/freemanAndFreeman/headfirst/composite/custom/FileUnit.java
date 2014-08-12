@@ -1,5 +1,6 @@
 package com.learn.patterns.freemanAndFreeman.headfirst.composite.custom;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -18,4 +19,6 @@ public abstract class FileUnit {
     }
 
     public abstract void printInfo();
+
+   public abstract Iterator createIterator();
 }

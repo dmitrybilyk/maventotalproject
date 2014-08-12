@@ -10,30 +10,51 @@ public class Main {
     public static void main(String[] args) {
 
 
+       Directory rootDir = new Directory();
+       rootDir.setDirName("root dir");
 
-        RealFile realFileDir1 = new RealFile("file 1 dir 1", 345);
-        RealFile realFileDir2 = new RealFile("file 2 dir 1", 3345);
-        RealFile realFileDir3 = new RealFile("file 3 dir 1", 145);
+       ArrayList<FileUnit> fileUnits = new ArrayList<>();
 
-        Directory subDir1 = new Directory();
-        subDir1.setDirName("subdirname");
-        RealFile realFileDir32 = new RealFile("file 1 sub dir 1", 33345);
-        RealFile realFileDir33 = new RealFile("file 2 sub dir 1", 344345);
-        ArrayList<FileUnit> realFilesSubDirList1 = new ArrayList<FileUnit>();
-        realFilesSubDirList1.add(realFileDir32);
-        realFilesSubDirList1.add(realFileDir33);
-        subDir1.setFileUnits(realFilesSubDirList1);
+       Directory dirInDir1 = new Directory();
 
-        Directory fileUnit = new Directory();
-        fileUnit.setDirName("dir name");
-        ArrayList<FileUnit> realFilesDirList1 = new ArrayList<FileUnit>();
-        realFilesDirList1.add(realFileDir1);
-        realFilesDirList1.add(realFileDir2);
-        realFilesDirList1.add(realFileDir3);
-        realFilesDirList1.add(subDir1);
-        fileUnit.setFileUnits(realFilesDirList1);
+       RealFile realFileDir1 = new RealFile("file 1 dir 1", 345);
+       RealFile realFileDir2 = new RealFile("file 2 dir 1", 3345);
+       RealFile realFileDir3 = new RealFile("file 3 dir 1", 145);
+       dirInDir1.setDirName("DirInDir1Name");
 
-        FileClient fileClient = new FileClient(fileUnit);
+       fileUnits.add(realFileDir1);
+       fileUnits.add(realFileDir2);
+       fileUnits.add(realFileDir3);
+       fileUnits.add(dirInDir1);
+
+       rootDir.setFileUnits(fileUnits);
+
+       Directory subDir = new Directory();
+       subDir.setDirName("subDir dir");
+
+       ArrayList<FileUnit> fileUnits2 = new ArrayList<>();
+
+       Directory dirInDir12 = new Directory();
+
+       RealFile realFileDir12 = new RealFile("file 221 dir 1", 3245);
+       RealFile realFileDir22 = new RealFile("file 222 dir 1", 32345);
+       RealFile realFileDir32 = new RealFile("file 223 dir 1", 1245);
+       dirInDir12.setDirName("DirInDir1Name");
+
+       fileUnits2.add(realFileDir12);
+       fileUnits2.add(realFileDir22);
+       fileUnits2.add(realFileDir32);
+       fileUnits2.add(dirInDir1);
+
+       fileUnits.add(subDir);
+
+
+       subDir.setFileUnits(fileUnits2);
+
+        FileClient fileClient = new FileClient(rootDir);
         fileClient.listFiles();
+
+
+        fileClient.listFilesWithIterator();
     }
 }

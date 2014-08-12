@@ -1,5 +1,7 @@
 package com.learn.patterns.freemanAndFreeman.headfirst.composite.custom;
 
+import java.util.Iterator;
+
 /**
  * Created by dmitry on 8/11/14.
  */
@@ -32,4 +34,10 @@ public class RealFile extends FileUnit {
     public void printInfo() {
         System.out.println("Name - " + name + ", size - " + size);
     }
+
+   @Override
+   public Iterator createIterator()
+   {
+      return new NullIterator();
+   }
 }
