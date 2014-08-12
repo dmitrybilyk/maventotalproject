@@ -2,7 +2,8 @@ package com.learn.patterns.freemanAndFreeman.headfirst.proxy.gumball;
 
 import java.rmi.*;
  
-public class GumballMonitorTestDrive {
+public class Main2
+{
  
 	public static void main(String[] args) {
 		String[] location = {"rmi://santafe.mightygumball.com/gumballmachine",
@@ -12,7 +13,7 @@ public class GumballMonitorTestDrive {
 		if (args.length >= 0)
         {
             location = new String[1];
-            location[0] = "rmi://" + args[0] + "/gumballmachine";
+            location[0] = "rmi://" + "santafe.mightygumball.com" + "/gumballmachine";
         }
 		
 		GumballMonitor[] monitor = new GumballMonitor[location.length];

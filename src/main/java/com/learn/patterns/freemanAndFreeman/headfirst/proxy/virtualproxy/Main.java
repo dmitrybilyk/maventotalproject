@@ -1,12 +1,12 @@
 package com.learn.patterns.freemanAndFreeman.headfirst.proxy.virtualproxy;
 
 import java.net.*;
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-public class ImageProxyTestDrive {
+public class Main
+{
 	ImageComponent imageComponent;
 	JFrame frame = new JFrame("CD Cover Viewer");
     JMenuBar menuBar;
@@ -14,10 +14,10 @@ public class ImageProxyTestDrive {
 	Hashtable cds = new Hashtable();
  
 	public static void main (String[] args) throws Exception {
-		ImageProxyTestDrive testDrive = new ImageProxyTestDrive();
+		Main testDrive = new Main();
 	}
  
-	public ImageProxyTestDrive() throws Exception{
+	public Main() throws Exception{
 		cds.put("Ambient: Music for Airports","http://images.amazon.com/images/P/B000003S2K.01.LZZZZZZZ.jpg");
         cds.put("Buddha Bar","http://images.amazon.com/images/P/B00009XBYK.01.LZZZZZZZ.jpg");
         cds.put("Ima","http://images.amazon.com/images/P/B000005IRM.01.LZZZZZZZ.jpg");

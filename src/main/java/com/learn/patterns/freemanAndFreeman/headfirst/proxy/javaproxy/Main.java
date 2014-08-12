@@ -3,15 +3,16 @@ package com.learn.patterns.freemanAndFreeman.headfirst.proxy.javaproxy;
 import java.lang.reflect.*;
 import java.util.*;
 
-public class MatchMakingTestDrive {
+public class Main
+{
 	Hashtable datingDB = new Hashtable();
  	
 	public static void main(String[] args) {
-		MatchMakingTestDrive test = new MatchMakingTestDrive();
+		Main test = new Main();
 		test.drive();
 	}
  
-	public MatchMakingTestDrive() {
+	public Main() {
 		initializeDatabase();
 	}
 
