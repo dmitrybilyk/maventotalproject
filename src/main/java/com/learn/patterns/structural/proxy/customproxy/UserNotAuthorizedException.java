@@ -8,6 +8,7 @@ public class UserNotAuthorizedException extends Exception
    @Override
    public String getMessage()
    {
+//      return super.getMessage();
       return "User is not authorized";
    }
 }
