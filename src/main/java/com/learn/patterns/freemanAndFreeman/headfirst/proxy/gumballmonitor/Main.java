@@ -6,18 +6,18 @@ public class Main
 	public static void main(String[] args) {
 		int count = 0;
 
-        if (args.length < 2) {
-            System.out.println("GumballMachine <name> <inventory>");
-            System.exit(1);
-        }
+//        if (args.length < 2) {
+//            System.out.println("GumballMachine <name> <inventory>");
+//            System.exit(1);
+//        }
 
         try {
-        	count = Integer.parseInt(args[1]);
+        	count = Integer.parseInt("3");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(1);
 		}
-		GumballMachine gumballMachine = new GumballMachine(args[0], count);
+		GumballMachine gumballMachine = new GumballMachine("rmi://santafe.mightygumball.com/gumballmachine", count);
 
 		GumballMonitor monitor = new GumballMonitor(gumballMachine);
 

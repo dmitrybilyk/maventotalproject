@@ -17,8 +17,8 @@ public class Main1
 			count = Integer.parseInt("3");
 
 			gumballMachine = 
-				new GumballMachine("127.0.0.1", count);
-			Naming.rebind("//" + "127.0.0.1" + "/gumballmachine", gumballMachine);
+				new GumballMachine("santafe.mightygumball.com", count);
+			Naming.rebind("//" + "santafe.mightygumball.com" + "/gumballmachine", gumballMachine);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

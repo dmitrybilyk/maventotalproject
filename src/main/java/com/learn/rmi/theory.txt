@@ -1,0 +1,3 @@
+bid@bid-HP-ProBook-4540s:~/Dev/projects/maventotalproject/src/main/java$ javac com/learn/rmi/HelloClient.java
+
+bid@bid-HP-ProBook-4540s:~/Dev/projects/maventotalproject/src/main/java$ rmic com.learn.rmi.HelloImpl
