@@ -14,8 +14,8 @@ public class ProxyPatternTest {
     public static void main(String[] args){
         CommandExecutor executor = new CommandExecutorProxy("dik81", "035645");
         try {
-            executor.runCommand("cmd");
-            executor.runCommand("rmcmd");
+            executor.runCommand("csslint /home/bid/Dev/projects/maventotalproject/src/main/java/com/learn/patterns/structural/proxy/ProxyPatternTest.java");
+//            executor.runCommand("rmcmd");
         } catch (Exception e) {
             System.out.println("Exception Message::"+e.getMessage());
         }
