@@ -13,7 +13,7 @@ public class Main {
        Directory rootDir = new Directory();
        rootDir.setDirName("root dir");
 
-       ArrayList<FileUnit> fileUnits = new ArrayList<>();
+       ArrayList<FileUnit> fileUnits = new ArrayList<FileUnit>();
 
        Directory dirInDir1 = new Directory();
 
@@ -32,7 +32,7 @@ public class Main {
        Directory subDir = new Directory();
        subDir.setDirName("subDir dir");
 
-       ArrayList<FileUnit> fileUnits2 = new ArrayList<>();
+       ArrayList<FileUnit> fileUnits2 = new ArrayList<FileUnit>();
 
        Directory dirInDir12 = new Directory();
 
