@@ -1,5 +1,7 @@
 package com.learn.spring.springinaction.aspects;
 
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -13,15 +15,21 @@ public class MyAspect {
     public void myPointcut(){
     }
 
+    @Pointcut(value = "execution(* com.learn.spring.springinaction.aspects.Human.act(..))")
+    public void theirPointcut(){
+    }
 
-    @Before("myPointcut()")
+
+//    @Before("myPointcut()")
+    @Before("theirPointcut()")
+//    @After("execution(public void act())")
     public void printBefore(){
-        System.out.println("before");
+        System.out.println("around");
     }
-    @Before("execution(public void act())")
-    public void getNameAdvice(){
-        System.out.println("Executing Advice on getName()");
-    }
+//    @Before("execution(public void act())")
+//    public void getNameAdvice(){
+//        System.out.println("Executing Advice on getName()");
+//    }
 
 
 }

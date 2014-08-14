@@ -1,0 +1,17 @@
+Either one would work. It depends on your needs:
+If your bean identifier contains special character(s) for example (/viewSummary.html),
+it wont be allowed as the bean id, because it's not a valid XML ID. In such cases you could skip defining
+the bean id and supply the bean name instead.
+The name attribute also helps in defining aliases for your bean, since it allows specifying multiple
+identifiers for a given bean.
+
+
+ @Required annotation
+ is used in bean at setter level. Once @Required is applied on a property then it is necessary to assign value for that property.
+ It should be initialized at configuration level. The container will throw error if we do not configure valued for @Required
+ property. At setter method of the property of the bean, put the @Required annotation.
+
+ @Resource vs @Autowired
+Both, without specifying any attributes of the annotation, perform injection by type. The difference is:
+    @Resource allows you to specify a name of the injected bean
+    @Autowired allows you to mark it as non-mandatory.

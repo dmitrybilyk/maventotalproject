@@ -1,5 +1,7 @@
 package com.learn.spring.springinaction.di.model;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -19,6 +21,8 @@ public class Match implements BeanNameAware, BeanFactoryAware, ApplicationContex
     private Date date;
     private int watchersNumber;
     private int additionalSeconds;
+
+   @Resource(name = "teams")
     private Set<Team> teams;
 
     public Match(Date date, int watchersNumber, int additionalSeconds, Set<Team> teams) {
@@ -32,7 +36,14 @@ public class Match implements BeanNameAware, BeanFactoryAware, ApplicationContex
 
     }
 
-    public static Match getInstance() {
+   public Match(Date date,int watchersNumber, int additionalSeconds)
+   {
+      this.date = date;
+      this.watchersNumber = watchersNumber;
+      this.additionalSeconds = additionalSeconds;
+   }
+
+   public static Match getInstance() {
         return new Match();
     }
 
@@ -101,4 +112,10 @@ public class Match implements BeanNameAware, BeanFactoryAware, ApplicationContex
     public void afterPropertiesSet() throws Exception {
         System.out.println("properties are set successfully!!!!!!!!!");
     }
+
+   @PostConstruct
+   public void postConstructorRan(){
+      System.out.println("Post constructorrrrr");
+   }
+
 }

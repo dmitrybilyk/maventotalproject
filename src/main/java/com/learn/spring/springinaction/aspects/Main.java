@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("/springinaction/aspects.xml");
         Human human = (Human) context.getBean("human");
-        human.act("someValue");
+        human.act();
     }
 
 }

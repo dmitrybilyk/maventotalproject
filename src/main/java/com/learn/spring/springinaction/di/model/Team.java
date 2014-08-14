@@ -1,6 +1,7 @@
 package com.learn.spring.springinaction.di.model;
 
 import java.util.Set;
+import org.springframework.beans.factory.annotation.Required;
 
 /**
  * Created by dmitry on 01.05.14.
@@ -12,6 +13,7 @@ public class Team {
         return players;
     }
 
+    @Required
     public void setPlayers(Set<Player> players) {
         this.players = players;
     }

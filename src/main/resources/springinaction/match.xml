@@ -1,12 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:util="http://www.springframework.org/schema/util"
-       xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/util
-       http://www.springframework.org/schema/util/spring-util-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+       xmlns:cxf="http://cxf.apache.org/core" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:aop="http://www.springframework.org/schema/aop"
+
+       xsi:schemaLocation="http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/util
+			http://www.springframework.org/schema/util/spring-util-2.0.xsd
+			http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+			  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <context:annotation-config />
 
     <bean id="match" class="com.learn.spring.springinaction.di.model.Match" init-method="referyStarting"
             destroy-method="referyStopping" >
@@ -14,7 +21,7 @@
         <constructor-arg ref="matchDate" />
         <constructor-arg value="70000" />
         <constructor-arg value="400" />
-        <constructor-arg ref="teams" />
+        <!--<constructor-arg ref="teams" />-->
     </bean>
 
     <util:set id="teams" value-type="com.learn.spring.springinaction.di.model.Team" >
@@ -39,16 +46,17 @@
         <!--<property name="name" value="Mourinho" />-->
     </bean>
 
-    <bean id="real" class="com.learn.spring.springinaction.di.model.Real" scope="prototype"/>
+    <!--<bean id="real" class="com.learn.spring.springinaction.di.model.Real" scope="prototype"/>-->
 
     <bean id="shakhtar" class="com.learn.spring.springinaction.di.model.Shakhtar">
         <property name="players" ref="shahktarPlayers" />
         <property name="alternativeName" value="#{T(java.lang.Math).random()}" />
-        <property name="name">
-            <bean id="shakhtarName" class="java.lang.String"/>
+        <property name="name" value="Shakhtar">
+            <!--<bean id="shakhtarName" class="java.lang.String"/>-->
         </property>
          <!--/>-->
     </bean>
+
 
     <bean id="matchDate" class="java.util.Date"/>
 
@@ -92,6 +100,15 @@
         <property name="age" value="#{adriano.age * 2}" />
         <property name="number" value="7" />
     </bean>
+
+    <bean name="srnaName" class="com.learn.spring.springinaction.di.model.Player" >
+        <property name="name" value="Srna" />
+        <property name="age" value="#{adriano.age * 2}" />
+        <property name="number" value="7" />
+    </bean>
+
+    <!--<alias name="srnaName" alias="srnaAlias"/>-->
+    <alias name="srna" alias="srnaIdAlias"/>
 
     <bean id = "adriano" class="com.learn.spring.springinaction.di.model.Player" >
         <property name="name" value="Adriano" />
