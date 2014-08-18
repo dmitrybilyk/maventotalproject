@@ -21,7 +21,8 @@ import java.util.Date;
 
 //SQL JOIN
 //
-//        The JOIN keyword is used in an SQL statement to query data from two or more tables, based on a relationship between certain columns in these tables.
+//        The JOIN keyword is used in an SQL statement to query data from two or more tables, based on a relationship between
+// certain columns in these tables.
 //
 //        Tables in a database are often related to each other with keys.
 //

@@ -11,7 +11,7 @@ public class Main {
 
         // ResourceBundle_en_US.properties file will be used
 
-        ResourceBundle resourceBundle = ResourceBundle.getBundle("ResourceBundle", Locale.US);
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("ResourceBundle", Locale.FRENCH);
 
         System.out.println("Message in " + Locale.US + " : " + resourceBundle.getString("name"));
 
