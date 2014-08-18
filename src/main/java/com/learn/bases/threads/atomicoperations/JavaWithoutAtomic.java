@@ -10,7 +10,8 @@ public class JavaWithoutAtomic {
  
     public static void main(String[] args) throws InterruptedException {
  
-        ProcessingWithAtThread pt = new ProcessingWithAtThread();
+//        ProcessingWithAtThread pt = new ProcessingWithAtThread();
+        ProcessingThread pt = new ProcessingThread();
         Thread t1 = new Thread(pt, "t1");
         t1.start();
         Thread t2 = new Thread(pt, "t2");

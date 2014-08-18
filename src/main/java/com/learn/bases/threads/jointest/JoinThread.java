@@ -2,12 +2,12 @@ package com.learn.bases.threads.jointest;
 
 public class JoinThread {
     public static void main(String[] args) {
-        Thread thread2 = new Thread(new WaitRunnable());
+//        Thread thread2 = new Thread(new WaitRunnable());
         Thread thread3 = new Thread(new WaitRunnable());
 
-        System.out.println("Current time millis first: " + System.currentTimeMillis());
+//        System.out.println("Current time millis first: " + System.currentTimeMillis());
 
-        thread2.start();
+//        thread2.start();
 
 //        try {
 //            thread2.join();

@@ -7,7 +7,7 @@ public class JavaDaemonThread {
         dt.setDaemon(true);
         dt.start();
         //continue program
-        Thread.sleep(7000);
+        Thread.sleep(5000);
         System.out.println("Finishing program");
     }
  

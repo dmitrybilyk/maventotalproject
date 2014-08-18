@@ -42,10 +42,10 @@ reliable communication between threads.
 
 You can use the synchronized keyword for the definition of a method.
 This would ensure that only one thread can enter this method at the same time.
-Another threads which is calling this method would wait until the first threads
+Another threads which are calling this method would wait until the first threads
 leaves this method.
 
-public synchronized void critial() {
+public synchronized void critical() {
   // some thread critical stuff
   // here
 }
@@ -90,7 +90,7 @@ can change the data
 
 Defensive Copies
 
-You must protected your classes from calling code. Assume that calling
+You must protect your classes from calling code. Assume that calling
 code will do its best to change your data in  way you didn't expect it.
 While this is especially true in case of immutable data it is also true
 for non-immutable data which you still not expect that this data is
@@ -101,7 +101,7 @@ only return copies of data to calling code.
 
 
 
-Threads pools with the Executor Framework
+Thread pools with the Executor Framework
 
 Thread pools manage a pool of worker threads. The thread pools contains
 a work queue which holds tasks waiting to get executed.
@@ -131,12 +131,12 @@ deadlocked if all processes are waiting for an event which another process
 in the same set has to cause.
 
 For example if thread A waits for a lock on object Z which thread B holds and
-thread B wait for a look on object Y which is hold be process A then these two
-processes are looked and cannot continue in their processing.
+thread B waits for a lock on object Y which is hold be process A then these two
+processes are locked and cannot continue in their processing.
 
 When working with Threads, it’s also possible to change the priority of a Thread.
 In the Java Virtual Machine, the Thread scheduler, use a priority-based scheduling.
-So if a Thread enter in Runnable state with a higher priority
+So if a Thread enters in Runnable state with a higher priority
 than the running Thread, the new Thread will run and the current running
 thread will be returned to Runnable state and waits for its turn. But this
 behavior is not guaranteed and is completely depending on the virtual machine
@@ -145,9 +145,9 @@ So, do not rely on thread priorities, just use them to improve efficiency of you
 
  If you don’t specify a priority, the used priority, will be the priority of
  the current Thread.
- With help of yield() static method you can give an oppotunity to other threads to run.
+ With help of yield() static method you can give an opotunity to other threads to run.
  (you turn current thread to Runnable (waiting for run) state). Also if you don't
- set a priority, the priority of current therad will be set to new  thread.
+ set a priority, the priority of current thread will be set to new  thread.
  But in practise you don't have to rely on priorities. They really unpredictable.
 
 
@@ -283,4 +283,33 @@ task and then we can use Java Thread Pool Executor to process these asynchronous
 
 
 
+
+Fork join framework.
+
+ForkJoinPool - it's a wrapper for ExecutorService. The number of threads in pool could be changed. And
+you don't have to shutdown completed pool, because all it's threads are deamons.
+
+
+ForkJoinTask
+This is an abstract class for creating tasks that run within a ForkJoinPool. The Recursiveaction and
+RecursiveTask are the only two direct, known subclasses of ForkJoinTask. The only difference between
+these two classes is that the RecursiveAction does not return a value while RecursiveTask does have a
+return value and returns an object of specified type.
+In both cases, you would need to implement the compute method in your subclass that performs the main
+computation desired by the task.
+The ForkJoinTask class provides several methods for checking the execution status of a task. The isDone()
+method returns true if a task completes in any way. The isCompletedNormally() method returns true if a task
+completes without cancellation or encountering an exception, and isCancelled() returns true if the task was
+cancelled. Lastly, isCompletedabnormally() returns true if the task was either cancelled or encountered an
+exception.
+
+
+
+Difference between Fork/Join Framework And ExecutorService
+
+The main difference between the Fork/Join and the Executor frameworks is the work-stealing algorithm.
+Unlike the Executor framework, when a task is waiting for the finalization of the sub-tasks it has
+created using the join operation, the thread that is executing that task (called worker thread )
+looks for other tasks that have not been executed yet and begins its execution. By this way, the
+threads take full advantage of their running time, thereby improving the performance of the application.
 
