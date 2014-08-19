@@ -508,7 +508,7 @@
                             
                          --%>
                                 
-                        <%-- Track whether there is a preselected paymentInfo - then we mustn't fill the paymentDetailsForm form --%>
+                        <%-- Track whether there is a preselected paymentInfo - then we mustn't fillTheCashMachine the paymentDetailsForm form --%>
                         <c:set var="usingAvailablePaymentInfo" value="false" />
                         
                         <c:if test="${fn:length(availablePaymentInfos) gt 0}">
@@ -770,7 +770,7 @@
                                             <div class="form_field-input">
                                                 <input type="checkbox" id="payment-api-${mode.type}-allowCreditInquiry" name="allowCreditInquiry" value="true" ${not empty paymentContainer.paymentInfo[mode.type].allowCreditInquiry ? 'checked="checked"' : ''} />
                                                 <br/>Bitte beachten sie die  
-                                                <a target="blank" href="http://www.ratepay.com/zusaetzliche-geschaeftsbedingungen-und-datenschutzhinweis">Zus&auml;tzlichen Geschäftsbedingungen und Datenschutzhinweis</a></a>
+                                                <a target="blank" href="http://www.ratepay.com/zusaetzliche-geschaeftsbedingungen-und-datenschutzhinweis">Zus&auml;tzlichen Geschï¿½ftsbedingungen und Datenschutzhinweis</a></a>
                                             </div>
 
                                             <div class="form_field-label directDebitData">

@@ -40,7 +40,7 @@ public class SingleProductDTOPopulationService extends AbstractProductDTOPopulat
 	 * Populate the target instance with values from the source instance. Test
 	 *
 	 * @param orderEntryModel the source object
-	 * @param productDTO the target to fill
+	 * @param productDTO the target to fillTheCashMachine
 	 * @throws de.hybris.platform.servicelayer.dto.converter.ConversionException if an error occurs
 	 */
 	@Override

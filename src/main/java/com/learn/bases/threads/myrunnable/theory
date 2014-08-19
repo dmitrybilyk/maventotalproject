@@ -9,8 +9,8 @@
 //that only a single thread can execute a block of code at the same time
 //that each thread entering a synchronized block of code sees the effects of all
 //previous modifications that were guarded by the same lock
-//Synchronization is necessary for mutually exclusive access to blocks of and for reliable
-// communication between threads.
+//Synchronization is necessary for mutually exclusive access to blocks of code  and for
+reliable communication between threads.
 // You can use the synchronized keyword for the definition of a method. This would
 // ensure that only one thread can enter this method at the same time. Another threads
 // which is calling this method would wait until the first threads leaves this method.
@@ -111,7 +111,7 @@ full overhead of the Thread class would be excessive.
 
 
 If only deamons exist java shutdowned automatically.
-If there are no user theads deamon will die. Even if it doesn't finish
+If there are no user threads deamon will die. Even if it doesn't finish
 it's job.
 
 

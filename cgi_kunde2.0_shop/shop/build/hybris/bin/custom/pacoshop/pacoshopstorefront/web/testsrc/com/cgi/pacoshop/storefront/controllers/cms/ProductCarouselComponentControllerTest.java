@@ -72,7 +72,7 @@ public class ProductCarouselComponentControllerTest
 	}
 
 	/**
-	 * Test fill model.
+	 * Test fillTheCashMachine model.
 	 */
 	@Test
 	public void testFillModel()

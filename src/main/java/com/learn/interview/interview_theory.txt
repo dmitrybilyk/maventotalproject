@@ -1,0 +1,918 @@
+EE
+
+HTTP
+
+http  - it's a protocol to communicate between client (browser) and server (container of servlets - tomcat...)
+It is used for dynamic requests. Http transactions are either request or a response.
+Transaction consists of 3 parts:
+- a single request or response line.
+request line consists of http method (usually GET or POST) followed by document address and the
+HTTP version number being used. GET /contents.html HTTP/1.1 uses HTTP GET method to request the
+document contents.html using HTTP version 1.1.. The response line contains HTTP status code that
+indicates whether the request was successful (understood and satisfied) or if not, why not.
+-  the HTTP headers - this is a set of fields used to exchange information between the client and the server.
+For example, the following tells the server that the client will accept the ISO8859.5 and unicode 1.1
+character sets:
+Accept-Charset: iso-8859-5, unicode-1-1
+
+The client uses the headers to tell the server about it's configuration and the document type
+will accept. The server, in turn, uses the header to return information about the requested
+document, such as it's age and location.
+
+- the HTTP body. It is optionally used by the client to send any additional information (see POST method).
+The server uses the body to return the requested document.
+
+HTTP URL - universal resource locator URL (also known as URI) - are used on the WEB to identify
+documents, images, downloadable files, services, electronic mailboxes and other resources.
+It consists of protocol name (http://), host (ip address or domain name to access to), port -
+(socket or service number) - to connect on the host. Default is 80 (the TCP/IP port), path -
+is the path to the document  on the host.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+CORE
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+PRINCIPLES OF OBJECT-ORIENTED PROGRAMMING
+
+The main principles of object-orienting programming:
+
+1. Inheritance
+2. Incapsulation
+3. Polimorphysm
+
+Also we abstraction
+
+One interface - many implementations. In java polimorthism includes
+overriding, overloading. You should always use type of parent class in parameters
+of method, return type of method, in object creation.
+Also we may see polimorthism in generics. We may pass any subclass of generic type.
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+THREADS
+
+50 questions:
+http://www.journaldev.com/1162/java-multi-threading-concurrency-interview-questions-with-answers#thread-safety
+
+
+The base means for concurrency are is the java.lang.Thread class.
+A Thread executes an object of type java.lang.Runnable
+
+Runnable is an interface which defines the run() method. This method is called
+by the Thread object and contains the work which should be done. Therefore the
+"Runnable" is the task to perform. The Thread is the worker who is doing
+this task.
+
+Process is a separate unit of work. It cant interact directly with other processes.
+It shares data only via operation system. There are situations when process is quite
+free, but it can't share this free memory with other processes. Thread can do this.
+Thread is a 'lightweight' process. By default java application runs in single process
+- thread. But you can adjust the application in order to optimize the memory usage.
+Threads can share objects between each other. Tasks are devided into small subtasks
+and could be performed in parallel.
+
+Threads have their own call stack, but can also access shared data.
+Therefore you have two basic problems, visibility and access problems.
+
+A visibility problem occurs if thread A reads shared data which is later changed
+by thread B and thread A is unaware of this change.
+
+An access problem can occur if several thread access and change the same shared data
+at the same time. Java provides locks to protect certain parts of the code to be
+executed by several threads at the same time. The simplest way of locking a certain
+method or Java class is to define the method or class with the synchronized
+keyword.
+
+The synchronized keyword in Java ensures:
+
+    that only a single thread can execute a block of code at the same time
+
+    that each thread entering a synchronized block of code sees the effects
+    of all previous modifications that were guarded by the same lock
+
+Synchronization is necessary for mutually exclusive access to blocks of and for
+reliable communication between threads.
+
+You can use the synchronized keyword for the definition of a method.
+This would ensure that only one thread can enter this method at the same time.
+Another threads which are calling this method would wait until the first threads
+leaves this method.
+
+public synchronized void critical() {
+  // some thread critical stuff
+  // here
+}
+
+
+You can also use the synchronized keyword to protect blocks of code within a method.
+This block is guarded by a key, which can be either a string or an object.
+This key is called the lock. All code which is protected by the same lock
+can only be executed by one thread at the same time.
+
+Volatile
+
+If a variable is declared with the volatile keyword then it is guaranteed that
+any thread that reads the field will see the most recently written value.
+The volatile keyword will not perform any mutual exclusive lock on the variable.
+All fields are cached in thread. In order to get actual data
+(directly from register of memory) we use volatile.
+
+Atomic operation
+
+An atomic operation is an operation which is performed as a single unit of work
+without the possibility of interference from other operations.
+
+
+ The i++ operation first reads the value which is currently stored in i
+ (atomic operations) and then it adds one to it  (atomic operation).
+ But between the read and the write the value of i might have changed.
+
+Since Java 1.5 the java language provides atomic variables, e.g. AtomicInteger
+or AtomicLong which provide methods like getAndDecrement(), getAndIncrement()
+and getAndSet() which are atomic.
+
+The Java memory model guarantees that each thread entering a synchronized block of
+code sees the effects of all previous modifications that were guarded by the same lock.
+
+
+For all mutable fields, e.g. Arrays, that are passed from the outside to the
+class during the construction phase, the class needs to make a defensive-copy
+of the elements to make sure that no other object from the outside still
+can change the data
+
+
+Defensive Copies
+
+You must protect your classes from calling code. Assume that calling
+code will do its best to change your data in  way you didn't expect it.
+While this is especially true in case of immutable data it is also true
+for non-immutable data which you still not expect that this data is
+changed outside your class.
+
+To protect your class against that you should copy data you receive and
+only return copies of data to calling code.
+
+
+
+Thread pools with the Executor Framework
+
+Thread pools manage a pool of worker threads. The thread pools contains
+a work queue which holds tasks waiting to get executed.
+
+A thread pool can be described as a collection of Runnable objects (work queue)
+and a connections of running threads.
+
+These threads are constantly running and are checking the work query for new work.
+If there is new work to be done they execute this Runnable. The Thread class itself
+provides a method, e.g. execute(Runnable r) to add a new Runnable object
+to the work queue.
+
+
+Futures and Callables
+
+ In case you expect your threads to return a computed result you can use
+ java.util.concurrent.Callable.
+ The Callable object allows to return values after completion.
+
+The Callable object uses generics to define the type of object which is returned.
+
+
+Deadlock
+
+A concurrent application has the risk of a deadlock. A set of processes are
+deadlocked if all processes are waiting for an event which another process
+in the same set has to cause.
+
+For example if thread A waits for a lock on object Z which thread B holds and
+thread B waits for a lock on object Y which is hold be process A then these two
+processes are locked and cannot continue in their processing.
+
+When working with Threads, it’s also possible to change the priority of a Thread.
+In the Java Virtual Machine, the Thread scheduler, use a priority-based scheduling.
+So if a Thread enters in Runnable state with a higher priority
+than the running Thread, the new Thread will run and the current running
+thread will be returned to Runnable state and waits for its turn. But this
+behavior is not guaranteed and is completely depending on the virtual machine
+you are working on.
+So, do not rely on thread priorities, just use them to improve efficiency of your program.
+
+ If you don’t specify a priority, the used priority, will be the priority of
+ the current Thread.
+ With help of yield() static method you can give an opotunity to other threads to run.
+ (you turn current thread to Runnable (waiting for run) state). Also if you don't
+ set a priority, the priority of current thread will be set to new  thread.
+ But in practise you don't have to rely on priorities. They really unpredictable.
+
+
+
+ Thread lifecycle:
+
+- !New! is the thread state for a thread which was created but has not yet started.
+- !Ready!. Thread scheduling decides when the thread could actually start
+- A thread in the !runnable! state is executing from the JVM point of view but in
+fact it may be waiting for some resources from the operating system.
+- !Timed waiting! is a thread state for a thread waiting with a specified waiting time.
+A thread is in the timed waiting state due to calling one of the following methods with
+a specified positive waiting time:
+
+
+    Thread.sleep(sleeptime)
+    Object.wait(timeout)
+    Thread.join(timeout)
+    LockSupport.parkNanos(timeout)
+    LockSupport.parkUntil(timeout)
+
+- A thread is in the !waiting! state due to the calling one of the following
+methods without timeout:
+
+
+    Object.wait()
+    Thread.join()
+    LockSupport.park()
+
+
+Note, that thread in the waiting state is waiting for another thread to perform
+a particular action. For example, a thread that has called Object.wait() on
+an object is waiting for another thread to call Object.notify() or Object.notifyAll()
+on that object.
+
+- Thread is in the !blocked! state while waiting for the monitor lock to enter a
+synchronized block or method or to reenter a synchronized block or method after
+calling Object.wait().
+
+
+Java provides three methods that threads can use to communicate with each other:
+wait, notify, and notifyAll. These methods are defined for all Objects (not just Threads).
+The idea is that a method called by a thread may need to wait for some condition to be
+satisfied by another thread; in that case, it can call the wait method, which causes its
+thread to wait until another thread calls notify or notifyAll.
+
+
+
+
+Thread Methods:
+
+- static sleep(long millis)
+
+Causes the currently executing thread to sleep (temporarily cease
+execution) for the specified number of milliseconds.
+The thread does not lose ownership of any monitors.
+
+- static yield()
+
+A hint to the scheduler that the current thread is willing to yield
+its current use of a processor. The scheduler is free to ignore this
+hint.
+
+- join(long millis)
+
+/**
+     * Waits at most {@code millis} milliseconds for this thread to
+     * die. A timeout of {@code 0} means to wait forever.
+     *
+     * <p> This implementation uses a loop of {@code this.wait} calls
+     * conditioned on {@code this.isAlive}.
+
+     @throws  InterruptedException
+          *          if any thread has interrupted the current thread. The
+          *          <i>interrupted status</i> of the current thread is
+          *          cleared when this exception is thrown.
+
+
+- interrupt()
+* Interrupts this thread.
+
+
+From Object:
+
+- wait()
+
+tells the calling thread to give up the monitor and go to sleep until some
+other thread enters the same monitor and calls notify( ).
+
+- notify()
+
+wakes up the first thread that called wait() on the same object.
+
+
+
+A thread pool manages the pool of worker threads, it contains a queue that
+keeps tasks waiting to get executed.
+We can specify the number of threads that will be alive when we create
+ThreadPoolExecutor instance and we can limit the size of thread pool and
+create our own RejectedExecutionHandler implementation to handle the jobs
+that can’t fit in the worker queue.
+
+
+
+
+Callable interface.
+java.util.concurrent.Callable interface in concurrency package that is similar
+to Runnable interface but it can return any Object and able to throw Exception.
+Callable interface use Generic to define the return type of Object.
+Executors class provide useful methods to execute Callable in a thread pool.
+Since callable tasks run in parallel, we have to wait for the returned Object.
+Callable tasks return java.util.concurrent.Future object. Using Future we can
+find out the status of the Callable task and get the returned Object.
+It provides get() method that can wait for the Callable to finish and then
+return the result.
+
+Future provides cancel() method to cancel the associated Callable task.
+There is an overloaded version of get() method where we can specify the
+time to wait for the result, it’s useful to avoid current thread getting
+blocked for longer time. There are isDone() and isCancelled() methods to
+find out the current status of associated Callable task.
+
+What if we want to override some of the methods of Future interface, for example
+overriding get() method to timeout after some default time rather than waiting
+indefinitely, in this case FutureTask class comes handy that is the base
+implementation of Future interface.
+FutureTask is base concrete implementation of Future interface and provides
+asynchronous processing. It contains the methods to start and cancel a
+task and also methods that can return the state of the FutureTask as whether
+it’s completed or cancelled. We need a callable object to create a future
+task and then we can use Java Thread Pool Executor to process these asynchronously.
+
+
+Fork join framework.
+
+ForkJoinPool - it's a wrapper for ExecutorService. The number of threads in pool could be changed. And
+you don't have to shutdown completed pool, because all it's threads are deamons.
+
+
+ForkJoinTask
+This is an abstract class for creating tasks that run within a ForkJoinPool. The Recursiveaction and
+RecursiveTask are the only two direct, known subclasses of ForkJoinTask. The only difference between
+these two classes is that the RecursiveAction does not return a value while RecursiveTask does have a
+return value and returns an object of specified type.
+In both cases, you would need to implement the compute method in your subclass that performs the main
+computation desired by the task.
+The ForkJoinTask class provides several methods for checking the execution status of a task. The isDone()
+method returns true if a task completes in any way. The isCompletedNormally() method returns true if a task
+completes without cancellation or encountering an exception, and isCancelled() returns true if the task was
+cancelled. Lastly, isCompletedabnormally() returns true if the task was either cancelled or encountered an
+exception.
+
+
+
+Difference between Fork/Join Framework And ExecutorService
+
+The main difference between the Fork/Join and the Executor frameworks is the work-stealing algorithm.
+Unlike the Executor framework, when a task is waiting for the finalization of the sub-tasks it has
+created using the join operation, the thread that is executing that task (called worker thread )
+looks for other tasks that have not been executed yet and begins its execution. By this way, the
+threads take full advantage of their running time, thereby improving the performance of the application.
+
+
+
+
+Some important interfaces and classes in Java Concurrency Lock API are:
+-Lock
+-Condition
+-ReadWriteLock
+-ReentrantLock: This is the most widely used implementation class of Lock interface.
+This class implements the Lock interface in similar way as synchronized keyword.
+Apart from Lock interface implementation, ReentrantLock contains some utility
+methods to get the thread holding the lock, threads waiting to acquire the lock etc.
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+GENERICS
+
+Generics work only with objects
+
+
+How Generics work in Java
+This is a popular Java Generics interview question which comes in my mind little late,
+It didn't come when I first know about generics in Java but a while later, nevertheless
+I find it quite useful to know about how generics work in java behind the scene.
+The buzzing keyword is "Type Erasure", you guessed it right it’s the same thing we used
+to in our schools for erasing our mistakes in writing or drawing :). Same thing is done
+by Java compiler, when it sees code  written using Generics it completely erases that
+code and convert it into raw type i.e. code without Generics. All type related information
+is removed during erasing. So your ArrayList<Gold> becomes plain old ArrayList  prior
+to JDK 1.5, formal type parameters e.g. <K, V> or <E> gets replaced by either Object
+or Super Class of the Type. Also when the translated code is not type correct compiler
+inserts a type casting operator. This all done behind the scene so you don't need to worry
+about what important to us is that Java compiler guarantees type-safety and flag any
+type-safety relate error during compilation. In short Generics in Java is syntactic
+sugar and doesn’t store any type related information at runtime. All type related
+information is erased by Type Erasure, this was the main requirement while developing
+Generics feature in order to reuse all Java code written without Generics.
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+EXCEPTIONS
+
+Best practices you must consider and follow
+
+Never swallow the exception in catch block
+Declare the specific checked exceptions that your method can throw
+Do not catch the Exception class rather catch specific sub classes
+Never catch Throwable class
+Always correctly wrap the exceptions in custom exceptions so that stack trace is not lost
+Either log the exception or throw it but never do the both
+Never throw any exception from finally block
+Always catch only those exceptions that you can actually handle
+Don't use printStackTrace() statement or similar methods
+Use finally blocks instead of catch blocks if you are not going to handle exception
+Remember "Throw early catch late" principle
+Always clean up after handling the exception
+Throw only relevant exception from a method
+Never use exceptions for flow control in your program
+Validate user input to catch adverse conditions very early in request processing
+Always include all information about an exception in single log message
+Pass all relevant information to exceptions to make them informative as much as possible
+Always terminate the thread which it is interrupted
+Use template methods for repeated try-catch
+Document all exceptions in your application in javadoc
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+COLLECTIONS
+
+Iterator fail-safe property work with the clone of underlying collection, hence it’s not affected by any modification
+in the collection. By design, all the collection classes in java.util package are fail-fast whereas collection classes
+in java.util.concurrent are fail-safe. Fail-fast iterators throw ConcurrentModificationException whereas fail-safe
+iterator never throws ConcurrentModificationException. Check this post for CopyOnWriteArrayList Example.
+
+
+What is difference between Comparable and Comparator interface?
+
+Comparable and Comparator interfaces are used to sort collection or array of objects.Comparable interface is
+used to provide the natural sorting of objects and we can use it to provide sorting based on single logic.
+Comparator interface is used to provide different algorithms for sorting and we can chose the comparator we
+want to use to sort the given collection of objects.
+
+
+While passing a Collection as argument to a function, how can we make sure the function will not be able to modify it?
+
+We can create a read-only collection using Collections.unmodifiableCollection(Collection c) method before passing it
+as argument, this will make sure that any operation to change the collection will throw UnsupportedOperationException.
+
+
+How can we create a synchronized collection from given collection?
+
+We can use Collections.synchronizedCollection(Collection c) to get a synchronized (thread-safe) collection backed by
+the specified collection.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+HASHCODE and EQUALS
+
+    If o1.equals(o2), then o1.hashCode() == o2.hashCode()should always be true.
+    If o1.hashCode() == o2.hashCode is true, it doesn’t mean that o1.equals(o2) will be true.
+
+    If the class overrides equals() method, it should also override hashCode() method.
+    The class should follow the rules associated with equals() and hashCode() for all instances. Please refer earlier
+    question for these rules.
+    If a class field is not used in equals(), you should not use it in hashCode() method.
+    Best practice for user defined key class is to make it immutable, so that hashCode() value can be cached for fast
+    performance. Also immutable classes make sure that hashCode() and equals() will not change in future that will
+    solve any issue with mutability.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+GROOVY
+
+== means equals on all types. In Java there's a wierd part of the syntax where == means
+equality for primitive types and == means identity for objects.
+Since we're using autoboxing this would be very confusing for Java developers
+(since x == 5 would be mostly false if x was 5  . So for simplicity == means equals()
+in Groovy. If you really need the identity, you can use the method "is" like foo.is(bar).
+This does not work on null, but you can still use == here: foo==null.
+
+declaring array
+int[] a = [1,2,3]
+
+You may use usual for.
+for (int i=0; i < len; i++) {...}
+But you can use
+for (i in 0..len-1) {...}
+or
+for (i in 0..<len) {...}
+or
+len.times {...}
+
+Semicolons are optional.
+Use them if you like (though you must use them to put several statements on one line).
+
+The return keyword is optional.
+
+You can use the this keyword inside static methods (which refers to this class).
+
+Methods and classes are public by default.
+
+Inner (non-static nested) classes are not supported.
+In most cases you can use closures instead, e.g. to implement interfaces.
+Static nested classes are supported.
+
+The throws clause in a method signature is not checked by the Groovy compiler,
+because there is no difference between checked and unchecked exceptions.
+
+You will not get compile errors like you would in Java for using undefined members
+or passing arguments of the wrong type.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+JQUERY
+
+Global variables - they a available to window object.
+If we want that function execute while page loads we have to
+wrap it in '( )' (pars).
+You may use custom attribute in html. it should start with
+'data-'. Then we may use this value. In jquery - with .data( method.
+We may ignore 'data-' in parantheties.
+siblings('button') - we get all the buttons that are on the same level.
+
+.end() - we use this method if we want to go back on 1 level in the chain of
+objects.
+
+
+The better way - to use "on" method with ('click') param (for example). Because
+eventually 'on' method is called by jQuery. The same for bind method.
+
+When we use click we add eventHandler to all objects of the dom. The best way -
+to use live method if we want to clone element (appendTo). It only checks that
+'h2' element is clicked (if live('h2')) and then copies this element to dom.
+In this way eventHandler - the part of the document (not h2).
+
+If you work with element you use after - to append after. If you create the element-
+use insertAfter() method.
+
+
+if we use function name with '()' then function will be called emmidietly.
+Otherwise, it will not.
+
+EveryThing in javascript is an object - even functions. They have fields and
+methods.
+
+We may use ~~true to return 1... ~~false - to return 0
+
+
+all methods - load, getJSON, get, post - eventually call JQUERY.ajax().
+
+serialize method helps us to form name-value pairs from form inputs!!!
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+AJAX
+
+Asynchronous JavaScript and XML (AJAX) is the art of exchanging data with a server,
+and updating parts of a web page – without reloading the whole webpage.
+JavaScript and the XMLHttpRequest object provide a method for exchanging data
+asynchronously between browser and server to avoid full page reloads.
+The core of AJAX is the XMLHttpRequest object (available in client side scripting
+languages like javascript). The XMLHttpRequest object is used to exchange data with
+a server behind the scenes.
+Requests will only succeed if they are made to the same server that served the
+original web page
+
+To send request and set request attributes, XMLHttpRequest object has some methods:
+- a) open(method, url, isAsync, userName, password)
+- b) setRequestHeader(name, value)
+Upon successful initialization of a request, the setRequestHeader method of the
+XMLHttpRequest object can be invoked to send HTTP headers with the request.
+- c) send(payload)
+  To send an HTTP request, the send method of the XMLHttpRequest must be invoked.
+  This method accepts a single parameter containing the content to be sent with
+  the request.
+  The content is necessary in POST requests. For GET methods, imply pass null
+  as parameter.
+
+- 4) abort(). The abort method ensures that the callback method does not get
+invoked in an asynchronous request.
+
+onreadystatechange is a event listener registered with XMLHttpRequest request.
+onreadystatechange stores a function that will process the response returned
+from the server. It will be called for all important events in request’s life cycle.
+Every time the step is completed in request processing, the value of readyState will
+be changed and set to some other value. Lets have a look at possible values:
+
+0 : request not initialized
+1 : server connection established
+2 : request received
+3 : processing request
+4 : request finished and response is ready to be handled
+
+
+To get the response from a server, responseText or responseXML property of
+the XMLHttpRequest object is used
+
+responseText : Get the response from server as a string
+responseXML : Get the response from server as XML
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+GIT
+
+GIT - это сложная распределенная система контроля версий. ГИТ работает с состояниями
+файлов, а не с самими файлами.
+
+сначала apt-get install git и
+установка имени и почты
+
+git config --global user.name dmitrybilyk
+git config --global user.email dmitry.bilyk@gmail.com
+
+create new repository in the dir you are in at the moment
+git init (.git dir is created)
+
+to add file (files) to repository
+git add hello.html
+
+to commit to repository
+git commit -m "First commit"
+
+to check the current status of repository
+git status
+
+to add changes to git repository
+git add
+
+to discard (revert) changes
+git checkout
+
+to index (add) changes (to stage...)
+git add hello.html
+
+to unstage (remove indexed changes from git)
+git reset
+
+to see history
+git log
+
+to see history in one row
+git log --pretty=oneline
+
+some variants:
+git log --pretty=oneline --max-count=2
+git log --pretty=oneline --since='5 minutes ago'
+git log --pretty=oneline --until='5 minutes ago'
+git log --pretty=oneline --author='dmitrybilyk'
+git log --pretty=oneline --all
+
+to get old versions of files
+git checkout <hash>
+then cat hello.html to see the old content
+
+git checkout master - to go gack to newest changes in master branch
+
+
+to create tag of the first version
+git tag v1
+
+to go to the tag before current
+git checkout v1^
+
+
+to see tags in the log
+git hist master -all
+
+to revert unindexed (no add was triggered yet) changes
+git checkout hello.html
+
+to revert indexed changes
+git reset HEAD hello.html (and we also have to call checkout in order to remove changes in
+file)
+
+to revert last commit
+git revert HEAD
+
+to remove tag oops from repository
+git tag -d oops
+
+to change existed commit (in order not to add new)
+git commit --amend -m "author/email"
+
+to move file to lib folder
+git mv hello.html lib
+
+
+
+to create a branch with the name 'style'
+git checkout -b style   where -b - shortcat for branch...
+
+git checkout master - go to master branch
+
+git merger master - merge from master to style branch
+
+to know the names of removed repositories
+git remote
+
+show local branches
+git branch
+
+show all remote branches
+git branch -a
+
+to get new commits but without affecting of changed files - use fetch
+to merger changes fils - use merge.
+But 'pull' command does these two thins togather!
+
+to ignore file or path from to be staged
+git update-index --assume-unchanged <file>
+
+git rm --cached file - remove file from git
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+SPRING TRANSACTION MANAGEMENT
+
+
+http://www.byteslounge.com/tutorials/spring-transaction-propagation-tutorial
+
+Spring transaction propagation strategies:
+
+1. Required.
+If there is already existed transaction, it will be used, otherwise - new will be created.
+If we have several methods all marked with Required - we will have a single physical
+transaction. So, if something wrong in inner bean - the outer bean will always rollback.
+
+Note: The only exceptions that set a transaction to rollback state by default are the
+unchecked exceptions (like RuntimeException). If you want checked exceptions to also set
+transactions to rollback you must configure them to do so
+
+2. REQUIRES_NEW behavior means that a new physical transaction will always be created
+by the container. In other words the inner transaction may commit or rollback independently
+of the outer transaction, i.e. the outer transaction will not be affected by the inner
+transaction result: they will run in distinct physical transactions.
+
+3. NESTED behavior. With savepoints. Used in jdbc.
+
+4. MANDATORY behavior
+ The MANDATORY behavior states that an existing opened transaction must already exist.
+ If not an exception will be thrown by the container.
+
+5. NOT_SUPPORTED behavior
+The NOT_SUPPORTED behavior will execute outside of the scope of any transaction.
+If an opened transaction already exists it will be paused.
+
+6. SUPPORTS behavior
+The SUPPORTS behavior will execute in the scope of a transaction if an opened transaction
+already exists. If there isn't an already opened transaction the method will execute
+anyway but in a non-transactional way.
+
+
+
+
+ACID
+
+Isolation level defines how the changes made to some data repository by one
+transaction affect other simultaneous concurrent transactions, and also how
+and when that changed data becomes available to other transactions.
+
+
+Isolatoin levels:
+
+READ_UNCOMMITTED isolation level states that a transaction may read data that
+is still uncommitted by other transactions.
+READ_COMMITTED isolation level states that a transaction can't read data that
+is not yet committed by other transactions. This means that the dirty read is
+no longer an issue. But we can have non-repeatable read - it when transaction A
+begins to read, then transaction B changes and commits. And then transaction A
+tries to commit it's changes. But it has not actual data.
+REPEATABLE_READ
+DEFAULT - default isolation level of the database we work with at the moment.
+
+
+  	              dirty reads 	non-repeatable reads 	phantom reads
+READ_UNCOMMITTED 	yes 	        yes 	                yes
+READ_COMMITTED 	    no 	            yes 	                yes
+REPEATABLE_READ 	no 	            no 	                    yes
+SERIALIZABLE 	    no 	            no 	                    no
+
+
+
+
+
+ACID is the acronym for the four properties guaranteed by transactions: atomicity,
+consistency, isolation, and durability.
+
+Atomicity – means a transaction must execute completely or not at all. This means
+atomicity guaranteed that operations with in a transaction undergo an all-or-nothing
+paradigm – either all the database updates are performed , or nothing happens is a n
+error occurs at any time
+
+Consistency – is a transactional characteristic that must be enforced by both the
+transactional system and the application developer. Consistency guarantees that a
+transaction leaves the system’s state to be consistent after a transaction completes.
+Consistency refers to the integrity of the underlying data store. Atomicity helps
+enforce the system always appears to be consistent.
+
+Isolated – makes a transaction to execute without interference from another process
+or transactions. Isolation protects concurrently executing transactions from seeing
+each others incomplete results. Isolation allows multiple transactions to read or
+write to a database without knowing about each other because each transaction is
+isolated from each others.
+
+Durability – means that all the data changes made during the course of a transaction
+must be written to some type of physical storage before the transaction is
+successfully completed.
+
+
+
+//todo
+spring jpa transactions
+http://www.byteslounge.com/tutorials/spring-change-transaction-isolation-level-example
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+PERSIST VS MERGE
+
+THe difference is in what you're doing with the object after saving it to the database.
+Persist takes an entity instance, adds it to the context and makes that instance managed (ie future updates to the entity
+will be tracked)
+Merge creates a new instance of your entity, copies the state from the supplied entity, and makes the new copy managed.
+The instance you pass in will not be managed (any changes you make will not be part of the transaction - unless you call merge again).
+
+
+HIBERNATE INHERITANCE STRATEGIES
+
+Single table:
+
+- Data not normalized;
+- Constraints not null could not be applied;
+- We use simple select using discriminator;
+- To insert or update we use single insert or update;
+
+Table per subclass class (joined strategy):
+
+- Normalized;
+- Not null could be applied;
+- Joins among table. For example fetching FourWheeler will require a join on FourWheeler and Vehicle table.
+If all user needs to be fetched than it will put a join for all three tables
+
+Table per each concrete class:
+- One table for each concrete class.
+- Not maintainable.
+- Change in base class leads to changes in all tables of derived class.
+- to retrieve data we use Separate Select or Union Select.
+- One insert or update for each subclass.
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+SPRING SECURITY
+
+Spring Security is a customizable authentication and access service
+framework for server side Java-based enterprise software applications.
+two major areas of application security are “authentication” and
+“authorization” (or “access-control”). These are the two main areas
+that Spring Security targets.
+
+1. “Authentication” is the process of establishing a principal
+is who they claim to be (a “principal” generally means a user,
+device or some other system which can perform an action in your
+application).
+
+2. “Authorization” refers to the process of deciding whether a principal
+is allowed to perform an action within your application.
+
+There are three main areas of interest in respect of authorization,
+these being authorizing web requests, authorizing whether methods
+can be invoked, and authorizing access to individual domain object
+instances.
+
+
+Following are the some of the important facilities that Spring Security
+Framework provides to it’s users:
+
+    User authentication and authorization.
+    Role based authorization control.
+    Easy to configure with database based authentication and authorization.
+    Encrypted password.
+    Form authentication.
+    File bases user authentication and authorization.
+
+Spring security take care about all incoming HTTP requests via servlet
+filters, and implements "user defined" security checking
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+

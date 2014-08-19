@@ -14,7 +14,9 @@ to, it can also send a number of headers, all of which are optional except for C
 
 
 
-When an HTTP client (e.g. a browser) sends a request, it is required to supply a request line (usually GET or POST). If it wants to, it can also send a number of headers, all of which are optional except for Content-Length, which is required only for POST requests. Here are the most common headers:
+When an HTTP client (e.g. a browser) sends a request, it is required to supply a request line (usually GET or POST). If it wants
+to, it can also send a number of headers, all of which are optional except for Content-Length, which is required only for POST
+requests. Here are the most common headers:
 
     Accept The MIME types the browser prefers.
     Accept-Charset The character set the browser expects.

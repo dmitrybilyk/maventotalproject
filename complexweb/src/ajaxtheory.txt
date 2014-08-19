@@ -26,7 +26,7 @@ invoked in an asynchronous request.
 onreadystatechange is a event listener registered with XMLHttpRequest request.
 onreadystatechange stores a function that will process the response returned
 from the server. It will be called for all important events in request’s life cycle.
-Every time an step is completed in request processing, the value of readyState will
+Every time the step is completed in request processing, the value of readyState will
 be changed and set to some other value. Lets have a look at possible values:
 
 0 : request not initialized

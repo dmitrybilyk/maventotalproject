@@ -1,3 +1,11 @@
+The main principles of object-orienting programming:
+
+1. Inheritance
+2. Incapsulation
+3. Polymorphysm
+
+Also we abstraction
+
 One interface - many implementations. In java polimorthism includes
 overriding, overloading. You should always use type of parent class in parameters
 of method, return type of method, in object creation.

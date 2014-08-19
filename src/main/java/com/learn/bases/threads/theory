@@ -281,9 +281,6 @@ it’s completed or cancelled. We need a callable object to create a future
 task and then we can use Java Thread Pool Executor to process these asynchronously.
 
 
-
-
-
 Fork join framework.
 
 ForkJoinPool - it's a wrapper for ExecutorService. The number of threads in pool could be changed. And

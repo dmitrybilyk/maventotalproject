@@ -99,7 +99,7 @@ public abstract class AbstractProductDTOPopulationService implements Populator<A
      * @param orderEntryModel
      *            the source object
      * @param productDTO
-     *            the target to fill
+     *            the target to fillTheCashMachine
      * @throws de.hybris.platform.servicelayer.dto.converter.ConversionException
      *             if an error occurs
      */

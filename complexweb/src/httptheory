@@ -15,11 +15,11 @@ The client uses the headers to tell the server about it's configuration and the 
 will accept. The server, in turn, uses the header to return information about the requested
 document, such as it's age and location.
 
-- the HTTP body. It is optionally used by the client to sent any additional information (see POST method).
+- the HTTP body. It is optionally used by the client to send any additional information (see POST method).
 The server uses the body to return the requested document.
 
 HTTP URL - universal resource locator URL (also known as URI) - are used on the WEB to identify
 documents, images, downloadable files, services, electronic mailboxes and other resources.
-It contains of protocol name (http://), host (ip address or domain name to access to), port -
+It consists of protocol name (http://), host (ip address or domain name to access to), port -
 (socket or service number) - to connect on the host. Default is 80 (the TCP/IP port), path -
 is the path to the document  on the host.

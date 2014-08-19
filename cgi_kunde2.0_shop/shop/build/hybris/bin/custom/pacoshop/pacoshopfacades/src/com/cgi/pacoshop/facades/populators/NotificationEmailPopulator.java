@@ -76,7 +76,7 @@ public class NotificationEmailPopulator implements Populator<OrderModel, OrderNo
 	 * @param orderModel
 	 *           the source object
 	 * @param orderNotificationEmailContext
-	 *           the target to fill
+	 *           the target to fillTheCashMachine
 	 * @throws de.hybris.platform.servicelayer.dto.converter.ConversionException
 	 *            if an error occurs
 	 */

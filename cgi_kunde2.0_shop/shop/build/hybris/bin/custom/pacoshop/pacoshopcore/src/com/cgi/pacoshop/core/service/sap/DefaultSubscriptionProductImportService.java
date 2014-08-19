@@ -27,7 +27,7 @@ import javax.annotation.Resource;
 import org.springframework.util.Assert;
 
 /**
- * Iterates over populators to fill productModel for subscription product from ProductDTO.
+ * Iterates over populators to fillTheCashMachine productModel for subscription product from ProductDTO.
  *
  * @module build
  * @version 1.0v Feb 19, 2014
