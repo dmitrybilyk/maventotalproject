@@ -1,2 +1,0 @@
-INSERT_UPDATE PortalId;portalUrl;portalId[unique=true]
-;http://testintern_java.symmetrics.de:8080/mock-pacoshop-services/rest/portal;1

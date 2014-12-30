@@ -1,4 +1,0 @@
-Iterator fail-safe property work with the clone of underlying collection, hence it’s not affected by any modification
-in the collection. By design, all the collection classes in java.util package are fail-fast whereas collection classes
-in java.util.concurrent are fail-safe. Fail-fast iterators throw ConcurrentModificationException whereas fail-safe
-iterator never throws ConcurrentModificationException. Check this post for CopyOnWriteArrayList Example.

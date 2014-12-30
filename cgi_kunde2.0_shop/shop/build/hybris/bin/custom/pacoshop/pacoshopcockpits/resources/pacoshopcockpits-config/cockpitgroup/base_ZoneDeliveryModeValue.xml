@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="base.xsd">
-	<label>
-		<property qualifier="ZoneDeliveryModeValue.zone.code" />
-		<property qualifier="ZoneDeliveryModeValue.currency.name" />
-        <property qualifier="ZoneDeliveryModeValue.value" />
-        <property qualifier="ZoneDeliveryModeValue.minimum" />
-	</label>
-</base>

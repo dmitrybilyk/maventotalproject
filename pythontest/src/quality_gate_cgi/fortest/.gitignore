@@ -1,9 +1,0 @@
-*.pyc
-*.DS_Store
-build/forwarder/history.*
-build/forwarder.log
-build/history.log
-build/local_settings.py
-build/forwarder/local_config.py
-env/
-*.sqlite3

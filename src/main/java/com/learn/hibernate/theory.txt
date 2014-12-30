@@ -1,5 +1,0 @@
-1. Difference between get and load methods.
-Main difference between get and load is that, get will hit the database if object is not found in the cache and
-returned completely initialized object, which may involve several database call while load() method can return proxy
-
-2.

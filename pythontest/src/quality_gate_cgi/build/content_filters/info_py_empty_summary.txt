@@ -1,1 +1,0 @@
-\[long description\s+with multiple lines\]

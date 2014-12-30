@@ -1,7 +1,0 @@
-INSERT_UPDATE MediaContainer;qualifier[unique=true];medias(code, catalogversion(catalog(id[default=kundeProductCatalog]),version[default='Staged'])[unique=true,default=kundeProductCatalog]);catalogversion(catalog(id[default=kundeProductCatalog]),version[default='Staged'])[unique=true,default=kundeProductCatalog]
-;simplePaperMediaContainer1;simplePaper1_515,simplePaper1_300,simplePaper1_96
-;simplePaperMediaContainer2;simplePaper2_515,simplePaper2_300,simplePaper2_96
-;simplePaperMediaContainer3;simplePaper3_515,simplePaper3_300,simplePaper3_96
-;simpleCameraMediaContainer1;simpleCamera1_515,simpleCamera1_300,simpleCamera1_96
-;simpleCameraMediaContainer2;simpleCamera2_515,simpleCamera2_300,simpleCamera2_96
-;simpleCameraMediaContainer3;simpleCamera3_515,simpleCamera3_300,simpleCamera3_96

@@ -1,8 +1,0 @@
-$registeredcustomergroup=registeredcustomergroup
-$visitorcustomergroup=visitorcustomergroup
-$customergroup=customergroup
-
-# Create Customer Group
-INSERT_UPDATE Usergroup;uid[unique=true];groups(uid)[mode=append]
-;$registeredcustomergroup;$customergroup
-;$visitorcustomergroup;$customergroup
